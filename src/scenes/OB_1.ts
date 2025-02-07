@@ -19,21 +19,22 @@ export default class OB_1 extends Phaser.Scene {
 
 	editorCreate(): void {
 
-		// default_play
-		const default_play = this.add.image(640, 360, "default_play");
-
 		// text
 		const text = new index_text(this);
 		this.add.existing(text);
 		text.text = "OB_1";
 		text.setStyle({  });
 
-		this.default_play = default_play;
+		// default_play_lg
+		const default_play_lg = this.add.image(755, 499, "default_play_lg");
+		default_play_lg.setOrigin(0, 0);
+
+		this.default_play_lg = default_play_lg;
 
 		this.events.emit("scene-awake");
 	}
 
-	private default_play!: Phaser.GameObjects.Image;
+	private default_play_lg!: Phaser.GameObjects.Image;
 
 	/* START-USER-CODE */
 
@@ -43,26 +44,29 @@ export default class OB_1 extends Phaser.Scene {
 
 		this.editorCreate();
 
-		this.default_play.setInteractive({ useHandCursor: true });
+		var div = document.getElementById('game-container');
+        div!.style.backgroundColor = "#7580FF";
+
+		this.default_play_lg.setInteractive({ useHandCursor: true });
 
 		// Mouse hover effect
-		this.default_play.on("pointerover", () => {
-			this.default_play.setTexture("hovered_play"); // Change to hover state
+		this.default_play_lg.on("pointerover", () => {
+			this.default_play_lg.setTexture("hovered_play_lg"); // Change to hover state
 		});
 
 		// Mouse out effect (Reset to normal)
-		this.default_play.on("pointerout", () => {
-			this.default_play.setTexture("default_play");
+		this.default_play_lg.on("pointerout", () => {
+			this.default_play_lg.setTexture("default_play_lg");
 		});
 
 		// Mouse press effect
-		this.default_play.on("pointerdown", () => {
-			this.default_play.setTexture("pressed_play"); // Change to pressed state
+		this.default_play_lg.on("pointerdown", () => {
+			this.default_play_lg.setTexture("pressed_play_lg"); // Change to pressed state
 		});
 
 		// Release effect (if still hovered)
-		this.default_play.on("pointerup", () => {
-			this.default_play.setTexture("hovered_play"); // Reset to hover state
+		this.default_play_lg.on("pointerup", () => {
+			this.default_play_lg.setTexture("hovered_play_lg"); // Reset to hover state
 			this.scene.start("OB_2"); // Switch to OB2 scene
 		});
 	}

@@ -8,8 +8,8 @@
         "preloadPackFiles": [],
         "createMethodName": "",
         "compilerOutputLanguage": "TYPE_SCRIPT",
-        "borderWidth": 1280,
-        "borderHeight": 720
+        "borderWidth": 1728,
+        "borderHeight": 1117
     },
     "displayList": [
         {
@@ -17,7 +17,7 @@
             "id": "d991b449-3100-4252-983d-c547b6e59f63",
             "label": "text_1",
             "x": 20,
-            "y": 650,
+            "y": 994,
             "text": "New text",
             "align": "center",
             "fontFamily": "Calibri",

@@ -9,7 +9,7 @@
 export default class index_text extends Phaser.GameObjects.Text {
 
 	constructor(scene: Phaser.Scene, x?: number, y?: number) {
-		super(scene, x ?? 20, y ?? 650, "", {});
+		super(scene, x ?? 20, y ?? 994, "", {});
 
 		this.text = "New text";
 		this.setStyle({ "align": "center", "backgroundColor": "", "fontFamily": "Calibri", "fontSize": "40px", "fontStyle": "bold" });

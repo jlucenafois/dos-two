@@ -8,21 +8,10 @@
         "createMethodName": "editorCreate",
         "sceneKey": "OB_1",
         "compilerOutputLanguage": "TYPE_SCRIPT",
-        "borderWidth": 1280,
-        "borderHeight": 720
+        "borderWidth": 1728,
+        "borderHeight": 1117
     },
     "displayList": [
-        {
-            "type": "Image",
-            "id": "ea758597-a321-4ca3-9362-5bda08a96196",
-            "label": "default_play",
-            "scope": "CLASS",
-            "texture": {
-                "key": "default_play"
-            },
-            "x": 640,
-            "y": 360
-        },
         {
             "prefabId": "b89ef685-9273-4987-855c-9bbc2ac9889c",
             "id": "f5b616e6-f039-422a-ad10-a05b6a545e4b",
@@ -31,6 +20,20 @@
             ],
             "label": "text",
             "text": "OB_1"
+        },
+        {
+            "type": "Image",
+            "id": "a3387314-bf39-4b1e-92a3-dac2f292254c",
+            "label": "default_play_lg",
+            "scope": "CLASS",
+            "hitArea.shape": "PIXEL_PERFECT",
+            "texture": {
+                "key": "default_play_lg"
+            },
+            "x": 755,
+            "y": 499,
+            "originX": 0,
+            "originY": 0
         }
     ],
     "plainObjects": [],

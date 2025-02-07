@@ -2,34 +2,84 @@
     "section1": {
         "files": [
             {
-                "url": "assets/default_play.svg",
-                "svgConfig": {
-                    "width": 0,
-                    "height": 0,
-                    "scale": 0
-                },
-                "type": "svg",
-                "key": "default_play"
+                "url": "assets/default_exit_lg.png",
+                "type": "image",
+                "key": "default_exit_lg"
             },
             {
-                "url": "assets/hovered_play.svg",
-                "svgConfig": {
-                    "width": 0,
-                    "height": 0,
-                    "scale": 0
-                },
-                "type": "svg",
-                "key": "hovered_play"
+                "url": "assets/default_home_lg.png",
+                "type": "image",
+                "key": "default_home_lg"
             },
             {
-                "url": "assets/pressed_play.svg",
-                "svgConfig": {
-                    "width": 0,
-                    "height": 0,
-                    "scale": 0
-                },
-                "type": "svg",
-                "key": "pressed_play"
+                "url": "assets/default_muted_lg.png",
+                "type": "image",
+                "key": "default_muted_lg"
+            },
+            {
+                "url": "assets/default_play_lg.png",
+                "type": "image",
+                "key": "default_play_lg"
+            },
+            {
+                "url": "assets/default_unmuted_lg.png",
+                "type": "image",
+                "key": "default_unmuted_lg"
+            },
+            {
+                "url": "assets/game_mode.png",
+                "type": "image",
+                "key": "game_mode"
+            },
+            {
+                "url": "assets/game_mode_title.png",
+                "type": "image",
+                "key": "game_mode_title"
+            },
+            {
+                "url": "assets/hovered_play_lg.png",
+                "type": "image",
+                "key": "hovered_play_lg"
+            },
+            {
+                "url": "assets/pressed_exit_lg.png",
+                "type": "image",
+                "key": "pressed_exit_lg"
+            },
+            {
+                "url": "assets/pressed_home_lg.png",
+                "type": "image",
+                "key": "pressed_home_lg"
+            },
+            {
+                "url": "assets/pressed_muted_lg.png",
+                "type": "image",
+                "key": "pressed_muted_lg"
+            },
+            {
+                "url": "assets/pressed_play_lg.png",
+                "type": "image",
+                "key": "pressed_play_lg"
+            },
+            {
+                "url": "assets/pressed_unmuted_lg.png",
+                "type": "image",
+                "key": "pressed_unmuted_lg"
+            },
+            {
+                "url": "assets/reading_mode.png",
+                "type": "image",
+                "key": "reading_mode"
+            },
+            {
+                "url": "assets/reading_mode_title.png",
+                "type": "image",
+                "key": "reading_mode_title"
+            },
+            {
+                "url": "assets/title_ob_2.png",
+                "type": "image",
+                "key": "title_ob_2"
             }
         ]
     },

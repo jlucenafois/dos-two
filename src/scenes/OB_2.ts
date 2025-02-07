@@ -25,8 +25,34 @@ export default class OB_2 extends Phaser.Scene {
 		text.text = "OB_2";
 		text.setStyle({  });
 
+		// reading_mode
+		const reading_mode = this.add.image(325, 287, "reading_mode");
+		reading_mode.setOrigin(0, 0);
+
+		// game_mode
+		const game_mode = this.add.image(928, 348, "game_mode");
+		game_mode.setOrigin(0, 0);
+
+		// reading_mode_title
+		const reading_mode_title = this.add.image(464, 805, "reading_mode_title");
+		reading_mode_title.setOrigin(0, 0);
+
+		// game_mode_title
+		const game_mode_title = this.add.image(1012, 805, "game_mode_title");
+		game_mode_title.setOrigin(0, 0);
+
+		// title_ob_2
+		const title_ob_2 = this.add.image(864, 275, "title_ob_2");
+		title_ob_2.setOrigin(0.5, 0);
+
+		this.reading_mode = reading_mode;
+		this.game_mode = game_mode;
+
 		this.events.emit("scene-awake");
 	}
+
+	private reading_mode!: Phaser.GameObjects.Image;
+	private game_mode!: Phaser.GameObjects.Image;
 
 	/* START-USER-CODE */
 
@@ -35,6 +61,21 @@ export default class OB_2 extends Phaser.Scene {
 	create() {
 
 		this.editorCreate();
+
+		this.reading_mode.setInteractive({
+			useHandCursor: true, 
+			pixelPerfect: true
+		});
+		
+		this.game_mode.setInteractive({
+			useHandCursor: true, 
+			pixelPerfect: true
+		});
+
+		this.scene.launch("OB_UI")
+
+
+
 	}
 
 	/* END-USER-CODE */

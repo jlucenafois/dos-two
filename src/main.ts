@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import OB_1 from "./scenes/OB_1";
 import OB_2 from "./scenes/OB_2";
 import Preload from "./scenes/Preload";
+import OB_UI from "./scenes/OB_UI";
 
 class Boot extends Phaser.Scene {
 
@@ -23,15 +24,15 @@ class Boot extends Phaser.Scene {
 window.addEventListener('load', function () {
 	
 	const game = new Phaser.Game({
-		width: 1280,
-		height: 720,
-		backgroundColor: "#2f2f2f",
+		width: 1728,
+		height: 1117,
+		transparent: true,
 		parent: "game-container",
 		scale: {
 			mode: Phaser.Scale.ScaleModes.FIT,
 			autoCenter: Phaser.Scale.Center.CENTER_BOTH
 		},
-		scene: [Boot, Preload, OB_1, OB_2]
+		scene: [Boot, Preload, OB_UI, OB_1, OB_2]
 	});
 
 	game.scene.start("Boot");
