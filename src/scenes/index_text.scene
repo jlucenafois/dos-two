@@ -17,11 +17,13 @@
             "id": "d991b449-3100-4252-983d-c547b6e59f63",
             "label": "text_1",
             "x": 20,
-            "y": 670,
-            "scaleX": 2,
-            "scaleY": 2,
+            "y": 650,
             "text": "New text",
-            "align": "center"
+            "align": "center",
+            "fontFamily": "Calibri",
+            "fontSize": "40px",
+            "fontStyle": "bold",
+            "backgroundColor": ""
         }
     ],
     "plainObjects": [],
