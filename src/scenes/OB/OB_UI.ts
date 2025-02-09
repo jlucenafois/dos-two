@@ -115,7 +115,15 @@ export default class OB_UI extends Phaser.Scene {
 		// Release effect (if still hovered)
 		this.default_home_lg.on("pointerup", () => {
 			this.default_home_lg.setTexture("default_home_lg"); // Reset to hover state
-			this.scene.stop("OB_2"); // Switch to OB1 scene
+			// Get the currently running scene (excluding the UI scene)
+			const activeScenes = this.scene.manager.getScenes(true); // Get active scenes
+			const gameScene = activeScenes.find(scene => scene.scene.key !== "OB_UI");
+
+			if (gameScene) {
+				console.log(gameScene.scene.key)
+				this.scene.stop(gameScene.scene.key); // Stop the active gameplay scene
+			}
+
 			this.scene.start("OB_1"); // Switch to OB1 scene
 		});
 

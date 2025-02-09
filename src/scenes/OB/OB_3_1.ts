@@ -52,6 +52,12 @@ export default class OB_3_1 extends Phaser.Scene {
 		// language_selection_title
 		this.add.image(864, 309, "language_selection_title");
 
+		// text1
+		const text1 = new index_text(this);
+		this.add.existing(text1);
+		text1.text = "OB_3_1\n";
+		text1.setStyle({  });
+
 		this.english_bubble = english_bubble;
 		this.spanish_bubble = spanish_bubble;
 

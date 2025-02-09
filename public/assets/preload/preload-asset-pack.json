@@ -1,0 +1,39 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": "assets/preload/0_progress_bar_lg.png",
+                "type": "image",
+                "key": "0_progress_bar_lg"
+            },
+            {
+                "url": "assets/preload/100_progress_bar_lg.png",
+                "type": "image",
+                "key": "100_progress_bar_lg"
+            },
+            {
+                "url": "assets/preload/25_progress_bar_lg.png",
+                "type": "image",
+                "key": "25_progress_bar_lg"
+            },
+            {
+                "url": "assets/preload/50_progress_bar_lg.png",
+                "type": "image",
+                "key": "50_progress_bar_lg"
+            },
+            {
+                "url": "assets/preload/75_progress_bar_lg.png",
+                "type": "image",
+                "key": "75_progress_bar_lg"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false,
+        "visible": true
+    }
+}

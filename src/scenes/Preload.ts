@@ -18,29 +18,15 @@ export default class Preload extends Phaser.Scene {
 
 	editorCreate(): void {
 
-		// progressBar
-		const progressBar = this.add.rectangle(553.0120849609375, 361, 256, 20);
-		progressBar.setOrigin(0, 0);
-		progressBar.isFilled = true;
-		progressBar.fillColor = 14737632;
+		// progress_bar
+		const progress_bar = this.add.image(864, 558.5, "0_progress_bar_lg");
 
-		// progressBarBg
-		const progressBarBg = this.add.rectangle(553.0120849609375, 361, 256, 20);
-		progressBarBg.setOrigin(0, 0);
-		progressBarBg.fillColor = 14737632;
-		progressBarBg.isStroked = true;
-
-		// loadingText
-		const loadingText = this.add.text(552.0120849609375, 329, "", {});
-		loadingText.text = "Loading...";
-		loadingText.setStyle({ "color": "#e0e0e0", "fontFamily": "arial", "fontSize": "20px" });
-
-		this.progressBar = progressBar;
+		this.progress_bar = progress_bar;
 
 		this.events.emit("scene-awake");
 	}
 
-	private progressBar!: Phaser.GameObjects.Rectangle;
+	private progress_bar!: Phaser.GameObjects.Image;
 
 	/* START-USER-CODE */
 
@@ -53,13 +39,26 @@ export default class Preload extends Phaser.Scene {
 		this.load.pack("OB-asset-pack", "assets/OB/OB-asset-pack.json");
 		this.load.pack("UI-asset-pack", "assets/UI/UI-asset-pack.json");
 
-		const width = this.progressBar.width;
-
+		// Listen for loading progress
 		this.load.on("progress", (value: number) => {
-
-			this.progressBar.width = width * value;
+			this.updateProgressBar(value);
 		});
 	}
+
+	// Function to update progress bar based on value
+	updateProgressBar(value: number) {
+		if (value === 1) {
+			this.progress_bar.setTexture("100_progress_bar_lg");
+		} else if (value >= 0.75) {
+			this.progress_bar.setTexture("75_progress_bar_lg");
+		} else if (value >= 0.5) {
+			this.progress_bar.setTexture("50_progress_bar_lg");
+		} else if (value >= 0.25) {
+			this.progress_bar.setTexture("25_progress_bar_lg");
+		} else {
+			this.progress_bar.setTexture("0_progress_bar_lg");
+		}
+}
 
 	create() {
 

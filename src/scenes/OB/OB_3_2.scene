@@ -20,6 +20,82 @@
             ],
             "label": "text",
             "text": "OB_3_2"
+        },
+        {
+            "type": "Image",
+            "id": "abafb028-6c1a-42b5-b33a-0dfcc096b811",
+            "label": "choose_game",
+            "texture": {
+                "key": "choose_game"
+            },
+            "x": 864,
+            "y": 275
+        },
+        {
+            "type": "Image",
+            "id": "992a1263-589d-45e2-894d-7f9acb0d4cd6",
+            "label": "match_title",
+            "texture": {
+                "key": "match_title"
+            },
+            "x": 1404,
+            "y": 859
+        },
+        {
+            "type": "Image",
+            "id": "fae87bfb-f206-428b-ac5c-3ba897dcb78f",
+            "label": "memory_title",
+            "texture": {
+                "key": "memory_title"
+            },
+            "x": 311,
+            "y": 859
+        },
+        {
+            "type": "Image",
+            "id": "53372b63-50dd-4266-ada6-b9b0a455810b",
+            "label": "word_title",
+            "texture": {
+                "key": "word_title"
+            },
+            "x": 849,
+            "y": 859
+        },
+        {
+            "type": "Image",
+            "id": "31e3c33f-3cba-4f4a-be59-9f3463e9764c",
+            "label": "match_button",
+            "texture": {
+                "key": "match_button"
+            },
+            "x": 1138,
+            "y": 394,
+            "originX": 0,
+            "originY": 0
+        },
+        {
+            "type": "Image",
+            "id": "3e299689-1279-4cf3-9bfb-1fba2e441463",
+            "label": "word_button",
+            "texture": {
+                "key": "word_button"
+            },
+            "x": 604,
+            "y": 394,
+            "originX": 0,
+            "originY": 0
+        },
+        {
+            "type": "Image",
+            "id": "8c807841-c73a-4526-95e1-d709b59df6d8",
+            "label": "memory_button",
+            "texture": {
+                "key": "memory_button"
+            },
+            "x": 92,
+            "y": 439,
+            "originX": 0,
+            "originY": 0
         }
     ],
     "plainObjects": [],

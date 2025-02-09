@@ -1,28 +1,25 @@
 {
-    "id": "04331fb6-ed91-4d74-b6e9-4bfe0fcfb457",
+    "id": "82929935-7723-41e7-9c5b-4a2535d16749",
     "sceneType": "SCENE",
     "settings": {
         "exportClass": true,
         "autoImport": true,
-        "preloadMethodName": "editorPreload",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
-        "sceneKey": "Preload",
+        "sceneKey": "P_1",
         "compilerOutputLanguage": "TYPE_SCRIPT",
         "borderWidth": 1728,
         "borderHeight": 1117
     },
     "displayList": [
         {
-            "type": "Image",
-            "id": "cb6e7365-a3d8-4859-984d-0f9d9bfe16ee",
-            "label": "progress_bar",
-            "scope": "CLASS",
-            "texture": {
-                "key": "0_progress_bar_lg"
-            },
-            "x": 864,
-            "y": 558.5
+            "prefabId": "b89ef685-9273-4987-855c-9bbc2ac9889c",
+            "id": "5b971e7d-7c1a-434c-bacd-9ad3ec3d5345",
+            "unlock": [
+                "text"
+            ],
+            "label": "text",
+            "text": "P_1"
         }
     ],
     "plainObjects": [],

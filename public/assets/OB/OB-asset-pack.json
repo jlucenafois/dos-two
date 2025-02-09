@@ -2,6 +2,11 @@
     "section1": {
         "files": [
             {
+                "url": "assets/OB/choose_game.png",
+                "type": "image",
+                "key": "choose_game"
+            },
+            {
                 "url": "assets/OB/default_play_lg.png",
                 "type": "image",
                 "key": "default_play_lg"
@@ -62,6 +67,26 @@
                 "key": "language_selection_title"
             },
             {
+                "url": "assets/OB/match_button.png",
+                "type": "image",
+                "key": "match_button"
+            },
+            {
+                "url": "assets/OB/match_title.png",
+                "type": "image",
+                "key": "match_title"
+            },
+            {
+                "url": "assets/OB/memory_button.png",
+                "type": "image",
+                "key": "memory_button"
+            },
+            {
+                "url": "assets/OB/memory_title.png",
+                "type": "image",
+                "key": "memory_title"
+            },
+            {
                 "url": "assets/OB/pressed_play_lg.png",
                 "type": "image",
                 "key": "pressed_play_lg"
@@ -85,6 +110,21 @@
                 "url": "assets/OB/title_ob_2.png",
                 "type": "image",
                 "key": "title_ob_2"
+            },
+            {
+                "url": "assets/OB/transition_title.png",
+                "type": "image",
+                "key": "transition_title"
+            },
+            {
+                "url": "assets/OB/word_button.png",
+                "type": "image",
+                "key": "word_button"
+            },
+            {
+                "url": "assets/OB/word_title.png",
+                "type": "image",
+                "key": "word_title"
             }
         ]
     },

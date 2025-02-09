@@ -1,13 +1,14 @@
 {
-    "id": "04331fb6-ed91-4d74-b6e9-4bfe0fcfb457",
+    "id": "2a3d871d-bcaf-4f6f-b3f2-37b9c79eb464",
     "sceneType": "SCENE",
     "settings": {
         "exportClass": true,
         "autoImport": true,
-        "preloadMethodName": "editorPreload",
-        "preloadPackFiles": [],
+        "preloadPackFiles": [
+            "dos-two/public/assets/story/story-asset-pack.json"
+        ],
         "createMethodName": "editorCreate",
-        "sceneKey": "Preload",
+        "sceneKey": "OB_4",
         "compilerOutputLanguage": "TYPE_SCRIPT",
         "borderWidth": 1728,
         "borderHeight": 1117
@@ -15,14 +16,22 @@
     "displayList": [
         {
             "type": "Image",
-            "id": "cb6e7365-a3d8-4859-984d-0f9d9bfe16ee",
-            "label": "progress_bar",
-            "scope": "CLASS",
+            "id": "84266ea6-5750-4ef9-b94f-8935b21f8c66",
+            "label": "transition_title",
             "texture": {
-                "key": "0_progress_bar_lg"
+                "key": "transition_title"
             },
             "x": 864,
-            "y": 558.5
+            "y": 519
+        },
+        {
+            "prefabId": "b89ef685-9273-4987-855c-9bbc2ac9889c",
+            "id": "5d8511bc-98c1-499d-a456-e04aa516f225",
+            "unlock": [
+                "text"
+            ],
+            "label": "text",
+            "text": "OB_4"
         }
     ],
     "plainObjects": [],
