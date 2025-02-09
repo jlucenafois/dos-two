@@ -20,6 +20,89 @@
             ],
             "label": "text",
             "text": "OB_3_1"
+        },
+        {
+            "type": "Image",
+            "id": "613115b5-03f0-4dbf-a50b-bd049d3ca076",
+            "label": "girl_right",
+            "texture": {
+                "key": "girl_right"
+            },
+            "x": 1378,
+            "y": 515,
+            "originX": 0,
+            "originY": 0
+        },
+        {
+            "type": "Image",
+            "id": "c1c2b625-e930-435c-8655-8b9886787d72",
+            "label": "girl_left",
+            "texture": {
+                "key": "girl_left"
+            },
+            "x": 330,
+            "y": 515,
+            "originX": 1,
+            "originY": 0
+        },
+        {
+            "type": "Image",
+            "id": "e0569916-1fa2-4931-917a-b2ec62c7061f",
+            "label": "english_bubble",
+            "scope": "CLASS",
+            "texture": {
+                "key": "english_bubble"
+            },
+            "x": 822,
+            "y": 417,
+            "originX": 0,
+            "originY": 0
+        },
+        {
+            "type": "Image",
+            "id": "9083c14b-4550-495c-a1e3-1a372000a395",
+            "label": "spanish_bubble",
+            "scope": "CLASS",
+            "texture": {
+                "key": "spanish_bubble"
+            },
+            "x": 330,
+            "y": 386,
+            "originX": 0,
+            "originY": 0
+        },
+        {
+            "type": "Image",
+            "id": "5a82e12c-4421-41e4-9a64-964933f575cc",
+            "label": "eye_blink_left",
+            "texture": {
+                "key": "eye_blink_left"
+            },
+            "x": 203,
+            "y": 660,
+            "originY": 0
+        },
+        {
+            "type": "Image",
+            "id": "ecb48f2f-6997-4c7f-aa75-8629fb11510e",
+            "label": "eye_blink_right",
+            "texture": {
+                "key": "eye_blink_right"
+            },
+            "x": 1475,
+            "y": 660,
+            "originX": 0,
+            "originY": 0
+        },
+        {
+            "type": "Image",
+            "id": "57f7bd97-8f52-449a-963a-c89e956139a6",
+            "label": "language_selection_title",
+            "texture": {
+                "key": "language_selection_title"
+            },
+            "x": 864,
+            "y": 309
         }
     ],
     "plainObjects": [],

@@ -44,8 +44,6 @@ export default class OB_1 extends Phaser.Scene {
 
 		this.editorCreate();
 
-		var div = document.getElementById('game-container');
-        div!.style.backgroundColor = "#7580FF";
 
 		this.default_play_lg.setInteractive({ useHandCursor: true });
 

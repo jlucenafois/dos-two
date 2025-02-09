@@ -7,6 +7,21 @@
                 "key": "default_play_lg"
             },
             {
+                "url": "assets/OB/english_bubble.png",
+                "type": "image",
+                "key": "english_bubble"
+            },
+            {
+                "url": "assets/OB/eye_blink_left.png",
+                "type": "image",
+                "key": "eye_blink_left"
+            },
+            {
+                "url": "assets/OB/eye_blink_right.png",
+                "type": "image",
+                "key": "eye_blink_right"
+            },
+            {
                 "url": "assets/OB/game_mode.png",
                 "type": "image",
                 "key": "game_mode"
@@ -15,6 +30,16 @@
                 "url": "assets/OB/game_mode_title.png",
                 "type": "image",
                 "key": "game_mode_title"
+            },
+            {
+                "url": "assets/OB/girl_left.png",
+                "type": "image",
+                "key": "girl_left"
+            },
+            {
+                "url": "assets/OB/girl_right.png",
+                "type": "image",
+                "key": "girl_right"
             },
             {
                 "url": "assets/OB/hovered_game_mode.png",
@@ -32,6 +57,11 @@
                 "key": "hovered_reading_mode"
             },
             {
+                "url": "assets/OB/language_selection_title.png",
+                "type": "image",
+                "key": "language_selection_title"
+            },
+            {
                 "url": "assets/OB/pressed_play_lg.png",
                 "type": "image",
                 "key": "pressed_play_lg"
@@ -45,6 +75,11 @@
                 "url": "assets/OB/reading_mode_title.png",
                 "type": "image",
                 "key": "reading_mode_title"
+            },
+            {
+                "url": "assets/OB/spanish_bubble.png",
+                "type": "image",
+                "key": "spanish_bubble"
             },
             {
                 "url": "assets/OB/title_ob_2.png",

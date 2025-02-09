@@ -28,7 +28,8 @@ window.addEventListener('load', function () {
 	const game = new Phaser.Game({
 		width: 1728,
 		height: 1117,
-		transparent: true,
+		transparent: false, // Ensure transparency is disabled to allow background color
+		backgroundColor: "#7580FF", // Set background color
 		parent: "game-container",
 		scale: {
 			mode: Phaser.Scale.ScaleModes.FIT,
