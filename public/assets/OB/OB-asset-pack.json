@@ -1,0 +1,64 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": "assets/OB/default_play_lg.png",
+                "type": "image",
+                "key": "default_play_lg"
+            },
+            {
+                "url": "assets/OB/game_mode.png",
+                "type": "image",
+                "key": "game_mode"
+            },
+            {
+                "url": "assets/OB/game_mode_title.png",
+                "type": "image",
+                "key": "game_mode_title"
+            },
+            {
+                "url": "assets/OB/hovered_game_mode.png",
+                "type": "image",
+                "key": "hovered_game_mode"
+            },
+            {
+                "url": "assets/OB/hovered_play_lg.png",
+                "type": "image",
+                "key": "hovered_play_lg"
+            },
+            {
+                "url": "assets/OB/hovered_reading_mode.png",
+                "type": "image",
+                "key": "hovered_reading_mode"
+            },
+            {
+                "url": "assets/OB/pressed_play_lg.png",
+                "type": "image",
+                "key": "pressed_play_lg"
+            },
+            {
+                "url": "assets/OB/reading_mode.png",
+                "type": "image",
+                "key": "reading_mode"
+            },
+            {
+                "url": "assets/OB/reading_mode_title.png",
+                "type": "image",
+                "key": "reading_mode_title"
+            },
+            {
+                "url": "assets/OB/title_ob_2.png",
+                "type": "image",
+                "key": "title_ob_2"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false,
+        "visible": true
+    }
+}

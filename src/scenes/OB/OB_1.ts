@@ -3,7 +3,7 @@
 
 /* START OF COMPILED CODE */
 
-import index_text from "./index_text";
+import index_text from "../prefabs/index_text";
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 

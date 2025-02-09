@@ -50,7 +50,8 @@ export default class Preload extends Phaser.Scene {
 
 		this.editorCreate();
 
-		this.load.pack("asset-pack", "assets/asset-pack.json");
+		this.load.pack("OB-asset-pack", "assets/OB/OB-asset-pack.json");
+		this.load.pack("UI-asset-pack", "assets/UI/UI-asset-pack.json");
 
 		const width = this.progressBar.width;
 

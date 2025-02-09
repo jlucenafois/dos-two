@@ -1,8 +1,10 @@
 import Phaser from "phaser";
-import OB_1 from "./scenes/OB_1";
-import OB_2 from "./scenes/OB_2";
 import Preload from "./scenes/Preload";
-import OB_UI from "./scenes/OB_UI";
+import OB_1 from "./scenes/OB/OB_1";
+import OB_2 from "./scenes/OB/OB_2";
+import OB_3_1 from "./scenes/OB/OB_3_1";
+import OB_3_2 from "./scenes/OB/OB_3_2";
+import OB_UI from "./scenes/OB/OB_UI";
 
 class Boot extends Phaser.Scene {
 
@@ -32,7 +34,7 @@ window.addEventListener('load', function () {
 			mode: Phaser.Scale.ScaleModes.FIT,
 			autoCenter: Phaser.Scale.Center.CENTER_BOTH
 		},
-		scene: [Boot, Preload, OB_UI, OB_1, OB_2]
+		scene: [Boot, Preload, OB_UI, OB_1, OB_2, OB_3_1, OB_3_2]
 	});
 
 	game.scene.start("Boot");

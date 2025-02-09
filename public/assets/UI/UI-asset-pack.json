@@ -1,0 +1,64 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": "assets/UI/default_back_md.png",
+                "type": "image",
+                "key": "default_back_md"
+            },
+            {
+                "url": "assets/UI/default_exit_lg.png",
+                "type": "image",
+                "key": "default_exit_lg"
+            },
+            {
+                "url": "assets/UI/default_home_lg.png",
+                "type": "image",
+                "key": "default_home_lg"
+            },
+            {
+                "url": "assets/UI/default_muted_lg.png",
+                "type": "image",
+                "key": "default_muted_lg"
+            },
+            {
+                "url": "assets/UI/default_unmuted_lg.png",
+                "type": "image",
+                "key": "default_unmuted_lg"
+            },
+            {
+                "url": "assets/UI/pressed_back_md.png",
+                "type": "image",
+                "key": "pressed_back_md"
+            },
+            {
+                "url": "assets/UI/pressed_exit_lg.png",
+                "type": "image",
+                "key": "pressed_exit_lg"
+            },
+            {
+                "url": "assets/UI/pressed_home_lg.png",
+                "type": "image",
+                "key": "pressed_home_lg"
+            },
+            {
+                "url": "assets/UI/pressed_muted_lg.png",
+                "type": "image",
+                "key": "pressed_muted_lg"
+            },
+            {
+                "url": "assets/UI/pressed_unmuted_lg.png",
+                "type": "image",
+                "key": "pressed_unmuted_lg"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false,
+        "visible": true
+    }
+}

@@ -50,6 +50,18 @@
             "y": 69,
             "originX": 0,
             "originY": 0
+        },
+        {
+            "type": "Image",
+            "id": "18f8b747-4679-4392-bda0-4d78d24996fd",
+            "label": "default_back_md",
+            "scope": "CLASS",
+            "texture": {
+                "key": "default_back_md"
+            },
+            "x": 1608,
+            "y": 112,
+            "visible": false
         }
     ],
     "plainObjects": [],

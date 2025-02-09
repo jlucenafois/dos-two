@@ -3,7 +3,7 @@
 
 /* START OF COMPILED CODE */
 
-import index_text from "./index_text";
+import index_text from "../prefabs/index_text";
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 
@@ -14,6 +14,7 @@ export default class OB_2 extends Phaser.Scene {
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.
+		// Write your code here
 		/* END-USER-CTR-CODE */
 	}
 
@@ -56,27 +57,59 @@ export default class OB_2 extends Phaser.Scene {
 
 	/* START-USER-CODE */
 
-	// Write your code here
-
 	create() {
-
 		this.editorCreate();
 
+		/* READING MODE */
 		this.reading_mode.setInteractive({
 			useHandCursor: true, 
 			pixelPerfect: true
 		});
-		
+
+		// Mouse hover effect
+		this.reading_mode.on("pointerover", () => {
+			this.reading_mode.setTexture("hovered_reading_mode"); // Change to hover state
+		});
+
+		// Mouse out effect (Reset to normal)
+		this.reading_mode.on("pointerout", () => {
+			this.reading_mode.setTexture("reading_mode");
+		});
+
+		// Click event - Transition to OB_3_1
+		this.reading_mode.on("pointerdown", () => {
+			this.events.emit("updateUI", "reading_mode"); // Notify UI
+			this.scene.start("OB_3_1");
+		});
+
+		/* GAME MODE */
 		this.game_mode.setInteractive({
 			useHandCursor: true, 
 			pixelPerfect: true
 		});
 
-		this.scene.launch("OB_UI")
+		// Mouse hover effect
+		this.game_mode.on("pointerover", () => {
+			this.game_mode.setTexture("hovered_game_mode"); // Change to hover state
+		});
 
+		// Mouse out effect (Reset to normal)
+		this.game_mode.on("pointerout", () => {
+			this.game_mode.setTexture("game_mode");
+		});
 
-
+		// Click event - Transition to OB_3_2
+		this.game_mode.on("pointerdown", () => {
+			this.events.emit("updateUI", "game_mode"); // Notify UI
+			this.scene.start("OB_3_2");
+		});
+		
+		// Check if the UI scene is already running
+		if (!this.scene.isActive("OB_UI")) {
+			this.scene.launch("OB_UI"); // Launch the UI overlay only if it hasn't been launched already
+		}
 	}
+
 
 	/* END-USER-CODE */
 }
