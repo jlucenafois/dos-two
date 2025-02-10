@@ -25,6 +25,8 @@
     },
     "dependencies": {
         "@phaserjs/editor-scripts-base": "^1.0.0",
-        "phaser": "3.80.1"
+        "jquery": "^3.7.1",
+        "phaser": "3.80.1",
+        "turn.js": "^1.0.5"
     }
 }

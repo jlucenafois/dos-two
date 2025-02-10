@@ -72,6 +72,10 @@ export default class OB_2 extends Phaser.Scene {
 			pixelPerfect: true
 		});
 
+		this.reading_mode.on("pointerdown", () => {
+		this.scene.start("OB_5"); // Switch to OB2 scene
+		});
+
 		this.scene.launch("OB_UI")
 
 

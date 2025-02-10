@@ -42,6 +42,51 @@
                 "key": "hovered_play_lg"
             },
             {
+                "url": "assets/OB_5 Back of the book.png",
+                "type": "image",
+                "key": "OB_5 Back of the book"
+            },
+            {
+                "url": "assets/OB_5 Back of the book2.png",
+                "type": "image",
+                "key": "OB_5 Back of the book2"
+            },
+            {
+                "url": "assets/OB_5 Book.png",
+                "type": "image",
+                "key": "OB_5 Book"
+            },
+            {
+                "url": "assets/OB_5 Book1.png",
+                "type": "image",
+                "key": "OB_5 Book1"
+            },
+            {
+                "url": "assets/OB_5 Book2.png",
+                "type": "image",
+                "key": "OB_5 Book2"
+            },
+            {
+                "url": "assets/OB_5 Front Cover.png",
+                "type": "image",
+                "key": "OB_5 Front Cover"
+            },
+            {
+                "url": "assets/OB_5 Front Cover2.png",
+                "type": "image",
+                "key": "OB_5 Front Cover2"
+            },
+            {
+                "url": "assets/OB_5 Page 2.png",
+                "type": "image",
+                "key": "OB_5 Page 2"
+            },
+            {
+                "url": "assets/OB_5 Page 3.png",
+                "type": "image",
+                "key": "OB_5 Page 3"
+            },
+            {
                 "url": "assets/pressed_exit_lg.png",
                 "type": "image",
                 "key": "pressed_exit_lg"
