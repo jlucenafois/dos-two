@@ -4,6 +4,7 @@
 
 import index_text from "../prefabs/index_text";
 /* START-USER-IMPORTS */
+import {updateGameState} from "../settings"
 /* END-USER-IMPORTS */
 
 export default class P_0 extends Phaser.Scene {
@@ -31,6 +32,7 @@ export default class P_0 extends Phaser.Scene {
 
 	create() {
 		this.editorCreate()
+		updateGameState(this)
 		// Listen for animation completion
 	// 	this.sprite_1.on(Phaser.Animations.Events.ANIMATION_COMPLETE, (anim:Phaser.Animations.Animation) => {
 	// 		if (anim.key === "open_cover") { 

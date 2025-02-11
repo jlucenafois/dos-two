@@ -273,6 +273,10 @@ export default class OB_UI extends Phaser.Scene {
 		// Release effect (if still hovered)
 		this.default_back_lg.on("pointerup", () => {
 			this.default_back_lg.setTexture("default_back_lg"); // Reset to hover state
+			if (CURRENT_SETTINGS.gameState.prevScene) {
+				this.stopAllScenes(["OB_UI"])
+				this.scene.launch(CURRENT_SETTINGS.gameState.prevScene)
+			}
 		});
 
 		// Mouse out effect (Reset to normal)
@@ -291,6 +295,10 @@ export default class OB_UI extends Phaser.Scene {
 		// Release effect (if still hovered)
 		this.default_next_lg.on("pointerup", () => {
 			this.default_next_lg.setTexture("default_next_lg"); // Reset to hover state
+			if (CURRENT_SETTINGS.gameState.nextScene) {
+				this.stopAllScenes(["OB_UI"])
+				this.scene.launch(CURRENT_SETTINGS.gameState.nextScene)
+			}
 		});
 
 		// Mouse out effect (Reset to normal)

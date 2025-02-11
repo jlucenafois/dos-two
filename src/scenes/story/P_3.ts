@@ -3,16 +3,13 @@
 
 /* START OF COMPILED CODE */
 
-import index_text from "../prefabs/index_text";
 /* START-USER-IMPORTS */
-import {updateGameState} from "../settings"
-
 /* END-USER-IMPORTS */
 
-export default class P_1 extends Phaser.Scene {
+export default class P_3 extends Phaser.Scene {
 
 	constructor() {
-		super("P_1");
+		super("P_3");
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.
@@ -20,12 +17,6 @@ export default class P_1 extends Phaser.Scene {
 	}
 
 	editorCreate(): void {
-
-		// text
-		const text = new index_text(this);
-		this.add.existing(text);
-		text.text = "P_1";
-		text.setStyle({  });
 
 		this.events.emit("scene-awake");
 	}
@@ -37,7 +28,6 @@ export default class P_1 extends Phaser.Scene {
 	create() {
 
 		this.editorCreate();
-		updateGameState(this);
 	}
 
 	/* END-USER-CODE */

@@ -1,5 +1,9 @@
 export class Settings {
-    gameState: { currentScene: string | null; prevScene: string | null };
+    gameState: { 
+        nextScene: string | null; 
+        currentScene: string | null; 
+        prevScene: string | null; 
+        };
 
     constructor() {
         this.gameState = {
@@ -17,6 +21,26 @@ export const CURRENT_SETTINGS = new Settings();
  * @param scene The scene instance (should have a 'key' property)
  */
 export function updateGameState(scene: Phaser.Scene) {
-    CURRENT_SETTINGS.gameState.prevScene = CURRENT_SETTINGS.gameState.currentScene;
-    CURRENT_SETTINGS.gameState.currentScene = scene.scene.key;
+    
+    const prevScene = CURRENT_SETTINGS.gameState.currentScene;
+    /* Set current scene */
+    const currentSceneKey = scene.scene.key;
+    CURRENT_SETTINGS.gameState.currentScene = currentSceneKey
+
+    /* set gamestate with format "P_i" */
+    const match = currentSceneKey.match(/^P_(\d+)$/);
+    if (match) {
+        const currIndex = parseInt(match[1], 10)
+        const prevSceneKey = `P_${currIndex - 1}`;
+        const nextSceneKey = `P_${currIndex + 1}`;
+        
+        CURRENT_SETTINGS.gameState.nextScene = scene.scene.manager.keys[nextSceneKey] ? nextSceneKey : null;
+        CURRENT_SETTINGS.gameState.prevScene = scene.scene.manager.keys[prevSceneKey] ? prevSceneKey : null;
+    } else { 
+    /* set gamestate in other pages */ 
+    /* TODO: fix indexing (currently just switching scenes) */
+        CURRENT_SETTINGS.gameState.nextScene = null;
+        CURRENT_SETTINGS.gameState.prevScene = prevScene;
+    }
+    console.debug(CURRENT_SETTINGS.gameState)
 }
