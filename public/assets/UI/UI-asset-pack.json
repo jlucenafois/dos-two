@@ -2,6 +2,11 @@
     "section1": {
         "files": [
             {
+                "url": "assets/UI/default_back_lg.png",
+                "type": "image",
+                "key": "default_back_lg"
+            },
+            {
                 "url": "assets/UI/default_back_md.png",
                 "type": "image",
                 "key": "default_back_md"
@@ -17,14 +22,29 @@
                 "key": "default_home_lg"
             },
             {
+                "url": "assets/UI/default_home_purple_lg.png",
+                "type": "image",
+                "key": "default_home_purple_lg"
+            },
+            {
                 "url": "assets/UI/default_muted_lg.png",
                 "type": "image",
                 "key": "default_muted_lg"
             },
             {
+                "url": "assets/UI/default_next_lg.png",
+                "type": "image",
+                "key": "default_next_lg"
+            },
+            {
                 "url": "assets/UI/default_unmuted_lg.png",
                 "type": "image",
                 "key": "default_unmuted_lg"
+            },
+            {
+                "url": "assets/UI/pressed_back_lg.png",
+                "type": "image",
+                "key": "pressed_back_lg"
             },
             {
                 "url": "assets/UI/pressed_back_md.png",
@@ -42,9 +62,19 @@
                 "key": "pressed_home_lg"
             },
             {
+                "url": "assets/UI/pressed_home_purple_lg.png",
+                "type": "image",
+                "key": "pressed_home_purple_lg"
+            },
+            {
                 "url": "assets/UI/pressed_muted_lg.png",
                 "type": "image",
                 "key": "pressed_muted_lg"
+            },
+            {
+                "url": "assets/UI/pressed_next_lg.png",
+                "type": "image",
+                "key": "pressed_next_lg"
             },
             {
                 "url": "assets/UI/pressed_unmuted_lg.png",

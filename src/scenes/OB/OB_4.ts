@@ -42,7 +42,8 @@ export default class OB_4 extends Phaser.Scene {
 	create() {
 
 		this.editorCreate();
-		
+		this.events.emit("updateUI", "show_exit_button"); // Notify UI
+		this.events.emit("updateUI", "show_side_arrows"); // Notify UI
 		this.scene.start("P_0")
 	}
 

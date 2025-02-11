@@ -59,7 +59,7 @@ export default class OB_2 extends Phaser.Scene {
 
 	create() {
 		this.editorCreate();
-
+		this.events.emit("updateUI", "show_exit_button"); // Notify UI
 		/* READING MODE */
 		this.reading_mode.setInteractive({
 			useHandCursor: true, 
@@ -78,7 +78,7 @@ export default class OB_2 extends Phaser.Scene {
 
 		// Click event - Transition to OB_3_1
 		this.reading_mode.on("pointerdown", () => {
-			this.events.emit("updateUI", "reading_mode"); // Notify UI
+			this.events.emit("updateUI", "show_back_arrow"); // Notify UI
 			this.scene.stop("OB_2");
 			this.scene.start("OB_3_1");
 		});
@@ -101,7 +101,7 @@ export default class OB_2 extends Phaser.Scene {
 
 		// Click event - Transition to OB_3_2
 		this.game_mode.on("pointerdown", () => {
-			this.events.emit("updateUI", "game_mode"); // Notify UI
+			this.events.emit("updateUI", "show_back_arrow"); // Notify UI
 			this.scene.stop("OB_2");
 			this.scene.start("OB_3_2");
 		});

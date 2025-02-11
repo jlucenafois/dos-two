@@ -20,18 +20,6 @@
             ],
             "label": "cover_text",
             "text": "P_0"
-        },
-        {
-            "type": "Sprite",
-            "id": "0ec1d407-cec7-42e3-9056-987953600941",
-            "label": "cover_0",
-            "texture": {
-                "key": "cover_0"
-            },
-            "x": 864,
-            "y": 558.5,
-            "animationPlayMethod": 1,
-            "animationKey": "open_cover"
         }
     ],
     "plainObjects": [],

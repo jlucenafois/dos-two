@@ -24,10 +24,6 @@ export default class P_0 extends Phaser.Scene {
 		cover_text.text = "P_0";
 		cover_text.setStyle({  });
 
-		// cover_0
-		const cover_0 = this.add.sprite(864, 558.5, "cover_0");
-		cover_0.play("open_cover");
-
 		this.events.emit("scene-awake");
 	}
 
@@ -35,8 +31,13 @@ export default class P_0 extends Phaser.Scene {
 
 	create() {
 		this.editorCreate()
-
-    }
+		// Listen for animation completion
+	// 	this.sprite_1.on(Phaser.Animations.Events.ANIMATION_COMPLETE, (anim:Phaser.Animations.Animation) => {
+	// 		if (anim.key === "open_cover") { 
+	// 			this.events.emit("updateUI", "show_side_arrows"); // Notify UI only after animation finishes
+    //     }
+    // });
+	}
 
 	/* END-USER-CODE */
 }
