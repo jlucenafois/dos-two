@@ -18,7 +18,6 @@ export default class OB_4 extends Phaser.Scene {
 	}
 
 	preload(): void {
-
 		this.load.pack("story-asset-pack", "assets/story/story-asset-pack.json");
 	}
 
@@ -43,8 +42,8 @@ export default class OB_4 extends Phaser.Scene {
 	create() {
 
 		this.editorCreate();
-
-		this.scene.start("P_1")
+		
+		this.scene.start("P_0")
 	}
 
 	/* END-USER-CODE */

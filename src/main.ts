@@ -5,6 +5,7 @@ import OB_2 from "./scenes/OB/OB_2";
 import OB_3_1 from "./scenes/OB/OB_3_1";
 import OB_3_2 from "./scenes/OB/OB_3_2";
 import OB_4 from "./scenes/OB/OB_4";
+import P_0 from "./scenes/story/P_0";
 import P_1 from "./scenes/story/P_1";
 import OB_UI from "./scenes/OB/OB_UI";
 
@@ -37,7 +38,7 @@ window.addEventListener('load', function () {
 			mode: Phaser.Scale.ScaleModes.FIT,
 			autoCenter: Phaser.Scale.Center.CENTER_BOTH
 		},
-		scene: [Boot, Preload, OB_UI, OB_1, OB_2, OB_3_1, OB_3_2, OB_4, P_1]
+		scene: [Boot, Preload, OB_UI, OB_1, OB_2, OB_3_1, OB_3_2, OB_4, P_0, P_1]
 	});
 
 	game.scene.start("Boot");
