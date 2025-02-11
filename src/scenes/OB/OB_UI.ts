@@ -4,6 +4,7 @@
 /* START OF COMPILED CODE */
 
 /* START-USER-IMPORTS */
+import {CURRENT_SETTINGS} from '../settings.ts'
 /* END-USER-IMPORTS */
 
 export default class OB_UI extends Phaser.Scene {
@@ -71,103 +72,112 @@ export default class OB_UI extends Phaser.Scene {
 	/* START-USER-CODE */
 
 	// Write your code here
+	stopAllScenes(exceptions: Array<string>) {
+		const activeScenes = this.scene.manager.getScenes(true); // Get active scenes
+		for (const gameScene of activeScenes) {
+			if (!exceptions.includes(gameScene.scene.key)) { // Stop only if NOT in exceptions
+				this.scene.stop(gameScene.scene.key); // Stop the active gameplay scene
+			}
+		}
+	}
 
 	updateUI(event: string) {
 		if (event === "show_back_arrow") {
-			// Fade out the old button
-			this.tweens.add({
-				targets: this.default_exit_lg,
-				alpha: 0,  // Fade out
-				duration: 300, // Duration in milliseconds
-				onComplete: () => {
-					this.default_exit_lg.setVisible(false);
-				}
-			});
+			// // Fade out the old button
+			// this.tweens.add({
+			// 	targets: this.default_exit_lg,
+			// 	alpha: 0,  // Fade out
+			// 	duration: 300, // Duration in milliseconds
+			// 	onComplete: () => {
+			this.default_exit_lg.setVisible(false);
+			// 	}
+			// });
 
-			// Make sure the new button is visible before fading in
-			this.default_back_md.setAlpha(0);
+			// // Make sure the new button is visible before fading in
+			// this.default_back_md.setAlpha(0);
 			this.default_back_md.setVisible(true);
 
-			// Fade in the new button
-			this.tweens.add({
-				targets: this.default_back_md,
-				alpha: 1,  // Fade in
-				duration: 300
-			});
+			// // Fade in the new button
+			// this.tweens.add({
+			// 	targets: this.default_back_md,
+			// 	alpha: 1,  // Fade in
+			// 	duration: 300
+			// });
 		} // If event is "show_exit_button", transition from back to exit
 		else if (event === "show_exit_button") {
-			// Fade out the old button (back button)
-			this.tweens.add({
-				targets: this.default_back_md,
-				alpha: 0,  // Fade out
-				duration: 300, // Duration in milliseconds
-				onComplete: () => {
-					this.default_back_md.setVisible(false); // Hide the back button
-				}
-			});
+			// // Fade out the old button (back button)
+			// this.tweens.add({
+			// 	targets: this.default_back_md,
+			// 	alpha: 0,  // Fade out
+			// 	duration: 300, // Duration in milliseconds
+			// 	onComplete: () => {
+			this.default_back_md.setVisible(false); // Hide the back button
+			// 	}
+			// });
 
-			// Make sure the new button (exit button) is visible before fading in
-			this.default_exit_lg.setAlpha(0);
+			// // Make sure the new button (exit button) is visible before fading in
+			// this.default_exit_lg.setAlpha(0);
 			this.default_exit_lg.setVisible(true);
 
-			// Fade in the new button (exit button)
-			this.tweens.add({
-				targets: this.default_exit_lg,
-				alpha: 1,  // Fade in
-				duration: 300
-			});
+			// // Fade in the new button (exit button)
+			// this.tweens.add({
+			// 	targets: this.default_exit_lg,
+			// 	alpha: 1,  // Fade in
+			// 	duration: 300
+			// });
 		} else if (event === "show_side_arrows") {
-			// Make sure the new button is visible before fading in
-			this.default_back_lg.setAlpha(0);
+			// // Make sure the new button is visible before fading in
+			// this.default_back_lg.setAlpha(0);
 			this.default_back_lg.setVisible(true);
 
-			// Fade in the new button
-			this.tweens.add({
-				targets: this.default_back_lg,
-				alpha: 1,  // Fade in
-				duration: 300
-			});
+			// // Fade in the new button
+			// this.tweens.add({
+			// 	targets: this.default_back_lg,
+			// 	alpha: 1,  // Fade in
+			// 	duration: 300
+			// });
 
-			// Make sure the new button is visible before fading in
-			this.default_next_lg.setAlpha(0);
+			// // Make sure the new button is visible before fading in
+			// this.default_next_lg.setAlpha(0);
 			this.default_next_lg.setVisible(true);
 
-			// Fade in the new button
-			this.tweens.add({
-				targets: this.default_next_lg,
-				alpha: 1,  // Fade in
-				duration: 300
-			});
+			// // Fade in the new button
+			// this.tweens.add({
+			// 	targets: this.default_next_lg,
+			// 	alpha: 1,  // Fade in
+			// 	duration: 300
+			// });
 
 		} else if (event === "hide_side_arrows") {
-			// Fade out the old button
-			this.tweens.add({
-				targets: this.default_back_lg,
-				alpha: 0,  // Fade out
-				duration: 300, // Duration in milliseconds
-				onComplete: () => {
-					this.default_back_lg.setVisible(false);
-				}
-			});
-			// Fade out the old button
-			this.tweens.add({
-				targets: this.default_next_lg,
-				alpha: 0,  // Fade out
-				duration: 300, // Duration in milliseconds
-				onComplete: () => {
-					this.default_next_lg.setVisible(false);
-				}
-			});
+			// // Fade out the old button
+			// this.tweens.add({
+			// 	targets: this.default_back_lg,
+			// 	alpha: 0,  // Fade out
+			// 	duration: 300, // Duration in milliseconds
+			// 	onComplete: () => {
+			this.default_back_lg.setVisible(false);
+			// 	}
+			// });
+			// // Fade out the old button
+			// this.tweens.add({
+			// 	targets: this.default_next_lg,
+			// 	alpha: 0,  // Fade out
+			// 	duration: 300, // Duration in milliseconds
+			// 	onComplete: () => {
+			this.default_next_lg.setVisible(false);
+			// 	}
+			// });
 		}
 }
 	create() {
 		this.editorCreate();
 		// Set UI depth to always be on top
 		this.scene.bringToTop('UIScene');
+		
 		this.scene.get("OB_2").events.on("updateUI", this.updateUI, this); // read updateUI
 		this.scene.get("OB_4").events.on("updateUI", this.updateUI, this); // read updateUI
 
-		/* HOME */
+	/* HOME */
 		this.default_home_lg.setInteractive({ useHandCursor: true });
 
 		// Mouse press effect
@@ -178,15 +188,7 @@ export default class OB_UI extends Phaser.Scene {
 		// Release effect (if still hovered)
 		this.default_home_lg.on("pointerup", () => {
 			this.default_home_lg.setTexture("default_home_lg"); // Reset to hover state
-			// Get the currently running scene (excluding the UI scene)
-			const activeScenes = this.scene.manager.getScenes(true); // Get active scenes
-			const gameScene = activeScenes.find(scene => scene.scene.key !== "OB_UI");
-
-			if (gameScene) {
-				console.log(gameScene.scene.key)
-				this.scene.stop(gameScene.scene.key); // Stop the active gameplay scene
-			}
-
+			this.stopAllScenes([])
 			this.scene.start("OB_1"); // Switch to OB1 scene
 		});
 
@@ -196,7 +198,7 @@ export default class OB_UI extends Phaser.Scene {
 		});
 
 
-		/* SOUND */
+	/* SOUND */
 		this.default_unmuted_lg.setInteractive({ useHandCursor: true });
 
 		let isMuted = localStorage.getItem("muteState") === "true"; // Load saved state
@@ -219,7 +221,7 @@ export default class OB_UI extends Phaser.Scene {
 			this.default_unmuted_lg.setTexture(isMuted ? "default_muted_lg" : "default_unmuted_lg");
 		});
 
-		/* EXIT */ 
+	/* EXIT */ 
 		this.default_exit_lg.setInteractive({ useHandCursor: true });
 
 		// Mouse press effect
@@ -230,13 +232,7 @@ export default class OB_UI extends Phaser.Scene {
 		// Release effect (if still hovered)
 		this.default_exit_lg.on("pointerup", () => {
 			this.default_exit_lg.setTexture("default_exit_lg"); // Reset to hover state
-			// Get the currently running scene (excluding the UI scene)
-			const activeScenes = this.scene.manager.getScenes(true); // Get active scenes
-			const gameScene = activeScenes.find(scene => scene.scene.key !== "OB_UI");
-
-			if (gameScene) {
-				this.scene.stop(gameScene.scene.key); // Stop the active gameplay scene
-			}
+			this.stopAllScenes([])
 			this.scene.start("OB_1"); // Switch to OB1 scene
 		});
 
@@ -245,7 +241,7 @@ export default class OB_UI extends Phaser.Scene {
 			this.default_exit_lg.setTexture("default_exit_lg");
 		});
 
-		/* BACK */ 
+	/* BACK */ 
 		this.default_back_md.setInteractive({ useHandCursor: true });
 
 		// Mouse press effect
@@ -256,81 +252,51 @@ export default class OB_UI extends Phaser.Scene {
 		// Release effect (if still hovered)
 		this.default_back_md.on("pointerup", () => {
 			this.default_back_md.setTexture("default_back_md"); // Reset to hover state
-			// Get the currently running scene (excluding the UI scene)
-			const activeScenes = this.scene.manager.getScenes(true); // Get active scenes
-			const gameScene = activeScenes.find(scene => scene.scene.key !== "OB_UI");
-
-			if (gameScene) {
-				this.scene.stop(gameScene.scene.key); // Stop the active gameplay scene
-			}
-
-			// TODO: make this dynamic
-			// Start the next scene
-			this.scene.launch("OB_2");
+			this.stopAllScenes(["OB_UI"])
+			this.scene.launch(CURRENT_SETTINGS.gameState.prevScene!)
 		});
+
 
 		// Mouse out effect (Reset to normal)
 		this.default_back_md.on("pointerout", () => {
 			this.default_back_md.setTexture("default_back_md");
 		});
 
-		// /* BACK LG*/ 
-		// this.default_back_lg.setInteractive({ useHandCursor: true });
+	/* BACK LG*/ 
+		this.default_back_lg.setInteractive({ useHandCursor: true });
 
-		// // Mouse press effect
-		// this.default_back_lg.on("pointerdown", () => {
-		// 	this.default_back_lg.setTexture("pressed_back_lg"); // Change to pressed state
-		// });
+		// Mouse press effect
+		this.default_back_lg.on("pointerdown", () => {
+			this.default_back_lg.setTexture("pressed_back_lg"); // Change to pressed state
+		});
 
-		// // Release effect (if still hovered)
-		// this.default_back_lg.on("pointerup", () => {
-		// 	this.default_back_lg.setTexture("default_back_lg"); // Reset to hover state
-		// 	// Get the currently running scene (excluding the UI scene)
-		// 	const activeScenes = this.scene.manager.getScenes(true); // Get active scenes
-		// 	const gameScene = activeScenes.find(scene => scene.scene.key !== "OB_UI");
+		// Release effect (if still hovered)
+		this.default_back_lg.on("pointerup", () => {
+			this.default_back_lg.setTexture("default_back_lg"); // Reset to hover state
+		});
 
-		// 	if (gameScene) {
-		// 		this.scene.stop(gameScene.scene.key); // Stop the active gameplay scene
-		// 	}
+		// Mouse out effect (Reset to normal)
+		this.default_back_lg.on("pointerout", () => {
+			this.default_back_lg.setTexture("default_back_lg");
+		});
 
-		// 	// TODO: make this dynamic
-		// 	// Start the next scene
-		// 	this.scene.launch("OB_2");
-		// });
+	/* NEXT LG*/ 
+		this.default_next_lg.setInteractive({ useHandCursor: true });
 
-		// // Mouse out effect (Reset to normal)
-		// this.default_back_lg.on("pointerout", () => {
-		// 	this.default_back_lg.setTexture("default_back_lg");
-		// });
+		// Mouse press effect
+		this.default_next_lg.on("pointerdown", () => {
+			this.default_next_lg.setTexture("pressed_next_lg"); // Change to pressed state
+		});
 
-	// 	/* BACK LG*/ 
-	// 	this.default_next_lg.setInteractive({ useHandCursor: true });
+		// Release effect (if still hovered)
+		this.default_next_lg.on("pointerup", () => {
+			this.default_next_lg.setTexture("default_next_lg"); // Reset to hover state
+		});
 
-	// 	// Mouse press effect
-	// 	this.default_next_lg.on("pointerdown", () => {
-	// 		this.default_next_lg.setTexture("pressed_next_lg"); // Change to pressed state
-	// 	});
-
-	// 	// Release effect (if still hovered)
-	// 	this.default_next_lg.on("pointerup", () => {
-	// 		this.default_next_lg.setTexture("default_next_lg"); // Reset to hover state
-	// 		// Get the currently running scene (excluding the UI scene)
-	// 		const activeScenes = this.scene.manager.getScenes(true); // Get active scenes
-	// 		const gameScene = activeScenes.find(scene => scene.scene.key !== "OB_UI");
-
-	// 		if (gameScene) {
-	// 			this.scene.stop(gameScene.scene.key); // Stop the active gameplay scene
-	// 		}
-
-	// 		// TODO: make this dynamic
-	// 		// Start the next scene
-	// 		this.scene.launch("OB_2");
-	// 	});
-
-	// 	// Mouse out effect (Reset to normal)
-	// 	this.default_next_lg.on("pointerout", () => {
-	// 		this.default_next_lg.setTexture("default_next_lg");
-	// 	});
+		// Mouse out effect (Reset to normal)
+		this.default_next_lg.on("pointerout", () => {
+			this.default_next_lg.setTexture("default_next_lg");
+		});
 	}
 	/* END-USER-CODE */
 }

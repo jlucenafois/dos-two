@@ -5,6 +5,8 @@
 
 import index_text from "../prefabs/index_text";
 /* START-USER-IMPORTS */
+import { updateGameState } from "../settings";
+
 /* END-USER-IMPORTS */
 
 export default class OB_3_1 extends Phaser.Scene {
@@ -74,7 +76,7 @@ export default class OB_3_1 extends Phaser.Scene {
 	create() {
 
 		this.editorCreate();
-
+		updateGameState(this)
 		/* SPANISH BUBBLE */
 		this.spanish_bubble.setInteractive({
 			useHandCursor: true, 

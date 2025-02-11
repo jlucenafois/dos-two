@@ -2,9 +2,9 @@
 // You can write more code here
 
 /* START OF COMPILED CODE */
-
 import index_text from "../prefabs/index_text";
 /* START-USER-IMPORTS */
+import { updateGameState } from "../settings";
 /* END-USER-IMPORTS */
 
 export default class OB_1 extends Phaser.Scene {
@@ -43,8 +43,8 @@ export default class OB_1 extends Phaser.Scene {
 	create() {
 
 		this.editorCreate();
-
-
+		updateGameState(this)
+		
 		this.default_play_lg.setInteractive({ useHandCursor: true });
 
 		// Mouse hover effect
