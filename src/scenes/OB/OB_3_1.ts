@@ -5,7 +5,7 @@
 
 import index_text from "../prefabs/index_text";
 /* START-USER-IMPORTS */
-import { updateGameState } from "../settings";
+import { updateGameState, CURRENT_SETTINGS, Language} from "../settings";
 
 /* END-USER-IMPORTS */
 
@@ -106,6 +106,7 @@ export default class OB_3_1 extends Phaser.Scene {
 		// Click event - Transition to OB_3_1
 		this.spanish_bubble.on("pointerdown", () => {
 			this.events.emit("updateUI", "spanish_bubble"); // Notify UI
+			CURRENT_SETTINGS.gameState.language = Language.Spanish
 			this.scene.start("OB_4");
 		});
 
@@ -138,6 +139,7 @@ export default class OB_3_1 extends Phaser.Scene {
 		// Click event - Transition to OB_3_1
 		this.english_bubble.on("pointerdown", () => {
 			this.events.emit("updateUI", "english_bubble"); // Notify UI
+			CURRENT_SETTINGS.gameState.language = Language.English
 			this.scene.start("OB_4");
 		});
 	}

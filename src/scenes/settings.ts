@@ -1,14 +1,21 @@
+export enum Language {
+    Spanish = "spanish",
+    English = "english"
+}
 export class Settings {
     gameState: { 
         nextScene: string | null; 
-        currentScene: string | null; 
+        currScene: string | null; 
         prevScene: string | null; 
+        language: Language | null; 
         };
 
     constructor() {
         this.gameState = {
-            currentScene: null,
-            prevScene: null
+            nextScene: null,
+            currScene: null,
+            prevScene: null,
+            language: null
         };
     }
 }
@@ -22,13 +29,13 @@ export const CURRENT_SETTINGS = new Settings();
  */
 export function updateGameState(scene: Phaser.Scene) {
     
-    const prevScene = CURRENT_SETTINGS.gameState.currentScene;
+    const prevScene = CURRENT_SETTINGS.gameState.currScene;
     /* Set current scene */
-    const currentSceneKey = scene.scene.key;
-    CURRENT_SETTINGS.gameState.currentScene = currentSceneKey
+    const currSceneKey = scene.scene.key;
+    CURRENT_SETTINGS.gameState.currScene = currSceneKey
 
     /* set gamestate with format "P_i" */
-    const match = currentSceneKey.match(/^P_(\d+)$/);
+    const match = currSceneKey.match(/^P_(\d+)$/);
     if (match) {
         const currIndex = parseInt(match[1], 10)
         const prevSceneKey = `P_${currIndex - 1}`;
