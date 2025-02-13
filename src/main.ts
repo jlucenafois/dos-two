@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import OB_1 from "./scenes/OB_1";
 import OB_2 from "./scenes/OB_2";
 import OB_5 from "./scenes/OB_5";
+import OB_5_turned from "./scenes/OB_5_turned";
 import Preload from "./scenes/Preload";
 import OB_UI from "./scenes/OB_UI";
 
@@ -33,7 +34,7 @@ window.addEventListener('load', function () {
 			mode: Phaser.Scale.ScaleModes.FIT,
 			autoCenter: Phaser.Scale.Center.CENTER_BOTH
 		},
-		scene: [Boot, Preload, OB_UI, OB_1, OB_2, OB_5]
+		scene: [Boot, Preload, OB_UI, OB_1, OB_2, OB_5, OB_5_turned]
 	});
 
 	game.scene.start("Boot");

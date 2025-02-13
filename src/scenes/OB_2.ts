@@ -74,9 +74,10 @@ export default class OB_2 extends Phaser.Scene {
 
 		this.reading_mode.on("pointerdown", () => {
 		this.scene.start("OB_5"); // Switch to OB2 scene
+		this.scene.launch("OB_UI")
+
 		});
 
-		this.scene.launch("OB_UI")
 
 
 

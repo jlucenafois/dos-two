@@ -18,7 +18,7 @@ export default class OB_5 extends Phaser.Scene {
 	editorCreate(): void {
 
 		// oB_5_Book
-		this.add.image(926, 579, "OB_5 Book");
+		this.add.image(926, 579, "OB 5.0");
 		this.events.emit("scene-awake");
 	}
 
@@ -26,18 +26,19 @@ export default class OB_5 extends Phaser.Scene {
 
 	// Write your code here
     preload() {
-        this.load.image("page_1", "assets/OB 5.png");
-        this.load.image("page_2", "assets/OB 5.0.png");
-        this.load.image("page_3", "assets/OB 5.1.png");
-        this.load.image("page_4", "assets/OB 5.2.png");
-        this.load.image("page_5", "assets/OB 5.3.png");
-        this.load.image("page_6", "assets/OB 5.4.png");
-        this.load.image("page_7", "assets/OB 5.5.png");
+        this.load.image("page_1", "assets/OB 5.0.png");
+        this.load.image("page_2", "assets/OB 5.1.png");
+        this.load.image("page_3", "assets/OB 5.2.png");
+        this.load.image("page_4", "assets/OB 5.3.png");
+        this.load.image("page_5", "assets/OB 5.4.png");
+        this.load.image("page_6", "assets/OB 5.5.png");
     }
 
 	create() {
         // Create a sprite and set it to the first frame
         // Get the game width and height
+        // this.scene.launch("OB_UI")
+
         const { width, height } = this.sys.game.config;
 
         // Create the sprite and set it to the first frame
@@ -55,8 +56,7 @@ export default class OB_5 extends Phaser.Scene {
                 { key: "page_3" },
                 { key: "page_4" },
                 { key: "page_5" },
-                { key: "page_6" },
-                { key: "page_7" }
+                { key: "page_6" }
             ],
             frameRate: 6,
             repeat: 0 
@@ -65,7 +65,11 @@ export default class OB_5 extends Phaser.Scene {
         // Trigger the animation when clicked
         this.input.on("pointerdown", () => {
             this.pageSprite.play("flip");
+            this.pageSprite.once("animationcomplete", () => {
+            this.scene.start("OB_5_turned"); 
+    });
         });
+
     }
 
 	/* END-USER-CODE */
