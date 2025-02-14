@@ -22,8 +22,6 @@ export default class Base extends Phaser.Scene {
 	/* START-USER-CODE */
 
 	create() {
-		this.editorCreate();
-
 		// Add a title using the key of the passed scene
 		this.addTitle();
 
