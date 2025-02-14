@@ -4,6 +4,7 @@
     "settings": {
         "exportClass": true,
         "autoImport": true,
+        "superClassName": "BaseScene",
         "preloadPackFiles": [
             "dos-two/public/assets/story/story-asset-pack.json"
         ],
@@ -23,15 +24,6 @@
             },
             "x": 864,
             "y": 519
-        },
-        {
-            "prefabId": "b89ef685-9273-4987-855c-9bbc2ac9889c",
-            "id": "5d8511bc-98c1-499d-a456-e04aa516f225",
-            "unlock": [
-                "text"
-            ],
-            "label": "text",
-            "text": "OB_4"
         }
     ],
     "plainObjects": [],

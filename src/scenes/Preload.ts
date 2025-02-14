@@ -4,9 +4,10 @@
 /* START OF COMPILED CODE */
 
 /* START-USER-IMPORTS */
+import Base from "./Base";
 /* END-USER-IMPORTS */
 
-export default class Preload extends Phaser.Scene {
+export default class Preload extends Base {
 
 	constructor() {
 		super("Preload");

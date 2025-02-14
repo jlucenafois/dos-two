@@ -3,13 +3,14 @@
 
 /* START OF COMPILED CODE */
 
-import index_text from "../prefabs/index_text";
+
 /* START-USER-IMPORTS */
-import { updateGameState } from "../settings";
+import Base from "../Base";
+
 
 /* END-USER-IMPORTS */
 
-export default class OB_2 extends Phaser.Scene {
+export default class OB_2 extends Base{
 
 	constructor() {
 		super("OB_2");
@@ -21,12 +22,6 @@ export default class OB_2 extends Phaser.Scene {
 	}
 
 	editorCreate(): void {
-
-		// text
-		const text = new index_text(this);
-		this.add.existing(text);
-		text.text = "OB_2";
-		text.setStyle({  });
 
 		// reading_mode
 		const reading_mode = this.add.image(325, 287, "reading_mode");
@@ -60,8 +55,9 @@ export default class OB_2 extends Phaser.Scene {
 	/* START-USER-CODE */
 
 	create() {
+		super.create()
 		this.editorCreate();
-		updateGameState(this)
+
 		this.events.emit("updateUI", "show_exit_button"); // Notify UI
 		/* READING MODE */
 		this.reading_mode.setInteractive({
@@ -108,7 +104,7 @@ export default class OB_2 extends Phaser.Scene {
 			this.scene.stop("OB_2");
 			this.scene.start("OB_3_2");
 		});
-		
+
 		// Check if the UI scene is already running
 		if (!this.scene.isActive("OB_UI")) {
 			this.scene.launch("OB_UI"); // Launch the UI overlay only if it hasn't been launched already

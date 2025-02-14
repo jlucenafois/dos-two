@@ -20,6 +20,19 @@
             ],
             "label": "cover_text",
             "text": "P_0"
+        },
+        {
+            "type": "Sprite",
+            "id": "9441195b-2fd1-4579-b88b-78f1abe0dfc0",
+            "label": "open_cover",
+            "scope": "CLASS",
+            "texture": {
+                "key": "cover_0"
+            },
+            "x": 864,
+            "y": 558.5,
+            "animationPlayMethod": 1,
+            "animationKey": "open_cover"
         }
     ],
     "plainObjects": [],

@@ -2,6 +2,11 @@
     "section1": {
         "files": [
             {
+                "url": "assets/story/open_cover/cover_5.png",
+                "type": "image",
+                "key": "cover_5"
+            },
+            {
                 "url": "assets/UI/default_back_lg.png",
                 "type": "image",
                 "key": "default_back_lg"

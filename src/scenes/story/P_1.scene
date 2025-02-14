@@ -4,6 +4,7 @@
     "settings": {
         "exportClass": true,
         "autoImport": true,
+        "superClassName": "BaseScene",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
         "sceneKey": "P_1",
@@ -11,17 +12,7 @@
         "borderWidth": 1728,
         "borderHeight": 1117
     },
-    "displayList": [
-        {
-            "prefabId": "b89ef685-9273-4987-855c-9bbc2ac9889c",
-            "id": "5b971e7d-7c1a-434c-bacd-9ad3ec3d5345",
-            "unlock": [
-                "text"
-            ],
-            "label": "text",
-            "text": "P_1"
-        }
-    ],
+    "displayList": [],
     "plainObjects": [],
     "meta": {
         "app": "Phaser Editor - Scene Editor",

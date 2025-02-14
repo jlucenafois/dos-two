@@ -2,12 +2,13 @@
 // You can write more code here
 
 /* START OF COMPILED CODE */
-import index_text from "../prefabs/index_text";
+
+
 /* START-USER-IMPORTS */
-import { updateGameState } from "../settings";
+import Base from "../Base";
 /* END-USER-IMPORTS */
 
-export default class OB_1 extends Phaser.Scene {
+export default class OB_1 extends Base {
 
 	constructor() {
 		super("OB_1");
@@ -19,14 +20,9 @@ export default class OB_1 extends Phaser.Scene {
 
 	editorCreate(): void {
 
-		// text
-		const text = new index_text(this);
-		this.add.existing(text);
-		text.text = "OB_1";
-		text.setStyle({  });
-
 		// default_play_lg
 		const default_play_lg = this.add.image(755, 499, "default_play_lg");
+		default_play_lg.setInteractive(this.input.makePixelPerfect());
 		default_play_lg.setOrigin(0, 0);
 
 		this.default_play_lg = default_play_lg;
@@ -41,10 +37,8 @@ export default class OB_1 extends Phaser.Scene {
 	// Write your code here
 
 	create() {
-
+		super.create()
 		this.editorCreate();
-		updateGameState(this)
-		
 		this.default_play_lg.setInteractive({ useHandCursor: true });
 
 		// Mouse hover effect

@@ -3,10 +3,14 @@
 
 /* START OF COMPILED CODE */
 
+
 /* START-USER-IMPORTS */
+import Base from "../Base";
+
+
 /* END-USER-IMPORTS */
 
-export default class P_5 extends Phaser.Scene {
+export default class P_5 extends Base{
 
 	constructor() {
 		super("P_5");
@@ -26,7 +30,7 @@ export default class P_5 extends Phaser.Scene {
 	// Write your code here
 
 	create() {
-
+		super.create();
 		this.editorCreate();
 	}
 

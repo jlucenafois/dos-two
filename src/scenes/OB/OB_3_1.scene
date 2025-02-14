@@ -4,6 +4,7 @@
     "settings": {
         "exportClass": true,
         "autoImport": true,
+        "superClassName": "BaseScene",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
         "sceneKey": "OB_3_1",
@@ -12,15 +13,6 @@
         "borderHeight": 1117
     },
     "displayList": [
-        {
-            "prefabId": "b89ef685-9273-4987-855c-9bbc2ac9889c",
-            "id": "0efc5322-f923-4a8d-b302-d8d36bbf0205",
-            "unlock": [
-                "text"
-            ],
-            "label": "text",
-            "text": "OB_3_1"
-        },
         {
             "type": "Image",
             "id": "613115b5-03f0-4dbf-a50b-bd049d3ca076",
@@ -103,15 +95,6 @@
             },
             "x": 864,
             "y": 309
-        },
-        {
-            "prefabId": "b89ef685-9273-4987-855c-9bbc2ac9889c",
-            "id": "5d68c39e-c649-4d9a-a56b-359d975000f6",
-            "unlock": [
-                "text"
-            ],
-            "label": "text1",
-            "text": "OB_3_1\n"
         }
     ],
     "plainObjects": [],

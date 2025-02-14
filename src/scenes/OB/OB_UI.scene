@@ -14,6 +14,18 @@
     "displayList": [
         {
             "type": "Image",
+            "id": "ad2ba88d-81e4-4406-99cf-a684ba5ba7b1",
+            "label": "book",
+            "scope": "CLASS",
+            "texture": {
+                "key": "cover_5"
+            },
+            "x": 864,
+            "y": 558.5,
+            "visible": false
+        },
+        {
+            "type": "Image",
             "id": "de59255b-be86-4989-aac9-6824b9a258c4",
             "label": "default_exit_lg",
             "scope": "CLASS",
@@ -85,8 +97,8 @@
             "texture": {
                 "key": "default_next_lg"
             },
-            "x": 1523,
-            "y": 611,
+            "x": 1536,
+            "y": 577,
             "originX": 0,
             "originY": 0,
             "visible": false
@@ -99,8 +111,8 @@
             "texture": {
                 "key": "default_back_lg"
             },
-            "x": 211,
-            "y": 671,
+            "x": 192,
+            "y": 637,
             "originX": 1,
             "visible": false
         }

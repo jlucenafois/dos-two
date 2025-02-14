@@ -3,12 +3,13 @@
 
 /* START OF COMPILED CODE */
 
-import index_text from "../prefabs/index_text";
+
 /* START-USER-IMPORTS */
-import { updateGameState } from "../settings";
+import Base from "../Base";
+
 /* END-USER-IMPORTS */
 
-export default class OB_4 extends Phaser.Scene {
+export default class OB_4 extends Base{
 
 	constructor() {
 		super("OB_4");
@@ -19,6 +20,7 @@ export default class OB_4 extends Phaser.Scene {
 	}
 
 	preload(): void {
+
 		this.load.pack("story-asset-pack", "assets/story/story-asset-pack.json");
 	}
 
@@ -26,12 +28,6 @@ export default class OB_4 extends Phaser.Scene {
 
 		// transition_title
 		this.add.image(864, 519, "transition_title");
-
-		// text
-		const text = new index_text(this);
-		this.add.existing(text);
-		text.text = "OB_4";
-		text.setStyle({  });
 
 		this.events.emit("scene-awake");
 	}
@@ -41,9 +37,8 @@ export default class OB_4 extends Phaser.Scene {
 	// Write your code here
 
 	create() {
-
+		super.create()
 		this.editorCreate();
-		updateGameState(this)
 		this.events.emit("updateUI", "show_exit_button"); // Notify UI
 		this.events.emit("updateUI", "show_side_arrows"); // Notify UI
 		this.scene.start("P_0")

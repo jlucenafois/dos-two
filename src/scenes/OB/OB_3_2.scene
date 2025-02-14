@@ -2,8 +2,10 @@
     "id": "c0ee9025-41f3-4ab0-a2db-320d3ba2cdc2",
     "sceneType": "SCENE",
     "settings": {
+        "javaScriptInitFieldsInConstructor": true,
         "exportClass": true,
         "autoImport": true,
+        "superClassName": "BaseScene",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
         "sceneKey": "OB_3_2",
@@ -12,15 +14,6 @@
         "borderHeight": 1117
     },
     "displayList": [
-        {
-            "prefabId": "b89ef685-9273-4987-855c-9bbc2ac9889c",
-            "id": "b972defd-66eb-49fb-9199-bb468d461f6b",
-            "unlock": [
-                "text"
-            ],
-            "label": "text",
-            "text": "OB_3_2"
-        },
         {
             "type": "Image",
             "id": "abafb028-6c1a-42b5-b33a-0dfcc096b811",

@@ -1,26 +1,23 @@
 {
-  "id": "954b41e8-efda-4b7c-92d0-cd608abe9505",
-  "settings": {
-    "compilerOutputLanguage": "TYPE_SCRIPT",
-    "javaScriptInitFieldsInConstructor": false,
-    "javaScriptGenerateFieldDeclarations": true,
-    "exportClass": true,
-    "autoImport": true,
-    "importFileExtension": false,
-    "createMethodName": "editorCreate",
-    "compilerInsertSpaces": false,
-    "compilerTabSize": 4,
-    "borderWidth": 1728,
-    "borderHeight": 1117,
-    "borderX": 0,
-    "borderY": 0,
-    "sceneKey": "P_4"
-  },
-  "sceneType": "SCENE",
-  "displayList": [],
-  "meta": {
-    "app": "Phaser Editor 2D - Scene Editor",
-    "url": "https://phasereditor2d.com",
-    "contentType": "phasereditor2d.core.scene.SceneContentType"
-  }
+    "id": "954b41e8-efda-4b7c-92d0-cd608abe9505",
+    "sceneType": "SCENE",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "superClassName": "BaseScene",
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "P_4",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1728,
+        "borderHeight": 1117
+    },
+    "displayList": [],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
 }

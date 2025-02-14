@@ -4,10 +4,11 @@
 /* START OF COMPILED CODE */
 
 /* START-USER-IMPORTS */
+import Base from "../Base";
 import {CURRENT_SETTINGS} from '../settings.ts'
 /* END-USER-IMPORTS */
 
-export default class OB_UI extends Phaser.Scene {
+export default class OB_UI extends Base {
 
 	constructor() {
 		super("OB_UI");
@@ -18,6 +19,10 @@ export default class OB_UI extends Phaser.Scene {
 	}
 
 	editorCreate(): void {
+
+		// book
+		const book = this.add.image(864, 558.5, "cover_5");
+		book.visible = false;
 
 		// default_exit_lg
 		const default_exit_lg = this.add.image(1568, 69, "default_exit_lg");
@@ -41,15 +46,16 @@ export default class OB_UI extends Phaser.Scene {
 		default_home_purple_lg.visible = false;
 
 		// default_next_lg
-		const default_next_lg = this.add.image(1523, 611, "default_next_lg");
+		const default_next_lg = this.add.image(1536, 577, "default_next_lg");
 		default_next_lg.setOrigin(0, 0);
 		default_next_lg.visible = false;
 
 		// default_back_lg
-		const default_back_lg = this.add.image(211, 671, "default_back_lg");
+		const default_back_lg = this.add.image(192, 637, "default_back_lg");
 		default_back_lg.setOrigin(1, 0.5);
 		default_back_lg.visible = false;
 
+		this.book = book;
 		this.default_exit_lg = default_exit_lg;
 		this.default_home_lg = default_home_lg;
 		this.default_unmuted_lg = default_unmuted_lg;
@@ -61,6 +67,7 @@ export default class OB_UI extends Phaser.Scene {
 		this.events.emit("scene-awake");
 	}
 
+	private book!: Phaser.GameObjects.Image;
 	private default_exit_lg!: Phaser.GameObjects.Image;
 	private default_home_lg!: Phaser.GameObjects.Image;
 	private default_unmuted_lg!: Phaser.GameObjects.Image;
@@ -167,15 +174,15 @@ export default class OB_UI extends Phaser.Scene {
 			this.default_next_lg.setVisible(false);
 			// 	}
 			// });
+		} else if (event === "show_book") {
+			this.book.setVisible(true);
 		}
 }
 	create() {
 		this.editorCreate();
-		// Set UI depth to always be on top
-		this.scene.bringToTop('UIScene');
-		
 		this.scene.get("OB_2").events.on("updateUI", this.updateUI, this); // read updateUI
 		this.scene.get("OB_4").events.on("updateUI", this.updateUI, this); // read updateUI
+		this.scene.get("P_1").events.on("updateUI", this.updateUI, this); // read updateUI
 
 	/* HOME */
 		this.default_home_lg.setInteractive({ useHandCursor: true });

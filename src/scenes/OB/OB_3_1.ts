@@ -3,13 +3,14 @@
 
 /* START OF COMPILED CODE */
 
-import index_text from "../prefabs/index_text";
+
 /* START-USER-IMPORTS */
-import { updateGameState, CURRENT_SETTINGS, Language} from "../settings";
+import Base from "../Base";
+import {CURRENT_SETTINGS, Language} from "../settings";
 
 /* END-USER-IMPORTS */
 
-export default class OB_3_1 extends Phaser.Scene {
+export default class OB_3_1 extends Base{
 
 	constructor() {
 		super("OB_3_1");
@@ -20,12 +21,6 @@ export default class OB_3_1 extends Phaser.Scene {
 	}
 
 	editorCreate(): void {
-
-		// text
-		const text = new index_text(this);
-		this.add.existing(text);
-		text.text = "OB_3_1";
-		text.setStyle({  });
 
 		// girl_right
 		const girl_right = this.add.image(1378, 515, "girl_right");
@@ -54,12 +49,6 @@ export default class OB_3_1 extends Phaser.Scene {
 		// language_selection_title
 		this.add.image(864, 309, "language_selection_title");
 
-		// text1
-		const text1 = new index_text(this);
-		this.add.existing(text1);
-		text1.text = "OB_3_1\n";
-		text1.setStyle({  });
-
 		this.english_bubble = english_bubble;
 		this.spanish_bubble = spanish_bubble;
 
@@ -75,8 +64,8 @@ export default class OB_3_1 extends Phaser.Scene {
 
 	create() {
 
+		super.create();
 		this.editorCreate();
-		updateGameState(this)
 		/* SPANISH BUBBLE */
 		this.spanish_bubble.setInteractive({
 			useHandCursor: true, 

@@ -4,6 +4,7 @@
     "settings": {
         "exportClass": true,
         "autoImport": true,
+        "superClassName": "BaseScene",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
         "sceneKey": "OB_2",
@@ -12,15 +13,6 @@
         "borderHeight": 1117
     },
     "displayList": [
-        {
-            "prefabId": "b89ef685-9273-4987-855c-9bbc2ac9889c",
-            "id": "4906f335-6ae5-4a41-99f7-595085945998",
-            "unlock": [
-                "text"
-            ],
-            "label": "text",
-            "text": "OB_2"
-        },
         {
             "type": "Image",
             "id": "193188f8-86ef-407a-9e09-fbc7d3e7bdec",
