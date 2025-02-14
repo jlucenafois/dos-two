@@ -5,7 +5,7 @@
         "javaScriptInitFieldsInConstructor": true,
         "exportClass": true,
         "autoImport": true,
-        "superClassName": "BaseScene",
+        "superClassName": "Base",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
         "sceneKey": "OB_3_2",

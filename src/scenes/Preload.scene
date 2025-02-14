@@ -4,6 +4,7 @@
     "settings": {
         "exportClass": true,
         "autoImport": true,
+        "superClassName": "Base",
         "preloadMethodName": "editorPreload",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",

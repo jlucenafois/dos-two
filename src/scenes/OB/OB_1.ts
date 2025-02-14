@@ -3,9 +3,8 @@
 
 /* START OF COMPILED CODE */
 
-
-/* START-USER-IMPORTS */
 import Base from "../Base";
+/* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 
 export default class OB_1 extends Base {

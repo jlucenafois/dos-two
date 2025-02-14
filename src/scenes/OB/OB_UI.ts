@@ -4,11 +4,10 @@
 /* START OF COMPILED CODE */
 
 /* START-USER-IMPORTS */
-import Base from "../Base";
 import {CURRENT_SETTINGS} from '../settings.ts'
 /* END-USER-IMPORTS */
 
-export default class OB_UI extends Base {
+export default class OB_UI extends Phaser.Scene {
 
 	constructor() {
 		super("OB_UI");

@@ -4,7 +4,6 @@
 
 import Base from "../Base";
 /* START-USER-IMPORTS */
-import Base from "../Base";
 /* END-USER-IMPORTS */
 
 export default class P_0 extends Base {

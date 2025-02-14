@@ -3,6 +3,7 @@
 
 /* START OF COMPILED CODE */
 
+import Base from "./Base";
 /* START-USER-IMPORTS */
 import Base from "./Base";
 /* END-USER-IMPORTS */

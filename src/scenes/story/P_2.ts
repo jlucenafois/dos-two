@@ -3,13 +3,12 @@
 
 /* START OF COMPILED CODE */
 
-
-/* START-USER-IMPORTS */
 import Base from "../Base";
+/* START-USER-IMPORTS */
 
 /* END-USER-IMPORTS */
 
-export default class P_2 extends Base{
+export default class P_2 extends Base {
 
 	constructor() {
 		super("P_2");
@@ -29,7 +28,7 @@ export default class P_2 extends Base{
 	// Write your code here
 
 	create() {
-		
+
 		super.create()
 		this.editorCreate();
 

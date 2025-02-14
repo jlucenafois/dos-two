@@ -3,14 +3,13 @@
 
 /* START OF COMPILED CODE */
 
-
-/* START-USER-IMPORTS */
 import Base from "../Base";
+/* START-USER-IMPORTS */
 import {CURRENT_SETTINGS, Language} from "../settings";
 
 /* END-USER-IMPORTS */
 
-export default class OB_3_1 extends Base{
+export default class OB_3_1 extends Base {
 
 	constructor() {
 		super("OB_3_1");
