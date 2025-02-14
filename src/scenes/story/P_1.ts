@@ -33,7 +33,6 @@ export default class P_1 extends Base{
 
 		super.create()
 		this.editorCreate();
-		this.events.emit("updateUI", "show_book"); // Notify UI
 	}
 
 	/* END-USER-CODE */

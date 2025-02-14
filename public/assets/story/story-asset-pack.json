@@ -35,6 +35,11 @@
                 "url": "assets/story/open_cover/cover_5.png",
                 "type": "image",
                 "key": "cover_5"
+            },
+            {
+                "url": "assets/story/p1_figure.png",
+                "type": "image",
+                "key": "p1_figure"
             }
         ]
     },

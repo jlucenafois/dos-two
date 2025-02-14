@@ -2,7 +2,7 @@
 
 /* START OF COMPILED CODE */
 
-
+import Base from "../Base";
 /* START-USER-IMPORTS */
 import Base from "../Base";
 /* END-USER-IMPORTS */
@@ -23,12 +23,18 @@ export default class P_0 extends Base {
 		const open_cover = this.add.sprite(864, 558.5, "cover_0");
 		open_cover.play("open_cover");
 
+		// p1_figure
+		const p1_figure = this.add.image(727, 575, "p1_figure");
+		p1_figure.visible = false;
+
 		this.open_cover = open_cover;
+		this.p1_figure = p1_figure;
 
 		this.events.emit("scene-awake");
 	}
 
 	private open_cover!: Phaser.GameObjects.Sprite;
+	private p1_figure!: Phaser.GameObjects.Image;
 
 	/* START-USER-CODE */
 
@@ -39,11 +45,24 @@ export default class P_0 extends Base {
 		this.scene.sendToBack(this);
 
 		// Listen for animation completion
-	// 	this.sprite_1.on(Phaser.Animations.Events.ANIMATION_COMPLETE, (anim:Phaser.Animations.Animation) => {
-	// 		if (anim.key === "open_cover") { 
-	// 			this.events.emit("updateUI", "show_side_arrows"); // Notify UI only after animation finishes
-    //     }
-    // });
+			this.open_cover.on(Phaser.Animations.Events.ANIMATION_COMPLETE, (anim:Phaser.Animations.Animation) => {
+				if (anim.key === "open_cover") { 
+					console.log("here")
+					this.events.emit("updateUI", "show_book"); // Notify UI
+					this.open_cover.setVisible(false);
+					this.scene.bringToTop(this)
+					this.p1_figure.setVisible(true)
+					this.p1_figure.setScale(0)
+
+					this.tweens.add({
+						targets: this.p1_figure,
+						scaleX: 0.8957557329660852, // Target scale X
+						scaleY: 0.9791249320991222, // Target scale Y
+						ease: "Back.Out", // Makes it pop
+						duration: 500, // 0.5s animation
+			});
+			}
+		});
 	}
 
 	/* END-USER-CODE */

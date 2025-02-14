@@ -4,6 +4,7 @@
     "settings": {
         "exportClass": true,
         "autoImport": true,
+        "superClassName": "Base",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
         "sceneKey": "P_0",
@@ -12,15 +13,6 @@
         "borderHeight": 1117
     },
     "displayList": [
-        {
-            "prefabId": "b89ef685-9273-4987-855c-9bbc2ac9889c",
-            "id": "3bc02a43-89b5-430d-820e-7bd3690cc022",
-            "unlock": [
-                "text"
-            ],
-            "label": "cover_text",
-            "text": "P_0"
-        },
         {
             "type": "Sprite",
             "id": "9441195b-2fd1-4579-b88b-78f1abe0dfc0",
@@ -33,6 +25,18 @@
             "y": 558.5,
             "animationPlayMethod": 1,
             "animationKey": "open_cover"
+        },
+        {
+            "type": "Image",
+            "id": "1c87d46a-58a8-4710-bc6c-76766614cce5",
+            "label": "p1_figure",
+            "scope": "CLASS",
+            "texture": {
+                "key": "p1_figure"
+            },
+            "x": 727,
+            "y": 575,
+            "visible": false
         }
     ],
     "plainObjects": [],
