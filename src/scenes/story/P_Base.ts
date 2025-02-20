@@ -7,6 +7,7 @@ import Base from "../Base";
 /* START-USER-IMPORTS */
 import { CURRENT_SETTINGS, Language } from "../settings";
 import { SCRIPT } from "../script";
+import { TextSegment } from "../script";
 /* END-USER-IMPORTS */
 
 export default class P_Base extends Base {
@@ -36,29 +37,47 @@ export default class P_Base extends Base {
 		/**
 	 * Renders text dynamically using script by scene key
 	 */
-		renderText() {
-			const isSpanish = CURRENT_SETTINGS.gameState.language === Language.Spanish;
-
-			const sceneScript = SCRIPT[this.scene.key]
-			const preferredText = isSpanish ? sceneScript.spanishText : sceneScript.englishText;
-			const alternateText = isSpanish ? sceneScript.englishText : sceneScript.spanishText;
-
-			// Display the preferred language string at the preferred coordinates
-			this.add.text(
-				sceneScript.preferredX, 
-				sceneScript.preferredY, 
-				preferredText,  
-				{ fontSize: '24px', color: 'red' }
-			);
-
-			// Display the alternate language string at the alternate coordinates
-			this.add.text(
-				sceneScript.alternateX, 
-				sceneScript.alternateY, 
-				alternateText, 
-				{ fontSize: '24px', color: 'blue' }
-			);
-		}
+	renderText() {
+		const isSpanish = CURRENT_SETTINGS.gameState.language === Language.Spanish;
+	
+		const sceneScript = SCRIPT[this.scene.key];
+		const preferredText = isSpanish ? sceneScript.spanishText : sceneScript.englishText;
+		const alternateText = isSpanish ? sceneScript.englishText : sceneScript.spanishText;
+	
+		// Function to render rich text
+		const renderRichText = (x: number, y: number, textSegments: TextSegment[]) => {
+			let offsetX = x; // X position for each text part
+			let offsetY = y; // Y position for multi-line handling
+		
+			textSegments.forEach(segment => {
+				const parts = segment.text.split("\n");
+		
+				parts.forEach((part, index) => {
+					// If it's a new line, reset X and move Y down
+					if (index > 0) {
+						offsetX = x;
+						offsetY += 40; // Adjust line height as needed
+					}
+					console.log(segment.style)
+					const textObject = this.add.text(offsetX, offsetY, part, {
+						font: `${segment.style?.fontWeight} ${segment.style?.fontSize} ${segment.style?.fontFamily}` || "600 30px Arial",
+						color: segment.style?.fill || "#ffffff",
+					});
+		
+					offsetX += textObject.width; // Continue on the same line
+				});
+			});
+		};
+		
+		
+		
+		// Display the preferred language string at the preferred coordinates
+		renderRichText(sceneScript.preferredX, sceneScript.preferredY, preferredText);
+	
+		// Display the alternate language string at the alternate coordinates
+		renderRichText(sceneScript.alternateX, sceneScript.alternateY, alternateText);
+	}
+		
 
 	/* END-USER-CODE */
 }
