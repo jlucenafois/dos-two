@@ -3,13 +3,13 @@
 
 /* START OF COMPILED CODE */
 
-import Base from "../Base";
+import P_Base from "./P_Base";
 /* START-USER-IMPORTS */
 
 
 /* END-USER-IMPORTS */
 
-export default class P_4 extends Base {
+export default class P_4 extends P_Base {
 
 	constructor() {
 		super("P_4");

@@ -22,11 +22,11 @@ export default class Base extends Phaser.Scene {
 	/* START-USER-CODE */
 
 	create() {
-		// Add a title using the key of the passed scene
-		this.addTitle();
-
 		// Call updateGameState with the passed scene
 		updateGameState(this);
+		
+		// Add a title using the key of the passed scene
+		this.addTitle();
 	}
 
 	/**
@@ -38,6 +38,7 @@ export default class Base extends Phaser.Scene {
 			fontFamily: 'Arial'
 		}).setOrigin(0.5);
 	}
+
 
 	/* END-USER-CODE */
 }

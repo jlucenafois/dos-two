@@ -3,12 +3,12 @@
 
 /* START OF COMPILED CODE */
 
-import Base from "../Base";
+import OB_Base from "./OB_Base";
 /* START-USER-IMPORTS */
 
 /* END-USER-IMPORTS */
 
-export default class OB_4 extends Base {
+export default class OB_4 extends OB_Base {
 
 	constructor() {
 		super("OB_4");

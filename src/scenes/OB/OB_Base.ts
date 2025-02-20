@@ -3,16 +3,14 @@
 
 /* START OF COMPILED CODE */
 
-import P_Base from "./P_Base";
+import Base from "../Base";
 /* START-USER-IMPORTS */
-
-
 /* END-USER-IMPORTS */
 
-export default class P_5 extends P_Base {
+export default class OB_Base extends Base {
 
-	constructor() {
-		super("P_5");
+	constructor(key:string) {
+		super(key);
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.
@@ -30,7 +28,6 @@ export default class P_5 extends P_Base {
 
 	create() {
 		super.create();
-		this.editorCreate();
 	}
 
 	/* END-USER-CODE */

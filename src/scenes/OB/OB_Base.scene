@@ -1,13 +1,15 @@
 {
-    "id": "82929935-7723-41e7-9c5b-4a2535d16749",
+    "id": "36ba7b87-3893-44e9-9c0e-dd2789f00f53",
     "sceneType": "SCENE",
     "settings": {
+        "compilerEnabled": false,
+        "javaScriptInitFieldsInConstructor": true,
         "exportClass": true,
         "autoImport": true,
-        "superClassName": "P_Base",
+        "superClassName": "Base",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
-        "sceneKey": "P_1",
+        "sceneKey": "OB_Base",
         "compilerOutputLanguage": "TYPE_SCRIPT",
         "borderWidth": 1728,
         "borderHeight": 1117

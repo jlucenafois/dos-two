@@ -4,7 +4,7 @@
     "settings": {
         "exportClass": true,
         "autoImport": true,
-        "superClassName": "Base",
+        "superClassName": "P_Base",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
         "sceneKey": "P_0",

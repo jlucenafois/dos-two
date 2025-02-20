@@ -4,7 +4,7 @@
     "settings": {
         "exportClass": true,
         "autoImport": true,
-        "superClassName": "Base",
+        "superClassName": "OB_Base",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
         "sceneKey": "OB_1",

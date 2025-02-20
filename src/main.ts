@@ -12,7 +12,7 @@ import P_3 from "./scenes/story/P_3";
 import P_4 from "./scenes/story/P_4";
 import P_5 from "./scenes/story/P_5";
 import P_6 from "./scenes/story/P_6";
-import OB_UI from "./scenes/OB/OB_UI";
+import OB_UI from "./scenes/UI/OB_UI";
 
 class Boot extends Phaser.Scene {
 

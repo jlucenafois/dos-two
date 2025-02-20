@@ -88,95 +88,37 @@ export default class OB_UI extends Phaser.Scene {
 	}
 
 	updateUI(event: string) {
-		if (event === "show_back_arrow") {
-			// // Fade out the old button
-			// this.tweens.add({
-			// 	targets: this.default_exit_lg,
-			// 	alpha: 0,  // Fade out
-			// 	duration: 300, // Duration in milliseconds
-			// 	onComplete: () => {
-			this.default_exit_lg.setVisible(false);
-			// 	}
-			// });
+		const actions: Record<string, () => void> = {
+			"show_back_arrow": () => {
+				this.default_exit_lg.setVisible(false);
+				this.default_back_md.setVisible(true);
+			},
+			"show_exit_button": () => {
+				this.default_back_md.setVisible(false);
+				this.default_exit_lg.setVisible(true);
+			},
+			"show_side_arrows": () => {
+				this.default_back_lg.setVisible(true);
+				this.default_next_lg.setVisible(true);
+			},
+			"hide_side_arrows": () => {
+				this.default_back_lg.setVisible(false);
+				this.default_next_lg.setVisible(false);
+			},
+			"show_book": () => {
+				this.book.setVisible(true);
+			},
+		};
 
-			// // Make sure the new button is visible before fading in
-			// this.default_back_md.setAlpha(0);
-			this.default_back_md.setVisible(true);
-
-			// // Fade in the new button
-			// this.tweens.add({
-			// 	targets: this.default_back_md,
-			// 	alpha: 1,  // Fade in
-			// 	duration: 300
-			// });
-		} // If event is "show_exit_button", transition from back to exit
-		else if (event === "show_exit_button") {
-			// // Fade out the old button (back button)
-			// this.tweens.add({
-			// 	targets: this.default_back_md,
-			// 	alpha: 0,  // Fade out
-			// 	duration: 300, // Duration in milliseconds
-			// 	onComplete: () => {
-			this.default_back_md.setVisible(false); // Hide the back button
-			// 	}
-			// });
-
-			// // Make sure the new button (exit button) is visible before fading in
-			// this.default_exit_lg.setAlpha(0);
-			this.default_exit_lg.setVisible(true);
-
-			// // Fade in the new button (exit button)
-			// this.tweens.add({
-			// 	targets: this.default_exit_lg,
-			// 	alpha: 1,  // Fade in
-			// 	duration: 300
-			// });
-		} else if (event === "show_side_arrows") {
-			// // Make sure the new button is visible before fading in
-			// this.default_back_lg.setAlpha(0);
-			this.default_back_lg.setVisible(true);
-
-			// // Fade in the new button
-			// this.tweens.add({
-			// 	targets: this.default_back_lg,
-			// 	alpha: 1,  // Fade in
-			// 	duration: 300
-			// });
-
-			// // Make sure the new button is visible before fading in
-			// this.default_next_lg.setAlpha(0);
-			this.default_next_lg.setVisible(true);
-
-			// // Fade in the new button
-			// this.tweens.add({
-			// 	targets: this.default_next_lg,
-			// 	alpha: 1,  // Fade in
-			// 	duration: 300
-			// });
-
-		} else if (event === "hide_side_arrows") {
-			// // Fade out the old button
-			// this.tweens.add({
-			// 	targets: this.default_back_lg,
-			// 	alpha: 0,  // Fade out
-			// 	duration: 300, // Duration in milliseconds
-			// 	onComplete: () => {
-			this.default_back_lg.setVisible(false);
-			// 	}
-			// });
-			// // Fade out the old button
-			// this.tweens.add({
-			// 	targets: this.default_next_lg,
-			// 	alpha: 0,  // Fade out
-			// 	duration: 300, // Duration in milliseconds
-			// 	onComplete: () => {
-			this.default_next_lg.setVisible(false);
-			// 	}
-			// });
-		} else if (event === "show_book") {
-			this.book.setVisible(true);
+		// Execute the corresponding function if the event exists
+		const action = actions[event];
+		if (action) {
+			action();
+		} else {
+			console.warn(`Unhandled event: ${event}`);
 		}
-}
+	}
+
 	create() {
 		this.editorCreate();
 		this.scene.get("OB_2").events.on("updateUI", this.updateUI, this); // read updateUI
