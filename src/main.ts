@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import WebFont from "webfontloader"; // Import WebFontLoader
 import Preload from "./scenes/Preload";
 import OB_1 from "./scenes/OB/OB_1";
 import OB_2 from "./scenes/OB/OB_2";
@@ -21,12 +22,20 @@ class Boot extends Phaser.Scene {
     }
 
     preload() {
-
-        this.load.pack("pack", "assets/preload/preload-asset-pack.json");
+		this.load.pack("pack", "assets/preload/preload-asset-pack.json");
+		// Load Raleway with Web Font Loader
+        WebFont.load({
+            google: {
+                families: ["Raleway"] // Specify weights (e.g., 400 for regular, 700 for bold)
+            },
+            active: () => {
+                console.log("Raleway font loaded!");
+                this.scene.start("Preload"); // Move to Preload once font is loaded
+            }
+        });
     }
 
     create() {
-
        this.scene.start("Preload");
     }
 }
@@ -37,7 +46,6 @@ window.addEventListener('load', function () {
 		width: 1728,
 		height: 1117,
 		transparent: false, // Ensure transparency is disabled to allow background color
-		backgroundColor: "#7580FF", // Set background color
 		parent: "game-container",
 		scale: {
 			mode: Phaser.Scale.ScaleModes.FIT,
