@@ -1,0 +1,59 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": "assets/games/flipped.png",
+                "type": "image",
+                "key": "flipped"
+            },
+            {
+                "url": "assets/games/hover_flipped.png",
+                "type": "image",
+                "key": "hover_flipped"
+            },
+            {
+                "url": "assets/games/hover_unflipped.png",
+                "type": "image",
+                "key": "hover_unflipped"
+            },
+            {
+                "url": "assets/games/unflipped.png",
+                "type": "image",
+                "key": "unflipped"
+            },
+            {
+                "url": "assets/games/testflipped.png",
+                "type": "image",
+                "key": "testflipped"
+            },
+            {
+                "url": "assets/games/testflipped2.png",
+                "type": "image",
+                "key": "testflipped2"
+            },
+            {
+                "url": "assets/games/testflippedpair.png",
+                "type": "image",
+                "key": "testflippedpair"
+            },
+            {
+                "url": "assets/games/testflippedpair2.png",
+                "type": "image",
+                "key": "testflippedpair2"
+            },
+            {
+                "url": "assets/games/testflippedpairspanish.png",
+                "type": "image",
+                "key": "testflippedpairspanish"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false,
+        "visible": true
+    }
+}

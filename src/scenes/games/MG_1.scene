@@ -1,0 +1,94 @@
+{
+    "id": "7887fc2d-d38b-4a37-a4b9-d4d6e9feb2aa",
+    "sceneType": "SCENE",
+    "settings": {
+        "javaScriptInitFieldsInConstructor": true,
+        "exportClass": true,
+        "autoImport": true,
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "MG_1",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1728,
+        "borderHeight": 1117
+    },
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "5b782869-ff29-404f-a429-4c159297e417",
+            "label": "_0_progress_bar_lg",
+            "texture": {
+                "key": "0_progress_bar_lg"
+            },
+            "x": 902,
+            "y": 135
+        },
+        {
+            "type": "Image",
+            "id": "05880b22-ee69-44a7-a7d7-e103e47e0a00",
+            "label": "unflipped",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 557,
+            "y": 473
+        },
+        {
+            "type": "Image",
+            "id": "ddf7e79a-c72b-4b94-a1d3-78f855017b16",
+            "label": "unflipped_1",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 877,
+            "y": 473
+        },
+        {
+            "type": "Image",
+            "id": "d6408fb7-ed80-4e20-b2b0-0d7d60480d0b",
+            "label": "unflipped_2",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 1197,
+            "y": 473
+        },
+        {
+            "type": "Image",
+            "id": "1c4677a1-4fbf-4d5e-a818-4ef70b5625ca",
+            "label": "unflipped_3",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 557,
+            "y": 747
+        },
+        {
+            "type": "Image",
+            "id": "3863f8bd-aeab-4b4e-a24e-84c6f721c0c2",
+            "label": "unflipped_4",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 877,
+            "y": 747
+        },
+        {
+            "type": "Image",
+            "id": "438f5fc6-fb33-4198-9bc5-6b26de2e634b",
+            "label": "unflipped_5",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 1197,
+            "y": 747
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}
