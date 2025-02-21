@@ -46,6 +46,7 @@ window.addEventListener('load', function () {
 		width: 1728,
 		height: 1117,
 		transparent: false, // Ensure transparency is disabled to allow background color
+        backgroundColor: '#7580FF',
 		parent: "game-container",
 		scale: {
 			mode: Phaser.Scale.ScaleModes.FIT,

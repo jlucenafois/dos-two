@@ -46,7 +46,6 @@ export default class P_0 extends P_Base {
 		// Listen for animation completion
 			this.open_cover.on(Phaser.Animations.Events.ANIMATION_COMPLETE, (anim:Phaser.Animations.Animation) => {
 				if (anim.key === "open_cover") { 
-					console.log("here")
 					this.events.emit("updateUI", "show_book"); // Notify UI
 					this.open_cover.setVisible(false);
 					this.scene.bringToTop(this)

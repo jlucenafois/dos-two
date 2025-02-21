@@ -1,8 +1,4 @@
-
-export type TextSegment = {
-    text: string;
-    style?: { fontFamily?: string; fontWeight?: number; fontSize?: string; fill?: string }; // Optional style
-};
+import { TextSegment } from "../../types/TextSegment";
 
 export const SCRIPT: Record<string, {
     spanishText: TextSegment[];
@@ -14,14 +10,14 @@ export const SCRIPT: Record<string, {
 }> = {
     P_0: {
         spanishText: [
-                { text: 'Clarita se miró en el ', style: { fontFamily: 'Raleway', fontWeight: 600, fontSize: '24px', fill: '#A3A3A3' } },
+                { text: 'Clarita se miró en el ', style: { fontFamily: 'Raleway', fontWeight: 550, fontSize: '24px', fill: '#A3A3A3' } },
                 { text: 'espejo', style: { fontFamily: 'Raleway', fontWeight: 800, fontSize: '24px', fill: '#B00012' } }, // Highlighted word
-                { text: '\ny dijo, ¡Yo soy muy especial!', style: { fontFamily: 'Raleway', fontWeight: 600, fontSize: '24px', fill: '#A3A3A3' } },
+                { text: '\ny dijo, ¡Yo soy muy especial!', style: { fontFamily: 'Raleway', fontWeight: 550, fontSize: '24px', fill: '#A3A3A3' } },
             ],
         englishText: [
-            { text: 'Clarita looked in the ', style: { fontFamily: 'Raleway', fontWeight: 600, fontSize: '24px', fill: '#A3A3A3' } },
+            { text: 'Clarita looked in the ', style: { fontFamily: 'Raleway', fontWeight: 550, fontSize: '24px', fill: '#A3A3A3' } },
             { text: 'mirror', style: { fontFamily: 'Raleway', fontWeight: 800, fontSize: '24px', fill: '#3738B4' } }, // Highlighted word
-            { text: '\nand she said, "I am very special!"', style: { fontFamily: 'Raleway', fontWeight: 600, fontSize: '24px', fill: '#A3A3A3' } },
+            { text: '\nand she said, "I am very special!"', style: { fontFamily: 'Raleway', fontWeight: 550, fontSize: '24px', fill: '#A3A3A3' } },
         ],
         preferredX: 928.5,
         preferredY: 445,
@@ -30,10 +26,10 @@ export const SCRIPT: Record<string, {
     },
     P_1: {
         spanishText: [
-            { text: 'Porque...\nA veces hablo en inglés\ny otras veces en español.', style: { fontFamily: 'Raleway', fontWeight: 600, fontSize: '24px', fill: '#A3A3A3' } },
+            { text: 'Porque...\nA veces hablo en inglés\ny otras veces en español.', style: { fontFamily: 'Raleway', fontWeight: 550, fontSize: '24px', fill: '#A3A3A3' } },
             ],
         englishText: [
-            { text: 'Because...\nSometimes I speak in English,\nand other times in Spanish', style: { fontFamily: 'Raleway', fontWeight: 600, fontSize: '24px', fill: '#A3A3A3' } },
+            { text: 'Because...\nSometimes I speak in English,\nand other times in Spanish', style: { fontFamily: 'Raleway', fontWeight: 550, fontSize: '24px', fill: '#A3A3A3' } },
         ],
         preferredX: 499.5,
         preferredY: 275,
