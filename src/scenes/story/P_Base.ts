@@ -5,10 +5,20 @@
 
 import Base from "../Base";
 /* START-USER-IMPORTS */
+// Global
 import { CURRENT_SETTINGS, Language } from "../settings";
 import { SCRIPT } from "../script";
-import { TextSegment } from "../../../types/TextSegment";
-import { WordObject } from "../../../types/WordObject";
+// Text Types
+import { WordObject } from "../../../types/text/WordObject";
+import { DualText } from "../../../types/text/DualText";
+import { SingleText } from "../../../types/text/SingleText";
+// Shape Types
+import { DualShape } from "../../../types/shape/DualShape";
+import { Shape } from "../../../types/shape/Shape";
+import { SupportedShape } from "../../../types/shape/SupportedShape";
+import { ShapeData } from "../../../types/shape/ShapeData";
+import { DualComponent } from "../../../types/components/DualComponent";
+import { DualCoordinates } from "../../../types/components/DualCoordinates";
 /* END-USER-IMPORTS */
 
 export default class P_Base extends Base {
@@ -32,17 +42,82 @@ export default class P_Base extends Base {
 
     create() {
         super.create();
-        this.renderDualText()
+        
+        const sceneScript = SCRIPT[this.scene.key];
+        if (!sceneScript) return; // Early return if no script
+        
+        const dualComponents = sceneScript.dualComponents;
+        dualComponents?.forEach(dc => this.renderDualComponent(dc));
+    }
+
+    /**
+     * 
+     */
+    renderDualComponent(dc: DualComponent) {
+         // render dual shapes and texts
+         if (dc.dualShape) this.renderDualShape(dc.coordinates, dc.dualShape);
+         if (dc.dualText) this.renderDualText(dc.coordinates, dc.dualText);
+    }
+    /**
+     * 
+     */
+    renderShape(ss: Shape) {
+        const shapeRenderer: Record<SupportedShape, (data:ShapeData) => void> = {
+			[SupportedShape.RoundedRect]: (data:ShapeData) => {
+                const graphics = this.add.graphics();
+                const { strokeWeight, strokeColor, fillColor, fillAlpha, shadowOffset, shadowFill, shadowAlpha } = data.style;
+
+                if (shadowFill !== undefined && shadowFill !== null) {
+                    graphics.fillStyle(shadowFill, shadowAlpha ?? 1.0);
+                    graphics.fillRoundedRect(data.x + (shadowOffset ?? 10), data.y + (shadowOffset ?? 10), data.width, data.height, data.radius ?? 10);
+                }
+                if (fillColor !== undefined && fillColor !== null) {
+                    graphics.fillStyle(fillColor, fillAlpha ?? 1.0);
+                    graphics.fillRoundedRect(data.x, data.y, data.width, data.height, data.radius ?? 10);
+                } 
+                if (strokeColor !== undefined && strokeColor !== null) {
+                    graphics.lineStyle(strokeWeight ?? 1, strokeColor, 1.0);
+                    graphics.strokeRoundedRect(data.x, data.y, data.width, data.height, data.radius ?? 10);
+                }
+            },
+     };
+
+        const {type,data} = ss;
+        // Call the renderer
+        shapeRenderer[type](data);
+    }
+    /**
+     * 
+     */
+    renderDualShape(coordinates: DualCoordinates, ds: DualShape) {
+        const isSpanish = CURRENT_SETTINGS.gameState.language === Language.Spanish;
+        const preferredPartialShape = isSpanish ? ds.spanishShape : ds.englishShape;
+        const alternatePartialShape = isSpanish ? ds.englishShape : ds.spanishShape;
+
+        // Construct a SingleText object for the preferred text
+        const preferredShape: Shape = {
+            type: preferredPartialShape.type, 
+            data: {x: coordinates.preferredX, y: coordinates.preferredY, ...preferredPartialShape.data}
+        };
+        // Construct a SingleText object for the preferred text
+        const alternateShape: Shape = {
+            type: alternatePartialShape.type, 
+            data: {x: coordinates.alternateX, y: coordinates.alternateY, ...alternatePartialShape.data}
+        };
+
+        this.renderShape(preferredShape);
+        this.renderShape(alternateShape);
     }
 
     /**
      * Renders text dynamically, matching original left-aligned behavior,
      * while returning WordObjects for word-by-word highlighting.
      */
-    renderRichText (x: number, y: number, textSegments: TextSegment[]): WordObject[] {
+    renderRichText (st:SingleText): WordObject[] {
         const wordObjects: WordObject[] = [];
-        let offsetX = x; // Starting X position (left-aligned)
-        let offsetY = y; // Starting Y position
+        let offsetX = st.x; // Starting X position (left-aligned)
+        let offsetY = st.y; // Starting Y position
+        let textSegments = st.text // text content
         let lineIndex = 0;
 
         textSegments.forEach(segment => {
@@ -51,7 +126,7 @@ export default class P_Base extends Base {
 
             parts.forEach((part, partIndex) => {
                 if (partIndex > 0) {
-                    offsetX = x; // Reset X for new line
+                    offsetX = st.x; // Reset X for new line
                     offsetY += 40; // Move Y down for new line (same as original)
                     lineIndex++;
                 }
@@ -83,62 +158,75 @@ export default class P_Base extends Base {
 
         return wordObjects;
     }
-    // Updated scene logic
-    renderDualText() {
-        if (SCRIPT[this.scene.key]) {
-            const isSpanish = CURRENT_SETTINGS.gameState.language === Language.Spanish;
-            const sceneScript = SCRIPT[this.scene.key];
-            const preferredText = isSpanish ? sceneScript.spanishText : sceneScript.englishText;
-            const alternateText = isSpanish ? sceneScript.englishText : sceneScript.spanishText;
 
-            // Render preferred text at original position
-            const preferredWordObjects = this.renderRichText(sceneScript.preferredX, sceneScript.preferredY, preferredText);
-            const preferredHighlighter = new TextHighlighter(preferredWordObjects);
+    /**
+     * Renders dualText dynamically depending on preferred language. 
+     */
+    renderDualText(coordinates:DualCoordinates, dt: DualText) {
+        const isSpanish = CURRENT_SETTINGS.gameState.language === Language.Spanish;
+        const preferredText = isSpanish ? dt.spanishText : dt.englishText;
+        const alternateText = isSpanish ? dt.englishText : dt.spanishText;
 
-            // Render alternate text below preferred text (offset Y by 100 pixels, adjust as needed)
-            const alternateWordObjects = this.renderRichText(sceneScript.preferredX, sceneScript.preferredY + 100, alternateText);
-            const alternateHighlighter = new TextHighlighter(alternateWordObjects);
+        // Construct a SingleText object for the preferred text
+        const preferredSingleText: SingleText = {
+            x: coordinates.preferredX,
+            y: coordinates.preferredY,
+            text: preferredText 
+        };
+        // Render preferred text at original position
+        const preferredWordObjects = this.renderRichText(preferredSingleText);
+        const preferredHighlighter = new TextHighlighter(preferredWordObjects);
+        
+        // Construct a SingleText object for the preferred text
+        const alternateSingleText: SingleText = {
+            x: coordinates.alternateX,
+            y: coordinates.alternateY,
+            text: alternateText 
+        };
+    
+        // Render alternate text below preferred text (offset Y by 100 pixels, adjust as needed)
+        const alternateWordObjects = this.renderRichText(alternateSingleText);
+        const alternateHighlighter = new TextHighlighter(alternateWordObjects);
 
-            // Base word timings for preferred text
-            const preferredWordTimings = [
-                { word: "Clarita", startTime: 0.0 },
-                { word: "se", startTime: 0.4 },
-                { word: "miró", startTime: 0.8 },
-                { word: "en", startTime: 1.2 },
-                { word: "el", startTime: 1.6 },
-                { word: "espejo", startTime: 2.0 },
-                { word: "y", startTime: 2.4 },
-                { word: "dijo", startTime: 2.8 },
-                { word: "¡Yo", startTime: 3.2 },
-                { word: "soy", startTime: 3.6 },
-                { word: "muy", startTime: 4.0 },
-                { word: "especial!", startTime: 4.4 }
-            ];
+        // Base word timings for preferred text
+        const preferredWordTimings = [
+            { word: "Clarita", startTime: 0.0 },
+            { word: "se", startTime: 0.4 },
+            { word: "miró", startTime: 0.8 },
+            { word: "en", startTime: 1.2 },
+            { word: "el", startTime: 1.6 },
+            { word: "espejo", startTime: 2.0 },
+            { word: "y", startTime: 2.4 },
+            { word: "dijo", startTime: 2.8 },
+            { word: "¡Yo", startTime: 3.2 },
+            { word: "soy", startTime: 3.6 },
+            { word: "muy", startTime: 4.0 },
+            { word: "especial!", startTime: 4.4 }
+        ];
 
-            // Offset alternate timings (e.g., start 5 seconds after preferred text ends)
-            const delayOffset = preferredWordTimings[preferredWordTimings.length - 1].startTime + 1.0; // 4.4 + 1.0 = 5.4s
-            const alternateWordTimings = [
-                { word: "Clarita", startTime: delayOffset + 0.0 },
-                { word: "looked", startTime: delayOffset + 0.4 },
-                { word: "at", startTime: delayOffset + 0.8 },
-                { word: "herself", startTime: delayOffset + 1.2 },
-                { word: "in", startTime: delayOffset + 1.6 },
-                { word: "the", startTime: delayOffset + 2.0 },
-                { word: "mirror", startTime: delayOffset + 2.4 },
-                { word: "and", startTime: delayOffset + 2.8 },
-                { word: "said", startTime: delayOffset + 3.2 },
-                { word: "I", startTime: delayOffset + 3.6 },
-                { word: "am", startTime: delayOffset + 4.0 },
-                { word: "very", startTime: delayOffset + 4.4 },
-                { word: "special!", startTime: delayOffset + 4.8 }
-            ];
+        // Offset alternate timings (e.g., start 5 seconds after preferred text ends)
+        const delayOffset = preferredWordTimings[preferredWordTimings.length - 1].startTime + 1.0; // 4.4 + 1.0 = 5.4s
+        const alternateWordTimings = [
+            { word: "Clarita", startTime: delayOffset + 0.0 },
+            { word: "looked", startTime: delayOffset + 0.4 },
+            { word: "at", startTime: delayOffset + 0.8 },
+            { word: "herself", startTime: delayOffset + 1.2 },
+            { word: "in", startTime: delayOffset + 1.6 },
+            { word: "the", startTime: delayOffset + 2.0 },
+            { word: "mirror", startTime: delayOffset + 2.4 },
+            { word: "and", startTime: delayOffset + 2.8 },
+            { word: "said", startTime: delayOffset + 3.2 },
+            { word: "I", startTime: delayOffset + 3.6 },
+            { word: "am", startTime: delayOffset + 4.0 },
+            { word: "very", startTime: delayOffset + 4.4 },
+            { word: "special!", startTime: delayOffset + 4.8 }
+        ];
 
-            console.log("Starting preferred text highlight simulation...");
-            preferredHighlighter.syncWithAudio(preferredWordTimings);
+        console.log("Starting preferred text highlight simulation...");
+        preferredHighlighter.syncWithAudio(preferredWordTimings);
 
-            console.log("Starting alternate text highlight simulation...");
-            alternateHighlighter.syncWithAudio(alternateWordTimings);
-        }
+        console.log("Starting alternate text highlight simulation...");
+        alternateHighlighter.syncWithAudio(alternateWordTimings);
     };
 }
 

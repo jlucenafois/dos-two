@@ -30,7 +30,6 @@ class Boot extends Phaser.Scene {
             },
             active: () => {
                 console.log("Raleway font loaded!");
-                this.scene.start("Preload"); // Move to Preload once font is loaded
             }
         });
     }
