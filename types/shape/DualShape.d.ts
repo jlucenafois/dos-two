@@ -1,5 +1,5 @@
-import { Shape } from "./Shape";
+import { PartialShape } from "./PartialShape";
 export type DualShape = {
-    spanishShape: Partial<Shape>;
-    englishShape: Partial<Shape>;
+    spanishShape: PartialShape;
+    englishShape: PartialShape;
 }; 

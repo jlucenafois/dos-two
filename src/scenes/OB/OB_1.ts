@@ -38,6 +38,7 @@ export default class OB_1 extends OB_Base {
 	create() {
 		super.create()
 		this.editorCreate();
+		this.events.emit("updateUI", "change_background", "#7580FF"); // Notify UI
 		this.default_play_lg.setInteractive({ useHandCursor: true });
 
 		// Mouse hover effect

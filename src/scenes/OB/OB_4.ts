@@ -40,6 +40,7 @@ export default class OB_4 extends OB_Base {
 		this.editorCreate();
 		this.events.emit("updateUI", "show_exit_button"); // Notify UI
 		this.events.emit("updateUI", "show_side_arrows"); // Notify UI
+		this.events.emit("updateUI", "change_background", "#C7CCFF"); // Notify UI
 		this.scene.start("P_0")
 	}
 

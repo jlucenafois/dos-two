@@ -37,9 +37,9 @@
                 "key": "cover_5"
             },
             {
-                "url": "assets/story/p1_figure.png",
+                "url": "assets/story/p2_bg.png",
                 "type": "image",
-                "key": "p1_figure"
+                "key": "p2_bg"
             }
         ]
     },

@@ -1,6 +1,4 @@
-export type ShapeData = {
-    x:number,
-    y: number,
+export type ShapeStyle = {
     width: number,
     height: number, 
     radius?: number,

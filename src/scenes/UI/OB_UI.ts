@@ -87,7 +87,7 @@ export default class OB_UI extends Phaser.Scene {
 		}
 	}
 
-	updateUI(event: string) {
+	updateUI(event: string, color?: string) {
 		const actions: Record<string, () => void> = {
 			"show_back_arrow": () => {
 				this.default_exit_lg.setVisible(false);
@@ -108,8 +108,17 @@ export default class OB_UI extends Phaser.Scene {
 			"show_book": () => {
 				this.book.setVisible(true);
 			},
+			"change_background": () => {
+				const div = document.getElementById('game-container');
+				console.log(color)
+				if (div && color) {
+					div.style.backgroundColor = color;
+				} else {
+					console.warn("Unable to change background: Element not found or color not provided.");
+				}
+			},
 		};
-
+	
 		// Execute the corresponding function if the event exists
 		const action = actions[event];
 		if (action) {
@@ -118,9 +127,11 @@ export default class OB_UI extends Phaser.Scene {
 			console.warn(`Unhandled event: ${event}`);
 		}
 	}
+	
 
 	create() {
 		this.editorCreate();
+		this.scene.get("OB_1").events.on("updateUI", this.updateUI, this); // read updateUI
 		this.scene.get("OB_2").events.on("updateUI", this.updateUI, this); // read updateUI
 		this.scene.get("OB_4").events.on("updateUI", this.updateUI, this); // read updateUI
 		this.scene.get("P_0").events.on("updateUI", this.updateUI, this); // read updateUI

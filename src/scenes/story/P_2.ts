@@ -20,6 +20,9 @@ export default class P_2 extends P_Base {
 
 	editorCreate(): void {
 
+		// p2_bg
+		this.add.image(901, 576, "p2_bg");
+
 		this.events.emit("scene-awake");
 	}
 
@@ -29,8 +32,8 @@ export default class P_2 extends P_Base {
 
 	create() {
 
-		super.create()
 		this.editorCreate();
+		super.create()
 
 	}
 

@@ -16,7 +16,7 @@ import { SingleText } from "../../../types/text/SingleText";
 import { DualShape } from "../../../types/shape/DualShape";
 import { Shape } from "../../../types/shape/Shape";
 import { SupportedShape } from "../../../types/shape/SupportedShape";
-import { ShapeData } from "../../../types/shape/ShapeData";
+import { ShapeStyle } from "../../../types/shape/ShapeStyle";
 import { DualComponent } from "../../../types/components/DualComponent";
 import { DualCoordinates } from "../../../types/components/DualCoordinates";
 /* END-USER-IMPORTS */
@@ -62,29 +62,29 @@ export default class P_Base extends Base {
      * 
      */
     renderShape(ss: Shape) {
-        const shapeRenderer: Record<SupportedShape, (data:ShapeData) => void> = {
-			[SupportedShape.RoundedRect]: (data:ShapeData) => {
+        const shapeRenderer: Record<SupportedShape, (x: number, y:number, style:ShapeStyle) => void> = {
+			[SupportedShape.RoundedRect]: (x:number, y:number, style:ShapeStyle) => {
                 const graphics = this.add.graphics();
-                const { strokeWeight, strokeColor, fillColor, fillAlpha, shadowOffset, shadowFill, shadowAlpha } = data.style;
+                const { strokeWeight, strokeColor, fillColor, fillAlpha, shadowOffset, shadowFill, shadowAlpha } = style.style;
 
                 if (shadowFill !== undefined && shadowFill !== null) {
                     graphics.fillStyle(shadowFill, shadowAlpha ?? 1.0);
-                    graphics.fillRoundedRect(data.x + (shadowOffset ?? 10), data.y + (shadowOffset ?? 10), data.width, data.height, data.radius ?? 10);
+                    graphics.fillRoundedRect(x + (shadowOffset ?? 10), y + (shadowOffset ?? 10), style.width, style.height, style.radius ?? 10);
                 }
                 if (fillColor !== undefined && fillColor !== null) {
                     graphics.fillStyle(fillColor, fillAlpha ?? 1.0);
-                    graphics.fillRoundedRect(data.x, data.y, data.width, data.height, data.radius ?? 10);
+                    graphics.fillRoundedRect(x, y, style.width, style.height, style.radius ?? 10);
                 } 
                 if (strokeColor !== undefined && strokeColor !== null) {
                     graphics.lineStyle(strokeWeight ?? 1, strokeColor, 1.0);
-                    graphics.strokeRoundedRect(data.x, data.y, data.width, data.height, data.radius ?? 10);
+                    graphics.strokeRoundedRect(x, y, style.width, style.height, style.radius ?? 10);
                 }
             },
      };
 
-        const {type,data} = ss;
+        const {x, y, type, style} = ss;
         // Call the renderer
-        shapeRenderer[type](data);
+        shapeRenderer[type](x, y, style);
     }
     /**
      * 
@@ -96,13 +96,17 @@ export default class P_Base extends Base {
 
         // Construct a SingleText object for the preferred text
         const preferredShape: Shape = {
+            x: coordinates.preferredX,
+            y: coordinates.preferredY,
             type: preferredPartialShape.type, 
-            data: {x: coordinates.preferredX, y: coordinates.preferredY, ...preferredPartialShape.data}
+            style: preferredPartialShape.style
         };
         // Construct a SingleText object for the preferred text
         const alternateShape: Shape = {
+            x: coordinates.alternateX,
+            y: coordinates.alternateY,
             type: alternatePartialShape.type, 
-            data: {x: coordinates.alternateX, y: coordinates.alternateY, ...alternatePartialShape.data}
+            style: alternatePartialShape.style
         };
 
         this.renderShape(preferredShape);
@@ -132,8 +136,8 @@ export default class P_Base extends Base {
                 }
 
                 const textStyle = {
-                    font: `${segment.style?.fontWeight || '600'} ${segment.style?.fontSize || '30px'} ${segment.style?.fontFamily || 'Calibri'}`,
-                    color: segment.style?.fill || "#ffffff",
+                    font: `${segment.style?.fontWeight || '600'} ${segment.style?.fontSize || '24px'} ${segment.style?.fontFamily || 'Raleway'}`,
+                    color: segment.style?.fill || "#A3A3A3",
                 };
 
                 const words = part.split(/\s+/).filter(word => word.length > 0);

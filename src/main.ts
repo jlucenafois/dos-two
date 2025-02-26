@@ -42,11 +42,10 @@ class Boot extends Phaser.Scene {
 window.addEventListener('load', function () {
 	
 	const game = new Phaser.Game({
-		width: 1728,
+        width: 1728,
 		height: 1117,
-		transparent: false, // Ensure transparency is disabled to allow background color
-        backgroundColor: '#7580FF',
-		parent: "game-container",
+		parent: 'game-container',
+        transparent: true,
 		scale: {
 			mode: Phaser.Scale.ScaleModes.FIT,
 			autoCenter: Phaser.Scale.Center.CENTER_BOTH
