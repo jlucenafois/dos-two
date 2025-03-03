@@ -37,18 +37,19 @@ export default class P_Base extends Base {
 
     preload() {
         // TODO: rename transcript files to be 0-indexed and remove this line
-        const pageIdx = parseInt(this.scene.key.split("_")[1])+1;
-        const isEnglish = CURRENT_SETTINGS.gameState.language === Language.English;
+        const pageIdx = parseInt(this.scene.key.split("_")[1]) + 1;
+    
         const languages = [
-            { type: "preferred", suffix: isEnglish ? "e" : "s" },
-            { type: "alternative", suffix: isEnglish ? "s" : "e" }
+            { key: "transcript-english", suffix: "e" },
+            { key: "transcript-spanish", suffix: "s" }
         ];
-        languages.forEach(({ type, suffix }) => {
-            this.load.json(this.nameWithKey(`transcript-${type}`), `assets/transcript/${pageIdx}${suffix}.json`);
-            this.load.audio(this.nameWithKey(`audio-${type}`), `assets/transcript/${pageIdx}${suffix}.wav`);
+    
+        languages.forEach(({ key, suffix }) => {
+            this.load.json(this.nameWithKey(key), `assets/transcript/${pageIdx}${suffix}.json`);
+            this.load.audio(this.nameWithKey(`audio-${key}`), `assets/transcript/${pageIdx}${suffix}.wav`);
         });
-        
     }
+    
 
     editorCreate(): void {
         this.events.emit("scene-awake");
@@ -210,10 +211,15 @@ export default class P_Base extends Base {
         const alternateWordObjects = this.renderRichText(alternateSingleText);
         const alternateHighlighter = new TextHighlighter(alternateWordObjects);
 
-        const transcriptPreferred = this.cache.json.get(this.nameWithKey(`transcript-preferred`)).words;
-        const transcriptAlternative= this.cache.json.get(this.nameWithKey('transcript-alternative')).words;
-        const audioPreferred=this.sound.add(this.nameWithKey('audio-preferred'));
-        const audioAlternative=this.sound.add(this.nameWithKey('audio-alternative'));
+        const isEnglish = CURRENT_SETTINGS.gameState.language === Language.English;
+        const transcriptEnglish = this.cache.json.get(this.nameWithKey("transcript-english")).words;
+        const audioEnglish = this.sound.add(this.nameWithKey("audio-transcript-english"));
+        const transcriptSpanish = this.cache.json.get(this.nameWithKey("transcript-spanish")).words;
+        const audioSpanish = this.sound.add(this.nameWithKey("audio-transcript-spanish"));
+        const transcriptPreferred = isEnglish ? transcriptEnglish : transcriptSpanish;
+        const audioPreferred = isEnglish ? audioEnglish : audioSpanish;
+        const transcriptAlternative = isEnglish ? transcriptSpanish : transcriptEnglish;
+        const audioAlternative = isEnglish ? audioSpanish : audioEnglish;
 
         this.playAudioWithSync( preferredHighlighter, transcriptPreferred, audioPreferred,2000, () => {
             this.playAudioWithSync( alternateHighlighter, transcriptAlternative, audioAlternative,1000);
@@ -222,7 +228,6 @@ export default class P_Base extends Base {
 
     playAudioWithSync( highlighter:TextHighlighter, transcript:any, audio: any,delay:number, onComplete?:CallableFunction) {
         this.time.delayedCall(delay, () => {
-            console.log(transcript);
             highlighter.syncWithAudio(transcript);
             audio.play();
             if (onComplete) audio.once('complete', onComplete);
@@ -275,7 +280,6 @@ class TextHighlighter {
             const scene = this.wordObjects[0].textObject.scene;
             scene.time.delayedCall(timing.start * 1000, () => {
                 this.highlightWord(index);
-                console.log(`Highlighted: "${timing.text}" at ${timing.start}s`);
             });
         });
     }
