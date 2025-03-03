@@ -22,7 +22,6 @@ import { DualCoordinates } from "../../../types/components/DualCoordinates";
 /* END-USER-IMPORTS */
 
 export default class P_Base extends Base {
-
     constructor(key: string) {
         super(key);
 
@@ -31,8 +30,27 @@ export default class P_Base extends Base {
         /* END-USER-CTR-CODE */
     }
 
-    editorCreate(): void {
+    // this is needed to load the correct transcript and audio files, otherwise it will keep using the first one, maybe there's a better fix for this
+    nameWithKey(name: string) {
+        return name + "-" + this.scene.key;
+    }
 
+    preload() {
+        // TODO: rename transcript files to be 0-indexed and remove this line
+        const pageIdx = parseInt(this.scene.key.split("_")[1])+1;
+        const isEnglish = CURRENT_SETTINGS.gameState.language === Language.English;
+        const languages = [
+            { type: "preferred", suffix: isEnglish ? "e" : "s" },
+            { type: "alternative", suffix: isEnglish ? "s" : "e" }
+        ];
+        languages.forEach(({ type, suffix }) => {
+            this.load.json(this.nameWithKey(`transcript-${type}`), `assets/transcript/${pageIdx}${suffix}.json`);
+            this.load.audio(this.nameWithKey(`audio-${type}`), `assets/transcript/${pageIdx}${suffix}.wav`);
+        });
+        
+    }
+
+    editorCreate(): void {
         this.events.emit("scene-awake");
     }
 
@@ -192,47 +210,28 @@ export default class P_Base extends Base {
         const alternateWordObjects = this.renderRichText(alternateSingleText);
         const alternateHighlighter = new TextHighlighter(alternateWordObjects);
 
-        // Base word timings for preferred text
-        const preferredWordTimings = [
-            { word: "Clarita", startTime: 0.0 },
-            { word: "se", startTime: 0.4 },
-            { word: "miró", startTime: 0.8 },
-            { word: "en", startTime: 1.2 },
-            { word: "el", startTime: 1.6 },
-            { word: "espejo", startTime: 2.0 },
-            { word: "y", startTime: 2.4 },
-            { word: "dijo", startTime: 2.8 },
-            { word: "¡Yo", startTime: 3.2 },
-            { word: "soy", startTime: 3.6 },
-            { word: "muy", startTime: 4.0 },
-            { word: "especial!", startTime: 4.4 }
-        ];
+        const transcriptPreferred = this.cache.json.get(this.nameWithKey(`transcript-preferred`)).words;
+        const transcriptAlternative= this.cache.json.get(this.nameWithKey('transcript-alternative')).words;
+        const audioPreferred=this.sound.add(this.nameWithKey('audio-preferred'));
+        const audioAlternative=this.sound.add(this.nameWithKey('audio-alternative'));
 
-        // Offset alternate timings (e.g., start 5 seconds after preferred text ends)
-        const delayOffset = preferredWordTimings[preferredWordTimings.length - 1].startTime + 1.0; // 4.4 + 1.0 = 5.4s
-        const alternateWordTimings = [
-            { word: "Clarita", startTime: delayOffset + 0.0 },
-            { word: "looked", startTime: delayOffset + 0.4 },
-            { word: "at", startTime: delayOffset + 0.8 },
-            { word: "herself", startTime: delayOffset + 1.2 },
-            { word: "in", startTime: delayOffset + 1.6 },
-            { word: "the", startTime: delayOffset + 2.0 },
-            { word: "mirror", startTime: delayOffset + 2.4 },
-            { word: "and", startTime: delayOffset + 2.8 },
-            { word: "said", startTime: delayOffset + 3.2 },
-            { word: "I", startTime: delayOffset + 3.6 },
-            { word: "am", startTime: delayOffset + 4.0 },
-            { word: "very", startTime: delayOffset + 4.4 },
-            { word: "special!", startTime: delayOffset + 4.8 }
-        ];
+        this.playAudioWithSync( preferredHighlighter, transcriptPreferred, audioPreferred,2000, () => {
+            this.playAudioWithSync( alternateHighlighter, transcriptAlternative, audioAlternative,1000);
+        });
+    };
 
-        console.log("Starting preferred text highlight simulation...");
-        preferredHighlighter.syncWithAudio(preferredWordTimings);
-
-        console.log("Starting alternate text highlight simulation...");
-        alternateHighlighter.syncWithAudio(alternateWordTimings);
+    playAudioWithSync( highlighter:TextHighlighter, transcript:any, audio: any,delay:number, onComplete?:CallableFunction) {
+        this.time.delayedCall(delay, () => {
+            console.log(transcript);
+            highlighter.syncWithAudio(transcript);
+            audio.play();
+            if (onComplete) audio.once('complete', onComplete);
+        });
     };
 }
+
+
+
 
 /* END-USER-CODE */
 
@@ -270,13 +269,13 @@ class TextHighlighter {
     }
 
     // Modified to test without audio
-    syncWithAudio(wordTimings: { word: string, startTime: number }[]) {
+    syncWithAudio(wordTimings: { text: string, start: number }[]) {
         // Simulate timing without actual audio
         wordTimings.forEach((timing, index) => {
             const scene = this.wordObjects[0].textObject.scene;
-            scene.time.delayedCall(timing.startTime * 1000, () => {
+            scene.time.delayedCall(timing.start * 1000, () => {
                 this.highlightWord(index);
-                console.log(`Highlighted: "${timing.word}" at ${timing.startTime}s`);
+                console.log(`Highlighted: "${timing.text}" at ${timing.start}s`);
             });
         });
     }
