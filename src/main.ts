@@ -14,6 +14,7 @@ import P_4 from "./scenes/story/P_4";
 import P_5 from "./scenes/story/P_5";
 import P_6 from "./scenes/story/P_6";
 import OB_UI from "./scenes/UI/OB_UI";
+import WC_ChooseTheme from "./scenes/WordCrafter/WC_ChooseTheme";
 
 class Boot extends Phaser.Scene {
 
@@ -50,7 +51,7 @@ window.addEventListener('load', function () {
 			mode: Phaser.Scale.ScaleModes.FIT,
 			autoCenter: Phaser.Scale.Center.CENTER_BOTH
 		},
-		scene: [Boot, Preload, OB_UI, OB_1, OB_2, OB_3_1, OB_3_2, OB_4, P_0, P_1, P_2, P_3, P_4, P_5, P_6]
+		scene: [Boot, Preload, OB_UI, OB_1, OB_2, OB_3_1, OB_3_2, OB_4, P_0, P_1, P_2, P_3, P_4, P_5, P_6,WC_ChooseTheme]
 	});
 
 	game.scene.start("Boot");
