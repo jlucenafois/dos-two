@@ -29,6 +29,8 @@ export default class WC_Game extends Phaser.Scene {
 
 	create() {
 		this.editorCreate();
+        this.events.emit('updateUI', 'show_exit_button')
+		this.events.emit("updateUI", "change_background", "#ffffff"); // Notify UI
 	}
 
 	/* END-USER-CODE */

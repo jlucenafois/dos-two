@@ -137,6 +137,7 @@ export default class OB_UI extends Phaser.Scene {
 		this.scene.get("OB_4").events.on("updateUI", this.updateUI, this); // read updateUI
 		this.scene.get("P_0").events.on("updateUI", this.updateUI, this); // read updateUI
         this.scene.get("WC_Preload").events.on("updateUI", this.updateUI, this); // read updateUI
+        this.scene.get("WC_Game").events.on("updateUI", this.updateUI, this); // read updateUI
 
 	/* HOME */
 		this.default_home_lg.setInteractive({ useHandCursor: true });
