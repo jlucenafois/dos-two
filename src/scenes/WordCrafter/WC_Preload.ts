@@ -2,7 +2,7 @@ import PreloadBase from "../PreloadBase";
 export default class WC_Preload extends PreloadBase {
 
 	constructor() {
-		super("WC_Preload", ["WordCrafter"], "WC_ChooseTheme");
+		super("WC_Preload", ["WordCrafter"], "WC_Game");
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.
@@ -11,11 +11,11 @@ export default class WC_Preload extends PreloadBase {
 
 	preload(): void {
         super.preload();
-		this.events.emit("updateUI", "change_background", "#ffd439"); // Notify UI
     }
-
+    
     create(): void {
         super.create();
+        this.events.emit("updateUI", "change_background", "#ffd439"); // Notify UI
     }
 }
 
