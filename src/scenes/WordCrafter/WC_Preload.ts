@@ -11,7 +11,7 @@ import WC_ChooseTheme from "./WC_ChooseTheme";
 export default class WC_Preload extends PreloadBase {
 
 	constructor() {
-		super("WC_Preload", ["WC"], "WC_ChooseTheme");
+		super("WC_Preload", ["WordCrafter"], "WC_ChooseTheme");
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.
