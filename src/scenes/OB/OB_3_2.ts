@@ -13,9 +13,9 @@ export default class OB_3_2 extends OB_Base {
 		this.add.image(849, 859, "word_title");
 
         // change this for other games
-		this.match_button = this.createButton(1138, 394, "match_button", "WC_ChooseTheme");
-		this.word_button = this.createButton(604, 394, "word_button", "WC_ChooseTheme");
-		this.memory_button = this.createButton(92, 439, "memory_button", "WC_ChooseTheme");
+		this.match_button = this.createButton(1138, 394, "match_button", "WC_Preload");
+		this.word_button = this.createButton(604, 394, "word_button", "WC_Preload");
+		this.memory_button = this.createButton(92, 439, "memory_button", "WC_Preload");
 
 		this.events.emit("scene-awake");
 	}

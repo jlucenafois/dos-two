@@ -20,6 +20,7 @@ import OB_UI from "../UI/OB_UI";
 
 /* END-USER-IMPORTS */
 import PreloadBase from "../PreloadBase";
+import WC_Preload from "../WordCrafter/WC_Preload";
 export default class OB_Preload extends PreloadBase {
 
 	constructor() {
@@ -45,6 +46,7 @@ export default class OB_Preload extends PreloadBase {
         this.scene.add("P_4", P_4);
         this.scene.add("P_5", P_5);
         this.scene.add("P_6", P_6);
+        this.scene.add("WC_Preload", WC_Preload);
     }
 
     create(): void {
