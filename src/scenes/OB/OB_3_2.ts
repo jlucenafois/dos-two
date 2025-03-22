@@ -27,7 +27,7 @@ export default class OB_3_2 extends OB_Base {
 	create() {
 		super.create();
 		this.editorCreate();
-		this.events.emit("updateUI", "show_exit_button"); // Notify UI
+		this.events.emit("updateUI", "change_background", "#7580FF"); // Notify UI
 	}
 
 	private createButton(x: number, y: number, texture: string, sceneKey: string): Phaser.GameObjects.Image {

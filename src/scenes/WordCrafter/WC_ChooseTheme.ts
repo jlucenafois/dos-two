@@ -17,7 +17,6 @@ export default class WC_ChooseTheme extends Base {
 		this.carrot = this.createImage(477, 743, 'Carrot', 0.2);
 		// mirror
 		this.mirror = this.createImage(1235, 746, 'Mirror', 0.2);
-
 		this.events.emit('scene-awake');
 	}
 
@@ -44,7 +43,7 @@ export default class WC_ChooseTheme extends Base {
 		});
 		image.on('pointerdown', () => {
 			this.scene.stop('WC_ChooseTheme');
-            this.scene.start('WC_Main', { theme: texture });
+            this.scene.start('WC_Game', { theme: texture });
 		});
 		return image;
 	}

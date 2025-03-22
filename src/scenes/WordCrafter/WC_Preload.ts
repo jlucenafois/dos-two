@@ -1,13 +1,4 @@
-
-// You can write more code here
-
-/* START OF COMPILED CODE */
-
-/* START-USER-IMPORTS */
 import PreloadBase from "../PreloadBase";
-import WC_ChooseTheme from "./WC_ChooseTheme";
-/* END-USER-IMPORTS */
-
 export default class WC_Preload extends PreloadBase {
 
 	constructor() {
@@ -20,7 +11,7 @@ export default class WC_Preload extends PreloadBase {
 
 	preload(): void {
         super.preload();
-        this.scene.add("WC_ChooseTheme", WC_ChooseTheme);
+		this.events.emit("updateUI", "change_background", "#ffd439"); // Notify UI
     }
 
     create(): void {

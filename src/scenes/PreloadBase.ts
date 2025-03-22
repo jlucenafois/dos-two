@@ -41,7 +41,7 @@ export default class Preload extends Base {
 	// Function to update progress bar based on value
 	updateProgressBar(value: number) {
 		if (value === 1) {
-			this.progress_bar.setTexture("100_progress_bar_lg");
+			this.progress_bar.setVisible(false);
 		} else if (value >= 0.75) {
 			this.progress_bar.setTexture("75_progress_bar_lg");
 		} else if (value >= 0.5) {
@@ -59,7 +59,7 @@ export default class Preload extends Base {
 
 			if (start) {
 				console.log(`Development: jump to ${start}`);
-				this.scene.start(start);
+				this.scene.startS(start);
 				return;
 			}
 		}
