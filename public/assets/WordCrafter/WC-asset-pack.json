@@ -1,0 +1,29 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": "assets/WordCrafter/Carrot.png",
+                "type": "image",
+                "key": "Carrot"
+            },
+            {
+                "url": "assets/WordCrafter/Mirror.png",
+                "type": "image",
+                "key": "Mirror"
+            },
+            {
+                "url": "assets/WordCrafter/Utensils.png",
+                "type": "image",
+                "key": "Utensils"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false,
+        "visible": true
+    }
+}
