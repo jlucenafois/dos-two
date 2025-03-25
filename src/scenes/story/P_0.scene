@@ -25,6 +25,22 @@
             "y": 558.5,
             "animationPlayMethod": 1,
             "animationKey": "open_cover"
+        },
+        {
+            "type": "Sprite",
+            "id": "19f067da-ba30-44b9-a447-b1795e405a89",
+            "label": "mirror",
+            "displayName": "mirror",
+            "scope": "CLASS",
+            "texture": {
+                "key": "1_girl",
+                "frame": 0
+            },
+            "x": 698,
+            "y": 630,
+            "visible": false,
+            "animationKey": "1_mirror",
+            "animationPreview": true
         }
     ],
     "plainObjects": [],

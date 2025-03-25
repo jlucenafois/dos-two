@@ -86,8 +86,13 @@ export default class OB_UI extends Phaser.Scene {
 	registerListeners() {
 		this.scene.manager.scenes.forEach(scene => {
 			if (scene instanceof Base) {
-				scene.events.on("updateUI", this.updateUI, this);
-				scene.events.on("updateProgressBar", this.updateProgressBar, this);
+				scene.events.on("showExitButton", this.showExitButton, this);
+				scene.events.on("showBackArrow", this.showBackArrow, this);	
+				scene.events.on("showSideArrows", this.showSideArrows, this);		
+				scene.events.on("hideSideArrows", this.hideSideArrows, this);		
+				scene.events.on("showBook", this.showBook, this);		
+				scene.events.on("changeBackground", this.changeBackground, this);
+				scene.events.on("updateProgressBar", this.updateProgressBar, this)
 			}
 		});
 
@@ -101,9 +106,36 @@ export default class OB_UI extends Phaser.Scene {
 			}
 		}
 	}
-	// refactor updateUI to separate functions
+	/* EVENTS */
+	showExitButton() {
+		this.default_back_md.setVisible(false);
+		this.default_exit_lg.setVisible(true);
+	}
+	showBackArrow() {
+		this.default_exit_lg.setVisible(false);
+		this.default_back_md.setVisible(true);
+	}
+	showSideArrows() {
+		this.default_back_lg.setVisible(true);
+		this.default_next_lg.setVisible(true);
+	}
+	hideSideArrows() {
+		this.default_back_lg.setVisible(false);
+		this.default_next_lg.setVisible(false);
+	}
+	showBook() {
+		this.book.setVisible(true);
+	}
+	changeBackground(color: string) {
+		const div = document.getElementById('game-container');
+		if (div) {
+			div.style.backgroundColor = color;
+		} else {
+			console.warn("Unable to change background: Element not found or color not provided.");
+		}
+	}
+
 	updateProgressBar(value: number) {
-		console.log(value)
 		if (value === 1) {
 			this.progress_bar.setTexture("progress_medium_100");
 		} else if (value >= 0.75) {
@@ -116,54 +148,6 @@ export default class OB_UI extends Phaser.Scene {
 			this.progress_bar.setTexture("progress_medium_0");
 		}
 	}
-
-	public updateUI(event: string, color?: string, param?: number) {
-		const actions: Record<string, (param?: number) => void> = {
-			"show_back_arrow": () => {
-				this.default_exit_lg.setVisible(false);
-				this.default_back_md.setVisible(true);
-			},
-			"show_exit_button": () => {
-				this.default_back_md.setVisible(false);
-				this.default_exit_lg.setVisible(true);
-			},
-			"show_side_arrows": () => {
-				this.default_back_lg.setVisible(true);
-				this.default_next_lg.setVisible(true);
-			},
-			"hide_side_arrows": () => {
-				this.default_back_lg.setVisible(false);
-				this.default_next_lg.setVisible(false);
-			},
-			"show_book": () => {
-				this.book.setVisible(true);
-			},
-			"change_background": () => {
-				const div = document.getElementById('game-container');
-				if (div && color) {
-					div.style.backgroundColor = color;
-				} else {
-					console.warn("Unable to change background: Element not found or color not provided.");
-				}
-			},
-			"show_progress_bar": () => {
-				this.progress_bar.setVisible(true);
-			},
-			"hide_progress_bar": () => {
-				this.progress_bar.setVisible(false);
-			},
-		};
-	
-		// Execute the corresponding function if the event exists
-		const action = actions[event];
-		console.log(action)
-		if (action) {
-			action(param);
-		} else {
-			console.warn(`Unhandled event: ${event}`);
-		}
-	}	
-
 
 	create() {
 		this.editorCreate();

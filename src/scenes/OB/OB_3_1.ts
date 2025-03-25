@@ -93,7 +93,6 @@ export default class OB_3_1 extends OB_Base {
 
 		// Click event - Transition to OB_3_1
 		this.spanish_bubble.on("pointerdown", () => {
-			this.events.emit("updateUI", "spanish_bubble"); // Notify UI
 			CURRENT_SETTINGS.gameState.language = Language.Spanish
 			this.scene.start("OB_4");
 		});
@@ -126,7 +125,6 @@ export default class OB_3_1 extends OB_Base {
 
 		// Click event - Transition to OB_3_1
 		this.english_bubble.on("pointerdown", () => {
-			this.events.emit("updateUI", "english_bubble"); // Notify UI
 			CURRENT_SETTINGS.gameState.language = Language.English
 			this.scene.start("OB_4");
 		});
