@@ -8,7 +8,6 @@ import Base from "../Base";
 /* END-USER-IMPORTS */
 
 export default class OB_Base extends Base {
-
 	constructor(key:string) {
 		super(key);
 

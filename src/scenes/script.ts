@@ -1,13 +1,41 @@
 import { SupportedShape } from "../../types/shape/SupportedShape";
 import { DualComponent } from "../../types/components/DualComponent";
+import OB_1 from "./OB/OB_1";
 
 let SPANISH_HIGHLIGHT = {fill: '#B00012', } 
 let ENGLISH_HIGHLIGHT = {fill: '#3738B4', } 
+const CHAPTERS: Record<string, number> = {
+    "CH_1": 4,
+}
 export const SCRIPT: Record<string, { 
     dualComponents?: DualComponent[]
+    prev_key: string | null, 
+    next_key: string | null, 
+    index?: number, 
+    total?: number, // might be a better way
     // TODO: expand this to allow Single Components
     // singleComponents?: SingleComponent[] 
 }> = {
+    OB_1: {
+        prev_key: null,
+        next_key: "OB_2",
+    },
+    OB_2: {
+        prev_key: "OB_1",
+        next_key: null,
+    },
+    OB_3_1: {
+        prev_key: "OB_2",
+        next_key: "OB_4",
+    },
+    OB_3_2: {
+        prev_key: "OB_2",
+        next_key: "OB_4",
+    },
+    OB_4: {
+        prev_key: null,
+        next_key: "P_1",
+    },
     P_0: {
         dualComponents: [{
             coordinates: {
@@ -63,6 +91,10 @@ export const SCRIPT: Record<string, {
                 ],
             }
         }],
+        prev_key: null,
+        next_key: "P_1",
+        index: 0,
+        total: CHAPTERS["CH_1"],
     },
     P_1: {
         dualComponents: [{
@@ -115,6 +147,10 @@ export const SCRIPT: Record<string, {
                 ],
             }
         }],
+        prev_key: "P_0",
+        next_key: "P_2",
+        index: 1,
+        total: CHAPTERS["CH_1"],
     },
     P_2: {
         dualComponents: [{
@@ -175,6 +211,21 @@ export const SCRIPT: Record<string, {
                 ],
             }
         }],
-    }
-
+        prev_key: "P_1",
+        next_key: "P_3",
+        index: 2,
+        total: CHAPTERS["CH_1"],
+    },
+    P_3: {
+        prev_key: "P_2",
+        next_key: "Q_1",
+        index: 3,
+        total: CHAPTERS["CH_1"],
+    }, 
+    Q_1: {
+        prev_key: "P_3",
+        next_key: "P_4",
+        index: 4,
+        total: CHAPTERS["CH_1"],
+    },   
 }

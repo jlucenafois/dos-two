@@ -85,6 +85,31 @@
                 "url": "assets/UI/pressed_unmuted_lg.png",
                 "type": "image",
                 "key": "pressed_unmuted_lg"
+            },
+            {
+                "url": "assets/UI/progress_medium_0.png",
+                "type": "image",
+                "key": "progress_medium_0"
+            },
+            {
+                "url": "assets/UI/progress_medium_100.png",
+                "type": "image",
+                "key": "progress_medium_100"
+            },
+            {
+                "url": "assets/UI/progress_medium_25.png",
+                "type": "image",
+                "key": "progress_medium_25"
+            },
+            {
+                "url": "assets/UI/progress_medium_50.png",
+                "type": "image",
+                "key": "progress_medium_50"
+            },
+            {
+                "url": "assets/UI/progress_medium_75.png",
+                "type": "image",
+                "key": "progress_medium_75"
             }
         ]
     },

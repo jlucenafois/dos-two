@@ -10,6 +10,7 @@ export default class P_0 extends P_Base {
 
 	constructor() {
 		super("P_0");
+		
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.

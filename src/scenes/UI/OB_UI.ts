@@ -4,6 +4,7 @@
 /* START OF COMPILED CODE */
 
 /* START-USER-IMPORTS */
+import Base from '../Base.ts';
 import {CURRENT_SETTINGS} from '../settings.ts'
 /* END-USER-IMPORTS */
 
@@ -54,6 +55,10 @@ export default class OB_UI extends Phaser.Scene {
 		default_back_lg.setOrigin(1, 0.5);
 		default_back_lg.visible = false;
 
+		// progress_bar
+		const progress_bar = this.add.image(743, 86, "progress_medium_0");
+		progress_bar.setOrigin(0, 0);
+
 		this.book = book;
 		this.default_exit_lg = default_exit_lg;
 		this.default_home_lg = default_home_lg;
@@ -62,6 +67,7 @@ export default class OB_UI extends Phaser.Scene {
 		this.default_home_purple_lg = default_home_purple_lg;
 		this.default_next_lg = default_next_lg;
 		this.default_back_lg = default_back_lg;
+		this.progress_bar = progress_bar;
 
 		this.events.emit("scene-awake");
 	}
@@ -74,9 +80,18 @@ export default class OB_UI extends Phaser.Scene {
 	private default_home_purple_lg!: Phaser.GameObjects.Image;
 	private default_next_lg!: Phaser.GameObjects.Image;
 	private default_back_lg!: Phaser.GameObjects.Image;
+	private progress_bar!: Phaser.GameObjects.Image;
 
 	/* START-USER-CODE */
+	registerListeners() {
+		this.scene.manager.scenes.forEach(scene => {
+			if (scene instanceof Base) {
+				scene.events.on("updateUI", this.updateUI, this);
+				scene.events.on("updateProgressBar", this.updateProgressBar, this);
+			}
+		});
 
+	}
 	// Write your code here
 	stopAllScenes(exceptions: Array<string>) {
 		const activeScenes = this.scene.manager.getScenes(true); // Get active scenes
@@ -86,9 +101,24 @@ export default class OB_UI extends Phaser.Scene {
 			}
 		}
 	}
+	// refactor updateUI to separate functions
+	updateProgressBar(value: number) {
+		console.log(value)
+		if (value === 1) {
+			this.progress_bar.setTexture("progress_medium_100");
+		} else if (value >= 0.75) {
+			this.progress_bar.setTexture("progress_medium_75");
+		} else if (value >= 0.5) {
+			this.progress_bar.setTexture("progress_medium_50");
+		} else if (value >= 0.25) {
+			this.progress_bar.setTexture("progress_medium_25");
+		} else {
+			this.progress_bar.setTexture("progress_medium_0");
+		}
+	}
 
-	updateUI(event: string, color?: string) {
-		const actions: Record<string, () => void> = {
+	public updateUI(event: string, color?: string, param?: number) {
+		const actions: Record<string, (param?: number) => void> = {
 			"show_back_arrow": () => {
 				this.default_exit_lg.setVisible(false);
 				this.default_back_md.setVisible(true);
@@ -110,31 +140,34 @@ export default class OB_UI extends Phaser.Scene {
 			},
 			"change_background": () => {
 				const div = document.getElementById('game-container');
-				console.log(color)
 				if (div && color) {
 					div.style.backgroundColor = color;
 				} else {
 					console.warn("Unable to change background: Element not found or color not provided.");
 				}
 			},
+			"show_progress_bar": () => {
+				this.progress_bar.setVisible(true);
+			},
+			"hide_progress_bar": () => {
+				this.progress_bar.setVisible(false);
+			},
 		};
 	
 		// Execute the corresponding function if the event exists
 		const action = actions[event];
+		console.log(action)
 		if (action) {
-			action();
+			action(param);
 		} else {
 			console.warn(`Unhandled event: ${event}`);
 		}
-	}
-	
+	}	
+
 
 	create() {
 		this.editorCreate();
-		this.scene.get("OB_1").events.on("updateUI", this.updateUI, this); // read updateUI
-		this.scene.get("OB_2").events.on("updateUI", this.updateUI, this); // read updateUI
-		this.scene.get("OB_4").events.on("updateUI", this.updateUI, this); // read updateUI
-		this.scene.get("P_0").events.on("updateUI", this.updateUI, this); // read updateUI
+		this.registerListeners();
 
 	/* HOME */
 		this.default_home_lg.setInteractive({ useHandCursor: true });

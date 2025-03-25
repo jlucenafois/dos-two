@@ -115,6 +115,19 @@
             "y": 637,
             "originX": 1,
             "visible": false
+        },
+        {
+            "type": "Image",
+            "id": "00c1cc3a-50f3-4a19-9d3b-49573c6916c7",
+            "label": "progress_bar",
+            "scope": "CLASS",
+            "texture": {
+                "key": "progress_medium_0"
+            },
+            "x": 743,
+            "y": 86,
+            "originX": 0,
+            "originY": 0
         }
     ],
     "plainObjects": [],
