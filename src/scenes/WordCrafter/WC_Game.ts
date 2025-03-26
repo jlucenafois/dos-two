@@ -1,101 +1,77 @@
+import WordPuzzle from "./objects/WordPuzzle";
+
 export default class WC_Game extends Phaser.Scene {
-	private theme: string = "Mirror";
+    private theme: string = "Mirror";
+    private puzzle: WordPuzzle;
+    private worldBounds: { width: number, height: number } = { width: 1728, height: 1117 };
 
-	constructor() {
-		super("WC_Game");
-	}
-
-	init({ theme }: { theme: string }): void {
-		this.theme = theme;
-	}
-
-    preload() {
-        this.load.json("letterVertices", "assets/WordCrafter/letterVertices.json");
-        this.load.json("letters", "assets/WordCrafter/letters.json");
+    constructor() {
+        super("WC_Game");
     }
 
-	editorCreate(): void {
-		this.events.emit("scene-awake");
-	}
+    init({ theme }: { theme: string }): void {
+        this.theme = theme;
+    }
 
-	create(): void {
-		this.editorCreate();
-		this.events.emit("updateUI", "show_exit_button");
-		this.events.emit("updateUI", "change_background", "#ffffff");
+    preload() {
+        // Load necessary assets
+        this.load.image('letter-slot', 'assets/letter-slot.png');
+    }
 
-		const letters = this.cache.json.get("letters");
-		
-		// Parameters for letter positioning
-		const startX = 100;
-		const startY = 200;
-		const letterSpacing = 80; // Horizontal spacing between letters
-		const rowSpacing = 150;   // Vertical spacing between rows (if needed)
-		const lettersPerRow = 13; // Split into two rows for better visibility
-		// Create all 26 letters (A-Z)
-		for (let i = 65; i <= 90; i++) {
-			const letter = String.fromCharCode(i);
-			
-			// Skip if we don't have data for this letter
-			if (!letters[letter]) continue;
-            console.log(letter);
-			
-			// Calculate position - arranging in rows
-			const row = Math.floor((i - 65) / lettersPerRow);
-			const col = (i - 65) % lettersPerRow;
-			const x = startX + (col * letterSpacing);
-			const y = startY + (row * rowSpacing);
-			
-			// Create letter physics body
-			const pathString = letters[letter];
-			const pathElement = this.createSVGPathElement(pathString);
-            console.log(pathElement);
-			const vertices = this.matter.svg.pathToVertices(pathElement, 10);
-			console.log(vertices);
-			const body = this.matter.add.fromVertices(x, y, [vertices], {
-				restitution: 0.8,
-				friction: 0.1,
-				isStatic: false // Make them move with physics
-			}, true);
-			
-			// Optional: Add text label for easier identification
-			this.add.text(x, y - 50, letter, { 
-				font: '16px Arial', 
-				color: '#000000' 
-			}).setOrigin(0.5);
-			
-			// Draw debug outline
-			// this.drawDebugShape(body);
-		}
-	}
+    editorCreate(): void {
+        this.events.emit("scene-awake");
+    }
 
-	// Draws a debug shape so the body is visible
-	drawDebugShape(body) {
-		const graphics = this.add.graphics();
-		graphics.lineStyle(2, 0xff0000); // Red outline
+    create(): void {
+        this.editorCreate();
+        this.events.emit("updateUI", "show_exit_button");
+        this.events.emit("updateUI", "change_background", "#ffffff");
 
-		const vertices = body.parts[0].vertices;
-		graphics.beginPath();
-		graphics.moveTo(vertices[0].x, vertices[0].y);
-		for (let i = 1; i < vertices.length; i++) {
-			graphics.lineTo(vertices[i].x, vertices[i].y);
-		}
-		graphics.closePath();
-		graphics.strokePath();
-	}
-
-    createSVGPathElement(pathData) {
-        // Create a complete SVG string with proper namespace
-        const svgString = `
-            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
-                ${pathData}
-            </svg>
-        `;
+        // Configure physics - disable gravity
+        this.matter.world.setGravity(0, 0);
         
-        // Parse the SVG string to an actual DOM element
-        const parser = new DOMParser();
-        const svgDoc = parser.parseFromString(svgString, "image/svg+xml");
+        // Create solid boundary walls
+        this.createBoundaryWalls();
+
+        // Initialize the word puzzle with a target word
+        // Using this.theme to select a word appropriate for the theme
+        const targetWord = this.getWordForTheme(this.theme);
+        this.puzzle = new WordPuzzle(this, targetWord, this.worldBounds);
         
-        // Return the path element from the parsed SVG
-        return svgDoc.querySelector("path");
+        // Add a mouse spring for dragging
+        this.matter.add.mouseSpring({
+            stiffness: 0.1,
+            damping: 0.1,
+            length: 0
+        });
+    }
+
+    getWordForTheme(theme: string): string {
+        // Theme-based word selection
+        const wordsByTheme: {[key: string]: string[]} = {
+            "Mirror": ["REFLECT", "MIRROR", "IMAGE", "GLASS", "SHINE"],
+            "Ocean": ["WAVES", "BEACH", "SHELL", "CORAL", "OCEAN"],
+            "Forest": ["TREES", "LEAVES", "WOODS", "GREEN", "SHADE"]
+        };
+        
+        const availableWords = wordsByTheme[theme] || ["PUZZLE", "WORDS", "LETTER", "GAME"];
+        return availableWords[Math.floor(Math.random() * availableWords.length)];
+    }
+
+    createBoundaryWalls() {
+        const thickness = 50;
+        
+        // Create walls inset from the boundaries
+        this.matter.add.rectangle(thickness/2, this.worldBounds.height/2, thickness, this.worldBounds.height, { isStatic: true }); // Left
+        this.matter.add.rectangle(this.worldBounds.width - thickness/2, this.worldBounds.height/2, thickness, this.worldBounds.height, { isStatic: true }); // Right
+        this.matter.add.rectangle(this.worldBounds.width/2, thickness/2, this.worldBounds.width, thickness, { isStatic: true }); // Top
+        this.matter.add.rectangle(this.worldBounds.width/2, this.worldBounds.height - thickness/2, this.worldBounds.width, thickness, { isStatic: true }); // Bottom
+    }
+
+    update() {
+        // Update the puzzle state
+        if (this.puzzle) {
+            this.puzzle.update();
+        }
     }
 }
