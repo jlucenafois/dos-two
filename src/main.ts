@@ -51,6 +51,13 @@ window.addEventListener("load", function () {
 			mode: Phaser.Scale.ScaleModes.FIT,
 			autoCenter: Phaser.Scale.Center.CENTER_BOTH,
 		},
+        physics: {
+            default: 'matter',
+            matter: {
+                debug:true,
+                gravity: { x:0,y: 0 },
+            }
+        },
 		scene: [
 			Boot,
 			OB_Preload,
