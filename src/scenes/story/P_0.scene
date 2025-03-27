@@ -41,6 +41,21 @@
             "visible": false,
             "animationKey": "1_mirror",
             "animationPreview": true
+        },
+        {
+            "type": "Sprite",
+            "id": "dda1e7c7-b1a3-41c3-9eb2-f7a13d3834ef",
+            "label": "sparkles",
+            "scope": "CLASS",
+            "texture": {
+                "key": "1_sparkles",
+                "frame": 18
+            },
+            "x": 822,
+            "y": 353,
+            "visible": false,
+            "animationKey": "sparkles",
+            "animationPreview": true
         }
     ],
     "plainObjects": [],

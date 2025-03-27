@@ -5,7 +5,7 @@
 
 import OB_Base from "./OB_Base";
 /* START-USER-IMPORTS */
-import {CURRENT_SETTINGS, Language} from "../settings";
+import {CURRENT_SETTINGS, Language} from "../../settings";
 
 /* END-USER-IMPORTS */
 

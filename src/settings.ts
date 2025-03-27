@@ -1,4 +1,4 @@
-import Base from "./Base";
+import Base from "./scenes/Base";
 
 export enum Language {
     Spanish = "spanish",

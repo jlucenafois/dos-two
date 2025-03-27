@@ -5,7 +5,7 @@
 
 /* START-USER-IMPORTS */
 import Base from '../Base.ts';
-import {CURRENT_SETTINGS} from '../settings.ts'
+import {CURRENT_SETTINGS} from '../../settings.ts'
 /* END-USER-IMPORTS */
 
 export default class OB_UI extends Phaser.Scene {

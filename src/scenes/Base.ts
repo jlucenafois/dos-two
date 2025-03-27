@@ -1,8 +1,8 @@
 /* START OF COMPILED CODE */
 
 /* START-USER-IMPORTS */
-import { SCRIPT } from "./script";
-import { CURRENT_SETTINGS, updateGameState } from "./settings";
+import { SCRIPT } from "../script";
+import { CURRENT_SETTINGS, updateGameState } from "../settings";
 /* END-USER-IMPORTS */
 
 export default class Base extends Phaser.Scene {

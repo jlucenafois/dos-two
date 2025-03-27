@@ -1,20 +1,21 @@
-import { SupportedShape } from "../../types/shape/SupportedShape";
-import { DualComponent } from "../../types/components/DualComponent";
-import OB_1 from "./OB/OB_1";
+import { SupportedShape } from "../types/shape/SupportedShape";
+import { DualComponent } from "../types/components/DualComponent";
+import { SingleComponent } from "../types/components/SingleComponent";
 
 let SPANISH_HIGHLIGHT = {fill: '#B00012', } 
 let ENGLISH_HIGHLIGHT = {fill: '#3738B4', } 
 const CHAPTERS: Record<string, number> = {
     "CH_1": 4,
+    "CH_2": 2,
 }
 export const SCRIPT: Record<string, { 
     dualComponents?: DualComponent[]
+    singleComponents?: SingleComponent[] 
     prev_key: string | null, 
     next_key: string | null, 
     index?: number, 
     total?: number, // might be a better way
     // TODO: expand this to allow Single Components
-    // singleComponents?: SingleComponent[] 
 }> = {
     OB_1: {
         prev_key: null,
@@ -223,9 +224,89 @@ export const SCRIPT: Record<string, {
         total: CHAPTERS["CH_1"],
     }, 
     Q_1: {
+        // render propmt + blank + options (gotta mark correct vs. incorrect options)
+        singleComponents: [
+            {
+                singleText: {
+                    x: 497, 
+                    y: 436,
+                    content: [{
+                        text: "In Puerto Rico, it is sunny and",
+                        style: {
+                            fontSize: "40px",
+                            fontWeight: 850, 
+                            fill: "#4F4F4F"
+                        }
+                    }]
+                },
+            },
+            {
+                singleShape: {
+                    x: 1125,
+                    y: 465,
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 155,
+                        height: 40, 
+                        radius: 8,
+                        style: {
+                            strokeColor: 0x87E7FF, 
+                            strokeWeight: 6, 
+                        }
+                    }
+                }
+
+            },
+            {
+                singleText: {
+                    x: 529, 
+                    y: 570,
+                    content: [{
+                        text: "hot",
+                        style: {
+                            fontWeight: 850, 
+                            fill: "#4F4F4F"
+                        }
+                    }]
+                },
+                singleShape: {
+                    x: 497,
+                    y: 570,
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 390,
+                        height: 72, 
+                        radius: 8,
+                        style: {
+                            strokeColor: 0x4B4B4B, 
+                            strokeWeight: 6, 
+                        }
+                    }
+                }
+            }
+
+        ],
         prev_key: "P_3",
         next_key: "P_4",
         index: 4,
         total: CHAPTERS["CH_1"],
+    },   
+    P_4: {
+        prev_key: "Q_1",
+        next_key: "P_5",
+        index: 0,
+        total: CHAPTERS["CH_2"],
+    },   
+    P_5: {
+        prev_key: "P_4",
+        next_key: "Q_2",
+        index: 1,
+        total: CHAPTERS["CH_2"],
+    },   
+    Q_2: {
+        prev_key: "P_5",
+        next_key: "P_6",
+        index: 2,
+        total: CHAPTERS["CH_2"],
     },   
 }
