@@ -11,7 +11,7 @@ export default class WordPuzzle {
     
     constructor(scene: Phaser.Scene, word: string, worldBounds: { width: number, height: number }) {
         this.scene = scene;
-        this.word = word.toUpperCase();
+        this.word = word.toLowerCase();
         this.worldBounds = worldBounds;
         
         this.createLetterSlots();

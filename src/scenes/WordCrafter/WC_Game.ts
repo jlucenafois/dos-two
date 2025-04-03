@@ -3,7 +3,13 @@ import WordPuzzle from "./objects/WordPuzzle";
 export default class WC_Game extends Phaser.Scene {
     private theme: string = "Mirror";
     private puzzle: WordPuzzle;
-    private worldBounds: { width: number, height: number } = { width: 1728, height: 1117 };
+    private padding = {
+        top: 200,
+        left: 100,
+        right: 100,
+        bottom: 100,
+    }
+    private worldBounds: { width: number, height: number, x: number, y: number };
 
     constructor() {
         super("WC_Game");
@@ -14,7 +20,6 @@ export default class WC_Game extends Phaser.Scene {
     }
 
     preload() {
-        // Load necessary assets
         this.load.image('letter-slot', 'assets/letter-slot.png');
     }
 
@@ -29,7 +34,15 @@ export default class WC_Game extends Phaser.Scene {
 
         // Configure physics - disable gravity
         this.matter.world.setGravity(0, 0);
-        
+
+        // Calculate world bounds dynamically based on screen dimensions and padding
+        this.worldBounds = {
+            x: this.padding.left,
+            y: this.padding.top,
+            width: this.cameras.main.width - (this.padding.left + this.padding.right),
+            height: this.cameras.main.height - (this.padding.top + this.padding.bottom)
+        };
+
         // Create solid boundary walls
         this.createBoundaryWalls();
 
@@ -59,13 +72,41 @@ export default class WC_Game extends Phaser.Scene {
     }
 
     createBoundaryWalls() {
-        const thickness = 50;
+        // Left wall
+        this.matter.add.rectangle(
+            this.padding.left/2, 
+            this.cameras.main.height/2, 
+            this.padding.left, 
+            this.cameras.main.height, 
+            { isStatic: true }
+        );
         
-        // Create walls inset from the boundaries
-        this.matter.add.rectangle(thickness/2, this.worldBounds.height/2, thickness, this.worldBounds.height, { isStatic: true }); // Left
-        this.matter.add.rectangle(this.worldBounds.width - thickness/2, this.worldBounds.height/2, thickness, this.worldBounds.height, { isStatic: true }); // Right
-        this.matter.add.rectangle(this.worldBounds.width/2, thickness/2, this.worldBounds.width, thickness, { isStatic: true }); // Top
-        this.matter.add.rectangle(this.worldBounds.width/2, this.worldBounds.height - thickness/2, this.worldBounds.width, thickness, { isStatic: true }); // Bottom
+        // Right wall
+        this.matter.add.rectangle(
+            this.cameras.main.width - this.padding.right/2, 
+            this.cameras.main.height/2, 
+            this.padding.right, 
+            this.cameras.main.height, 
+            { isStatic: true }
+        );
+        
+        // Top wall
+        this.matter.add.rectangle(
+            this.cameras.main.width/2, 
+            this.padding.top/2, 
+            this.cameras.main.width, 
+            this.padding.top, 
+            { isStatic: true }
+        );
+        
+        // Bottom wall
+        this.matter.add.rectangle(
+            this.cameras.main.width/2, 
+            this.cameras.main.height - this.padding.bottom/2, 
+            this.cameras.main.width, 
+            this.padding.bottom, 
+            { isStatic: true }
+        );
     }
 
     update() {
