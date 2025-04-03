@@ -93,6 +93,7 @@ export default class OB_UI extends Phaser.Scene {
 				scene.events.on("showBook", this.showBook, this);		
 				scene.events.on("changeBackground", this.changeBackground, this);
 				scene.events.on("updateProgressBar", this.updateProgressBar, this)
+				scene.events.on("disableForwardNav", this.disableForwardNav, this)
 			}
 		});
 
@@ -106,6 +107,7 @@ export default class OB_UI extends Phaser.Scene {
 			}
 		}
 	}
+
 	/* EVENTS */
 	showExitButton() {
 		this.default_back_md.setVisible(false);
@@ -147,6 +149,11 @@ export default class OB_UI extends Phaser.Scene {
 		} else {
 			this.progress_bar.setTexture("progress_medium_0");
 		}
+	}
+
+	disableForwardNav() {
+		this.default_next_lg.disableInteractive();
+		this.default_next_lg.setTexture("disabled_next_lg");
 	}
 
 	create() {

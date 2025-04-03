@@ -2,18 +2,19 @@ import { SupportedShape } from "../types/shape/SupportedShape";
 import { DualComponent } from "../types/components/DualComponent";
 import { SingleComponent } from "../types/components/SingleComponent";
 
-let SPANISH_HIGHLIGHT = {fill: '#B00012', } 
-let ENGLISH_HIGHLIGHT = {fill: '#3738B4', } 
+let SPANISH_HIGHLIGHT = { fill: '#B00012', }
+let ENGLISH_HIGHLIGHT = { fill: '#3738B4', }
 const CHAPTERS: Record<string, number> = {
     "CH_1": 4,
     "CH_2": 2,
+    "CH_3": 7,
 }
-export const SCRIPT: Record<string, { 
+export const SCRIPT: Record<string, {
     dualComponents?: DualComponent[]
-    singleComponents?: SingleComponent[] 
-    prev_key: string | null, 
-    next_key: string | null, 
-    index?: number, 
+    singleComponents?: SingleComponent[]
+    prev_key: string | null,
+    next_key: string | null,
+    index?: number,
     total?: number, // might be a better way
     // TODO: expand this to allow Single Components
 }> = {
@@ -57,14 +58,14 @@ export const SCRIPT: Record<string, {
                             strokeColor: 0xFF9C1A,
                             strokeWeight: 4,
                             shadowOffset: 16,
-                            shadowFill: 0xF9A336, 
+                            shadowFill: 0xF9A336,
                             shadowAlpha: 1,
                         }
                     }
                 },
                 englishShape: {
                     type: SupportedShape.RoundedRect,
-                    style:{
+                    style: {
                         width: 419,
                         height: 114,
                         radius: 16,
@@ -73,23 +74,29 @@ export const SCRIPT: Record<string, {
                             strokeColor: 0x4CDAFE,
                             strokeWeight: 4,
                             shadowOffset: 16,
-                            shadowFill: 0x01B4ED, 
+                            shadowFill: 0x01B4ED,
                             shadowAlpha: 1,
-                    }
+                        }
                     }
                 }
             },
             dualText: {
-                spanishText: [
-                    { text: 'Clarita se mira en el '},
-                    { text: 'espejo', style: SPANISH_HIGHLIGHT}, // Highlighted word
-                    { text: '\n"Soy especial," dice.'},
-                ],
-                englishText: [
-                    { text: 'Clarita looks in the '},
-                    { text: 'mirror', style: ENGLISH_HIGHLIGHT}, // Highlighted word
-                    { text: '\n"I am special," she says.'},
-                ],
+                spanishText: {
+                    content: [
+                        { text: 'Clarita se mira en el ' },
+                        { text: 'espejo', style: SPANISH_HIGHLIGHT }, // Highlighted word
+                        { text: '\n"Soy especial," dice.' },
+                    ], 
+                    box: 'shape'
+                },
+                englishText: {
+                    content: [
+                        { text: 'Clarita looks in the ' },
+                        { text: 'mirror', style: ENGLISH_HIGHLIGHT }, // Highlighted word
+                        { text: '\n"I am special," she says.' },
+                    ], 
+                    box: 'shape'
+                }
             }
         }],
         prev_key: null,
@@ -117,14 +124,14 @@ export const SCRIPT: Record<string, {
                             strokeColor: 0xFF9C1A,
                             strokeWeight: 4,
                             shadowOffset: 16,
-                            shadowFill: 0xF9A336, 
+                            shadowFill: 0xF9A336,
                             shadowAlpha: 1,
                         }
                     }
                 },
                 englishShape: {
                     type: SupportedShape.RoundedRect,
-                    style:{
+                    style: {
                         width: 419,
                         height: 81,
                         radius: 16,
@@ -133,19 +140,25 @@ export const SCRIPT: Record<string, {
                             strokeColor: 0x4CDAFE,
                             strokeWeight: 4,
                             shadowOffset: 16,
-                            shadowFill: 0x01B4ED, 
+                            shadowFill: 0x01B4ED,
                             shadowAlpha: 1,
-                    }
+                        }
                     }
                 }
             },
             dualText: {
-                spanishText: [
-                    { text: '"¡Hablo inglés y español!"'},
-                ],
-                englishText: [
-                    { text: '"I speak Enlgish and Spanish!"'},
-                ],
+                spanishText: {
+                    content: [
+                        { text: '"¡Hablo inglés y español!"' },
+                    ], 
+                    box: 'shape'
+                },
+                englishText: {
+                    content: [
+                        { text: '"I speak Enlgish and Spanish!"' },
+                    ], 
+                    box: 'shape'
+                }
             }
         }],
         prev_key: "P_0",
@@ -173,14 +186,14 @@ export const SCRIPT: Record<string, {
                             strokeColor: 0xFF9C1A,
                             strokeWeight: 4,
                             shadowOffset: 16,
-                            shadowFill: 0xF9A336, 
+                            shadowFill: 0xF9A336,
                             shadowAlpha: 1,
                         }
                     }
                 },
                 englishShape: {
                     type: SupportedShape.RoundedRect,
-                    style:{
+                    style: {
                         width: 419,
                         height: 114,
                         radius: 16,
@@ -189,27 +202,33 @@ export const SCRIPT: Record<string, {
                             strokeColor: 0x4CDAFE,
                             strokeWeight: 4,
                             shadowOffset: 16,
-                            shadowFill: 0x01B4ED, 
+                            shadowFill: 0x01B4ED,
                             shadowAlpha: 1,
-                    }
+                        }
                     }
                 }
             },
             dualText: {
-                spanishText: [
-                    { text: 'Mi familia es de Puerto Rico,\ndonde hace '},
-                    { text: 'sol ', style: SPANISH_HIGHLIGHT},
-                    { text: 'y '},
-                    { text: 'calor', style: SPANISH_HIGHLIGHT},
-                    { text: '.'},
-                ],
-                englishText: [
-                    { text: 'My family is from Puerto Rico,\nwhere it is '},
-                    { text: 'sunny ', style: ENGLISH_HIGHLIGHT},
-                    { text: 'and '},
-                    { text: 'hot', style: ENGLISH_HIGHLIGHT},
-                    { text: '.'},
-                ],
+                spanishText: {
+                    content: [
+                        { text: 'Mi familia es de Puerto Rico,\ndonde hace ' },
+                        { text: 'sol ', style: SPANISH_HIGHLIGHT },
+                        { text: 'y ' },
+                        { text: 'calor', style: SPANISH_HIGHLIGHT },
+                        { text: '.' },
+                    ], 
+                    box: 'shape'
+                },
+                englishText: {
+                    content: [
+                        { text: 'My family is from Puerto Rico,\nwhere it is ' },
+                        { text: 'sunny ', style: ENGLISH_HIGHLIGHT },
+                        { text: 'and ' },
+                        { text: 'hot', style: ENGLISH_HIGHLIGHT },
+                        { text: '.' },
+                    ], 
+                    box: 'shape'
+                }
             }
         }],
         prev_key: "P_1",
@@ -222,91 +241,178 @@ export const SCRIPT: Record<string, {
         next_key: "Q_1",
         index: 3,
         total: CHAPTERS["CH_1"],
-    }, 
+    },
     Q_1: {
-        // render propmt + blank + options (gotta mark correct vs. incorrect options)
         singleComponents: [
             {
                 singleText: {
-                    x: 497, 
+                    x: 497,
                     y: 436,
                     content: [{
                         text: "In Puerto Rico, it is sunny and",
                         style: {
                             fontSize: "40px",
-                            fontWeight: 850, 
+                            fontWeight: 850,
                             fill: "#4F4F4F"
                         }
                     }]
                 },
             },
             {
-                singleShape: {
+                singleImage: {
                     x: 1125,
                     y: 465,
-                    type: SupportedShape.RoundedRect,
-                    style: {
-                        width: 155,
-                        height: 40, 
-                        radius: 8,
-                        style: {
-                            strokeColor: 0x87E7FF, 
-                            strokeWeight: 6, 
-                        }
-                    }
+                    default: "quiz_english_blank",
+                    origin: [0.5, 0.5]
                 }
-
             },
             {
-                singleText: {
-                    x: 529, 
+                singleImage: {
+                    x: 497,
                     y: 570,
+                    default: "quiz_option_default",
+                    hovered: "quiz_option_hovered",
+                    pressed: "quiz_option_pressed",
+                    feedback: "quiz_option_correct"
+                },
+                boundedText: {
                     content: [{
                         text: "hot",
                         style: {
-                            fontWeight: 850, 
+                            fontWeight: 850,
                             fill: "#4F4F4F"
                         }
-                    }]
+                    }],
+                    box: "img"
                 },
-                singleShape: {
-                    x: 497,
+                isCorrect: true
+            },
+            {
+                singleImage: {
+                    x: 914,
                     y: 570,
-                    type: SupportedShape.RoundedRect,
-                    style: {
-                        width: 390,
-                        height: 72, 
-                        radius: 8,
+                    default: "quiz_option_default",
+                    hovered: "quiz_option_hovered",
+                    pressed: "quiz_option_pressed",
+                    feedback: "quiz_option_incorrect"
+                },
+                boundedText: {
+                    content: [{
+                        text: "cold",
                         style: {
-                            strokeColor: 0x4B4B4B, 
-                            strokeWeight: 6, 
+                            fontWeight: 850,
+                            fill: "#4F4F4F"
                         }
-                    }
-                }
+                    }],
+                    box: "img"
+                },
             }
-
         ],
         prev_key: "P_3",
         next_key: "P_4",
         index: 4,
         total: CHAPTERS["CH_1"],
-    },   
+    },
     P_4: {
         prev_key: "Q_1",
         next_key: "P_5",
         index: 0,
         total: CHAPTERS["CH_2"],
-    },   
+    },
     P_5: {
         prev_key: "P_4",
         next_key: "Q_2",
         index: 1,
         total: CHAPTERS["CH_2"],
-    },   
+    },
     Q_2: {
+        // render propmt + blank + options (gotta mark correct vs. incorrect options)
+        singleComponents: [
+            {
+                singleText: {
+                    x: 575,
+                    y: 385,
+                    content: [{
+                        text: "¿Qué está cocinando la abuela?",
+                        style: {
+                            fontSize: "40px",
+                            fontWeight: 850,
+                            fill: "#4F4F4F"
+                        }
+                    }]
+                },
+            },
+            {
+                singleImage: {
+                    x: 647,
+                    y: 487,
+                    default: "quiz_option_default",
+                    hovered: "quiz_option_hovered",
+                    pressed: "quiz_option_pressed",
+                    feedback: "quiz_option_incorrect",
+                },
+                boundedText: {
+                    content: [{
+                        text: "zanahorias",
+                        style: {
+                            fontWeight: 850,
+                            fill: "#4F4F4F"
+                        }
+                    }],
+                    box: "img"
+                },
+            },
+            {
+                singleImage: {
+                    x: 647.5,
+                    y: 591,
+                    default: "quiz_option_default",
+                    hovered: "quiz_option_hovered",
+                    pressed: "quiz_option_pressed",
+                    feedback: "quiz_option_incorrect",
+                },
+                boundedText: {
+                    content: [{
+                        text: "papas",
+                        style: {
+                            fontWeight: 850,
+                            fill: "#4F4F4F"
+                        }
+                    }],
+                    box: "img"
+                },
+            },
+            {
+                singleImage: {
+                    x: 647.5,
+                    y: 695,
+                    default: "quiz_option_default",
+                    hovered: "quiz_option_hovered",
+                    pressed: "quiz_option_pressed",
+                    feedback: "quiz_option_correct",
+                },
+                boundedText: {
+                    content: [{
+                        text: "ambas",
+                        style: {
+                            fontWeight: 850,
+                            fill: "#4F4F4F"
+                        }
+                    }],
+                    box: "img"
+                },
+                isCorrect: true
+            }
+        ],
         prev_key: "P_5",
         next_key: "P_6",
         index: 2,
         total: CHAPTERS["CH_2"],
-    },   
+    },
+    P_6: {
+        prev_key: "Q_2",
+        next_key: "P_7",
+        index: 0,
+        total: CHAPTERS["CH_3"],
+    },
 }

@@ -201,6 +201,36 @@
                 "url": "assets/story/Page 1.png",
                 "type": "image",
                 "key": "Page 1"
+            },
+            {
+                "url": "assets/story/quiz_english_blank.png",
+                "type": "image",
+                "key": "quiz_english_blank"
+            },
+            {
+                "url": "assets/story/quiz_option_correct.png",
+                "type": "image",
+                "key": "quiz_option_correct"
+            },
+            {
+                "url": "assets/story/quiz_option_default.png",
+                "type": "image",
+                "key": "quiz_option_default"
+            },
+            {
+                "url": "assets/story/quiz_option_hovered.png",
+                "type": "image",
+                "key": "quiz_option_hovered"
+            },
+            {
+                "url": "assets/story/quiz_option_incorrect.png",
+                "type": "image",
+                "key": "quiz_option_incorrect"
+            },
+            {
+                "url": "assets/story/quiz_option_pressed.png",
+                "type": "image",
+                "key": "quiz_option_pressed"
             }
         ]
     },

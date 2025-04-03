@@ -28,7 +28,7 @@ export default class Q_1 extends Q_Base {
 
 	create() {
 		super.create();
-		this.editorCreate();
+		this.editorCreate();		
 	}
 
 	/* END-USER-CODE */
