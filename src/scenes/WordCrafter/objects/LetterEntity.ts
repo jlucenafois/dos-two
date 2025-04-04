@@ -61,6 +61,7 @@ export default class LetterEntity {
 		// Move letter to slot position
 		const slotPos = slot.getPosition();
 		this.scene.matter.body.setPosition(this.body, slotPos);
+        this.scene.matter.body.setAngle(this.body, 0);
 
 		// Make the body static (unmovable)
 		this.scene.matter.body.setStatic(this.body, true);
