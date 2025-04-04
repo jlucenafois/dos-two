@@ -26,9 +26,6 @@ export default class LetterEntity {
 		};
 		this.textObject = scene.add.text(x, y, letter, fontStyle).setOrigin(0.5);
 		this.textObject.setInteractive();
-		// this.textObject.setInteractive().addListener('pointerdown', (event) => {
-		//     console.log('Started dragging:', event);
-		// });
 
 		// Create physics body
 		const radius = 40;
@@ -37,6 +34,7 @@ export default class LetterEntity {
 			restitution: 0.6,
 			friction: 0.1,
 			frictionAir: 0.1,
+			angle: 0, // Start with no rotation
 		});
 
 		// Connect text to physics body
@@ -71,13 +69,12 @@ export default class LetterEntity {
 		this.textObject.setColor("#00AA00");
 	}
 
-	// eject(fromPosition: { x: number; y: number }): void {
 	eject(): void {
 		// Calculate ejection direction (away from the slot)
 		const currentPos = this.body.position;
 
 		// Default angle if the positions are too close
-		const ejectionAngle =  -Math.PI/2;
+		const ejectionAngle = -Math.PI / 2;
 
 		// Calculate ejection velocity
 		const ejectionForce = 0.2;
@@ -101,11 +98,18 @@ export default class LetterEntity {
 	}
 
 	update(): void {
-		// Any per-frame updates
+		// Constrain rotation between -30 and 30 degrees
+		if (!this.locked) {
+			const MAX_ANGLE = 30 * (Math.PI / 180); // Convert to radians
+			const currentAngle = this.body.angle;
 
-		// If ejecting, make sure the letter doesn't immediately dock again
-		if (this.ejecting) {
-			// Additional logic can be added here if needed
+			if (currentAngle > MAX_ANGLE) {
+				this.scene.matter.body.setAngle(this.body, MAX_ANGLE);
+				this.scene.matter.body.setAngularVelocity(this.body, 0);
+			} else if (currentAngle < -MAX_ANGLE) {
+				this.scene.matter.body.setAngle(this.body, -MAX_ANGLE);
+				this.scene.matter.body.setAngularVelocity(this.body, 0);
+			}
 		}
 	}
 }

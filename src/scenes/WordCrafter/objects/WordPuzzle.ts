@@ -92,4 +92,10 @@ export default class WordPuzzle {
             }
 		}
 	}
+
+    update () {
+        for (const letter of this.letters) {
+            letter.update()
+        }
+    }
 }

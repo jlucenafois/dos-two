@@ -1,5 +1,3 @@
-import LetterEntity from "./LetterEntity";
-
 export default class LetterSlot {
 	private scene: Phaser.Scene;
 	private targetLetter: string;
@@ -71,8 +69,6 @@ export default class LetterSlot {
 		this.drawSlot("#FF0000");
 
 		// Create shake effect
-		const originalX = this.position.x;
-
 		this.rejectionTween = this.scene.tweens.add({
 			targets: this.graphics,
 			x: { from:  - 5, to:   5 },

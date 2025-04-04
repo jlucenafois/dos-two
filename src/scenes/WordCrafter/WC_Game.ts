@@ -118,5 +118,7 @@ export default class WC_Game extends Phaser.Scene {
 		);
 	}
 
-	update() {}
+	update() {
+        this.puzzle.update()
+    }
 }
