@@ -1,4 +1,5 @@
 import WordPuzzle from "./objects/WordPuzzle";
+export interface worldBounds { width: number, height: number, x: number, y: number }
 
 export default class WC_Game extends Phaser.Scene {
     private theme: string = "Mirror";
@@ -9,7 +10,7 @@ export default class WC_Game extends Phaser.Scene {
         right: 100,
         bottom: 100,
     }
-    private worldBounds: { width: number, height: number, x: number, y: number };
+    private worldBounds: worldBounds;
 
     constructor() {
         super("WC_Game");
@@ -48,7 +49,7 @@ export default class WC_Game extends Phaser.Scene {
 
         // Initialize the word puzzle with a target word
         // Using this.theme to select a word appropriate for the theme
-        const targetWord = this.getWordForTheme(this.theme);
+        const targetWord = "henry"
         this.puzzle = new WordPuzzle(this, targetWord, this.worldBounds);
         
         // Add a mouse spring for dragging
@@ -57,18 +58,6 @@ export default class WC_Game extends Phaser.Scene {
             damping: 0.1,
             length: 0
         });
-    }
-
-    getWordForTheme(theme: string): string {
-        // Theme-based word selection
-        const wordsByTheme: {[key: string]: string[]} = {
-            "Mirror": ["REFLECT", "MIRROR", "IMAGE", "GLASS", "SHINE"],
-            "Ocean": ["WAVES", "BEACH", "SHELL", "CORAL", "OCEAN"],
-            "Forest": ["TREES", "LEAVES", "WOODS", "GREEN", "SHADE"]
-        };
-        
-        const availableWords = wordsByTheme[theme] || ["PUZZLE", "WORDS", "LETTER", "GAME"];
-        return availableWords[Math.floor(Math.random() * availableWords.length)];
     }
 
     createBoundaryWalls() {

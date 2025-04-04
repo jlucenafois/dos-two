@@ -59,7 +59,7 @@ export default class Preload extends Base {
 
 			if (start) {
 				console.log(`Development: jump to ${start}`);
-				this.scene.startS(start);
+				this.scene.start(start);
 				return;
 			}
 		}
