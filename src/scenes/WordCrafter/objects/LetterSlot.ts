@@ -4,7 +4,6 @@ export default class LetterSlot {
 	private scene: Phaser.Scene;
 	private targetLetter: string;
 	private filled: boolean = false;
-	private filledBy: LetterEntity | null = null;
 	private body: MatterJS.BodyType;
 	private graphics: Phaser.GameObjects.Graphics;
 	private position: { x: number; y: number };
@@ -53,9 +52,9 @@ export default class LetterSlot {
 		return this.filled;
 	}
 
-	fill(letter: LetterEntity): void {
+	fill(): void {
 		this.filled = true;
-		this.filledBy = letter;
+		// this.filledBy = letter;
 
 		// Change appearance to indicate filled state
 		this.drawSlot("#00AA00"); // Green when filled correctly
@@ -75,7 +74,7 @@ export default class LetterSlot {
 
 		this.rejectionTween = this.scene.tweens.add({
 			targets: this.graphics,
-			x: { from: originalX - 5, to: originalX + 5 },
+			x: { from:  - 5, to:   5 },
 			ease: "Sine.easeInOut",
 			duration: 100,
 			repeat: 3,

@@ -9,6 +9,7 @@ export default class WordPuzzle {
 	private letters: LetterEntity[] = [];
 	private slots: LetterSlot[] = [];
 	private letterDown: string | undefined;
+    private letterDownIdx: number | undefined;
 	private isComplete: boolean = false;
 
 	constructor(scene: Phaser.Scene, word: string, worldBounds: worldBounds) {
@@ -68,15 +69,27 @@ export default class WordPuzzle {
 		const [type, letter, idx] = body.label.split(".");
 		if (type === "letter") {
 			this.letterDown = letter;
+            this.letterDownIdx=idx;
 		}
 	}
 
 	handlepointerup(body: Phaser.Types.Physics.Matter.MatterBody) {
 		const [type, letter, idx] = body.label.split(".");
-		if (type == "slot" && this.letterDown === letter) {
-			this.slots[idx].debug();
+		if (type !== "slot") {
+            this.letterDown = undefined;
+            this.letterDownIdx=undefined;
+            return;
+        }
+        if (this.letterDown === letter) {
+			this.slots[idx].fill();
+            if (this.letterDownIdx) {
+                this.letters[this.letterDownIdx].lockToSlot(this.slots[idx])
+            }
 		} else {
-			this.letterDown = undefined;
+            this.slots[idx].showRejection()
+            if (this.letterDownIdx) {
+                this.letters[this.letterDownIdx].eject();
+            }
 		}
 	}
 }
