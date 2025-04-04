@@ -71,19 +71,16 @@ export default class LetterEntity {
 		this.textObject.setColor("#00AA00");
 	}
 
-	eject(fromPosition: { x: number; y: number }): void {
+	// eject(fromPosition: { x: number; y: number }): void {
+	eject(): void {
 		// Calculate ejection direction (away from the slot)
 		const currentPos = this.body.position;
-		const angle = Math.atan2(
-			currentPos.y - fromPosition.y,
-			currentPos.x - fromPosition.x
-		);
 
 		// Default angle if the positions are too close
-		const ejectionAngle = isNaN(angle) ? Math.random() * Math.PI * 2 : angle;
+		const ejectionAngle =  -Math.PI/2;
 
 		// Calculate ejection velocity
-		const ejectionForce = 0.05;
+		const ejectionForce = 0.2;
 		const ejectionVector = {
 			x: Math.cos(ejectionAngle) * ejectionForce,
 			y: Math.sin(ejectionAngle) * ejectionForce,

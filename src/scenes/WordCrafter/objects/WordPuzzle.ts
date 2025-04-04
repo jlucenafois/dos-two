@@ -75,7 +75,7 @@ export default class WordPuzzle {
 
 	handlepointerup(body: Phaser.Types.Physics.Matter.MatterBody) {
 		const [type, letter, idx] = body.label.split(".");
-		if (type !== "slot") {
+		if (type !== "slot" || this.letterDown===undefined) {
             this.letterDown = undefined;
             this.letterDownIdx=undefined;
             return;

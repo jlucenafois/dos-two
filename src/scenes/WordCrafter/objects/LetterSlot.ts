@@ -29,6 +29,7 @@ export default class LetterSlot {
 			isSensor: true,
 			isStatic: true,
 			label: `slot.${targetLetter}.${idx}`,
+            ignorePointer:true
 		});
 	}
 
