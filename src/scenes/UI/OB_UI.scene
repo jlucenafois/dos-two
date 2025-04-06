@@ -128,6 +128,19 @@
             "y": 86,
             "originX": 0,
             "originY": 0
+        },
+        {
+            "type": "Image",
+            "id": "fbb5c3b2-bcc7-4cff-848b-414910483ae0",
+            "label": "coin",
+            "scope": "CLASS",
+            "texture": {
+                "key": "coin"
+            },
+            "x": 80,
+            "y": 951,
+            "originX": 0,
+            "originY": 0
         }
     ],
     "plainObjects": [],

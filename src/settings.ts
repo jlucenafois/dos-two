@@ -1,5 +1,4 @@
 import Base from "./scenes/Base";
-
 export enum Language {
     Spanish = "spanish",
     English = "english"
@@ -10,6 +9,7 @@ export class Settings {
         currScene: string | null; 
         prevScene: string | null; 
         pcnt: number | null; 
+        coins: number; 
         language: Language | null; 
         };
 
@@ -19,7 +19,8 @@ export class Settings {
             currScene: null,
             prevScene: null,
             language: null,
-            pcnt: null
+            coins: 0,
+            pcnt: null,
         };
     }
 }
@@ -42,4 +43,8 @@ export function updateGameState(scene: Base) {
     CURRENT_SETTINGS.gameState.prevScene = prevSceneKey;
     CURRENT_SETTINGS.gameState.nextScene = nextSceneKey;
     CURRENT_SETTINGS.gameState.pcnt = pcnt;
+}
+
+export function addCoins(value:number) {
+    CURRENT_SETTINGS.gameState.coins += value
 }

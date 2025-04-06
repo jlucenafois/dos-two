@@ -5,5 +5,5 @@ export type Image = {
     hovered?: string;
     pressed?: string;
     feedback?: string;
-    origin: number[];
+    origin?: number[];
 };

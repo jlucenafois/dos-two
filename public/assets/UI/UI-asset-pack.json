@@ -2,6 +2,11 @@
     "section1": {
         "files": [
             {
+                "url": "assets/UI/coin.png",
+                "type": "image",
+                "key": "coin"
+            },
+            {
                 "url": "assets/story/open_cover/cover_5.png",
                 "type": "image",
                 "key": "cover_5"

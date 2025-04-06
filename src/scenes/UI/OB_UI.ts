@@ -59,6 +59,10 @@ export default class OB_UI extends Phaser.Scene {
 		const progress_bar = this.add.image(743, 86, "progress_medium_0");
 		progress_bar.setOrigin(0, 0);
 
+		// coin
+		const coin = this.add.image(80, 951, "coin");
+		coin.setOrigin(0, 0);
+
 		this.book = book;
 		this.default_exit_lg = default_exit_lg;
 		this.default_home_lg = default_home_lg;
@@ -81,7 +85,6 @@ export default class OB_UI extends Phaser.Scene {
 	private default_next_lg!: Phaser.GameObjects.Image;
 	private default_back_lg!: Phaser.GameObjects.Image;
 	private progress_bar!: Phaser.GameObjects.Image;
-
 	/* START-USER-CODE */
 	registerListeners() {
 		this.scene.manager.scenes.forEach(scene => {
@@ -94,6 +97,7 @@ export default class OB_UI extends Phaser.Scene {
 				scene.events.on("changeBackground", this.changeBackground, this);
 				scene.events.on("updateProgressBar", this.updateProgressBar, this)
 				scene.events.on("disableForwardNav", this.disableForwardNav, this)
+				scene.events.on("updateCoinsUI", this.updateCoinsUI, this)
 			}
 		});
 
@@ -156,9 +160,20 @@ export default class OB_UI extends Phaser.Scene {
 		this.default_next_lg.setTexture("disabled_next_lg");
 	}
 
+	private coin_counter!: Phaser.GameObjects.Text;
+	
+	updateCoinsUI() {
+		this.coin_counter.setText(`${CURRENT_SETTINGS.gameState.coins}`)
+	}
+
 	create() {
 		this.editorCreate();
 		this.registerListeners();
+
+		this.coin_counter = this.add.text(140, 950, `${CURRENT_SETTINGS.gameState.coins}`, {
+			fontSize: '40px',
+			fontFamily: 'Bowlby One'
+		})
 
 	/* HOME */
 		this.default_home_lg.setInteractive({ useHandCursor: true });

@@ -28,10 +28,10 @@ class Boot extends Phaser.Scene {
 		// Load Raleway with Web Font Loader
         WebFont.load({
             google: {
-                families: ["Raleway"] // Specify weights (e.g., 400 for regular, 700 for bold)
+                families: ["Raleway", "Bowlby One"] // Specify weights (e.g., 400 for regular, 700 for bold)
             },
             active: () => {
-                console.log("Raleway font loaded!");
+                console.log("Fonts loaded!");
             }
         });
     }

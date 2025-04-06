@@ -1,27 +1,24 @@
-import { CURRENT_SETTINGS, Language } from "./settings";
+import { addCoins, CURRENT_SETTINGS, Language } from "./settings";
 // Text Types
 import { WordObject } from "../types/text/WordObject";
-import { DualText } from "../types/text/DualText";
 import { SingleText } from "../types/text/SingleText";
+import { BoundedText } from "../types/text/BoundedText";
 // Shape Types
-import { DualShape } from "../types/shape/DualShape";
 import { Shape } from "../types/shape/Shape";
 import { SupportedShape } from "../types/shape/SupportedShape";
 import { ShapeStyle } from "../types/shape/ShapeStyle";
 import { DualComponent } from "../types/components/DualComponent";
-import { DualCoordinates } from "../types/components/DualCoordinates";
 import { Scene } from "phaser";
 import { SingleComponent } from "../types/components/SingleComponent";
-import { Image } from "../types/image/image";
-import { BoundedText } from "../types/text/BoundedText";
+import { Image } from "../types/image/Image";
 
 
 export function renderSingleComponent(context: Scene, sc: SingleComponent) {
-    if (sc.singleImage) renderImage(context, sc.singleImage, sc.isCorrect)
+    if (sc.singleImage) renderImage(context, sc.singleImage, sc.isCorrect ? sc.isCorrect : false)
     if (sc.singleShape) renderShape(context, sc.singleShape)
     if (sc.singleText) renderRichText(context, sc.singleText)
     if (sc.boundedText) { 
-        renderBoundedText(context, sc.boundedText, sc.boundedText.box === "img" ? sc.singleImage : sc.singleShape)
+        renderBoundedText(context, sc.boundedText, sc.boundedText.box === "img" ? sc.singleImage! : sc.singleShape!)
     } 
 }
 /**
@@ -165,10 +162,17 @@ export function renderBoundedText(context: Scene, bt: BoundedText, box: Image | 
     // within bounds, Phaser's built-in Text object with wordWrap enabled might
     // be more suitable than the current renderRichText implementation.
 }
-function handleQuizClick(renderedImage: Phaser.GameObjects.Image) {
+// img holds the og properties from script.ts
+// renderedImage is the object on screen that can mutate
+// isCorrect is just a shortcut to checking if isCorrect exists in img and if it is true
+function handleQuizClick(context:Scene, img:Image, renderedImage: Phaser.GameObjects.Image, isCorrect:boolean) {
+    if (isCorrect) {
+        addCoins(50);
+        context.events.emit("updateCoinsUI")
+    }
 
 }
-export function renderImage(context:Scene, img:Image, isCorrect?: boolean) {
+export function renderImage(context:Scene, img:Image, isCorrect: boolean) {
     let originX = 0;
     let originY = 0;
 
@@ -209,6 +213,7 @@ export function renderImage(context:Scene, img:Image, isCorrect?: boolean) {
             if (!clicked) {
                 renderedImage.setTexture(img.feedback!);
                 clicked = true;
+                handleQuizClick(context, img, renderedImage, isCorrect);
             }
         });
     }
