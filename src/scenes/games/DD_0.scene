@@ -21,7 +21,7 @@
                 "key": "eightcards"
             },
             "x": 859,
-            "y": 558.5
+            "y": 619
         },
         {
             "type": "Image",
@@ -31,17 +31,29 @@
                 "key": "sixcards"
             },
             "x": 322,
-            "y": 558.5
+            "y": 619
         },
         {
             "type": "Image",
-            "id": "a024acbc-14b6-4d07-a3d6-483c19227573",
-            "label": "twelvecards_hover",
+            "id": "36d79a45-daef-4e77-9a39-ec89a36b15b3",
+            "label": "twelvecards",
             "texture": {
-                "key": "twelvecards_hover"
+                "key": "twelvecards"
             },
-            "x": 1408,
-            "y": 558.5
+            "x": 1418,
+            "y": 619
+        },
+        {
+            "type": "Image",
+            "id": "8380d39c-29f2-4d98-a1cf-3edcbf9cf8d7",
+            "label": "chooseNumberMG",
+            "texture": {
+                "key": "chooseNumberMG"
+            },
+            "x": 855,
+            "y": 305,
+            "scaleX": 1.5,
+            "scaleY": 1.5
         }
     ],
     "plainObjects": [],

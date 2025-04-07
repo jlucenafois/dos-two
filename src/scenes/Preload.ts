@@ -39,6 +39,8 @@ export default class Preload extends Base {
 
 		this.load.pack("OB-asset-pack", "assets/OB/OB-asset-pack.json");
 		this.load.pack("UI-asset-pack", "assets/UI/UI-asset-pack.json");
+		this.load.pack("preload-asset-pack", "assets/preload/preload-asset-pack.json");
+		this.load.pack("games-asset-pack", "assets/games/games-asset-pack.json");
 
 		// Listen for loading progress
 		this.load.on("progress", (value: number) => {

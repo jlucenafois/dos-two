@@ -3,6 +3,7 @@
 /* START OF COMPILED CODE */
 
 /* START-USER-IMPORTS */
+import { CURRENT_SETTINGS } from "../settings";
 import MG_Base from "./MG_Base";
 /* END-USER-IMPORTS */
 
@@ -15,10 +16,11 @@ export default class MG_1 extends MG_Base {
     private unflipped_4: Phaser.GameObjects.Image;
     private unflipped_5: Phaser.GameObjects.Image;
     private progressBar: Phaser.GameObjects.Image;
+    private matchedPairs: Set<String>;
 
     constructor() {
         super("MG_1");
-
+        this.matchedPairs = new Set();
         /* START-USER-CTR-CODE */
         // Write your code here.
         /* END-USER-CTR-CODE */
@@ -52,7 +54,7 @@ export default class MG_1 extends MG_Base {
         hover_unflipped.setVisible(false);
 
         // Function to add hover effect
-        const addHoverEffect = (card: Phaser.GameObjects.Image) => {
+        const addHover = (card: Phaser.GameObjects.Image) => {
             card.setInteractive({
                 useHandCursor: true,
                 pixelPerfect: true
@@ -70,28 +72,31 @@ export default class MG_1 extends MG_Base {
         };
 
         // Add hover effect to all cards
-        addHoverEffect(this.unflipped);
-        addHoverEffect(this.unflipped_1);
-        addHoverEffect(this.unflipped_2);
-        addHoverEffect(this.unflipped_3);
-        addHoverEffect(this.unflipped_4);
-        addHoverEffect(this.unflipped_5);
+        addHover(this.unflipped);
+        addHover(this.unflipped_1);
+        addHover(this.unflipped_2);
+        addHover(this.unflipped_3);
+        addHover(this.unflipped_4);
+        addHover(this.unflipped_5);
 
         this.events.emit("scene-awake");
     }
 
     create() {
         this.editorCreate();
-        this.events.emit("updateUI", "show_back_arrow");
-
-        // Memory game setup
-        this.setupMemoryGame();
+        this.events.emit("updateUI", "showexitbutton");
+        CURRENT_SETTINGS.gameState.prevScene = "DD_0"; // Set a different prevScene for MG_1
+        this.events.on("exit_button_clicked", () => {
+            this.scene.stop("MG_1");
+            this.scene.start("DD_0"); // Navigate to DD_0
+        });
+        this.addTitle();
     }
 
     setupMemoryGame() {
         let firstCard: Phaser.GameObjects.Image | null = null;
         let secondCard: Phaser.GameObjects.Image | null = null;
-        let matches = 0;
+        let matches = 0; // Max 3
 
         const cards = [this.unflipped, this.unflipped_1, this.unflipped_2, this.unflipped_3, this.unflipped_4, this.unflipped_5];
         const cardTextures = ['flipped', 'testflippedpairspanish', 'testflipped', 'testflippedpair', 'testflipped2', 'testflippedpair2'];
@@ -115,16 +120,32 @@ export default class MG_1 extends MG_Base {
 
                 // Check for match
                 if (this.isMatch(firstCard, secondCard)) {
-                    // Cards match
-                    firstCard = null;
-                    secondCard = null;
-                    matches++;
-                    this.updateProgressBar(matches);
+                    const pairKey = `${firstCard.texture.key}-${secondCard.texture.key}`;
+                    const reversePairKey = `${secondCard.texture.key}-${firstCard.texture.key}`;
+
+                    // Check if the pair is already matched
+                    if (!this.matchedPairs.has(pairKey) && !this.matchedPairs.has(reversePairKey)) {
+                        // Cards match and are not already matched
+                        this.matchedPairs.add(pairKey);
+                        this.matchedPairs.add(reversePairKey);
+                        firstCard.disableInteractive();
+                        secondCard.disableInteractive();
+                        firstCard = null;
+                        secondCard = null;
+                        matches++;
+                        //this.updateProgressBar(matches);
+                    } else {
+                        // Cards match but are already matched
+                        firstCard = null;
+                        secondCard = null;
+                    }
                 } else {
                     // Cards don't match, reset after a short delay
                     this.time.delayedCall(1000, () => {
                         firstCard?.setTexture("unflipped");
                         secondCard?.setTexture("unflipped");
+                        firstCard?.setInteractive(); // Re-enable hover effect
+                        secondCard?.setInteractive(); // Re-enable hover effect
                         firstCard = null;
                         secondCard = null;
                     });
@@ -147,25 +168,6 @@ export default class MG_1 extends MG_Base {
 
         return pairs[card1.texture.key] === card2.texture.key || pairs[card2.texture.key] === card1.texture.key;
     }
-
-    	updateProgressBar(matches: number) {
-		// Update the progress bar based on the number of matches
-		// TODO: Fix clicking on same match and moving progress bar
-		switch (matches) {
-			case 1:
-				this.progressBar.setTexture('25_progress_bar_lg');
-				break;
-			case 2:
-				this.progressBar.setTexture('50_progress_bar_lg');
-				break;
-			case 3:
-				this.progressBar.setTexture('75_progress_bar_lg');
-				break;
-			case 4:
-				this.progressBar.setTexture('100_progress_bar_lg');
-				break;
-		}
-	}
 
     /* END-USER-CODE */
 }

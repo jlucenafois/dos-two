@@ -45,6 +45,51 @@
                 "url": "assets/games/testflippedpairspanish.png",
                 "type": "image",
                 "key": "testflippedpairspanish"
+            },
+            {
+                "url": "assets/games/sixcards.png",
+                "type": "image",
+                "key": "sixcards"
+            },
+            {
+                "url": "assets/games/sixcards_hover.png",
+                "type": "image",
+                "key": "sixcards_hover"
+            },
+            {
+                "url": "assets/games/eightcards.png",
+                "type": "image",
+                "key": "eightcards"
+            },
+            {
+                "url": "assets/games/eightcards_hover.png",
+                "type": "image",
+                "key": "eightcards_hover"
+            },
+            {
+                "url": "assets/games/twelvecards.png",
+                "type": "image",
+                "key": "twelvecards"
+            },
+            {
+                "url": "assets/games/twelvecards_hover.png",
+                "type": "image",
+                "key": "twelvecards_hover"
+            },
+            {
+                "url": "assets/games/mgsubtitle.png",
+                "type": "image",
+                "key": "mgsubtitle"
+            },
+            {
+                "url": "assets/games/mgsubtitle_sm.png",
+                "type": "image",
+                "key": "mgsubtitle_sm"
+            },
+            {
+                "url": "assets/games/chooseNumberMG.png",
+                "type": "image",
+                "key": "chooseNumberMG"
             }
         ]
     },

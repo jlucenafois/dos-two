@@ -1,0 +1,114 @@
+{
+    "id": "2cc813cd-7242-4cf6-aee2-f8a355436c16",
+    "sceneType": "SCENE",
+    "settings": {
+        "javaScriptInitFieldsInConstructor": true,
+        "exportClass": true,
+        "autoImport": true,
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "MG_2",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1728,
+        "borderHeight": 1117
+    },
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "6c7f72aa-c1d2-4830-b0a6-f6bb31b66e8d",
+            "label": "hover_unflipped",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 457,
+            "y": 638
+        },
+        {
+            "type": "Image",
+            "id": "3425bb66-8a4e-40e5-8974-1d81fb190b0e",
+            "label": "hover_unflipped_1",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 730,
+            "y": 366
+        },
+        {
+            "type": "Image",
+            "id": "311a94e4-d889-4aa9-9cb2-ec74d500cd1b",
+            "label": "hover_unflipped_2",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 730,
+            "y": 902
+        },
+        {
+            "type": "Image",
+            "id": "472afcb7-42bf-4132-b2d4-23dee2559d65",
+            "label": "hover_unflipped_3",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 1270,
+            "y": 635
+        },
+        {
+            "type": "Image",
+            "id": "06690f70-2d45-49f3-b817-5ead63a77797",
+            "label": "hover_unflipped_4",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 998,
+            "y": 366
+        },
+        {
+            "type": "Image",
+            "id": "ad39b7bd-0516-46a3-83bf-5d51ddb66786",
+            "label": "hover_unflipped_5",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 998,
+            "y": 902
+        },
+        {
+            "type": "Image",
+            "id": "2aecfb51-4944-4d54-bac6-10345dea6e94",
+            "label": "hover_unflipped_6",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 730,
+            "y": 634
+        },
+        {
+            "type": "Image",
+            "id": "1c6dd7ea-a38a-4f61-9b76-ee320d5d5819",
+            "label": "hover_unflipped_7",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 998,
+            "y": 634
+        },
+        {
+            "type": "Image",
+            "id": "16d9dd99-1407-444e-8633-45b29e0a9476",
+            "label": "mgsubtitle_sm",
+            "texture": {
+                "key": "mgsubtitle_sm"
+            },
+            "x": 295,
+            "y": 364
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}

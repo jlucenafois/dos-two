@@ -1,0 +1,156 @@
+{
+    "id": "838039f9-36bc-4887-9751-32b41a6fa986",
+    "sceneType": "SCENE",
+    "settings": {
+        "javaScriptInitFieldsInConstructor": true,
+        "exportClass": true,
+        "autoImport": true,
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "MG_3",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1728,
+        "borderHeight": 1117
+    },
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "90dee620-73e2-456a-a004-3f9d67cde197",
+            "label": "hover_unflipped",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 482,
+            "y": 634
+        },
+        {
+            "type": "Image",
+            "id": "6c88bcd0-13f2-4c52-81dd-4d6de790ddbd",
+            "label": "hover_unflipped_1",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 750,
+            "y": 366
+        },
+        {
+            "type": "Image",
+            "id": "c4d5f2c6-df81-484e-b318-dbc4991217c1",
+            "label": "hover_unflipped_2",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 750,
+            "y": 902
+        },
+        {
+            "type": "Image",
+            "id": "e5caba8b-6e8e-4548-83dd-ae02c144ce03",
+            "label": "hover_unflipped_3",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 1286,
+            "y": 634
+        },
+        {
+            "type": "Image",
+            "id": "58a35785-3599-4203-932c-5d1f4978e554",
+            "label": "hover_unflipped_4",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 1018,
+            "y": 366
+        },
+        {
+            "type": "Image",
+            "id": "afb6ef2e-acd2-4a9e-b1d6-38ce534a77af",
+            "label": "hover_unflipped_5",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 1018,
+            "y": 902
+        },
+        {
+            "type": "Image",
+            "id": "8bf8f349-7f61-41df-8d29-ce94a9528c15",
+            "label": "hover_unflipped_6",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 750,
+            "y": 634
+        },
+        {
+            "type": "Image",
+            "id": "eb342d33-dc37-4ced-b9bb-e4c9b432ed9f",
+            "label": "hover_unflipped_7",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 1018,
+            "y": 634
+        },
+        {
+            "type": "Image",
+            "id": "0184a936-7fbd-402e-b497-d38ef6fc7b2d",
+            "label": "hover_unflipped_8",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 482,
+            "y": 366
+        },
+        {
+            "type": "Image",
+            "id": "e03877c7-a58a-481b-9c08-3c2504bb2472",
+            "label": "hover_unflipped_9",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 482,
+            "y": 902
+        },
+        {
+            "type": "Image",
+            "id": "4185c7d5-6f89-4a67-aae2-5be1efb74f65",
+            "label": "hover_unflipped_10",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 1286,
+            "y": 366
+        },
+        {
+            "type": "Image",
+            "id": "6dc1f72a-2c63-4e81-a429-3aa4b66072c4",
+            "label": "hover_unflipped_11",
+            "texture": {
+                "key": "unflipped"
+            },
+            "x": 1286,
+            "y": 902
+        },
+        {
+            "type": "Image",
+            "id": "d1ad8db0-0997-44a2-ab4c-116b715f8386",
+            "label": "mgsubtitle_sm",
+            "texture": {
+                "key": "mgsubtitle_sm"
+            },
+            "x": 186,
+            "y": 344,
+            "scaleX": 0.9,
+            "scaleY": 0.9
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}
