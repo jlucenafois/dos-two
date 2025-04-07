@@ -84,9 +84,9 @@ export default class MG_1 extends MG_Base {
 
     create() {
         this.editorCreate();
-        this.events.emit("updateUI", "showexitbutton");
-        CURRENT_SETTINGS.gameState.prevScene = "DD_0"; // Set a different prevScene for MG_1
-        this.events.on("exit_button_clicked", () => {
+        this.events.emit("updateUI"); // can't get show_exit_button without going striaght to OB_1
+        CURRENT_SETTINGS.gameState.prevScene = "DD_0";
+        this.events.on("back_arrow_clicked", () => {
             this.scene.stop("MG_1");
             this.scene.start("DD_0"); // Navigate to DD_0
         });
