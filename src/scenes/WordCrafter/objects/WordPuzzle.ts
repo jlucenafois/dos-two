@@ -1,6 +1,11 @@
 import LetterEntity from "./LetterEntity";
 import LetterSlot from "./LetterSlot";
 import { worldBounds } from "../WC_Game";
+
+const slotSize = 80;
+const gap = 15;
+
+
 export default class WordPuzzle {
 	private scene: Phaser.Scene;
 	private word: string;
@@ -18,16 +23,15 @@ export default class WordPuzzle {
 	}
 
 	private createLetterSlots() {
-		const slotSize = 80;
 		const wordLength = this.word.length;
-		const totalWidth = wordLength * slotSize + (wordLength - 1) * 10; // 10px spacing
+		const totalWidth = wordLength * slotSize + (wordLength - 1) * gap;
 		const startX =
 			this.worldBounds.x + (this.worldBounds.width - totalWidth) / 2;
 		const y = this.worldBounds.y + this.worldBounds.height / 2;
 
 		// Create slots for each letter
 		for (let i = 0; i < this.word.length; i++) {
-			const x = startX + i * (slotSize + 10) + slotSize / 2;
+			const x = startX + i * (slotSize + gap) + slotSize / 2;
 			const slot = new LetterSlot(this.scene, x, y, this.word[i], i);
 			this.slots.push(slot);
 		}

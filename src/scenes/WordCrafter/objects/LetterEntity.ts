@@ -40,30 +40,12 @@ export default class LetterEntity {
 		object.setInteractive();
 	}
 
-	getLetter(): string {
-		return this.letter;
-	}
-
-	getBody(): MatterJS.BodyType {
-		return this.body;
-	}
-
-	isLocked(): boolean {
-		return this.locked;
-	}
 
 	lockToSlot(slot: LetterSlot): void {
 		this.locked = true;
-
-		// Move letter to slot position
-		const slotPos = slot.position;
-		this.scene.matter.body.setPosition(this.body, slotPos);
-        this.scene.matter.body.setAngle(this.body, 0);
-
-        this.body.collisionFilter.mask = 0;
-
-		// Visual feedback
-		this.textObject.setColor("#00AA00");
+		this.scene.matter.world.remove(this.body);
+		this.textObject.destroy();
+		slot.fill();
 	}
 
 	eject(): void {

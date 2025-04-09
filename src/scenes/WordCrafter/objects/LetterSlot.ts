@@ -1,6 +1,7 @@
 export default class LetterSlot {
     private scene: Phaser.Scene;
     private targetLetter: string;
+	private textObject: Phaser.GameObjects.Text;
     public filled: boolean = false;
     private body: MatterJS.BodyType;
     public position: { x: number; y: number };
@@ -21,6 +22,14 @@ export default class LetterSlot {
         // Create sprite instead of graphics
         this.sprite = scene.add.sprite(x, y, 'letter_slot_default');
 
+		// Create text
+		const fontStyle = {
+			font: "bold 64px Arial",
+			color: "#000000",
+		};
+        this.textObject = scene.add.text(x, y, targetLetter, fontStyle).setOrigin(0.5);
+        this.textObject.visible=false;
+
         // Create physics body - sensor means it detects collisions but doesn't physically block
         this.body = scene.matter.add.rectangle(x, y, 80, 100, {
             isSensor: true,
@@ -33,6 +42,8 @@ export default class LetterSlot {
     fill(): void {
         this.filled = true;
         this.body.collisionFilter.mask=0;
+        this.textObject.visible=true;
+		this.textObject.setColor("#00AA00");
         
         // Change sprite texture to indicate filled state
         this.sprite.setTexture('letter_slot_correct');
