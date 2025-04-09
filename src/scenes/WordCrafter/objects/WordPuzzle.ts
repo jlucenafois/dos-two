@@ -5,13 +5,14 @@ import { worldBounds } from "../WC_Game";
 const slotSize = 80;
 const gap = 15;
 
-
 export default class WordPuzzle {
 	private scene: Phaser.Scene;
 	private word: string;
 	private worldBounds: worldBounds;
 	private letters: LetterEntity[] = [];
 	private slots: LetterSlot[] = [];
+	private curLtrIdx = 0;
+	private quizMode = false;
 
 	constructor(scene: Phaser.Scene, word: string, worldBounds: worldBounds) {
 		this.scene = scene;
@@ -76,7 +77,12 @@ export default class WordPuzzle {
 		const slot = this.slots[idx1];
 		const letter = this.letters[idx2];
 
-		if (letter1 === letter2) {
+        // if it's not the quiz mode, the user has to drag letters in order
+		if (!this.quizMode && parseInt(idx1) !== this.curLtrIdx) {
+			slot.showRejection();
+			letter.eject();
+		} else if (letter1 === letter2) {
+            this.curLtrIdx+=1
 			slot.fill();
 			letter.lockToSlot(slot);
 		} else if (!slot.filled) {
