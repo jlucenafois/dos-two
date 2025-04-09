@@ -6,8 +6,6 @@ export default class LetterEntity {
 	private textObject: Phaser.GameObjects.Text;
 	private body: MatterJS.BodyType;
 	private locked: boolean = false;
-	private slot: LetterSlot | null = null;
-	private ejecting: boolean = false;
 
 	constructor(
 		scene: Phaser.Scene,
@@ -56,15 +54,13 @@ export default class LetterEntity {
 
 	lockToSlot(slot: LetterSlot): void {
 		this.locked = true;
-		this.slot = slot;
 
 		// Move letter to slot position
-		const slotPos = slot.getPosition();
+		const slotPos = slot.position;
 		this.scene.matter.body.setPosition(this.body, slotPos);
         this.scene.matter.body.setAngle(this.body, 0);
 
-		// Make the body static (unmovable)
-		this.scene.matter.body.setStatic(this.body, true);
+        this.body.collisionFilter.mask = 0;
 
 		// Visual feedback
 		this.textObject.setColor("#00AA00");

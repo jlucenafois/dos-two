@@ -1,107 +1,67 @@
 export default class LetterSlot {
-	private scene: Phaser.Scene;
-	private targetLetter: string;
-	private filled: boolean = false;
-	private body: MatterJS.BodyType;
-	private graphics: Phaser.GameObjects.Graphics;
-	private position: { x: number; y: number };
-	private rejectionTween: Phaser.Tweens.Tween | null = null;
+    private scene: Phaser.Scene;
+    private targetLetter: string;
+    public filled: boolean = false;
+    private body: MatterJS.BodyType;
+    public position: { x: number; y: number };
+    private rejectionTween: Phaser.Tweens.Tween | null = null;
+    private sprite: Phaser.GameObjects.Sprite; // New sprite property
 
-	constructor(
-		scene: Phaser.Scene,
-		x: number,
-		y: number,
-		targetLetter: string,
-		idx: number
-	) {
-		this.scene = scene;
-		this.targetLetter = targetLetter;
-		this.position = { x, y };
+    constructor(
+        scene: Phaser.Scene,
+        x: number,
+        y: number,
+        targetLetter: string,
+        idx: number
+    ) {
+        this.scene = scene;
+        this.targetLetter = targetLetter;
+        this.position = { x, y };
 
-		// Create visual representation
-		this.graphics = scene.add.graphics();
-		this.drawSlot("#AAAAAA"); // Gray when empty
+        // Create sprite instead of graphics
+        this.sprite = scene.add.sprite(x, y, 'letter_slot_default');
 
-		// Create physics body - sensor means it detects collisions but doesn't physically block
-		this.body = scene.matter.add.rectangle(x, y, 70, 70, {
-			isSensor: true,
-			isStatic: true,
-			label: `slot.${targetLetter}.${idx}`,
-            ignorePointer:true
-		});
-	}
+        // Create physics body - sensor means it detects collisions but doesn't physically block
+        this.body = scene.matter.add.rectangle(x, y, 80, 100, {
+            isSensor: true,
+            isStatic: true,
+            label: `slot.${targetLetter}.${idx}`,
+            ignorePointer: true
+        });
+    }
 
-	getTargetLetter(): string {
-		console.log("yo");
-		return this.targetLetter;
-	}
+    fill(): void {
+        this.filled = true;
+        this.body.collisionFilter.mask=0;
+        
+        // Change sprite texture to indicate filled state
+        this.sprite.setTexture('letter_slot_correct');
+    }
 
-	getBody(): MatterJS.BodyType {
-		return this.body;
-	}
+    showRejection(): void {
+        // Stop any existing tween
+        if (this.rejectionTween) {
+            this.rejectionTween.stop();
+        }
 
-	getPosition(): { x: number; y: number } {
-		return this.position;
-	}
+        // Create shake effect
+        this.rejectionTween = this.scene.tweens.add({
+            targets: this.sprite,
+            x: { from: this.position.x - 5, to: this.position.x + 5 },
+            ease: "Sine.easeInOut",
+            duration: 100,
+            repeat: 3,
+            yoyo: true,
+            onComplete: () => {
+                // Reset position after shaking
+                this.sprite.x = this.position.x;
+                this.sprite.setTexture('letter_slot_default');
+                this.rejectionTween = null;
+            },
+        });
+    }
 
-	debug() {
-		console.log("yo");
-	}
-	isFilled(): boolean {
-		return this.filled;
-	}
-
-	fill(): void {
-		this.filled = true;
-		// this.filledBy = letter;
-
-		// Change appearance to indicate filled state
-		this.drawSlot("#00AA00"); // Green when filled correctly
-	}
-
-	showRejection(): void {
-		// Stop any existing tween
-		if (this.rejectionTween) {
-			this.rejectionTween.stop();
-		}
-
-		// Change color to red
-		this.drawSlot("#FF0000");
-
-		// Create shake effect
-		this.rejectionTween = this.scene.tweens.add({
-			targets: this.graphics,
-			x: { from:  - 5, to:   5 },
-			ease: "Sine.easeInOut",
-			duration: 100,
-			repeat: 3,
-			yoyo: true,
-			onComplete: () => {
-				// Reset position and color after shaking
-				this.graphics.x = 0;
-				this.drawSlot("#AAAAAA");
-				this.rejectionTween = null;
-			},
-		});
-	}
-
-	private drawSlot(color: string): void {
-		this.graphics.clear();
-		this.graphics.lineStyle(3, 0x000000);
-		this.graphics.fillStyle(
-			Phaser.Display.Color.HexStringToColor(color).color,
-			0.3
-		);
-		this.graphics.strokeRect(
-			this.position.x - 35,
-			this.position.y - 35,
-			70,
-			70
-		);
-		this.graphics.fillRect(this.position.x - 35, this.position.y - 35, 70, 70);
-	}
-
-	update(): void {
-		// Any per-frame updates if needed
-	}
+    update(): void {
+        // Any per-frame updates if needed
+    }
 }

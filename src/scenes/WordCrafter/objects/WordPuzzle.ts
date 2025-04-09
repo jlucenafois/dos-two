@@ -1,16 +1,12 @@
 import LetterEntity from "./LetterEntity";
 import LetterSlot from "./LetterSlot";
 import { worldBounds } from "../WC_Game";
-
 export default class WordPuzzle {
 	private scene: Phaser.Scene;
 	private word: string;
 	private worldBounds: worldBounds;
 	private letters: LetterEntity[] = [];
 	private slots: LetterSlot[] = [];
-	private letterDown: string | undefined;
-    private letterDownIdx: number | undefined;
-	private isComplete: boolean = false;
 
 	constructor(scene: Phaser.Scene, word: string, worldBounds: worldBounds) {
 		this.scene = scene;
@@ -65,37 +61,29 @@ export default class WordPuzzle {
 		});
 	}
 
-	handlepointerdown(body: Phaser.Types.Physics.Matter.MatterBody) {
-		const [type, letter, idx] = body.label.split(".");
-		if (type === "letter") {
-			this.letterDown = letter;
-            this.letterDownIdx=idx;
+	handlepointerup(
+		body1: Phaser.Types.Physics.Matter.MatterBody,
+		body2: Phaser.Types.Physics.Matter.MatterBody
+	) {
+		const [type1, letter1, idx1] = body1.label.split(".");
+		const [type2, letter2, idx2] = body2.label.split(".");
+		if (type1 !== "slot" || type2 !== "letter") return;
+
+		const slot = this.slots[idx1];
+		const letter = this.letters[idx2];
+
+		if (letter1 === letter2) {
+			slot.fill();
+			letter.lockToSlot(slot);
+		} else if (!slot.filled) {
+			slot.showRejection();
+			letter.eject();
 		}
 	}
 
-	handlepointerup(body: Phaser.Types.Physics.Matter.MatterBody) {
-		const [type, letter, idx] = body.label.split(".");
-		if (type !== "slot" || this.letterDown===undefined) {
-            this.letterDown = undefined;
-            this.letterDownIdx=undefined;
-            return;
-        }
-        if (this.letterDown === letter) {
-			this.slots[idx].fill();
-            if (this.letterDownIdx) {
-                this.letters[this.letterDownIdx].lockToSlot(this.slots[idx])
-            }
-		} else {
-            this.slots[idx].showRejection()
-            if (this.letterDownIdx) {
-                this.letters[this.letterDownIdx].eject();
-            }
+	update() {
+		for (const letter of this.letters) {
+			letter.update();
 		}
 	}
-
-    update () {
-        for (const letter of this.letters) {
-            letter.update()
-        }
-    }
 }
