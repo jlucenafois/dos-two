@@ -7,17 +7,20 @@ export default class LetterSlot {
     public position: { x: number; y: number };
     private rejectionTween: Phaser.Tweens.Tween | null = null;
     private sprite: Phaser.GameObjects.Sprite; // New sprite property
+    private showPlaceholder: boolean;
 
     constructor(
         scene: Phaser.Scene,
         x: number,
         y: number,
         targetLetter: string,
-        idx: number
+        idx: number,
+        showPlaceholder:boolean
     ) {
         this.scene = scene;
         this.targetLetter = targetLetter;
         this.position = { x, y };
+        this.showPlaceholder=showPlaceholder;
 
         // Create sprite instead of graphics
         this.sprite = scene.add.sprite(x, y, 'letter_slot_default');
@@ -25,10 +28,14 @@ export default class LetterSlot {
 		// Create text
 		const fontStyle = {
 			font: "bold 64px Arial",
-			color: "#000000",
+			color: "#a3a3a3",
 		};
         this.textObject = scene.add.text(x, y, targetLetter, fontStyle).setOrigin(0.5);
-        this.textObject.visible=false;
+        if (!showPlaceholder) {
+            this.textObject.visible=false;
+        } else {
+            this.sprite.visible=false;
+        }
 
         // Create physics body - sensor means it detects collisions but doesn't physically block
         this.body = scene.matter.add.rectangle(x, y, 80, 100, {

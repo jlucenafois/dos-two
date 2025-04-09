@@ -32,7 +32,7 @@ export default class WordPuzzle {
 		// Create slots for each letter
 		for (let i = 0; i < this.word.length; i++) {
 			const x = startX + i * (slotSize + gap) + slotSize / 2;
-			const slot = new LetterSlot(this.scene, x, y, this.word[i], i);
+			const slot = new LetterSlot(this.scene, x, y, this.word[i], i, true);
 			this.slots.push(slot);
 		}
 	}
