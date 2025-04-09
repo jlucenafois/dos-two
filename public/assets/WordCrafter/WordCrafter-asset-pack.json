@@ -15,6 +15,15 @@
                 "url": "assets/WordCrafter/Utensils.png",
                 "type": "image",
                 "key": "Utensils"
+            },
+            {
+                "url": "assets/WordCrafter/letter_slot_default.png",
+                "type": "image",
+                "key": "letter_slot_default"
+            },            {
+                "url": "assets/WordCrafter/letter_slot_correct.png",
+                "type": "image",
+                "key": "letter_slot_correct"
             }
         ]
     },

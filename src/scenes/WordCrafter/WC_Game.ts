@@ -1,4 +1,3 @@
-import { MouseConstraint } from "matter";
 import WordPuzzle from "./objects/WordPuzzle";
 export interface worldBounds {
 	width: number;
@@ -27,7 +26,14 @@ export default class WC_Game extends Phaser.Scene {
 	}
 
 	preload() {
-		this.load.image("letter-slot", "assets/letter-slot.png");
+		this.load.image(
+			"letter_slot_default",
+			"assets/WordCrafter/letter_slot_default.png"
+		);
+		this.load.image(
+			"letter_slot_correct",
+			"assets/WordCrafter/letter_slot_correct.png"
+		);
 	}
 
 	editorCreate(): void {
@@ -65,17 +71,10 @@ export default class WC_Game extends Phaser.Scene {
 			length: 0,
 		});
 
-		this.input.on("pointerdown", (pointer) => {
-			const bodies = this.matter.intersectPoint(pointer.x, pointer.y);
-			if (bodies.length > 0) {
-				this.puzzle.handlepointerdown(bodies[0]);
-			}
-		});
-
 		this.input.on("pointerup", (pointer) => {
 			const bodies = this.matter.intersectPoint(pointer.x, pointer.y);
-			if (bodies.length > 0) {
-				this.puzzle.handlepointerup(bodies[0]);
+			if (bodies.length == 2) {
+				this.puzzle.handlepointerup(bodies[0], bodies[1]);
 			}
 		});
 	}
@@ -119,6 +118,6 @@ export default class WC_Game extends Phaser.Scene {
 	}
 
 	update() {
-        this.puzzle.update()
-    }
+		this.puzzle.update();
+	}
 }
