@@ -26,17 +26,17 @@ export default class P_Base extends Base {
 
     preload() {
         // // TODO: rename transcript files to be 0-indexed and remove this line
-        // const pageIdx = parseInt(this.scene.key.split("_")[1]) + 1;
+        const pageIdx = parseInt(this.scene.key.split("_")[1]) + 1;
     
-        // const languages = [
-        //     { key: "transcript-english", suffix: "e" },
-        //     { key: "transcript-spanish", suffix: "s" }
-        // ];
+        const languages = [
+            { key: "transcript-english", suffix: "e" },
+            { key: "transcript-spanish", suffix: "s" }
+        ];
     
-        // languages.forEach(({ key, suffix }) => {
-        //     this.load.json(this.nameWithKey(key), `assets/transcript/${pageIdx}${suffix}.json`);
-        //     this.load.audio(this.nameWithKey(`audio-${key}`), `assets/transcript/${pageIdx}${suffix}.wav`);
-        // });
+        languages.forEach(({ key, suffix }) => {
+            this.load.json(this.nameWithKey(key), `assets/transcript/${pageIdx}${suffix}.json`);
+            this.load.audio(this.nameWithKey(`audio-${key}`), `assets/transcript/${pageIdx}${suffix}.wav`);
+        });
     }
     
 

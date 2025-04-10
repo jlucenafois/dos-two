@@ -12,6 +12,7 @@ import { Scene } from "phaser";
 import { SingleComponent } from "../types/components/SingleComponent";
 import { Image } from "../types/image/Image";
 import Base from "./scenes/Base";
+import P_Base from "./scenes/story/P_Base";
 
 
 export function renderSingleComponent(context: Scene, sc: SingleComponent) {
@@ -25,7 +26,7 @@ export function renderSingleComponent(context: Scene, sc: SingleComponent) {
 /**
      * 
      */
-export function renderDualComponent(context: Scene, dc: DualComponent) {
+export function renderDualComponent(context: P_Base, dc: DualComponent) {
     // render dual shapes and texts
     if (dc.dualShape) {
         const isSpanish = CURRENT_SETTINGS.gameState.language === Language.Spanish;
@@ -232,7 +233,7 @@ export function renderShape(context: Scene, ss: Shape) {
     const shapeRenderer: Record<SupportedShape, (x: number, y: number, style: ShapeStyle) => void> = {
         [SupportedShape.RoundedRect]: (x: number, y: number, style: ShapeStyle) => {
             const graphics = context.add.graphics();
-            
+
             const { strokeWeight, strokeColor, fillColor, fillAlpha, shadowOffset, shadowFill, shadowAlpha } = style.style;
 
             if (shadowFill !== undefined && shadowFill !== null) {
@@ -320,42 +321,41 @@ export function renderRichText(context: Scene, st: SingleText): WordObject[] {
 /**
 * Renders dualText dynamically depending on preferred language. 
 */
-export function renderDualText(context: Scene, preferredText: BoundedText, alternateText: BoundedText, preferredBox: Image | Shape, alternateBox: Image | Shape) {
+export function renderDualText(context: P_Base, preferredText: BoundedText, alternateText: BoundedText, preferredBox: Image | Shape, alternateBox: Image | Shape) {
 
     // Render preferred text at original position
     const preferredWordObjects = renderBoundedText(context, preferredText, preferredBox);
-    if (preferredWordObjects) {
-        const preferredHighlighter = new TextHighlighter(preferredWordObjects);
-    }
-
-    // Render alternate text below preferred text (offset Y by 100 pixels, adjust as needed)
+    
+    // // Render alternate text below preferred text (offset Y by 100 pixels, adjust as needed)
     const alternateWordObjects = renderBoundedText(context, alternateText, alternateBox);
-    if (alternateWordObjects) {
-        const alternateHighlighter = new TextHighlighter(alternateWordObjects);
+    
+    if (preferredWordObjects && alternateWordObjects) {
+
+        const preferredHighlighter = new TextHighlighter(preferredWordObjects);
+        const alternateHighlighter = new TextHighlighter(alternateWordObjects); 
+        const isEnglish = CURRENT_SETTINGS.gameState.language === Language.English;
+        const transcriptEnglish = context.cache.json.get(context.nameWithKey("transcript-english")).words;
+        const audioEnglish = context.sound.add(context.nameWithKey("audio-transcript-english"));
+        const transcriptSpanish = context.cache.json.get(context.nameWithKey("transcript-spanish")).words;
+        const audioSpanish = context.sound.add(context.nameWithKey("audio-transcript-spanish"));
+        const transcriptPreferred = isEnglish ? transcriptEnglish : transcriptSpanish;
+        const audioPreferred = isEnglish ? audioEnglish : audioSpanish;
+        const transcriptAlternative = isEnglish ? transcriptSpanish : transcriptEnglish;
+        const audioAlternative = isEnglish ? audioSpanish : audioEnglish;
+        
+        playAudioWithSync(context, preferredHighlighter, transcriptPreferred, audioPreferred, 2000, () => {
+            playAudioWithSync(context, alternateHighlighter, transcriptAlternative, audioAlternative, 1000);
+        });
     }
-
-    const isEnglish = CURRENT_SETTINGS.gameState.language === Language.English;
-    //    const transcriptEnglish = context.cache.json.get(context.nameWithKey("transcript-english")).words;
-    //    const audioEnglish = context.sound.add(context.nameWithKey("audio-transcript-english"));
-    //    const transcriptSpanish = context.cache.json.get(context.nameWithKey("transcript-spanish")).words;
-    //    const audioSpanish = context.sound.add(context.nameWithKey("audio-transcript-spanish"));
-    //    const transcriptPreferred = isEnglish ? transcriptEnglish : transcriptSpanish;
-    //    const audioPreferred = isEnglish ? audioEnglish : audioSpanish;
-    //    const transcriptAlternative = isEnglish ? transcriptSpanish : transcriptEnglish;
-    //    const audioAlternative = isEnglish ? audioSpanish : audioEnglish;
-
-    //    playAudioWithSync( preferredHighlighter, transcriptPreferred, audioPreferred,2000, () => {
-    // playAudioWithSync( alternateHighlighter, transcriptAlternative, audioAlternative,1000);
-    //    });
 };
 
-// export function playAudioWithSync( highlighter:TextHighlighter, transcript:any, audio: any,delay:number, onComplete?:CallableFunction) {
-//    this.time.delayedCall(delay, () => {
-//        highlighter.syncWithAudio(transcript);
-//        audio.play();
-//        if (onComplete) audio.once('complete', onComplete);
-//    });
-// };
+export function playAudioWithSync(context: Scene, highlighter: TextHighlighter, transcript: any, audio: any, delay: number, onComplete?: CallableFunction) {
+    context.time.delayedCall(delay, () => {
+        highlighter.syncWithAudio(transcript);
+        audio.play();
+        if (onComplete) audio.once('complete', onComplete);
+    });
+};
 
 
 
@@ -413,7 +413,6 @@ export function getResponsivePos(x: number, y: number, scene: Scene) {
     return { x: x * scaleX, y: y * scaleY, scale: Math.min(scaleX, scaleY) };
 }
 export function repositionAll(context: Base) {
-    console.log("positioning...")
     for (const key in context.basePositions) {
         const base = context.basePositions[key];
         const obj = context[key as keyof Base] as Phaser.GameObjects.GameObject;
@@ -425,23 +424,23 @@ export function repositionAll(context: Base) {
 }
 
 export function generateBasePositions(context: Phaser.Scene): { [key: string]: { x: number; y: number } } {
-	const basePositions: { [key: string]: { x: number; y: number } } = {};
+    const basePositions: { [key: string]: { x: number; y: number } } = {};
     console.log(Object.keys(context))
-	for (const key of Object.keys(context)) {
-		const value = (context as any)[key];
+    for (const key of Object.keys(context)) {
+        const value = (context as any)[key];
 
-		if (
-			value &&
-			typeof value === "object" &&
-			"x" in value &&
-			"y" in value &&
-			typeof value.x === "number" &&
-			typeof value.y === "number"
-		) {
-			basePositions[key] = { x: value.x, y: value.y };
-		}
-	}
+        if (
+            value &&
+            typeof value === "object" &&
+            "x" in value &&
+            "y" in value &&
+            typeof value.x === "number" &&
+            typeof value.y === "number"
+        ) {
+            basePositions[key] = { x: value.x, y: value.y };
+        }
+    }
 
-	return basePositions;
+    return basePositions;
 }
 
