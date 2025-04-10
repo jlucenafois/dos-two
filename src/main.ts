@@ -44,12 +44,14 @@ class Boot extends Phaser.Scene {
 window.addEventListener('load', function () {
 	
 	const game = new Phaser.Game({
-        width: window.innerWidth,
-		height: window.innerHeight,
+        // width: window.innerWidth,
+		// height: window.innerHeight,
+        width: 1728,
+		height: 1117,
 		parent: 'game-container',
         transparent: true,
 		scale: {
-			mode: Phaser.Scale.ScaleModes.RESIZE,
+			mode: Phaser.Scale.ScaleModes.FIT,
 			autoCenter: Phaser.Scale.Center.CENTER_BOTH
 		},
 		scene: [Boot, Preload, OB_UI, OB_1, OB_2, OB_3_1, OB_3_2, OB_4, P_0, P_1, P_2, P_3, P_4, P_5, P_6, Q_1, Q_2]

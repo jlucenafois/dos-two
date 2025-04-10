@@ -64,14 +64,14 @@ export default class Base extends Phaser.Scene {
 		}
 		// Add a title using the key of the passed scene
 		this.addTitle();
-		// Runs after the child scene's `create()` method
-		this.basePositions = generateBasePositions(this)
-		console.log(this.basePositions)
-		repositionAll(this); // Reposition initially
+		
+		// // Runs after the child scene's `create()` method
+		// this.basePositions = generateBasePositions(this)
+		// repositionAll(this); // Reposition initially
 
-		this.scale.on("resize", () => {
-			repositionAll(this); // Reposition on window resize
-		});
+		// this.scale.on("resize", () => {
+		// 	repositionAll(this); // Reposition on window resize
+		// });
 	}
 	/**
 	 * Adds a title to the scene using the key of the passed scene.
