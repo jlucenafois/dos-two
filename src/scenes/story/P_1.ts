@@ -27,9 +27,8 @@ export default class P_1 extends P_Base {
 	// Write your code here
 
 	create() {
-
-		super.create()
 		this.editorCreate();
+		super.create()
 	}
 
 	/* END-USER-CODE */

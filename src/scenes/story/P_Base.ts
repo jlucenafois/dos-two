@@ -49,12 +49,11 @@ export default class P_Base extends Base {
     // Write your code here
 
     create() {
-        super.create();
-        
         const sceneScript = SCRIPT[this.scene.key];
         if (!sceneScript) return; // Early return if no script
         
         const dualComponents = sceneScript.dualComponents;
         dualComponents?.forEach(dc => renderDualComponent(this, dc));
+        super.create();
     }
 }

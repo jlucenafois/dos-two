@@ -2,7 +2,7 @@
 // You can write more code here
 
 /* START OF COMPILED CODE */
-
+import { generateBasePositions } from "../../utils";
 import OB_Base from "./OB_Base";
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
@@ -35,27 +35,29 @@ export default class OB_1 extends OB_Base {
 
 	// Write your code here
 
+	
+	
 	create() {
-		super.create()
 		this.editorCreate();
+		super.create()
 		this.events.emit("changeBackground", "#7580FF"); // Notify UI
 		this.default_play_lg.setInteractive({ useHandCursor: true });
-
+		
 		// Mouse hover effect
 		this.default_play_lg.on("pointerover", () => {
 			this.default_play_lg.setTexture("hovered_play_lg"); // Change to hover state
 		});
-
+		
 		// Mouse out effect (Reset to normal)
 		this.default_play_lg.on("pointerout", () => {
 			this.default_play_lg.setTexture("default_play_lg");
 		});
-
+		
 		// Mouse press effect
 		this.default_play_lg.on("pointerdown", () => {
 			this.default_play_lg.setTexture("pressed_play_lg"); // Change to pressed state
 		});
-
+		
 		// Release effect (if still hovered)
 		this.default_play_lg.on("pointerup", () => {
 			this.default_play_lg.setTexture("hovered_play_lg"); // Reset to hover state

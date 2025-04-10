@@ -22,7 +22,7 @@ export default class OB_3_1 extends OB_Base {
 	editorCreate(): void {
 
 		// girl_right
-		const girl_right = this.add.image(1378, 515, "girl_right");
+		const girl_right = this.add.image(1385, 515, "girl_right");
 		girl_right.setOrigin(0, 0);
 
 		// girl_left
@@ -48,23 +48,32 @@ export default class OB_3_1 extends OB_Base {
 		// language_selection_title
 		this.add.image(864, 309, "language_selection_title");
 
+		this.girl_right = girl_right;
+		this.girl_left = girl_left;
+		
+		this.eye_blink_right = eye_blink_right;
+		this.eye_blink_left = eye_blink_left;
+
 		this.english_bubble = english_bubble;
 		this.spanish_bubble = spanish_bubble;
 
 		this.events.emit("scene-awake");
 	}
 
-	private english_bubble!: Phaser.GameObjects.Image;
+	private girl_right!: Phaser.GameObjects.Image;
+	private girl_left!: Phaser.GameObjects.Image;
+	private eye_blink_right!: Phaser.GameObjects.Image;
+	private eye_blink_left!: Phaser.GameObjects.Image;
 	private spanish_bubble!: Phaser.GameObjects.Image;
+	private english_bubble!: Phaser.GameObjects.Image;
 
 	/* START-USER-CODE */
 
 	// Write your code here
 
 	create() {
-
-		super.create();
 		this.editorCreate();
+		super.create();
 		/* SPANISH BUBBLE */
 		this.spanish_bubble.setInteractive({
 			useHandCursor: true, 

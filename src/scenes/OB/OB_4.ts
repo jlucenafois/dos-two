@@ -68,7 +68,7 @@ export default class OB_4 extends OB_Base {
 		const progress_bar = this.add.image(864, 558.5, "0_progress_bar_lg");
 
 		this.progress_bar = progress_bar;
-
+		super.create()
 		this.events.emit("scene-awake");
 	}
 

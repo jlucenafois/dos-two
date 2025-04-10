@@ -29,12 +29,12 @@ export default class Q_Base extends Base {
 	// Write your code here
 
 	create() {
-		super.create();
 		const sceneScript = SCRIPT[this.scene.key];
 		if (!sceneScript) return; // Early return if no script
-		// this.events.emit("disableForwardNav"); // Notify UI
+		this.events.emit("disableForwardNav"); // Notify UI
 		const singleComponents = sceneScript.singleComponents;
 		singleComponents?.forEach(sc => renderSingleComponent(this, sc));
+		super.create();
 	}
 
 	/* END-USER-CODE */

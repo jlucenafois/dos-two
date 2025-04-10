@@ -6,9 +6,10 @@
 /* START-USER-IMPORTS */
 import Base from '../Base.ts';
 import {CURRENT_SETTINGS} from '../../settings.ts'
+import { generateBasePositions } from '../../utils.ts';
 /* END-USER-IMPORTS */
 
-export default class OB_UI extends Phaser.Scene {
+export default class OB_UI extends Base {
 
 	constructor() {
 		super("OB_UI");
@@ -72,6 +73,7 @@ export default class OB_UI extends Phaser.Scene {
 		this.default_next_lg = default_next_lg;
 		this.default_back_lg = default_back_lg;
 		this.progress_bar = progress_bar;
+		this.coin = coin;
 
 		this.events.emit("scene-awake");
 	}
@@ -85,6 +87,8 @@ export default class OB_UI extends Phaser.Scene {
 	private default_next_lg!: Phaser.GameObjects.Image;
 	private default_back_lg!: Phaser.GameObjects.Image;
 	private progress_bar!: Phaser.GameObjects.Image;
+	private coin!: Phaser.GameObjects.Image;
+
 	/* START-USER-CODE */
 	registerListeners() {
 		this.scene.manager.scenes.forEach(scene => {
@@ -97,6 +101,7 @@ export default class OB_UI extends Phaser.Scene {
 				scene.events.on("changeBackground", this.changeBackground, this);
 				scene.events.on("updateProgressBar", this.updateProgressBar, this)
 				scene.events.on("disableForwardNav", this.disableForwardNav, this)
+				scene.events.on("enableForwardNav", this.enableForwardNav, this)
 				scene.events.on("updateCoinsUI", this.updateCoinsUI, this)
 			}
 		});
@@ -160,6 +165,11 @@ export default class OB_UI extends Phaser.Scene {
 		this.default_next_lg.setTexture("disabled_next_lg");
 	}
 
+	enableForwardNav() {
+		this.default_next_lg.setInteractive({ useHandCursor: true });
+		this.default_next_lg.setTexture("default_next_lg");
+	}
+
 	private coin_counter!: Phaser.GameObjects.Text;
 	
 	updateCoinsUI() {
@@ -169,27 +179,28 @@ export default class OB_UI extends Phaser.Scene {
 	create() {
 		this.editorCreate();
 		this.registerListeners();
-
+		
 		this.coin_counter = this.add.text(140, 950, `${CURRENT_SETTINGS.gameState.coins}`, {
 			fontSize: '40px',
 			fontFamily: 'Bowlby One'
 		})
-
-	/* HOME */
+		super.create();
+		
+		/* HOME */
 		this.default_home_lg.setInteractive({ useHandCursor: true });
-
+		
 		// Mouse press effect
 		this.default_home_lg.on("pointerdown", () => {
 			this.default_home_lg.setTexture("pressed_home_lg"); // Change to pressed state
 		});
-
+		
 		// Release effect (if still hovered)
 		this.default_home_lg.on("pointerup", () => {
 			this.default_home_lg.setTexture("default_home_lg"); // Reset to hover state
 			this.stopAllScenes([])
 			this.scene.start("OB_1"); // Switch to OB1 scene
 		});
-
+		
 		// Mouse out effect (Reset to normal)
 		this.default_home_lg.on("pointerout", () => {
 			this.default_home_lg.setTexture("default_home_lg");

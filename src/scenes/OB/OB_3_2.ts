@@ -53,9 +53,8 @@ export default class OB_3_2 extends OB_Base {
 	// Write your code here
 
 	create() {
-
-		super.create();
 		this.editorCreate();
+		super.create();
 
 	}
 

@@ -44,18 +44,30 @@ export default class OB_2 extends OB_Base {
 
 		this.reading_mode = reading_mode;
 		this.game_mode = game_mode;
+		this.reading_mode_title = reading_mode_title;
+		this.game_mode_title = game_mode_title;
+		this.title_ob_2 = title_ob_2;
+
+		
 
 		this.events.emit("scene-awake");
 	}
 
+	
 	private reading_mode!: Phaser.GameObjects.Image;
 	private game_mode!: Phaser.GameObjects.Image;
-
+	private reading_mode_title: Phaser.GameObjects.Image;
+	private game_mode_title: Phaser.GameObjects.Image;
+	private title_ob_2: Phaser.GameObjects.Image;
+	
+	
 	/* START-USER-CODE */
+	
 
 	create() {
-		super.create()
+		
 		this.editorCreate();
+		super.create()
 
 		this.events.emit("showExitButton"); // Notify UI
 		/* READING MODE */

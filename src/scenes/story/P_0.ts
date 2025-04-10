@@ -44,8 +44,8 @@ export default class P_0 extends P_Base {
 	/* START-USER-CODE */
 
 	create() {
-		super.create()
 		this.editorCreate()
+		super.create()
 		// Set depth to always be on back
 		this.scene.sendToBack(this);
 
@@ -90,8 +90,6 @@ export default class P_0 extends P_Base {
 					this.sparkles.play("sparkles");
 
 				})
-
-
 			}
 
 		});
