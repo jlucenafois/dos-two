@@ -2,9 +2,29 @@
     "section1": {
         "files": [
             {
-                "url": "assets/games/almohada_card.png",
+                "url": "assets/games/unflipped.png",
                 "type": "image",
-                "key": "almohada_card"
+                "key": "unflipped"
+            },
+            {
+                "url": "assets/games/hover_unflipped.png",
+                "type": "image",
+                "key": "hover_unflipped"
+            },
+            {
+                "url": "assets/games/hover_card.png",
+                "type": "image",
+                "key": "hover_card"
+            },
+            {
+                "url": "assets/games/tutorial_card.png",
+                "type": "image",
+                "key": "tutorial_card"
+            },
+            {
+                "url": "assets/games/tutorial_card_e.png",
+                "type": "image",
+                "key": "tutorial_card_e"
             },
             {
                 "url": "assets/games/pillow_card.png",

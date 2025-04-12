@@ -78,7 +78,7 @@ export default class Preload extends Base {
 			}
 		}
 
-		this.scene.start("OB_1");
+		this.scene.start("DD_0");
 	}
 
 	/* END-USER-CODE */

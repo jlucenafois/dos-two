@@ -102,6 +102,16 @@
             },
             "x": 295,
             "y": 364
+        },
+        {
+            "type": "Image",
+            "id": "2a71e721-dfb5-425a-98f9-20ed46ca4689",
+            "label": "_0_progress_bar_lg",
+            "texture": {
+                "key": "0_progress_bar_lg"
+            },
+            "x": 866,
+            "y": 109
         }
     ],
     "plainObjects": [],

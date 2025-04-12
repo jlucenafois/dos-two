@@ -20,7 +20,7 @@
             "texture": {
                 "key": "0_progress_bar_lg"
             },
-            "x": 902,
+            "x": 873,
             "y": 135
         },
         {
@@ -30,8 +30,8 @@
             "texture": {
                 "key": "unflipped"
             },
-            "x": 557,
-            "y": 473
+            "x": 633,
+            "y": 421
         },
         {
             "type": "Image",
@@ -40,8 +40,8 @@
             "texture": {
                 "key": "unflipped"
             },
-            "x": 877,
-            "y": 473
+            "x": 889,
+            "y": 421
         },
         {
             "type": "Image",
@@ -50,8 +50,8 @@
             "texture": {
                 "key": "unflipped"
             },
-            "x": 1197,
-            "y": 473
+            "x": 1145,
+            "y": 421
         },
         {
             "type": "Image",
@@ -60,8 +60,8 @@
             "texture": {
                 "key": "unflipped"
             },
-            "x": 557,
-            "y": 747
+            "x": 633,
+            "y": 677
         },
         {
             "type": "Image",
@@ -70,8 +70,8 @@
             "texture": {
                 "key": "unflipped"
             },
-            "x": 877,
-            "y": 747
+            "x": 889,
+            "y": 677
         },
         {
             "type": "Image",
@@ -80,8 +80,18 @@
             "texture": {
                 "key": "unflipped"
             },
-            "x": 1197,
-            "y": 747
+            "x": 1145,
+            "y": 677
+        },
+        {
+            "type": "Image",
+            "id": "0625a0e0-c4fd-4a5a-9caf-64bc8e4847ff",
+            "label": "mgsubtitle",
+            "texture": {
+                "key": "mgsubtitle"
+            },
+            "x": 885,
+            "y": 933
         }
     ],
     "plainObjects": [],

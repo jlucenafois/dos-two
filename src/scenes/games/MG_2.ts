@@ -4,13 +4,10 @@
 /* START OF COMPILED CODE */
 
 /* START-USER-IMPORTS */
-import { CURRENT_SETTINGS } from "../settings";
 import MG_Base from "./MG_Base";
 /* END-USER-IMPORTS */
 
 export default class MG_2 extends MG_Base {
-
-	private unflipped: Phaser.GameObjects.Image;
 
 	constructor() {
 		super("MG_2");
@@ -23,7 +20,7 @@ export default class MG_2 extends MG_Base {
 	editorCreate(): void {
 
 		// hover_unflipped
-		this.unflipped = this.add.image(457, 638, "unflipped");
+		this.add.image(457, 638, "unflipped");
 
 		// hover_unflipped_1
 		this.add.image(730, 366, "unflipped");
@@ -49,6 +46,9 @@ export default class MG_2 extends MG_Base {
 		// mgsubtitle_sm
 		this.add.image(295, 364, "mgsubtitle_sm");
 
+		// _0_progress_bar_lg
+		this.add.image(873, 115, "0_progress_bar_lg");
+
 		this.events.emit("scene-awake");
 	}
 
@@ -57,10 +57,10 @@ export default class MG_2 extends MG_Base {
 	// Write your code here
 
 	create() {
-
+		super.create();
 		this.editorCreate();
 		this.events.emit("updateUI", "show_exit_button");
-			CURRENT_SETTINGS.gameState.prevScene = "DD_0"; // Set a different prevScene for MG_1
+			//CURRENT_SETTINGS.gameState.prevScene = "DD_0"; // Set a different prevScene for MG_1
 			this.events.on("exit_button_clicked", () => {
 				this.scene.stop("MG_2");
 				this.scene.start("DD_0"); // Navigate to DD_0

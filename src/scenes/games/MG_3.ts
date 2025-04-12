@@ -4,7 +4,6 @@
 /* START OF COMPILED CODE */
 
 /* START-USER-IMPORTS */
-import { CURRENT_SETTINGS } from "../settings";
 import MG_Base from "./MG_Base"
 /* END-USER-IMPORTS */
 
@@ -61,6 +60,9 @@ export default class MG_3 extends MG_Base {
 		mgsubtitle_sm.scaleX = 0.9;
 		mgsubtitle_sm.scaleY = 0.9;
 
+		// _0_progress_bar_lg
+		this.add.image(873, 115, "0_progress_bar_lg");
+
 		this.events.emit("scene-awake");
 	}
 
@@ -69,10 +71,10 @@ export default class MG_3 extends MG_Base {
 	// Write your code here
 
 	create() {
-
+		super.create();
 		this.editorCreate();
 		this.events.emit("updateUI", "show_exit_button");
-			CURRENT_SETTINGS.gameState.prevScene = "DD_0"; // Set a different prevScene for MG_1
+
 			this.events.on("exit_button_clicked", () => {
 				this.scene.stop("MG_3");
 				this.scene.start("DD_0"); // Navigate to DD_0

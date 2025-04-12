@@ -144,6 +144,16 @@
             "y": 344,
             "scaleX": 0.9,
             "scaleY": 0.9
+        },
+        {
+            "type": "Image",
+            "id": "56f6402e-2bbb-4ef3-8d26-97aada14c48a",
+            "label": "_0_progress_bar_lg",
+            "texture": {
+                "key": "0_progress_bar_lg"
+            },
+            "x": 884,
+            "y": 83
         }
     ],
     "plainObjects": [],

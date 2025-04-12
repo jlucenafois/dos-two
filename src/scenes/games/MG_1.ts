@@ -3,9 +3,11 @@
 /* START OF COMPILED CODE */
 
 /* START-USER-IMPORTS */
-import { CURRENT_SETTINGS } from "../settings";
 import MG_Base from "./MG_Base";
 /* END-USER-IMPORTS */
+
+// Define the CardKey type globally - idk
+type CardKey = "bed_card" | "cama_card" | "lamp_card" | "lampara_card" | "mirror_card" | "espejo_card";
 
 export default class MG_1 extends MG_Base {
 
@@ -17,6 +19,7 @@ export default class MG_1 extends MG_Base {
     private unflipped_5: Phaser.GameObjects.Image;
     private progressBar: Phaser.GameObjects.Image;
     private matchedPairs: Set<String>;
+    
 
     constructor() {
         super("MG_1");
@@ -29,29 +32,32 @@ export default class MG_1 extends MG_Base {
     editorCreate(): void {
 
         // _0_progress_bar_lg
-        this.progressBar = this.add.image(902, 135, "0_progress_bar_lg");
+        this.progressBar = this.add.image(873, 135, "0_progress_bar_lg");
 
         // unflipped 
-        this.unflipped = this.add.image(557, 473, "unflipped");
+        this.unflipped = this.add.image(633, 421, "unflipped");
 
         // unflipped_1
-        this.unflipped_1 = this.add.image(877, 473, "unflipped");
+        this.unflipped_1 = this.add.image(889, 421, "unflipped");
 
         // unflipped_2
-        this.unflipped_2 = this.add.image(1197, 473, "unflipped");
+        this.unflipped_2 = this.add.image(1145, 421, "unflipped");
 
         // unflipped_3
-        this.unflipped_3 = this.add.image(557, 747, "unflipped");
+        this.unflipped_3 = this.add.image(633, 677, "unflipped");
 
         // unflipped_4
-        this.unflipped_4 = this.add.image(877, 747, "unflipped");
+        this.unflipped_4 = this.add.image(889, 677, "unflipped");
 
         // unflipped_5
-        this.unflipped_5 = this.add.image(1197, 747, "unflipped");
+        this.unflipped_5 = this.add.image(1145, 677, "unflipped");
 
         // hover_unflipped
-        const hover_unflipped = this.add.image(557, 473, "hover_unflipped");
+        const hover_unflipped = this.add.image(633, 421, "hover_unflipped");
         hover_unflipped.setVisible(false);
+
+        // mgsubtitle
+		this.add.image(885, 933, "mgsubtitle");
 
         // Function to add hover effect
         const addHover = (card: Phaser.GameObjects.Image) => {
@@ -83,90 +89,225 @@ export default class MG_1 extends MG_Base {
     }
 
     create() {
+        super.create();
         this.editorCreate();
-        this.events.emit("updateUI"); // can't get show_exit_button without going striaght to OB_1
-        CURRENT_SETTINGS.gameState.prevScene = "DD_0";
-        this.events.on("back_arrow_clicked", () => {
-            this.scene.stop("MG_1");
-            this.scene.start("DD_0"); // Navigate to DD_0
+        this.events.emit("updateUI", "show_exit_button");
+    
+        // Add a semi-transparent overlay to darken the screen
+        const overlay = this.add.rectangle(0, 0, this.scale.width, this.scale.height, 0x000000, 0.7);
+        overlay.setOrigin(0, 0);
+    
+        // Highlight the top-right card (unflipped_2)
+        this.unflipped_2.setAlpha(1); // Ensure it's fully visible
+        this.unflipped_2.setDepth(1); // Bring it above the overlay
+    
+        // Assign tutorial textures to the two cards
+        this.unflipped_2.setData("flippedCard", "tutorial_card");
+        this.unflipped_4.setData("flippedCard", "tutorial_card_e");
+    
+        // Add an animated mouse pointer
+        const mousePointer = this.add.image(this.unflipped_2.x - 50, this.unflipped_2.y - 50, "mouse_pointer");
+        mousePointer.setScale(0.5); // Scale down the pointer for better visibility
+    
+        // Animate the mouse pointer to simulate a click
+        this.tweens.add({
+            targets: mousePointer,
+            x: this.unflipped_2.x,
+            y: this.unflipped_2.y,
+            duration: 1000,
+            onComplete: () => {
+                // Simulate flipping the first card
+                this.flipCard(this.unflipped_2);
+    
+                // Move the pointer to the matching card
+                const matchingCard = this.unflipped_4; // Example: Match with unflipped_4
+                matchingCard.setAlpha(1);
+                matchingCard.setDepth(1);
+                this.tweens.add({
+                    targets: mousePointer,
+                    x: matchingCard.x,
+                    y: matchingCard.y,
+                    duration: 1000,
+                    onComplete: () => {
+                        // Simulate flipping the matching card
+                        this.flipCard(matchingCard);
+    
+                        // Make the matched cards disappear
+                        this.time.delayedCall(1000, () => {
+                            this.unflipped_2.setVisible(false);
+                            this.unflipped_4.setVisible(false);
+                            matchingCard.setVisible(false);
+    
+                            
+    
+                            // Reset the game after the tutorial
+                            this.time.delayedCall(1000, () => {
+                            // Remove the overlay and mouse pointer
+                            overlay.destroy();
+                            mousePointer.destroy();
+                                this.resetGame();
+                            });
+                        });
+                    },
+                });
+            },
         });
-        this.addTitle();
     }
 
     setupMemoryGame() {
-        let firstCard: Phaser.GameObjects.Image | null = null;
-        let secondCard: Phaser.GameObjects.Image | null = null;
-        let matches = 0; // Max 3
+        // Define the CardKey type outside the class
+        // type CardKey = "bed_card" | "cama_card" | "lamp_card" | "lampara_card" | "mirror_card" | "espejo_card";
+        const cards = ["bed_card", "cama_card", "lamp_card", "lampara_card", "mirror_card", "espejo_card"];
+        Phaser.Utils.Array.Shuffle(cards);
 
-        const cards = [this.unflipped, this.unflipped_1, this.unflipped_2, this.unflipped_3, this.unflipped_4, this.unflipped_5];
-        const cardTextures = ['flipped', 'testflippedpairspanish', 'testflipped', 'testflippedpair', 'testflipped2', 'testflippedpair2'];
+        const unflippedCards = [
+            this.unflipped,
+            this.unflipped_1,
+            this.unflipped_2,
+            this.unflipped_3,
+            this.unflipped_4,
+            this.unflipped_5,
+        ];
 
-        // Assign textures to cards
-        cards.forEach((card, index) => {
-            card.setData('flippedTexture', cardTextures[index]);
+        unflippedCards.forEach((card, index) => {
+            card.setTexture("unflipped");
+            card.setData("key", cards[index]);
+            card.setData("flippedCard", cards[index]);
+            card.setData("flipped", false);
+            card.setInteractive();
         });
 
-        const flipCard = (card: Phaser.GameObjects.Image) => {
-            if (firstCard && secondCard) {
-                return;
-            }
+        let flippedCards: Phaser.GameObjects.Image[] = [];
 
-            card.setTexture(card.getData('flippedTexture'));
+        unflippedCards.forEach((card) => {
+            card.on("pointerdown", () => {
+                if (flippedCards.length < 2 && !card.getData("flipped")) {
+                    this.flipCard(card);
+                    flippedCards.push(card);
 
-            if (!firstCard) {
-                firstCard = card;
-            } else if (!secondCard) {
-                secondCard = card;
-
-                // Check for match
-                if (this.isMatch(firstCard, secondCard)) {
-                    const pairKey = `${firstCard.texture.key}-${secondCard.texture.key}`;
-                    const reversePairKey = `${secondCard.texture.key}-${firstCard.texture.key}`;
-
-                    // Check if the pair is already matched
-                    if (!this.matchedPairs.has(pairKey) && !this.matchedPairs.has(reversePairKey)) {
-                        // Cards match and are not already matched
-                        this.matchedPairs.add(pairKey);
-                        this.matchedPairs.add(reversePairKey);
-                        firstCard.disableInteractive();
-                        secondCard.disableInteractive();
-                        firstCard = null;
-                        secondCard = null;
-                        matches++;
-                        //this.updateProgressBar(matches);
-                    } else {
-                        // Cards match but are already matched
-                        firstCard = null;
-                        secondCard = null;
+                    if (flippedCards.length === 2) {
+                        this.time.delayedCall(1000, () => {
+                            this.checkMatch(flippedCards);
+                            flippedCards = [];
+                        });
                     }
-                } else {
-                    // Cards don't match, reset after a short delay
-                    this.time.delayedCall(1000, () => {
-                        firstCard?.setTexture("unflipped");
-                        secondCard?.setTexture("unflipped");
-                        firstCard?.setInteractive(); // Re-enable hover effect
-                        secondCard?.setInteractive(); // Re-enable hover effect
-                        firstCard = null;
-                        secondCard = null;
-                    });
                 }
-            }
-        };
-
-        cards.forEach(card => {
-            card.setInteractive();
-            card.on("pointerdown", () => flipCard(card));
+            });
         });
     }
 
-    isMatch(card1: Phaser.GameObjects.Image, card2: Phaser.GameObjects.Image): boolean {
-        const pairs: { [key: string]: string } = {
-            'flipped': 'testflippedpairspanish',
-            'testflipped': 'testflippedpair',
-            'testflipped2': 'testflippedpair2'
+    flipCard(card: Phaser.GameObjects.Image) {
+        // Animate the card to shrink horizontally (simulate flipping)
+        this.tweens.add({
+            targets: card,
+            scaleX: 0, // Shrink the card's width to 0
+            duration: 150, // Duration of the first half of the flip
+            onComplete: () => {
+                // Change the card's texture when it's "invisible"
+                card.setTexture(card.getData("flippedCard"));
+    
+                // Animate the card to grow back to its original width
+                this.tweens.add({
+                    targets: card,
+                    scaleX: 1, // Restore the card's width
+                    duration: 150, // Duration of the second half of the flip
+                });
+            },
+        });
+    
+        // Mark the card as flipped
+        card.setData("flipped", true);
+    }
+
+    flipCardBack(card: Phaser.GameObjects.Image) {
+        // Animate the card to shrink horizontally (simulate flipping back)
+        this.tweens.add({
+            targets: card,
+            scaleX: 0, // Shrink the card's width to 0
+            duration: 150, // Duration of the first half of the flip
+            onComplete: () => {
+                // Change the card's texture back to "unflipped" when it's "invisible"
+                card.setTexture("unflipped");
+    
+                // Animate the card to grow back to its original width
+                this.tweens.add({
+                    targets: card,
+                    scaleX: 1, // Restore the card's width
+                    duration: 150, // Duration of the second half of the flip
+                });
+            },
+        });
+    
+        // Mark the card as not flipped
+        card.setData("flipped", false);
+    }
+    
+
+    checkMatch(cards: Phaser.GameObjects.Image[]) {
+        const [card1, card2] = cards;
+
+        const matchedPair: Record<CardKey, CardKey> = {
+            "bed_card": "cama_card",
+            "cama_card": "bed_card",
+            "lamp_card": "lampara_card",
+            "lampara_card": "lamp_card",
+            "mirror_card": "espejo_card",
+            "espejo_card": "mirror_card",
         };
 
-        return pairs[card1.texture.key] === card2.texture.key || pairs[card2.texture.key] === card1.texture.key;
+        const key1 = card1.getData("key") as CardKey;
+        const key2 = card2.getData("key") as CardKey;
+
+        if (matchedPair[key1] === key2 || matchedPair[key2] === key1) {
+            this.matchedPairs.add(key1);
+            this.matchedPairs.add(key2);
+            card1.setVisible(false);
+            card2.setVisible(false);
+            // for each of 3 matches get progress bar to 100, for this start at 25_progress_bar_lg, 75_progress_bar_lg, 100_progress_bar_lg
+        } else {
+            this.time.delayedCall(1000, () => {
+                this.flipCardBack(card1);
+                this.flipCardBack(card2);
+            });
+        }
+
+        if (this.matchedPairs.size === 6) {
+            this.time.delayedCall(500, () => {
+                this.endGame();
+            });
+        }
+    }
+
+    endGame() {
+        // animations 
+        // quit or keep playing screen
+        this.matchedPairs.clear();
+        this.setupMemoryGame();
+    }
+
+    resetGame() {
+        // Clear matched pairs
+        this.matchedPairs.clear();
+    
+        // Reset all cards to their initial state
+        const unflippedCards = [
+            this.unflipped,
+            this.unflipped_1,
+            this.unflipped_2,
+            this.unflipped_3,
+            this.unflipped_4,
+            this.unflipped_5,
+        ];
+    
+        unflippedCards.forEach((card) => {
+            card.setTexture("unflipped");
+            card.setData("flipped", false);
+            card.setVisible(true);
+            card.setInteractive();
+        });
+    
+        // Start a new game
+        this.setupMemoryGame();
     }
 
     /* END-USER-CODE */
