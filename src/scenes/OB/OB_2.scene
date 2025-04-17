@@ -21,10 +21,8 @@
             "texture": {
                 "key": "reading_mode"
             },
-            "x": 325,
-            "y": 287,
-            "originX": 0,
-            "originY": 0
+            "x": 567,
+            "y": 520
         },
         {
             "type": "Image",
@@ -34,10 +32,46 @@
             "texture": {
                 "key": "game_mode"
             },
-            "x": 928,
-            "y": 348,
-            "originX": 0,
-            "originY": 0
+            "x": 1158,
+            "y": 577
+        },
+        {
+            "type": "BitmapText",
+            "id": "b3bd7e31-5aad-4c80-9b3a-369e8324c1e6",
+            "label": "title",
+            "x": 864,
+            "y": 309,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "Choose a reading mode\n",
+            "font": "BowlbyOne",
+            "fontSize": 40
+        },
+        {
+            "type": "BitmapText",
+            "id": "0b0d0569-3d49-4b53-9fc9-68dc88707e60",
+            "label": "reading_title",
+            "x": 567.5,
+            "y": 840,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "Story\nTime",
+            "font": "BowlbyOne",
+            "align": 1,
+            "fontSize": 40
+        },
+        {
+            "type": "BitmapText",
+            "id": "81e29a65-2696-4f99-b842-bad3e036d139",
+            "label": "title_2",
+            "x": 1154,
+            "y": 840,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "Language\nGames",
+            "font": "BowlbyOne",
+            "align": 1,
+            "fontSize": 40
         }
     ],
     "plainObjects": [],

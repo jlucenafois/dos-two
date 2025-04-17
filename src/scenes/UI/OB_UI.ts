@@ -3,8 +3,8 @@
 
 /* START OF COMPILED CODE */
 
+import Base from "../Base";
 /* START-USER-IMPORTS */
-import Base from '../Base.ts';
 import {CURRENT_SETTINGS} from '../../settings.ts'
 /* END-USER-IMPORTS */
 
@@ -51,7 +51,7 @@ export default class OB_UI extends Base {
 		next_page.visible = false;
 
 		// prev_page
-		const prev_page = this.add.image(192, 637, "default_back_lg");
+		const prev_page = this.add.image(192, 637, "disabled_back_lg");
 		prev_page.setOrigin(1, 0.5);
 		prev_page.visible = false;
 
@@ -104,6 +104,8 @@ export default class OB_UI extends Base {
 				scene.events.on("showProgressBar", this.showProgressBar, this)
 				scene.events.on("disableForwardNav", this.disableForwardNav, this)
 				scene.events.on("enableForwardNav", this.enableForwardNav, this)
+				scene.events.on("disableBackNav", this.disableBackNav, this)
+				scene.events.on("enableBackNav", this.enableBackNav, this)
 				scene.events.on("updateCoinsUI", this.updateCoinsUI, this)
 			}
 		});
@@ -171,6 +173,16 @@ export default class OB_UI extends Base {
 	enableForwardNav() {
 		this.next_page.setInteractive({ useHandCursor: true });
 		this.next_page.setTexture("default_next_lg");
+	}
+
+	disableBackNav() {
+		this.prev_page.disableInteractive();
+		this.prev_page.setTexture("disabled_back_lg");
+	}
+
+	enableBackNav() {
+		this.prev_page.setInteractive({ useHandCursor: true });
+		this.prev_page.setTexture("default_back_lg");
 	}
 
 	private coin_counter!: Phaser.GameObjects.Text;

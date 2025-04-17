@@ -20,81 +20,36 @@ export default class P_0 extends P_Base {
 
 		// open_cover
 		const open_cover = this.add.sprite(864, 558.5, "cover_0");
-		open_cover.play("open_cover");
-
-		// mirror
-		const mirror = this.add.sprite(698, 630, "1_girl", 0);
-		mirror.visible = false;
-
-		// sparkles
-		const sparkles = this.add.sprite(822, 353, "1_sparkles", 18);
-		sparkles.visible = false;
+		open_cover.setInteractive(new Phaser.Geom.Rectangle(374, 179, 1061.4753484153912, 795.73105782395), Phaser.Geom.Rectangle.Contains);
 
 		this.open_cover = open_cover;
-		this.mirror = mirror;
-		this.sparkles = sparkles;
 
 		this.events.emit("scene-awake");
 	}
 
 	private open_cover!: Phaser.GameObjects.Sprite;
-	private mirror!: Phaser.GameObjects.Sprite;
-	private sparkles!: Phaser.GameObjects.Sprite;
 
 	/* START-USER-CODE */
 
 	create() {
 		this.editorCreate()
 		super.create()
-		// Set depth to always be on back
-		this.scene.sendToBack(this);
+		this.events.emit("disableBackNav")
 
-		// Listen for animation completion
+		this.open_cover.input!.cursor = "pointer";
+
+		// Play animation on click
+		this.open_cover.on("pointerdown", () => {
+			this.open_cover.play("open_cover");
+		});
 		this.open_cover.on(Phaser.Animations.Events.ANIMATION_COMPLETE, (anim:Phaser.Animations.Animation) => {
 			if (anim.key === "open_cover") { 
-				this.events.emit("showBook"); // Notify UI
-				this.open_cover.setVisible(false);
-				this.scene.bringToTop(this)
-
-				/* SPARKLES */
-				this.sparkles.setVisible(true)
-				this.sparkles.setScale(0)
-
-				this.tweens.add({
-					targets: this.sparkles,
-					scaleX: 0.8957557329660852, // Target scale X
-					scaleY: 0.9791249320991222, // Target scale Y
-					ease: "Bounce.Out", // Makes it pop
-					duration: 1, // 1s animation
-				});
-				this.sparkles.play("sparkles");
-				this.sparkles.setInteractive({ useHandCursor: true})
-				this.sparkles.on("pointerover", () => {
-					this.sparkles.play("sparkles");
-				})
-				/* MIRROR */
-				this.mirror.setVisible(true)
-				this.mirror.setScale(0)
-
-				this.tweens.add({
-					targets: this.mirror,
-					scaleX: 0.8957557329660852, // Target scale X
-					scaleY: 0.9791249320991222, // Target scale Y
-					ease: "Back.Out", // Makes it pop
-					duration: 500, // 0.5s animation
-				});
-				this.mirror.play("mirror");
-				this.mirror.setInteractive({ useHandCursor: true})
-				this.mirror.on("pointerover", () => {
-					this.mirror.play("mirror");
-					this.sparkles.play("sparkles");
-
-				})
+				this.events.emit("showBook");
+				this.scene.start("P_1");
 			}
-
 		});
-	}
 
+	}
 	/* END-USER-CODE */
 }
 

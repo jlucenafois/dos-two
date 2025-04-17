@@ -52,6 +52,11 @@
                 "key": "default_unmuted_lg"
             },
             {
+                "url": "assets/UI/disabled_back_lg.png",
+                "type": "image",
+                "key": "disabled_back_lg"
+            },
+            {
                 "url": "assets/UI/disabled_next_lg.png",
                 "type": "image",
                 "key": "disabled_next_lg"

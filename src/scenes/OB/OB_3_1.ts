@@ -36,57 +36,49 @@ export default class OB_3_1 extends OB_Base {
 		const blinking_right = this.add.sprite(1558, 816, "2.2 Blink_450x630", 0);
 		blinking_right.play("blinking_right");
 
+		// title
+		const title = this.add.bitmapText(864, 309, "BowlbyOne", "Which language is easier for you?");
+		title.setOrigin(0.5, 0.5);
+		title.text = "Which language is easier for you?";
+		title.fontSize = 40;
+
 		this.english_bubble = english_bubble;
 		this.spanish_bubble = spanish_bubble;
+		this.title = title;
 
 		this.events.emit("scene-awake");
 	}
 
 	private english_bubble!: Phaser.GameObjects.Image;
 	private spanish_bubble!: Phaser.GameObjects.Image;
+	private title!: Phaser.GameObjects.BitmapText;
 
 	/* START-USER-CODE */
-	private title!: Phaser.GameObjects.Text;
-	private spanish_title!: Phaser.GameObjects.Text;
-	private english_title!: Phaser.GameObjects.Text;
+	private spanish_title!: Phaser.GameObjects.BitmapText;
+	private english_title!: Phaser.GameObjects.BitmapText;
 
 	// Write your code here
-
 	create() {
 		this.editorCreate();
 		super.create();
 
 		// TITLES
 
-		// options
-		this.title = this.add.text(0, 0, "Which language is easier for you?", {
-			fontSize: '40px',
-			fontFamily: 'Bowlby One'
-		})
-		this.title.setOrigin(0.5);
-		this.title.setPosition(this.cameras.main.centerX, 275);
-
 		// SPANISH
-		this.spanish_title = this.add.text(0, 0, "Español", {
-			fontSize: '40px',
-			fontFamily: 'Bowlby One'
-		})
+		this.spanish_title = this.add.bitmapText(0, 0, "BowlbyOne", "Español"),
 		this.spanish_title.setOrigin(0.5);
 		// Position it centered on top of the reading_mode graphic
 		this.spanish_title.setPosition(
 			this.spanish_bubble.x + 10,
-			this.spanish_bubble.y
+			this.spanish_bubble.y - 10
 		);
 		// ENGLISH
-		this.english_title = this.add.text(0, 0, "English", {
-			fontSize: '40px',
-			fontFamily: 'Bowlby One'
-		})
+		this.english_title = this.add.bitmapText(0, 0, "BowlbyOne", "English"),
 		this.english_title.setOrigin(0.5);
 		// Position it centered on top of the reading_mode graphic
 		this.english_title.setPosition(
-			this.english_bubble.x,
-			this.english_bubble.y
+			this.english_bubble.x - 10,
+			this.english_bubble.y - 10
 		);
 
 		/* SPANISH BUBBLE */
@@ -97,12 +89,12 @@ export default class OB_3_1 extends OB_Base {
 
 		this.spanish_bubble.on("pointerover", () => {
 			this.spanish_bubble.setTexture("spanish_bubble_hovered");
-			this.spanish_title.setFontSize("45px");
+			this.spanish_title.setFontSize(45);
 		});
 
 		this.spanish_bubble.on("pointerout", () => {
 			this.spanish_bubble.setTexture("spanish_bubble");
-			this.spanish_title.setFontSize("40px");
+			this.spanish_title.setFontSize(40);
 		});
 
 
@@ -120,13 +112,13 @@ export default class OB_3_1 extends OB_Base {
 
 		this.english_bubble.on("pointerover", () => {
 			this.english_bubble.setTexture("english_bubble_hovered");
-			this.english_title.setFontSize("45px");
+			this.english_title.setFontSize(45);
 
 		});
 
 		this.english_bubble.on("pointerout", () => {
 			this.english_bubble.setTexture("english_bubble");
-			this.english_title.setFontSize("40px");
+			this.english_title.setFontSize(40);
 
 		});
 

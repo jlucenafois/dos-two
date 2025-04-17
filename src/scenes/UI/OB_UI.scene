@@ -110,7 +110,7 @@
             "label": "prev_page",
             "scope": "CLASS",
             "texture": {
-                "key": "default_back_lg"
+                "key": "disabled_back_lg"
             },
             "x": 192,
             "y": 637,

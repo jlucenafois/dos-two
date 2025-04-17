@@ -15,6 +15,12 @@
                 "key": "2.2 Blink_450x630"
             },
             {
+                "textureURL": "assets/OB/BowlbyOne/BowlbyOne.png",
+                "fontDataURL": "assets/OB/BowlbyOne/BowlbyOne.xml",
+                "type": "bitmapFont",
+                "key": "BowlbyOne"
+            },
+            {
                 "url": "assets/OB/default_play_lg.png",
                 "type": "image",
                 "key": "default_play_lg"

@@ -36,9 +36,13 @@ export const SCRIPT: Record<string, {
     },
     OB_4: {
         prev_key: null,
-        next_key: "P_1",
+        next_key: "P_0",
     },
     P_0: {
+        prev_key: null, 
+        next_key: "P_1"
+    },
+    P_1: {
         dualComponents: [{
             coordinates: {
                 preferredX: 928.5,
@@ -99,12 +103,12 @@ export const SCRIPT: Record<string, {
                 }
             }
         }],
-        prev_key: null,
-        next_key: "P_1",
+        prev_key: "P_0",
+        next_key: "P_2",
         index: 0,
         total: CHAPTERS["CH_1"],
     },
-    P_1: {
+    P_2: {
         dualComponents: [{
             coordinates: {
                 preferredX: 524,
@@ -161,12 +165,12 @@ export const SCRIPT: Record<string, {
                 }
             }
         }],
-        prev_key: "P_0",
-        next_key: "P_2",
+        prev_key: "P_1",
+        next_key: "P_3",
         index: 1,
         total: CHAPTERS["CH_1"],
     },
-    P_2: {
+    P_3: {
         dualComponents: [{
             coordinates: {
                 preferredX: 904,
@@ -231,13 +235,13 @@ export const SCRIPT: Record<string, {
                 }
             }
         }],
-        prev_key: "P_1",
-        next_key: "P_3",
+        prev_key: "P_2",
+        next_key: "P_4",
         index: 2,
         total: CHAPTERS["CH_1"],
     },
-    P_3: {
-        prev_key: "P_2",
+    P_4: {
+        prev_key: "P_3",
         next_key: "Q_1",
         index: 3,
         total: CHAPTERS["CH_1"],
@@ -308,19 +312,19 @@ export const SCRIPT: Record<string, {
                 },
             }
         ],
-        prev_key: "P_3",
-        next_key: "P_4",
+        prev_key: "P_4",
+        next_key: "P_5",
         index: 4,
         total: CHAPTERS["CH_1"],
     },
-    P_4: {
+    P_5: {
         prev_key: "Q_1",
-        next_key: "P_5",
+        next_key: "P_6",
         index: 0,
         total: CHAPTERS["CH_2"],
     },
-    P_5: {
-        prev_key: "P_4",
+    P_6: {
+        prev_key: "P_5",
         next_key: "Q_2",
         index: 1,
         total: CHAPTERS["CH_2"],
@@ -404,14 +408,14 @@ export const SCRIPT: Record<string, {
                 isCorrect: true
             }
         ],
-        prev_key: "P_5",
-        next_key: "P_6",
+        prev_key: "P_6",
+        next_key: "P_7",
         index: 2,
         total: CHAPTERS["CH_2"],
     },
-    P_6: {
+    P_7: {
         prev_key: "Q_2",
-        next_key: "P_7",
+        next_key: "P_8",
         index: 0,
         total: CHAPTERS["CH_3"],
     },

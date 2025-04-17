@@ -23,6 +23,7 @@ class Boot extends Phaser.Scene {
         super("Boot");
     }
 
+    // TODO: remove preload
     preload() {
 		this.load.pack("pack", "assets/preload/preload-asset-pack.json");
 		// Load Raleway with Web Font Loader

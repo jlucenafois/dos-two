@@ -67,6 +67,19 @@
             "animationFrameRate": 12,
             "animationDelay": 12,
             "animationPreview": true
+        },
+        {
+            "type": "BitmapText",
+            "id": "19aba41f-7ff0-4309-832a-231be02941ee",
+            "label": "title",
+            "scope": "CLASS",
+            "x": 864,
+            "y": 309,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "Which language is easier for you?",
+            "font": "BowlbyOne",
+            "fontSize": 40
         }
     ],
     "plainObjects": [],

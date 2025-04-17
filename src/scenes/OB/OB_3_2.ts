@@ -21,29 +21,41 @@ export default class OB_3_2 extends OB_Base {
 
 	editorCreate(): void {
 
-		// choose_game
-		this.add.image(864, 275, "choose_game");
-
-		// match_title
-		this.add.image(1404, 859, "match_title");
-
-		// memory_title
-		this.add.image(311, 859, "memory_title");
-
-		// word_title
-		this.add.image(849, 859, "word_title");
-
 		// match_button
-		const match_button = this.add.image(1138, 394, "match_button");
-		match_button.setOrigin(0, 0);
+		this.add.image(1363, 616, "match_button");
 
 		// word_button
-		const word_button = this.add.image(604, 394, "word_button");
-		word_button.setOrigin(0, 0);
+		this.add.image(829, 616, "word_button");
 
 		// memory_button
-		const memory_button = this.add.image(92, 439, "memory_button");
-		memory_button.setOrigin(0, 0);
+		this.add.image(317, 616, "memory_button");
+
+		// title
+		const title = this.add.bitmapText(838, 309, "BowlbyOne", "Choose a game\n");
+		title.setOrigin(0.5, 0.5);
+		title.text = "Choose a game\n";
+		title.fontSize = 40;
+
+		// reading_title
+		const reading_title = this.add.bitmapText(309, 840, "BowlbyOne", "Memory Cards");
+		reading_title.setOrigin(0.5, 0.5);
+		reading_title.text = "Memory Cards";
+		reading_title.fontSize = 40;
+		reading_title.align = 1;
+
+		// memory_title
+		const memory_title = this.add.bitmapText(838, 840, "BowlbyOne", "Word Crafter");
+		memory_title.setOrigin(0.5, 0.5);
+		memory_title.text = "Word Crafter";
+		memory_title.fontSize = 40;
+		memory_title.align = 1;
+
+		// memory_title_1
+		const memory_title_1 = this.add.bitmapText(1306, 840, "BowlbyOne", "Match and Learn");
+		memory_title_1.setOrigin(0.5, 0.5);
+		memory_title_1.text = "Match and Learn";
+		memory_title_1.fontSize = 40;
+		memory_title_1.align = 1;
 
 		this.events.emit("scene-awake");
 	}

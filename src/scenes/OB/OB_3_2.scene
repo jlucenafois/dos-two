@@ -16,55 +16,13 @@
     "displayList": [
         {
             "type": "Image",
-            "id": "abafb028-6c1a-42b5-b33a-0dfcc096b811",
-            "label": "choose_game",
-            "texture": {
-                "key": "choose_game"
-            },
-            "x": 864,
-            "y": 275
-        },
-        {
-            "type": "Image",
-            "id": "992a1263-589d-45e2-894d-7f9acb0d4cd6",
-            "label": "match_title",
-            "texture": {
-                "key": "match_title"
-            },
-            "x": 1404,
-            "y": 859
-        },
-        {
-            "type": "Image",
-            "id": "fae87bfb-f206-428b-ac5c-3ba897dcb78f",
-            "label": "memory_title",
-            "texture": {
-                "key": "memory_title"
-            },
-            "x": 311,
-            "y": 859
-        },
-        {
-            "type": "Image",
-            "id": "53372b63-50dd-4266-ada6-b9b0a455810b",
-            "label": "word_title",
-            "texture": {
-                "key": "word_title"
-            },
-            "x": 849,
-            "y": 859
-        },
-        {
-            "type": "Image",
             "id": "31e3c33f-3cba-4f4a-be59-9f3463e9764c",
             "label": "match_button",
             "texture": {
                 "key": "match_button"
             },
-            "x": 1138,
-            "y": 394,
-            "originX": 0,
-            "originY": 0
+            "x": 1363,
+            "y": 616
         },
         {
             "type": "Image",
@@ -73,10 +31,8 @@
             "texture": {
                 "key": "word_button"
             },
-            "x": 604,
-            "y": 394,
-            "originX": 0,
-            "originY": 0
+            "x": 829,
+            "y": 616
         },
         {
             "type": "Image",
@@ -85,10 +41,59 @@
             "texture": {
                 "key": "memory_button"
             },
-            "x": 92,
-            "y": 439,
-            "originX": 0,
-            "originY": 0
+            "x": 317,
+            "y": 616
+        },
+        {
+            "type": "BitmapText",
+            "id": "8b51c9c6-0051-49eb-8f40-8854a0a16c47",
+            "label": "title",
+            "x": 838,
+            "y": 309,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "Choose a game\n",
+            "font": "BowlbyOne",
+            "fontSize": 40
+        },
+        {
+            "type": "BitmapText",
+            "id": "15c58569-c7e6-41a8-a2e4-1e397618534d",
+            "label": "reading_title",
+            "x": 309,
+            "y": 840,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "Memory Cards",
+            "font": "BowlbyOne",
+            "align": 1,
+            "fontSize": 40
+        },
+        {
+            "type": "BitmapText",
+            "id": "328f9ba1-1733-4d82-9136-bc68d11e9d61",
+            "label": "memory_title",
+            "x": 838,
+            "y": 840,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "Word Crafter",
+            "font": "BowlbyOne",
+            "align": 1,
+            "fontSize": 40
+        },
+        {
+            "type": "BitmapText",
+            "id": "ff83217c-2b50-4a1a-8887-143360ae722c",
+            "label": "memory_title_1",
+            "x": 1306,
+            "y": 840,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "Match and Learn",
+            "font": "BowlbyOne",
+            "align": 1,
+            "fontSize": 40
         }
     ],
     "plainObjects": [],

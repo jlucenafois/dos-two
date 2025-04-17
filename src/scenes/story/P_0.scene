@@ -18,43 +18,17 @@
             "id": "9441195b-2fd1-4579-b88b-78f1abe0dfc0",
             "label": "open_cover",
             "scope": "CLASS",
+            "hitArea.shape": "RECTANGLE",
+            "hitArea.x": 374,
+            "hitArea.y": 179,
+            "hitArea.width": 1061.4753484153912,
+            "hitArea.height": 795.73105782395,
             "texture": {
                 "key": "cover_0"
             },
             "x": 864,
             "y": 558.5,
-            "animationPlayMethod": 1,
-            "animationKey": "open_cover"
-        },
-        {
-            "type": "Sprite",
-            "id": "19f067da-ba30-44b9-a447-b1795e405a89",
-            "label": "mirror",
-            "displayName": "mirror",
-            "scope": "CLASS",
-            "texture": {
-                "key": "1_girl",
-                "frame": 0
-            },
-            "x": 698,
-            "y": 630,
-            "visible": false,
-            "animationKey": "1_mirror",
-            "animationPreview": true
-        },
-        {
-            "type": "Sprite",
-            "id": "dda1e7c7-b1a3-41c3-9eb2-f7a13d3834ef",
-            "label": "sparkles",
-            "scope": "CLASS",
-            "texture": {
-                "key": "1_sparkles",
-                "frame": 18
-            },
-            "x": 822,
-            "y": 353,
-            "visible": false,
-            "animationKey": "sparkles",
+            "animationKey": "open_cover",
             "animationPreview": true
         }
     ],
