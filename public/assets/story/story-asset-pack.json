@@ -158,11 +158,6 @@
                 "key": "6_stars"
             },
             {
-                "url": "assets/story/animations.json",
-                "type": "animation",
-                "key": "animations"
-            },
-            {
                 "url": "assets/story/open_cover/cover_0.png",
                 "type": "image",
                 "key": "cover_0"
@@ -231,6 +226,11 @@
                 "url": "assets/story/quiz_option_pressed.png",
                 "type": "image",
                 "key": "quiz_option_pressed"
+            },
+            {
+                "url": "assets/story/story_animations.json",
+                "type": "animation",
+                "key": "story_animations"
             }
         ]
     },

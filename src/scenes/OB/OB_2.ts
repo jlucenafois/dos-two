@@ -30,45 +30,68 @@ export default class OB_2 extends OB_Base {
 		const game_mode = this.add.image(928, 348, "game_mode");
 		game_mode.setOrigin(0, 0);
 
-		// reading_mode_title
-		const reading_mode_title = this.add.image(464, 805, "reading_mode_title");
-		reading_mode_title.setOrigin(0, 0);
-
-		// game_mode_title
-		const game_mode_title = this.add.image(1012, 805, "game_mode_title");
-		game_mode_title.setOrigin(0, 0);
-
-		// title_ob_2
-		const title_ob_2 = this.add.image(864, 275, "title_ob_2");
-		title_ob_2.setOrigin(0.5, 0);
-
 		this.reading_mode = reading_mode;
 		this.game_mode = game_mode;
-		this.reading_mode_title = reading_mode_title;
-		this.game_mode_title = game_mode_title;
-		this.title_ob_2 = title_ob_2;
-
-		
 
 		this.events.emit("scene-awake");
 	}
 
-	
 	private reading_mode!: Phaser.GameObjects.Image;
 	private game_mode!: Phaser.GameObjects.Image;
-	private reading_mode_title: Phaser.GameObjects.Image;
-	private game_mode_title: Phaser.GameObjects.Image;
-	private title_ob_2: Phaser.GameObjects.Image;
-	
-	
+	private title!: Phaser.GameObjects.Text;
+	private reading_title!: Phaser.GameObjects.Text;
+	private game_title!: Phaser.GameObjects.Text;
+
+
 	/* START-USER-CODE */
-	
+
 
 	create() {
-		
+
 		this.editorCreate();
 		super.create()
 
+		this.events.emit("hideProgressBar");
+		// TITLES
+
+		// options
+		this.title = this.add.text(0, 0, "Choose a reading mode", {
+			fontSize: '40px',
+			fontFamily: 'Bowlby One'
+		})
+		this.title.setOrigin(0.5);
+		this.title.setPosition(this.cameras.main.centerX, 275);
+
+		// reading 
+		this.reading_title = this.add.text(0, 0, "Story\nTime", {
+			fontSize: '40px',
+			fontFamily: 'Bowlby One',
+			align: 'center'
+		});
+		this.reading_title.setOrigin(0.5);
+		
+		// Position it centered on top of the reading_mode graphic
+		this.reading_title.setPosition(
+			this.reading_mode.x + this.reading_mode.displayWidth / 2,
+			this.reading_mode.y + this.reading_mode.displayHeight + 80 // 40px padding below image
+		);
+		
+
+		// games
+		this.game_title = this.add.text(0, 0, "Language\nGames", {
+			fontSize: '40px',
+			fontFamily: 'Bowlby One',
+			align: 'center'
+		});
+		this.game_title.setOrigin(0.5);
+		
+		// Position it centered on top of the reading_mode graphic
+		this.game_title.setPosition(
+			this.game_mode.x + this.game_mode.displayWidth / 2,
+			this.reading_mode.y + this.reading_mode.displayHeight + 80 // 40px padding below image
+		);
+
+		
 		this.events.emit("showExitButton"); // Notify UI
 		/* READING MODE */
 		this.reading_mode.setInteractive({
@@ -121,7 +144,6 @@ export default class OB_2 extends OB_Base {
 			this.scene.launch("OB_UI"); // Launch the UI overlay only if it hasn't been launched already
 		}
 	}
-
 
 	/* END-USER-CODE */
 }

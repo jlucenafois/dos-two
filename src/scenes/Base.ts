@@ -3,6 +3,7 @@
 /* START-USER-IMPORTS */
 import { SCRIPT } from "../script";
 import { CURRENT_SETTINGS, updateGameState } from "../settings";
+import { generateBasePositions, repositionAll } from "../utils";
 /* END-USER-IMPORTS */
 
 export default class Base extends Phaser.Scene {
@@ -61,10 +62,12 @@ export default class Base extends Phaser.Scene {
 		if (this.getPcnt() != null) { 
 			this.events.emit("updateProgressBar", CURRENT_SETTINGS.gameState.pcnt); // Notify UI
 		}
-		// Add a title using the key of the passed scene
-		this.addTitle();
+
+		if (this.scene.key != "OB_UI")
+			// Add a title using the key of the passed scene
+			this.addTitle();
 		
-		// // Runs after the child scene's `create()` method
+		// // // Runs after the child scene's `create()` method
 		// this.basePositions = generateBasePositions(this)
 		// repositionAll(this); // Reposition initially
 

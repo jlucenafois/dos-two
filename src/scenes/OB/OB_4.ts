@@ -18,25 +18,44 @@ export default class OB_4 extends OB_Base {
 		/* END-USER-CTR-CODE */
 	}
 
-	preload(): void {
-		super.create();
-		this.create();
-		
-		this.load.pack("story-asset-pack", "assets/story/story-asset-pack.json");
-		
-		// Listen for loading progress
-		this.load.on("progress", (value: number) => {
-			this.updateProgressBar(value);
+	// Add this near the top with your other private properties
+private titleText!: Phaser.GameObjects.Text;
+
+preload(): void {
+	super.create();
+	this.create();
+	
+	this.load.pack("story-asset-pack", "assets/story/story-asset-pack.json");
+
+	this.load.on("progress", (value: number) => {
+		this.updateProgressBar(value);
+	});
+
+	this.load.on("complete", () => {
+		this.events.emit("showExitButton");
+		this.events.emit("showSideArrows");
+		this.events.emit("changeBackground", "#C7CCFF");
+
+		// Show title
+		this.titleText = this.add.text(864, 300, "Chapter 4", {
+			fontFamily: "Arial",
+			fontSize: "64px",
+			color: "#000000",
+		}).setOrigin(0.5).setAlpha(0);
+
+		this.tweens.add({
+			targets: this.titleText,
+			alpha: 1,
+			duration: 500,
+			yoyo: true,
+			hold: 2000,
+			onComplete: () => {
+				this.scene.start("P_0");
+			}
 		});
-		this.load.on("complete", () => {
-			this.events.emit("showExitButton");
-			this.events.emit("showSideArrows");
-			this.events.emit("changeBackground", "#C7CCFF");
-		
-			// Start scene P_0 only after all assets are fully processed
-			this.scene.start("P_0");
-		});
-	}
+	});
+}
+
 
 	// Function to update progress bar based on value
 	updateProgressBar(value: number) {

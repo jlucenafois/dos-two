@@ -6,7 +6,6 @@
 /* START-USER-IMPORTS */
 import Base from '../Base.ts';
 import {CURRENT_SETTINGS} from '../../settings.ts'
-import { generateBasePositions } from '../../utils.ts';
 /* END-USER-IMPORTS */
 
 export default class OB_UI extends Base {
@@ -25,53 +24,54 @@ export default class OB_UI extends Base {
 		const book = this.add.image(864, 558.5, "cover_5");
 		book.visible = false;
 
-		// default_exit_lg
-		const default_exit_lg = this.add.image(1568, 69, "default_exit_lg");
-		default_exit_lg.setOrigin(0, 0);
+		// exit
+		const exit = this.add.image(1568, 69, "default_exit_lg");
+		exit.setOrigin(0, 0);
 
-		// default_home_lg
-		const default_home_lg = this.add.image(80, 69, "default_home_lg");
-		default_home_lg.setOrigin(0, 0);
+		// home
+		const home = this.add.image(80, 69, "default_home_lg");
+		home.setOrigin(0, 0);
 
-		// default_unmuted_lg
-		const default_unmuted_lg = this.add.image(192, 69, "default_unmuted_lg");
-		default_unmuted_lg.setOrigin(0, 0);
+		// sound_control
+		const sound_control = this.add.image(192, 69, "default_unmuted_lg");
+		sound_control.setOrigin(0, 0);
 
-		// default_back_md
-		const default_back_md = this.add.image(1608, 112, "default_back_md");
-		default_back_md.visible = false;
+		// back
+		const back = this.add.image(1608, 112, "default_back_md");
+		back.visible = false;
 
-		// default_home_purple_lg
-		const default_home_purple_lg = this.add.image(80, 69, "default_home_purple_lg");
-		default_home_purple_lg.setOrigin(0, 0);
-		default_home_purple_lg.visible = false;
+		// home_purple
+		const home_purple = this.add.image(80, 69, "default_home_purple_lg");
+		home_purple.setOrigin(0, 0);
+		home_purple.visible = false;
 
-		// default_next_lg
-		const default_next_lg = this.add.image(1536, 577, "default_next_lg");
-		default_next_lg.setOrigin(0, 0);
-		default_next_lg.visible = false;
+		// next_page
+		const next_page = this.add.image(1536, 577, "default_next_lg");
+		next_page.setOrigin(0, 0);
+		next_page.visible = false;
 
-		// default_back_lg
-		const default_back_lg = this.add.image(192, 637, "default_back_lg");
-		default_back_lg.setOrigin(1, 0.5);
-		default_back_lg.visible = false;
+		// prev_page
+		const prev_page = this.add.image(192, 637, "default_back_lg");
+		prev_page.setOrigin(1, 0.5);
+		prev_page.visible = false;
 
 		// progress_bar
 		const progress_bar = this.add.image(743, 86, "progress_medium_0");
 		progress_bar.setOrigin(0, 0);
+		progress_bar.visible = false;
 
 		// coin
 		const coin = this.add.image(80, 951, "coin");
 		coin.setOrigin(0, 0);
 
 		this.book = book;
-		this.default_exit_lg = default_exit_lg;
-		this.default_home_lg = default_home_lg;
-		this.default_unmuted_lg = default_unmuted_lg;
-		this.default_back_md = default_back_md;
-		this.default_home_purple_lg = default_home_purple_lg;
-		this.default_next_lg = default_next_lg;
-		this.default_back_lg = default_back_lg;
+		this.exit = exit;
+		this.home = home;
+		this.sound_control = sound_control;
+		this.back = back;
+		this.home_purple = home_purple;
+		this.next_page = next_page;
+		this.prev_page = prev_page;
 		this.progress_bar = progress_bar;
 		this.coin = coin;
 
@@ -79,13 +79,13 @@ export default class OB_UI extends Base {
 	}
 
 	private book!: Phaser.GameObjects.Image;
-	private default_exit_lg!: Phaser.GameObjects.Image;
-	private default_home_lg!: Phaser.GameObjects.Image;
-	private default_unmuted_lg!: Phaser.GameObjects.Image;
-	private default_back_md!: Phaser.GameObjects.Image;
-	private default_home_purple_lg!: Phaser.GameObjects.Image;
-	private default_next_lg!: Phaser.GameObjects.Image;
-	private default_back_lg!: Phaser.GameObjects.Image;
+	private exit!: Phaser.GameObjects.Image;
+	private home!: Phaser.GameObjects.Image;
+	private sound_control!: Phaser.GameObjects.Image;
+	private back!: Phaser.GameObjects.Image;
+	private home_purple!: Phaser.GameObjects.Image;
+	private next_page!: Phaser.GameObjects.Image;
+	private prev_page!: Phaser.GameObjects.Image;
 	private progress_bar!: Phaser.GameObjects.Image;
 	private coin!: Phaser.GameObjects.Image;
 
@@ -100,6 +100,8 @@ export default class OB_UI extends Base {
 				scene.events.on("showBook", this.showBook, this);		
 				scene.events.on("changeBackground", this.changeBackground, this);
 				scene.events.on("updateProgressBar", this.updateProgressBar, this)
+				scene.events.on("hideProgressBar", this.hideProgressBar, this)
+				scene.events.on("showProgressBar", this.showProgressBar, this)
 				scene.events.on("disableForwardNav", this.disableForwardNav, this)
 				scene.events.on("enableForwardNav", this.enableForwardNav, this)
 				scene.events.on("updateCoinsUI", this.updateCoinsUI, this)
@@ -119,31 +121,26 @@ export default class OB_UI extends Base {
 
 	/* EVENTS */
 	showExitButton() {
-		this.default_back_md.setVisible(false);
-		this.default_exit_lg.setVisible(true);
+		this.back.setVisible(false);
+		this.exit.setVisible(true);
 	}
 	showBackArrow() {
-		this.default_exit_lg.setVisible(false);
-		this.default_back_md.setVisible(true);
+		this.exit.setVisible(false);
+		this.back.setVisible(true);
 	}
 	showSideArrows() {
-		this.default_back_lg.setVisible(true);
-		this.default_next_lg.setVisible(true);
+		this.prev_page.setVisible(true);
+		this.next_page.setVisible(true);
 	}
 	hideSideArrows() {
-		this.default_back_lg.setVisible(false);
-		this.default_next_lg.setVisible(false);
+		this.prev_page.setVisible(false);
+		this.next_page.setVisible(false);
 	}
 	showBook() {
 		this.book.setVisible(true);
 	}
 	changeBackground(color: string) {
-		const div = document.getElementById('game-container');
-		if (div) {
-			div.style.backgroundColor = color;
-		} else {
-			console.warn("Unable to change background: Element not found or color not provided.");
-		}
+		this.cameras.main.setBackgroundColor(color);
 	}
 
 	updateProgressBar(value: number) {
@@ -159,19 +156,26 @@ export default class OB_UI extends Base {
 			this.progress_bar.setTexture("progress_medium_0");
 		}
 	}
+	hideProgressBar() {
+		this.progress_bar.setVisible(false);
+	}
+	showProgressBar() {
+		this.progress_bar.setVisible(true);
+	}
 
 	disableForwardNav() {
-		this.default_next_lg.disableInteractive();
-		this.default_next_lg.setTexture("disabled_next_lg");
+		this.next_page.disableInteractive();
+		this.next_page.setTexture("disabled_next_lg");
 	}
 
 	enableForwardNav() {
-		this.default_next_lg.setInteractive({ useHandCursor: true });
-		this.default_next_lg.setTexture("default_next_lg");
+		this.next_page.setInteractive({ useHandCursor: true });
+		this.next_page.setTexture("default_next_lg");
 	}
 
 	private coin_counter!: Phaser.GameObjects.Text;
-	
+	private title!: Phaser.GameObjects.Text;
+
 	updateCoinsUI() {
 		this.coin_counter.setText(`${CURRENT_SETTINGS.gameState.coins}`)
 	}
@@ -179,109 +183,109 @@ export default class OB_UI extends Base {
 	create() {
 		this.editorCreate();
 		this.registerListeners();
-		
+
 		this.coin_counter = this.add.text(140, 950, `${CURRENT_SETTINGS.gameState.coins}`, {
 			fontSize: '40px',
 			fontFamily: 'Bowlby One'
 		})
 		super.create();
-		
+
 		/* HOME */
-		this.default_home_lg.setInteractive({ useHandCursor: true });
-		
+		this.home.setInteractive({ useHandCursor: true });
+
 		// Mouse press effect
-		this.default_home_lg.on("pointerdown", () => {
-			this.default_home_lg.setTexture("pressed_home_lg"); // Change to pressed state
+		this.home.on("pointerdown", () => {
+			this.home.setTexture("pressed_home_lg"); // Change to pressed state
 		});
-		
+
 		// Release effect (if still hovered)
-		this.default_home_lg.on("pointerup", () => {
-			this.default_home_lg.setTexture("default_home_lg"); // Reset to hover state
+		this.home.on("pointerup", () => {
+			this.home.setTexture("default_home_lg"); // Reset to hover state
 			this.stopAllScenes([])
 			this.scene.start("OB_1"); // Switch to OB1 scene
 		});
-		
+
 		// Mouse out effect (Reset to normal)
-		this.default_home_lg.on("pointerout", () => {
-			this.default_home_lg.setTexture("default_home_lg");
+		this.home.on("pointerout", () => {
+			this.home.setTexture("default_home_lg");
 		});
 
 
 	/* SOUND */
-		this.default_unmuted_lg.setInteractive({ useHandCursor: true });
+		this.sound_control.setInteractive({ useHandCursor: true });
 
 		let isMuted = localStorage.getItem("muteState") === "true"; // Load saved state
 		this.sound.mute = isMuted; // Apply stored setting
-		this.default_unmuted_lg.setTexture(isMuted ? "default_muted_lg" : "default_unmuted_lg");
+		this.sound_control.setTexture(isMuted ? "default_muted_lg" : "default_unmuted_lg");
 
-		this.default_unmuted_lg.on("pointerdown", () => {
-			this.default_unmuted_lg.setTexture(isMuted ? "pressed_muted_lg" : "pressed_unmuted_lg"); 
+		this.sound_control.on("pointerdown", () => {
+			this.sound_control.setTexture(isMuted ? "pressed_muted_lg" : "pressed_unmuted_lg"); 
 		});
 
-		this.default_unmuted_lg.on("pointerup", () => {
+		this.sound_control.on("pointerup", () => {
 			isMuted = !isMuted;
 			localStorage.setItem("muteState", isMuted.toString()); // Save setting
-			this.default_unmuted_lg.setTexture(isMuted ? "default_muted_lg" : "default_unmuted_lg");
+			this.sound_control.setTexture(isMuted ? "default_muted_lg" : "default_unmuted_lg");
 			this.sound.mute = isMuted;
 		});
 
 		// Mouse out effect (Reset to normal)
-		this.default_unmuted_lg.on("pointerout", () => {
-			this.default_unmuted_lg.setTexture(isMuted ? "default_muted_lg" : "default_unmuted_lg");
+		this.sound_control.on("pointerout", () => {
+			this.sound_control.setTexture(isMuted ? "default_muted_lg" : "default_unmuted_lg");
 		});
 
 	/* EXIT */ 
-		this.default_exit_lg.setInteractive({ useHandCursor: true });
+		this.exit.setInteractive({ useHandCursor: true });
 
 		// Mouse press effect
-		this.default_exit_lg.on("pointerdown", () => {
-			this.default_exit_lg.setTexture("pressed_exit_lg"); // Change to pressed state
+		this.exit.on("pointerdown", () => {
+			this.exit.setTexture("pressed_exit_lg"); // Change to pressed state
 		});
 
 		// Release effect (if still hovered)
-		this.default_exit_lg.on("pointerup", () => {
-			this.default_exit_lg.setTexture("default_exit_lg"); // Reset to hover state
+		this.exit.on("pointerup", () => {
+			this.exit.setTexture("default_exit_lg"); // Reset to hover state
 			this.stopAllScenes([])
 			this.scene.start("OB_1"); // Switch to OB1 scene
 		});
 
 		// Mouse out effect (Reset to normal)
-		this.default_exit_lg.on("pointerout", () => {
-			this.default_exit_lg.setTexture("default_exit_lg");
+		this.exit.on("pointerout", () => {
+			this.exit.setTexture("default_exit_lg");
 		});
 
 	/* BACK */ 
-		this.default_back_md.setInteractive({ useHandCursor: true });
+		this.back.setInteractive({ useHandCursor: true });
 
 		// Mouse press effect
-		this.default_back_md.on("pointerdown", () => {
-			this.default_back_md.setTexture("pressed_back_md"); // Change to pressed state
+		this.back.on("pointerdown", () => {
+			this.back.setTexture("pressed_back_md"); // Change to pressed state
 		});
 
 		// Release effect (if still hovered)
-		this.default_back_md.on("pointerup", () => {
-			this.default_back_md.setTexture("default_back_md"); // Reset to hover state
+		this.back.on("pointerup", () => {
+			this.back.setTexture("default_back_md"); // Reset to hover state
 			this.stopAllScenes(["OB_UI"])
 			this.scene.launch(CURRENT_SETTINGS.gameState.prevScene!)
 		});
 
 
 		// Mouse out effect (Reset to normal)
-		this.default_back_md.on("pointerout", () => {
-			this.default_back_md.setTexture("default_back_md");
+		this.back.on("pointerout", () => {
+			this.back.setTexture("default_back_md");
 		});
 
 	/* BACK LG*/ 
-		this.default_back_lg.setInteractive({ useHandCursor: true });
+		this.prev_page.setInteractive({ useHandCursor: true });
 
 		// Mouse press effect
-		this.default_back_lg.on("pointerdown", () => {
-			this.default_back_lg.setTexture("pressed_back_lg"); // Change to pressed state
+		this.prev_page.on("pointerdown", () => {
+			this.prev_page.setTexture("pressed_back_lg"); // Change to pressed state
 		});
 
 		// Release effect (if still hovered)
-		this.default_back_lg.on("pointerup", () => {
-			this.default_back_lg.setTexture("default_back_lg"); // Reset to hover state
+		this.prev_page.on("pointerup", () => {
+			this.prev_page.setTexture("default_back_lg"); // Reset to hover state
 			if (CURRENT_SETTINGS.gameState.prevScene) {
 				this.stopAllScenes(["OB_UI"])
 				this.scene.launch(CURRENT_SETTINGS.gameState.prevScene)
@@ -289,21 +293,21 @@ export default class OB_UI extends Base {
 		});
 
 		// Mouse out effect (Reset to normal)
-		this.default_back_lg.on("pointerout", () => {
-			this.default_back_lg.setTexture("default_back_lg");
+		this.prev_page.on("pointerout", () => {
+			this.prev_page.setTexture("default_back_lg");
 		});
 
 	/* NEXT LG*/ 
-		this.default_next_lg.setInteractive({ useHandCursor: true });
+		this.next_page.setInteractive({ useHandCursor: true });
 
 		// Mouse press effect
-		this.default_next_lg.on("pointerdown", () => {
-			this.default_next_lg.setTexture("pressed_next_lg"); // Change to pressed state
+		this.next_page.on("pointerdown", () => {
+			this.next_page.setTexture("pressed_next_lg"); // Change to pressed state
 		});
 
 		// Release effect (if still hovered)
-		this.default_next_lg.on("pointerup", () => {
-			this.default_next_lg.setTexture("default_next_lg"); // Reset to hover state
+		this.next_page.on("pointerup", () => {
+			this.next_page.setTexture("default_next_lg"); // Reset to hover state
 			if (CURRENT_SETTINGS.gameState.nextScene) {
 				this.stopAllScenes(["OB_UI"])
 				this.scene.launch(CURRENT_SETTINGS.gameState.nextScene)
@@ -311,8 +315,8 @@ export default class OB_UI extends Base {
 		});
 
 		// Mouse out effect (Reset to normal)
-		this.default_next_lg.on("pointerout", () => {
-			this.default_next_lg.setTexture("default_next_lg");
+		this.next_page.on("pointerout", () => {
+			this.next_page.setTexture("default_next_lg");
 		});
 	}
 	/* END-USER-CODE */

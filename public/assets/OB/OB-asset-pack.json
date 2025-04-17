@@ -2,9 +2,17 @@
     "section1": {
         "files": [
             {
-                "url": "assets/OB/choose_game.png",
-                "type": "image",
-                "key": "choose_game"
+                "url": "assets/OB/2.2 Blink_450x630.png",
+                "frameConfig": {
+                    "frameWidth": 450,
+                    "frameHeight": 630,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "2.2 Blink_450x630"
             },
             {
                 "url": "assets/OB/default_play_lg.png",
@@ -17,34 +25,14 @@
                 "key": "english_bubble"
             },
             {
-                "url": "assets/OB/eye_blink_left.png",
+                "url": "assets/OB/english_bubble_hovered.png",
                 "type": "image",
-                "key": "eye_blink_left"
-            },
-            {
-                "url": "assets/OB/eye_blink_right.png",
-                "type": "image",
-                "key": "eye_blink_right"
+                "key": "english_bubble_hovered"
             },
             {
                 "url": "assets/OB/game_mode.png",
                 "type": "image",
                 "key": "game_mode"
-            },
-            {
-                "url": "assets/OB/game_mode_title.png",
-                "type": "image",
-                "key": "game_mode_title"
-            },
-            {
-                "url": "assets/OB/girl_left.png",
-                "type": "image",
-                "key": "girl_left"
-            },
-            {
-                "url": "assets/OB/girl_right.png",
-                "type": "image",
-                "key": "girl_right"
             },
             {
                 "url": "assets/OB/hovered_game_mode.png",
@@ -62,9 +50,9 @@
                 "key": "hovered_reading_mode"
             },
             {
-                "url": "assets/OB/language_selection_title.png",
+                "url": "assets/OB/logo.png",
                 "type": "image",
-                "key": "language_selection_title"
+                "key": "logo"
             },
             {
                 "url": "assets/OB/match_button.png",
@@ -72,19 +60,26 @@
                 "key": "match_button"
             },
             {
-                "url": "assets/OB/match_title.png",
-                "type": "image",
-                "key": "match_title"
-            },
-            {
                 "url": "assets/OB/memory_button.png",
                 "type": "image",
                 "key": "memory_button"
             },
             {
-                "url": "assets/OB/memory_title.png",
+                "url": "assets/OB/OB_animations.json",
+                "type": "animation",
+                "key": "OB_animations"
+            },
+            {
+                "url": "assets/OB/ob4_avatar.png",
                 "type": "image",
-                "key": "memory_title"
+                "key": "ob4_avatar"
+            },
+            {
+                "url": [
+                    "assets/OB/audio/play.wav"
+                ],
+                "type": "audio",
+                "key": "play"
             },
             {
                 "url": "assets/OB/pressed_play_lg.png",
@@ -97,34 +92,19 @@
                 "key": "reading_mode"
             },
             {
-                "url": "assets/OB/reading_mode_title.png",
-                "type": "image",
-                "key": "reading_mode_title"
-            },
-            {
                 "url": "assets/OB/spanish_bubble.png",
                 "type": "image",
                 "key": "spanish_bubble"
             },
             {
-                "url": "assets/OB/title_ob_2.png",
+                "url": "assets/OB/spanish_bubble_hovered.png",
                 "type": "image",
-                "key": "title_ob_2"
-            },
-            {
-                "url": "assets/OB/transition_title.png",
-                "type": "image",
-                "key": "transition_title"
+                "key": "spanish_bubble_hovered"
             },
             {
                 "url": "assets/OB/word_button.png",
                 "type": "image",
                 "key": "word_button"
-            },
-            {
-                "url": "assets/OB/word_title.png",
-                "type": "image",
-                "key": "word_title"
             }
         ]
     },

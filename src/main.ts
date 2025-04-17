@@ -28,16 +28,16 @@ class Boot extends Phaser.Scene {
 		// Load Raleway with Web Font Loader
         WebFont.load({
             google: {
-                families: ["Raleway", "Bowlby One"] // Specify weights (e.g., 400 for regular, 700 for bold)
+                families: ["Raleway", "Bowlby One"]
             },
             active: () => {
                 console.log("Fonts loaded!");
             }
         });
     }
-
+    
     create() {
-       this.scene.start("Preload");
+        this.scene.start("Preload");
     }
 }
 
@@ -48,8 +48,8 @@ window.addEventListener('load', function () {
 		// height: window.innerHeight,
         width: 1728,
 		height: 1117,
-		parent: 'game-container',
-        transparent: true,
+        backgroundColor: '#7580FF',
+        parent: 'game-container',
 		scale: {
 			mode: Phaser.Scale.ScaleModes.FIT,
 			autoCenter: Phaser.Scale.Center.CENTER_BOTH

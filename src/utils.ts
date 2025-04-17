@@ -167,15 +167,31 @@ export function renderBoundedText(context: Scene, bt: BoundedText, box: Image | 
 // img holds the og properties from script.ts
 // renderedImage is the object on screen that can mutate
 // isCorrect is just a shortcut to checking if isCorrect exists in img and if it is true
-function handleQuizClick(context: Scene, img: Image, renderedImage: Phaser.GameObjects.Image, isCorrect: boolean) {
+function handleQuizClick(context: Base, img: Image, renderedImage: Phaser.GameObjects.Image, isCorrect: boolean) {
     if (isCorrect) {
         addCoins(50);
         context.events.emit("updateCoinsUI");
         context.events.emit("enableForwardNav");
+        removeInteractive(context, "renderedComponents");
     }
 
 }
-export function renderImage(context: Scene, img: Image, isCorrect: boolean) {
+
+function removeInteractive(context: Base, key: string) {
+    const objects = context[key as keyof Base] as Phaser.GameObjects.GameObject[];
+
+    if (Array.isArray(objects)) {
+        objects.forEach(obj => {
+            if ("removeInteractive" in obj && typeof obj.removeInteractive === "function") {
+                obj.removeInteractive();
+            }
+        });
+    } else {
+        console.warn(`removeInteractive: context[${key}] is not an array.`);
+    }
+}
+
+export function renderImage(context: Base, img: Image, isCorrect: boolean) {
     let originX = 0;
     let originY = 0;
 

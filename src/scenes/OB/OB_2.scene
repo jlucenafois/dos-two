@@ -38,41 +38,6 @@
             "y": 348,
             "originX": 0,
             "originY": 0
-        },
-        {
-            "type": "Image",
-            "id": "ade795b2-9c9e-4f07-84b0-5bcfba54db64",
-            "label": "reading_mode_title",
-            "texture": {
-                "key": "reading_mode_title"
-            },
-            "x": 464,
-            "y": 805,
-            "originX": 0,
-            "originY": 0
-        },
-        {
-            "type": "Image",
-            "id": "488d9171-0792-49cf-90b2-95e2eabbabe8",
-            "label": "game_mode_title",
-            "texture": {
-                "key": "game_mode_title"
-            },
-            "x": 1012,
-            "y": 805,
-            "originX": 0,
-            "originY": 0
-        },
-        {
-            "type": "Image",
-            "id": "a0f8f4ea-82f6-46b5-888f-f556aebd6d3c",
-            "label": "title_ob_2",
-            "texture": {
-                "key": "title_ob_2"
-            },
-            "x": 864,
-            "y": 275,
-            "originY": 0
         }
     ],
     "plainObjects": [],

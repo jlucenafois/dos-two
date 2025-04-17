@@ -2,7 +2,7 @@
 // You can write more code here
 
 /* START OF COMPILED CODE */
-import { generateBasePositions } from "../../utils";
+
 import OB_Base from "./OB_Base";
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
@@ -19,48 +19,50 @@ export default class OB_1 extends OB_Base {
 
 	editorCreate(): void {
 
-		// default_play_lg
-		const default_play_lg = this.add.image(755, 499, "default_play_lg");
-		default_play_lg.setInteractive(this.input.makePixelPerfect());
-		default_play_lg.setOrigin(0, 0);
+		// play
+		const play = this.add.image(755, 499, "default_play_lg");
+		play.setOrigin(0, 0);
 
-		this.default_play_lg = default_play_lg;
+		// logo
+		const logo = this.add.image(688, 163, "logo");
+		logo.setOrigin(0, 0);
+
+		this.play = play;
 
 		this.events.emit("scene-awake");
 	}
 
-	private default_play_lg!: Phaser.GameObjects.Image;
+	private play!: Phaser.GameObjects.Image;
 
 	/* START-USER-CODE */
 
 	// Write your code here
 
-	
-	
+
+
 	create() {
 		this.editorCreate();
+		this.play.setInteractive({useHandCursor: true})
 		super.create()
-		this.events.emit("changeBackground", "#7580FF"); // Notify UI
-		this.default_play_lg.setInteractive({ useHandCursor: true });
-		
+		// this.events.emit("changeBackground", "#7580FF"); // Notify UI
 		// Mouse hover effect
-		this.default_play_lg.on("pointerover", () => {
-			this.default_play_lg.setTexture("hovered_play_lg"); // Change to hover state
+		this.play.on("pointerover", () => {
+			this.play.setTexture("hovered_play_lg"); // Change to hover state
 		});
-		
+
 		// Mouse out effect (Reset to normal)
-		this.default_play_lg.on("pointerout", () => {
-			this.default_play_lg.setTexture("default_play_lg");
+		this.play.on("pointerout", () => {
+			this.play.setTexture("default_play_lg");
 		});
-		
+
 		// Mouse press effect
-		this.default_play_lg.on("pointerdown", () => {
-			this.default_play_lg.setTexture("pressed_play_lg"); // Change to pressed state
+		this.play.on("pointerdown", () => {
+			this.play.setTexture("pressed_play_lg"); // Change to pressed state
 		});
-		
+
 		// Release effect (if still hovered)
-		this.default_play_lg.on("pointerup", () => {
-			this.default_play_lg.setTexture("hovered_play_lg"); // Reset to hover state
+		this.play.on("pointerup", () => {
+			this.play.setTexture("hovered_play_lg"); // Reset to hover state
 			this.scene.start("OB_2"); // Switch to OB2 scene
 		});
 	}
