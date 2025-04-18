@@ -320,7 +320,11 @@ export default class OB_UI extends Base {
 		// Release effect (if still hovered)
 		this.next_page.on("pointerup", () => {
 			this.next_page.setTexture("default_next_lg"); // Reset to hover state
-			if (CURRENT_SETTINGS.gameState.nextScene) {
+			
+			// If the current scene is P_0, trigger "playAnim"
+			if (CURRENT_SETTINGS.gameState.currScene === "P_0") {
+				this.events.emit("openCover");
+			} else if (CURRENT_SETTINGS.gameState.nextScene) {
 				this.stopAllScenes(["OB_UI"])
 				this.scene.launch(CURRENT_SETTINGS.gameState.nextScene)
 			}

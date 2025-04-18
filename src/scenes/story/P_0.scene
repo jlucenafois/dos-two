@@ -16,7 +16,7 @@
         {
             "type": "Sprite",
             "id": "9441195b-2fd1-4579-b88b-78f1abe0dfc0",
-            "label": "open_cover",
+            "label": "book",
             "scope": "CLASS",
             "hitArea.shape": "RECTANGLE",
             "hitArea.x": 374,
