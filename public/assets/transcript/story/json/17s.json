@@ -1,0 +1,52 @@
+{
+    "words": [
+        {
+            "text": "Vengo",
+            "start": 0.08,
+            "end": 0.34,
+            "isHighlighted": false
+        },
+        {
+            "text": "de",
+            "start": 0.34,
+            "end": 0.52,
+            "isHighlighted": false
+        },
+        {
+            "text": "dos",
+            "start": 0.52,
+            "end": 0.68,
+            "isHighlighted": false
+        },
+        {
+            "text": "mundos.",
+            "start": 0.68,
+            "end": 1.34,
+            "isHighlighted": false
+        },
+        {
+            "text": "Eso",
+            "start": 1.86,
+            "end": 2.1,
+            "isHighlighted": false
+        },
+        {
+            "text": "me",
+            "start": 2.1,
+            "end": 2.32,
+            "isHighlighted": false
+        },
+        {
+            "text": "hace",
+            "start": 2.32,
+            "end": 2.58,
+            "isHighlighted": false
+        },
+        {
+            "text": "especial.",
+            "start": 2.58,
+            "end": 3.1,
+            "isHighlighted": false
+        }
+    ]
+}

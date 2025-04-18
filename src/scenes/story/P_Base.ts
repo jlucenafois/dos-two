@@ -35,8 +35,8 @@ export default class P_Base extends Base {
                 { key: "transcript-spanish", suffix: "s" }
             ];  
             languages.forEach(({ key, suffix }) => {
-                this.load.json(this.nameWithKey(key), `assets/transcript/${pageIdx}${suffix}.json`);
-                this.load.audio(this.nameWithKey(`audio-${key}`), `assets/transcript/${pageIdx}${suffix}.wav`);
+                this.load.json(this.nameWithKey(key), `assets/transcript/story/${pageIdx}${suffix}.json`);
+                this.load.audio(this.nameWithKey(`audio-${key}`), `assets/transcript/story/${pageIdx}${suffix}.wav`);
             });
         }
     }

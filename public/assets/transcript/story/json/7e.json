@@ -1,0 +1,94 @@
+{
+    "words": [
+        {
+            "text": "My",
+            "start": 0.06,
+            "end": 0.16,
+            "isHighlighted": false
+        },
+        {
+            "text": "grandma",
+            "start": 0.16,
+            "end": 0.54,
+            "isHighlighted": false
+        },
+        {
+            "text": "speaks",
+            "start": 0.54,
+            "end": 0.94,
+            "isHighlighted": false
+        },
+        {
+            "text": "Spanish.",
+            "start": 0.94,
+            "end": 1.42,
+            "isHighlighted": false
+        },
+        {
+            "text": "I",
+            "start": 2.26,
+            "end": 2.42,
+            "isHighlighted": false
+        },
+        {
+            "text": "try",
+            "start": 2.42,
+            "end": 2.64,
+            "isHighlighted": false
+        },
+        {
+            "text": "my",
+            "start": 2.64,
+            "end": 2.84,
+            "isHighlighted": false
+        },
+        {
+            "text": "best",
+            "start": 2.84,
+            "end": 3.26,
+            "isHighlighted": false
+        },
+        {
+            "text": "even",
+            "start": 3.26,
+            "end": 3.6,
+            "isHighlighted": false
+        },
+        {
+            "text": "when",
+            "start": 3.6,
+            "end": 3.78,
+            "isHighlighted": false
+        },
+        {
+            "text": "I",
+            "start": 3.78,
+            "end": 3.92,
+            "isHighlighted": false
+        },
+        {
+            "text": "don't",
+            "start": 3.92,
+            "end": 4.2,
+            "isHighlighted": false
+        },
+        {
+            "text": "know",
+            "start": 4.2,
+            "end": 4.32,
+            "isHighlighted": false
+        },
+        {
+            "text": "every",
+            "start": 4.32,
+            "end": 4.64,
+            "isHighlighted": false
+        },
+        {
+            "text": "word.",
+            "start": 4.64,
+            "end": 4.96,
+            "isHighlighted": false
+        }
+    ]
+}

@@ -1,0 +1,88 @@
+{
+    "words": [
+        {
+            "text": "Mi",
+            "start": 0.08,
+            "end": 0.2,
+            "isHighlighted": false
+        },
+        {
+            "text": "abuela",
+            "start": 0.2,
+            "end": 0.7,
+            "isHighlighted": false
+        },
+        {
+            "text": "habla",
+            "start": 0.7,
+            "end": 1.08,
+            "isHighlighted": false
+        },
+        {
+            "text": "español.",
+            "start": 1.08,
+            "end": 1.56,
+            "isHighlighted": false
+        },
+        {
+            "text": "Hago",
+            "start": 2.12,
+            "end": 2.34,
+            "isHighlighted": false
+        },
+        {
+            "text": "mi",
+            "start": 2.34,
+            "end": 2.54,
+            "isHighlighted": false
+        },
+        {
+            "text": "mejor",
+            "start": 2.54,
+            "end": 2.84,
+            "isHighlighted": false
+        },
+        {
+            "text": "esfuerzo,",
+            "start": 2.84,
+            "end": 3.6,
+            "isHighlighted": false
+        },
+        {
+            "text": "aunque",
+            "start": 3.8,
+            "end": 3.98,
+            "isHighlighted": false
+        },
+        {
+            "text": "no",
+            "start": 3.98,
+            "end": 4.22,
+            "isHighlighted": false
+        },
+        {
+            "text": "sé",
+            "start": 4.22,
+            "end": 4.48,
+            "isHighlighted": false
+        },
+        {
+            "text": "todas",
+            "start": 4.48,
+            "end": 4.88,
+            "isHighlighted": false
+        },
+        {
+            "text": "las",
+            "start": 4.88,
+            "end": 5.14,
+            "isHighlighted": false
+        },
+        {
+            "text": "palabras.",
+            "start": 5.14,
+            "end": 5.62,
+            "isHighlighted": false
+        }
+    ]
+}

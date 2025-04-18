@@ -1,0 +1,52 @@
+{
+    "words": [
+        {
+            "text": "Mamá,",
+            "start": 0.0,
+            "end": 0.46,
+            "isHighlighted": false
+        },
+        {
+            "text": "soy",
+            "start": 0.72,
+            "end": 1.12,
+            "isHighlighted": false
+        },
+        {
+            "text": "más",
+            "start": 1.12,
+            "end": 1.38,
+            "isHighlighted": false
+        },
+        {
+            "text": "puerto",
+            "start": 1.38,
+            "end": 1.8,
+            "isHighlighted": false
+        },
+        {
+            "text": "riqueña",
+            "start": 1.8,
+            "end": 2.4,
+            "isHighlighted": false
+        },
+        {
+            "text": "o",
+            "start": 2.4,
+            "end": 2.74,
+            "isHighlighted": false
+        },
+        {
+            "text": "más",
+            "start": 2.74,
+            "end": 2.9,
+            "isHighlighted": false
+        },
+        {
+            "text": "neoyorquina.",
+            "start": 2.9,
+            "end": 3.78,
+            "isHighlighted": false
+        }
+    ]
+}

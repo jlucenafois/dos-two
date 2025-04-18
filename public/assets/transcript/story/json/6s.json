@@ -1,0 +1,40 @@
+{
+    "words": [
+        {
+            "text": "En",
+            "start": 0.08,
+            "end": 0.22,
+            "isHighlighted": false
+        },
+        {
+            "text": "casa,",
+            "start": 0.22,
+            "end": 0.66,
+            "isHighlighted": false
+        },
+        {
+            "text": "escucho",
+            "start": 0.9,
+            "end": 1.42,
+            "isHighlighted": false
+        },
+        {
+            "text": "cuentos",
+            "start": 1.42,
+            "end": 1.98,
+            "isHighlighted": false
+        },
+        {
+            "text": "en",
+            "start": 1.98,
+            "end": 2.12,
+            "isHighlighted": false
+        },
+        {
+            "text": "español.",
+            "start": 2.12,
+            "end": 2.56,
+            "isHighlighted": false
+        }
+    ]
+}

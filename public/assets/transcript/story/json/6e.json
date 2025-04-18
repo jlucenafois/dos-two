@@ -1,0 +1,52 @@
+{
+    "words": [
+        {
+            "text": "At",
+            "start": 0.08,
+            "end": 0.22,
+            "isHighlighted": false
+        },
+        {
+            "text": "home,",
+            "start": 0.22,
+            "end": 0.64,
+            "isHighlighted": false
+        },
+        {
+            "text": "I",
+            "start": 0.9,
+            "end": 1.06,
+            "isHighlighted": false
+        },
+        {
+            "text": "listen",
+            "start": 1.06,
+            "end": 1.34,
+            "isHighlighted": false
+        },
+        {
+            "text": "to",
+            "start": 1.34,
+            "end": 1.52,
+            "isHighlighted": false
+        },
+        {
+            "text": "stories",
+            "start": 1.52,
+            "end": 1.86,
+            "isHighlighted": false
+        },
+        {
+            "text": "in",
+            "start": 1.86,
+            "end": 2.08,
+            "isHighlighted": false
+        },
+        {
+            "text": "Spanish.",
+            "start": 2.08,
+            "end": 2.56,
+            "isHighlighted": false
+        }
+    ]
+}

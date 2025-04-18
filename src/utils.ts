@@ -15,7 +15,7 @@ import Base from "./scenes/Base";
 import P_Base from "./scenes/story/P_Base";
 
 
-export function renderSingleComponent(context: Scene, sc: SingleComponent) {
+export function renderSingleComponent(context: Base, sc: SingleComponent) {
     if (sc.singleImage) renderImage(context, sc.singleImage, sc.isCorrect ? sc.isCorrect : false)
     if (sc.singleShape) renderShape(context, sc.singleShape)
     if (sc.singleText) renderRichText(context, sc.singleText)

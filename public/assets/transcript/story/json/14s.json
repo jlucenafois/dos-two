@@ -1,0 +1,76 @@
+{
+    "words": [
+        {
+            "text": "No",
+            "start": 0.1,
+            "end": 0.22,
+            "isHighlighted": false
+        },
+        {
+            "text": "siempre",
+            "start": 0.22,
+            "end": 0.62,
+            "isHighlighted": false
+        },
+        {
+            "text": "es",
+            "start": 0.62,
+            "end": 0.84,
+            "isHighlighted": false
+        },
+        {
+            "text": "fácil,",
+            "start": 0.84,
+            "end": 1.28,
+            "isHighlighted": false
+        },
+        {
+            "text": "pero",
+            "start": 1.8,
+            "end": 2.18,
+            "isHighlighted": false
+        },
+        {
+            "text": "me",
+            "start": 2.18,
+            "end": 2.36,
+            "isHighlighted": false
+        },
+        {
+            "text": "siento",
+            "start": 2.36,
+            "end": 2.7,
+            "isHighlighted": false
+        },
+        {
+            "text": "orgullosa",
+            "start": 2.7,
+            "end": 3.4,
+            "isHighlighted": false
+        },
+        {
+            "text": "de",
+            "start": 3.4,
+            "end": 3.58,
+            "isHighlighted": false
+        },
+        {
+            "text": "hablar",
+            "start": 3.58,
+            "end": 3.9,
+            "isHighlighted": false
+        },
+        {
+            "text": "dos",
+            "start": 3.9,
+            "end": 4.26,
+            "isHighlighted": false
+        },
+        {
+            "text": "idiomas.",
+            "start": 4.26,
+            "end": 4.72,
+            "isHighlighted": false
+        }
+    ]
+}

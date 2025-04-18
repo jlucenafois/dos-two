@@ -1,0 +1,76 @@
+{
+    "words": [
+        {
+            "text": "It's",
+            "start": 0.14,
+            "end": 0.36,
+            "isHighlighted": false
+        },
+        {
+            "text": "not",
+            "start": 0.36,
+            "end": 0.48,
+            "isHighlighted": false
+        },
+        {
+            "text": "always",
+            "start": 0.48,
+            "end": 0.76,
+            "isHighlighted": false
+        },
+        {
+            "text": "easy,",
+            "start": 0.76,
+            "end": 1.16,
+            "isHighlighted": false
+        },
+        {
+            "text": "but",
+            "start": 1.5,
+            "end": 1.7,
+            "isHighlighted": false
+        },
+        {
+            "text": "I",
+            "start": 1.7,
+            "end": 1.84,
+            "isHighlighted": false
+        },
+        {
+            "text": "feel",
+            "start": 1.84,
+            "end": 2.04,
+            "isHighlighted": false
+        },
+        {
+            "text": "proud",
+            "start": 2.04,
+            "end": 2.44,
+            "isHighlighted": false
+        },
+        {
+            "text": "to",
+            "start": 2.44,
+            "end": 2.7,
+            "isHighlighted": false
+        },
+        {
+            "text": "speak",
+            "start": 2.7,
+            "end": 2.88,
+            "isHighlighted": false
+        },
+        {
+            "text": "two",
+            "start": 2.88,
+            "end": 3.1,
+            "isHighlighted": false
+        },
+        {
+            "text": "languages.",
+            "start": 3.1,
+            "end": 3.5,
+            "isHighlighted": false
+        }
+    ]
+}

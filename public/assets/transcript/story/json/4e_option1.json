@@ -1,0 +1,76 @@
+{
+    "words": [
+        {
+            "text": "But",
+            "start": 0.06,
+            "end": 0.18,
+            "isHighlighted": false
+        },
+        {
+            "text": "I",
+            "start": 0.18,
+            "end": 0.42,
+            "isHighlighted": false
+        },
+        {
+            "text": "grew",
+            "start": 0.42,
+            "end": 0.66,
+            "isHighlighted": false
+        },
+        {
+            "text": "up",
+            "start": 0.66,
+            "end": 0.78,
+            "isHighlighted": false
+        },
+        {
+            "text": "in",
+            "start": 0.78,
+            "end": 0.9,
+            "isHighlighted": false
+        },
+        {
+            "text": "New",
+            "start": 0.9,
+            "end": 1.04,
+            "isHighlighted": false
+        },
+        {
+            "text": "York,",
+            "start": 1.04,
+            "end": 1.38,
+            "isHighlighted": false
+        },
+        {
+            "text": "where",
+            "start": 1.68,
+            "end": 1.8,
+            "isHighlighted": false
+        },
+        {
+            "text": "it",
+            "start": 1.8,
+            "end": 1.96,
+            "isHighlighted": false
+        },
+        {
+            "text": "is",
+            "start": 1.96,
+            "end": 2.08,
+            "isHighlighted": false
+        },
+        {
+            "text": "very",
+            "start": 2.08,
+            "end": 2.42,
+            "isHighlighted": false
+        },
+        {
+            "text": "cold.",
+            "start": 2.42,
+            "end": 2.9,
+            "isHighlighted": false
+        }
+    ]
+}
