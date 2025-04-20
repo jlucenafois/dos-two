@@ -1,4 +1,5 @@
 import WordPuzzle from "./objects/WordPuzzle";
+
 export interface worldBounds {
 	width: number;
 	height: number;
@@ -17,6 +18,10 @@ export default class WC_Game extends Phaser.Scene {
 	};
 	private worldBounds: worldBounds;
 
+	// New
+	private puzzleIndex = 0;
+	private puzzleSteps: { image: string; word: string; quiz: boolean }[] = [];
+
 	constructor() {
 		super("WC_Game");
 	}
@@ -34,7 +39,7 @@ export default class WC_Game extends Phaser.Scene {
 			"letter_slot_correct",
 			"assets/WordCrafter/letter_slot_correct.png"
 		);
-        this.load.image("mirror", "assets/WordCrafter/Mirror.png")
+		this.load.image("mirror", "assets/WordCrafter/Mirror.png");
 	}
 
 	editorCreate(): void {
@@ -46,46 +51,73 @@ export default class WC_Game extends Phaser.Scene {
 		this.events.emit("updateUI", "show_exit_button");
 		this.events.emit("updateUI", "change_background", "#ffffff");
 
-		// Calculate world bounds dynamically based on screen dimensions and padding
 		this.worldBounds = {
 			x: this.padding.left,
 			y: this.padding.top,
-			width: this.cameras.main.width - (this.padding.left + this.padding.right),
+			width:
+				this.cameras.main.width -
+				(this.padding.left + this.padding.right),
 			height:
-				this.cameras.main.height - (this.padding.top + this.padding.bottom),
+				this.cameras.main.height -
+				(this.padding.top + this.padding.bottom),
 		};
 
-		// Create solid boundary walls
 		this.createBoundaryWalls();
 
-        // DEBUG
-        const word= {
-            "image": "mirror",
-            "english": "mirror",
-            "spanish": "espejo"
-        }
+		// Setup the 4-step flow
+		const word = {
+			image: "mirror",
+			english: "mirror",
+			spanish: "espejo",
+		};
 
-		// Initialize the word puzzle with a target word
-		// Using this.theme to select a word appropriate for the theme
-		const targetWord = "henry";
-		this.puzzle = new WordPuzzle(this,  this.worldBounds, word.image, targetWord, false);
+		this.puzzleSteps = [
+			{ image: word.image, word: word.english, quiz: false },
+			{ image: word.image, word: word.spanish, quiz: false },
+			{ image: word.image, word: word.english, quiz: true },
+			{ image: word.image, word: word.spanish, quiz: true },
+		];
 
+		// Add constraint
 		this.matter.add.pointerConstraint({
 			stiffness: 0.1,
 			damping: 0.1,
 			length: 0,
 		});
 
-		this.input.on("pointerup", (pointer) => {
+		// Register input
+		this.input.on("pointerup", (pointer:  Phaser.Input.Pointer) => {
 			const bodies = this.matter.intersectPoint(pointer.x, pointer.y);
 			if (bodies.length == 2) {
 				this.puzzle.handlepointerup(bodies[0], bodies[1]);
 			}
 		});
 
-        this.events.on("puzzleComplete", () => {
-console.log('yo');
-        })
+		// Puzzle complete flow
+		this.events.on("puzzleComplete", () => {
+			this.puzzle.destroy(); // destroy prefab
+			this.puzzleIndex++;
+
+			if (this.puzzleIndex >= this.puzzleSteps.length) {
+				console.log("✅ All puzzles complete!");
+				return;
+			}
+
+			this.spawnPuzzle();
+		});
+
+		// Start with the first one
+		this.spawnPuzzle();
+	}
+
+	private spawnPuzzle() {
+		const step = this.puzzleSteps[this.puzzleIndex];
+		this.puzzle = new WordPuzzle(
+			this,
+			this.worldBounds,
+			step.word,
+			step.quiz
+		);
 	}
 
 	createBoundaryWalls() {
