@@ -1,4 +1,4 @@
-import WordPuzzle from "./objects/WordPuzzle";
+import WordPuzzle from "./prefabs/WordPuzzle";
 
 export interface worldBounds {
 	width: number;
