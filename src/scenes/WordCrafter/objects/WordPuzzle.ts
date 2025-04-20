@@ -6,8 +6,8 @@ import { worldBounds } from "../WC_Game";
 const slotSize = 80;
 const gap = 15;
 
-export default class WordPuzzle {
-	private scene: Phaser.Scene;
+export default class WordPuzzle extends Phaser.GameObjects.Container {
+	public scene: Phaser.Scene;
 	private word: string;
 	private worldBounds: worldBounds;
 	private letters: LetterEntity[] = [];
@@ -18,10 +18,10 @@ export default class WordPuzzle {
 	constructor(
 		scene: Phaser.Scene,
 		worldBounds: worldBounds,
-		image: string,
 		word: string,
 		quizMode: boolean
 	) {
+		super(scene);
 		this.scene = scene;
 		this.word = word.toLowerCase();
 		this.slotLeft = word.length;
@@ -31,19 +31,16 @@ export default class WordPuzzle {
 			y: this.worldBounds.y + this.worldBounds.height / 2,
 		};
 
+		// Add this container to the scene
+		scene.add.existing(this);
 		this.createLetters();
-		scene.add.sprite(0, 0, image);
 
 		if (quizMode) {
 			this.createLetterSlots();
 		} else {
-			const box = new LetterBox(
-				this.scene,
-				this.word,
-				this.center.x,
-				this.center.y
-			);
+			const box = new LetterBox(this.scene, this.word, this.center.x, this.center.y);
 			this.slots.push(box);
+			this.add(box); // Add box to container
 		}
 	}
 
@@ -52,36 +49,25 @@ export default class WordPuzzle {
 		const totalWidth = wordLength * slotSize + (wordLength - 1) * gap;
 		const startX = this.center.x - totalWidth / 2;
 
-		// Create slots for each letter
 		for (let i = 0; i < this.word.length; i++) {
 			const x = startX + i * (slotSize + gap) + slotSize / 2;
-			const slot = new LetterSlot(
-				this.scene,
-				x,
-				this.center.y,
-				this.word[i],
-				i
-			);
+			const slot = new LetterSlot(this.scene, x, this.center.y, this.word[i], i);
 			this.slots.push(slot);
+			this.add(slot); // Add to container
 		}
 	}
 
 	private createLetters() {
 		const availableLetters = this.word.split("");
 
-		// Parameters for random placement
 		const padding = 150;
 		const minX = this.worldBounds.x + padding;
 		const maxX = this.worldBounds.x + this.worldBounds.width - padding;
 		const minY = this.worldBounds.y + padding;
 		const maxY = this.worldBounds.y + this.worldBounds.height - padding;
-
-		// Avoid placing letters in the center area where slots are
 		const avoidRange = 150;
 
-		// Create letter entities
 		availableLetters.forEach((letter, i) => {
-			// Get position away from the center
 			let x = Phaser.Math.Between(minX, maxX);
 			let y;
 			do {
@@ -90,6 +76,7 @@ export default class WordPuzzle {
 
 			const letterEntity = new LetterEntity(this.scene, x, y, letter, i);
 			this.letters.push(letterEntity);
+			this.add(letterEntity); // Add letter to container
 		});
 	}
 
@@ -97,20 +84,19 @@ export default class WordPuzzle {
 		body1: Phaser.Types.Physics.Matter.MatterBody,
 		body2: Phaser.Types.Physics.Matter.MatterBody
 	) {
-		const [typeA, letterA, idxA] = body1.label.split(".");
-		const [typeB, letterB, idxB] = body2.label.split(".");
+		const [typeA, , idxA] = body1.label.split(".");
+		const [typeB, , idxB] = body2.label.split(".");
 
-		// Determine which is the slot and which is the letter
 		let slot, letter;
 
 		if (typeA === "slot" && typeB === "letter") {
-			slot = this.slots[idxA];
-			letter = this.letters[idxB];
+			slot = this.slots[parseInt(idxA)];
+			letter = this.letters[parseInt(idxB)];
 		} else if (typeA === "letter" && typeB === "slot") {
-			slot = this.slots[idxB];
-			letter = this.letters[idxA];
+			slot = this.slots[parseInt(idxB)];
+			letter = this.letters[parseInt(idxA)];
 		} else {
-			return; // not a valid slot-letter collision
+			return;
 		}
 
 		if (slot.fill(letter)) this.slotLeft -= 1;
@@ -123,6 +109,13 @@ export default class WordPuzzle {
 		}
 	}
 
-    destroy() {
-    }
+	destroy(fromScene?: boolean) {
+		for (const letter of this.letters) {
+			letter.destroy();
+		}
+		for (const slot of this.slots) {
+			slot.destroy();
+		}
+		super.destroy(fromScene);
+	}
 }

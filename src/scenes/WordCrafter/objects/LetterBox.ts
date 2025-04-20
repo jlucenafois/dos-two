@@ -1,64 +1,84 @@
-import LetterEntity from "./LetterEntity";
+import Letter from "./LetterEntity";
 
-export default class LetterBox {
-	private scene: Phaser.Scene;
+export default class LetterBox extends Phaser.GameObjects.Container {
+	public scene: Phaser.Scene;
 	private textObject: Phaser.GameObjects.Text;
 	public filled: boolean = false;
-	private body: MatterJS.BodyType;
-	public position: { x: number; y: number };
 	private rejectionTween: Phaser.Tweens.Tween | null = null;
 	private word: string;
 	private curLetterIdx = 0;
 
 	constructor(scene: Phaser.Scene, word: string, x: number, y: number) {
+		super(scene, x, y);
 		this.scene = scene;
 		this.word = word;
 
-		// Create text
-		const fontStyle = {
-			font: "bold 64px Arial",
-			color: "#a3a3a3",
-		};
-		this.textObject = scene.add.text(x, y, word, fontStyle).setOrigin(0.5)
+		scene.add.existing(this);
 
-		// Create physics body - sensor means it detects collisions but doesn't physically block
-		this.body = scene.matter.add.rectangle(
-			x,
-			y,
-			this.textObject.displayWidth + 40,
-			this.textObject.displayHeight + 20,
-			{
-				isSensor: true,
-				isStatic: true,
-				label: `slot.${word}.${0}`,
-				ignorePointer: true,
-			}
-		);
+		// Create text object and add to container
+		this.textObject = scene.add
+			.text(0, 0, word, {
+				font: "bold 64px Arial",
+				color: "#a3a3a3",
+			})
+			.setOrigin(0.5);
+		this.add(this.textObject);
+
+		// Create sensor body matching the text size
+		const width = this.textObject.displayWidth + 40;
+		const height = this.textObject.displayHeight + 20;
+
+		scene.matter.add.gameObject(this, {
+			shape: {
+				type: "rectangle",
+				width,
+				height,
+			},
+			isSensor: true,
+			isStatic: true,
+			label: `slot.${word}.0`,
+		});
 	}
 
-	fill(letter: LetterEntity) {
+	public fill(letter: Letter): boolean {
 		if (letter.letter === this.word[this.curLetterIdx]) {
 			this.accept();
 			letter.destroy();
 			this.curLetterIdx += 1;
-            return true;
+			if (this.curLetterIdx >= this.word.length) {
+				this.filled = true;
+			}
+			return true;
 		} else {
 			this.reject();
 			letter.eject();
-            return false;
+			return false;
 		}
 	}
 
-	accept(): void {
-		// this.textObject.setColor("#00AA00");
+	private accept(): void {
+		// TODO: Visual feedback
+		// e.g. this.textObject.setColor("#00AA00");
 	}
 
-	reject(): void {}
+	private reject(): void {
+		if (this.rejectionTween) this.rejectionTween.stop();
 
-	update(): void {
-		// Any per-frame updates if needed
+		this.rejectionTween = this.scene.tweens.add({
+			targets: this,
+			x: { from: this.x - 5, to: this.x + 5 },
+			ease: "Sine.easeInOut",
+			duration: 100,
+			repeat: 3,
+			yoyo: true,
+			onComplete: () => {
+				this.setX(this.x); // Reset X just in case
+				this.rejectionTween = null;
+			},
+		});
 	}
 
-    destroy() {
-    }
+	public update(): void {
+		// Update logic if needed
+	}
 }

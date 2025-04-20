@@ -1,14 +1,12 @@
 import LetterEntity from "./LetterEntity";
 
-export default class LetterSlot {
-	private scene: Phaser.Scene;
+export default class LetterSlot extends Phaser.GameObjects.Container {
+	public scene: Phaser.Scene;
 	private targetLetter: string;
 	private textObject: Phaser.GameObjects.Text;
-	public filled: boolean = false;
-	private body: MatterJS.BodyType;
-	public position: { x: number; y: number };
+	public filled = false;
 	private rejectionTween: Phaser.Tweens.Tween | null = null;
-	private sprite: Phaser.GameObjects.Sprite; // New sprite property
+	private sprite: Phaser.GameObjects.Sprite;
 
 	constructor(
 		scene: Phaser.Scene,
@@ -17,79 +15,82 @@ export default class LetterSlot {
 		targetLetter: string,
 		idx: number
 	) {
+		super(scene, x, y);
 		this.scene = scene;
 		this.targetLetter = targetLetter;
-		this.position = { x, y };
 
-		// Create sprite instead of graphics
-		this.sprite = scene.add.sprite(x, y, "letter_slot_default");
+		// Add to scene
+		scene.add.existing(this);
 
-		// Create text
-		const fontStyle = {
-			font: "bold 64px Arial",
-			color: "#a3a3a3",
-		};
+		// Create sprite
+		this.sprite = scene.add.sprite(0, 0, "letter_slot_default");
+		this.add(this.sprite);
+
+		// Create hidden letter text
 		this.textObject = scene.add
-			.text(x, y, targetLetter, fontStyle)
-			.setOrigin(0.5);
-		this.textObject.visible = false;
+			.text(0, 0, targetLetter, {
+				font: "bold 64px Arial",
+				color: "#a3a3a3",
+			})
+			.setOrigin(0.5)
+			.setVisible(false);
+		this.add(this.textObject);
 
-		// Create physics body - sensor means it detects collisions but doesn't physically block
-		this.body = scene.matter.add.rectangle(x, y, 80, 100, {
+		// Add Matter sensor body
+		const width = 80;
+		const height = 100;
+		scene.matter.add.gameObject(this, {
+			shape: {
+				type: "rectangle",
+				width,
+				height,
+			},
 			isSensor: true,
 			isStatic: true,
 			label: `slot.${targetLetter}.${idx}`,
-			ignorePointer: true,
 		});
 	}
 
-	fill(letter: LetterEntity) {
-		if (this.filled) return;
+	public fill(letter: LetterEntity): boolean {
+		if (this.filled) return false;
+
 		if (letter.letter === this.targetLetter) {
 			this.accept();
 			letter.destroy();
-            return true;
+			return true;
 		} else {
 			this.reject();
 			letter.eject();
-            return false;
+			return false;
 		}
 	}
 
-	accept(): void {
+	private accept(): void {
 		this.filled = true;
-		this.body.collisionFilter.mask = 0;
-		this.textObject.visible = true;
+		this.textObject.setVisible(true);
 		this.textObject.setColor("#00AA00");
-
-		// Change sprite texture to indicate filled state
 		this.sprite.setTexture("letter_slot_correct");
 	}
 
-	reject(): void {
-		// Stop any existing tween
-		if (this.rejectionTween) {
-			this.rejectionTween.stop();
-		}
+	private reject(): void {
+		if (this.rejectionTween) this.rejectionTween.stop();
 
-		// Create shake effect
 		this.rejectionTween = this.scene.tweens.add({
-			targets: this.sprite,
-			x: { from: this.position.x - 5, to: this.position.x + 5 },
+			targets: this,
+			x: { from: this.x - 5, to: this.x + 5 },
 			ease: "Sine.easeInOut",
 			duration: 100,
 			repeat: 3,
 			yoyo: true,
 			onComplete: () => {
-				// Reset position after shaking
-				this.sprite.x = this.position.x;
+				this.setX(this.x); // Ensure reset
 				this.sprite.setTexture("letter_slot_default");
 				this.rejectionTween = null;
 			},
 		});
 	}
 
-	update(): void {
-		// Any per-frame updates if needed
+	public update(): void {
+		// Slot update logic if needed
 	}
 }

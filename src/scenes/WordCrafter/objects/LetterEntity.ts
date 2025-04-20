@@ -1,9 +1,7 @@
-export default class LetterEntity {
-	private scene: Phaser.Scene;
+export default class LetterEntity extends Phaser.GameObjects.Text {
 	public letter: string;
-	private textObject: Phaser.GameObjects.Text;
-	private body: MatterJS.BodyType;
-	private locked: boolean = false;
+	private bodyRef: MatterJS.BodyType;
+	private locked = false;
 
 	constructor(
 		scene: Phaser.Scene,
@@ -12,78 +10,70 @@ export default class LetterEntity {
 		letter: string,
 		idx: number
 	) {
-		this.scene = scene;
-		this.letter = letter;
-
-		// Create text
-		const fontStyle = {
+		super(scene, x, y, letter, {
 			font: "bold 64px Arial",
 			color: "#000000",
-		};
-		this.textObject = scene.add.text(x, y, letter, fontStyle).setOrigin(0.5).setDepth(1);
-		this.textObject.setInteractive();
+		});
 
-		// Create physics body
+		this.letter = letter;
+		this.setOrigin(0.5).setDepth(1);
+		this.setInteractive();
+
+		// Add this Text object to the scene
+		scene.add.existing(this);
+
+		// Add physics body to the text object
 		const radius = 40;
-		this.body = scene.matter.add.circle(x, y, radius, {
+		scene.matter.add.gameObject(this, {
+			shape: {
+				type: "circle",
+				radius,
+			},
 			label: `letter.${letter}.${idx}`,
 			restitution: 0.6,
 			friction: 0.1,
 			frictionAir: 0.1,
-			angle: 0, // Start with no rotation
+			angle: 0,
 		});
 
-		// Connect text to physics body
-		const object = scene.matter.add.gameObject(this.textObject, this.body);
-		object.setInteractive();
+		this.bodyRef = this.body as MatterJS.BodyType;
 	}
 
-
-	destroy(): void {
-		this.locked = true;
-		this.scene.matter.world.remove(this.body);
-		this.textObject.destroy();
-	}
-
-	eject(): void {
-		// Calculate ejection direction (away from the slot)
-		const currentPos = this.body.position;
-
-		// Default angle if the positions are too close
+	public eject(): void {
 		const ejectionAngle = -Math.PI / 2;
+		const force = 0.2;
 
-		// Calculate ejection velocity
-		const ejectionForce = 0.2;
-		const ejectionVector = {
-			x: Math.cos(ejectionAngle) * ejectionForce,
-			y: Math.sin(ejectionAngle) * ejectionForce,
+		const vector = {
+			x: Math.cos(ejectionAngle) * force,
+			y: Math.sin(ejectionAngle) * force,
 		};
 
-		// Apply force to eject the letter
-		this.scene.matter.body.applyForce(this.body, currentPos, ejectionVector);
+		this.scene.matter.body.applyForce(
+			this.bodyRef,
+			this.bodyRef.position,
+			vector
+		);
 
-		// Flash the letter red
-		this.textObject.setColor("#FF0000");
-
-		// Return to normal color after a short delay
+		this.setColor("#FF0000");
 		this.scene.time.delayedCall(300, () => {
-			this.textObject.setColor("#000000");
+			if (!this.locked) {
+				this.setColor("#000000");
+			}
 		});
 	}
 
-	update(): void {
-		// Constrain rotation between -30 and 30 degrees
-		if (!this.locked) {
-			const MAX_ANGLE = 30 * (Math.PI / 180); // Convert to radians
-			const currentAngle = this.body.angle;
+	public update(): void {
+		if (this.locked) return;
 
-			if (currentAngle > MAX_ANGLE) {
-				this.scene.matter.body.setAngle(this.body, MAX_ANGLE);
-				this.scene.matter.body.setAngularVelocity(this.body, 0);
-			} else if (currentAngle < -MAX_ANGLE) {
-				this.scene.matter.body.setAngle(this.body, -MAX_ANGLE);
-				this.scene.matter.body.setAngularVelocity(this.body, 0);
-			}
+		const MAX_ANGLE = Phaser.Math.DegToRad(30);
+		const current = this.bodyRef.angle;
+
+		if (current > MAX_ANGLE) {
+			this.scene.matter.body.setAngle(this.bodyRef, MAX_ANGLE, false);
+			this.scene.matter.body.setAngularVelocity(this.bodyRef, 0);
+		} else if (current < -MAX_ANGLE) {
+			this.scene.matter.body.setAngle(this.bodyRef, -MAX_ANGLE, false);
+			this.scene.matter.body.setAngularVelocity(this.bodyRef, 0);
 		}
 	}
 }
