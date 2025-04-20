@@ -3,6 +3,7 @@
 
 /* START OF COMPILED CODE */
 
+import { enableHoverAudio, playBackgroundAudio } from "../../utils";
 import OB_Base from "./OB_Base";
 /* START-USER-IMPORTS */
 
@@ -63,10 +64,10 @@ export default class OB_2 extends OB_Base {
 
 		this.editorCreate();
 		super.create()
-
-		this.events.emit("hideProgressBar");
-
-		this.events.emit("showExitButton"); // Notify UI
+		playBackgroundAudio(this, "2-choose"); // this will autoplay
+		enableHoverAudio(this, { object: this.reading_mode, audioKey: "2-storytime-merged" });
+		enableHoverAudio(this, { object: this.game_mode, audioKey: "2-language-games" });
+		this.events.emit("showOBUI"); // Notify UI
 		/* READING MODE */
 		this.reading_mode.setInteractive({
 			useHandCursor: true, 
@@ -86,6 +87,7 @@ export default class OB_2 extends OB_Base {
 		// Click event - Transition to OB_3_1
 		this.reading_mode.on("pointerdown", () => {
 			this.events.emit("showBackArrow"); // Notify UI
+			this.sound.stopAll(); // stops any playing audio
 			this.scene.stop("OB_2");
 			this.scene.start("OB_3_1");
 		});
@@ -109,14 +111,10 @@ export default class OB_2 extends OB_Base {
 		// Click event - Transition to OB_3_2
 		this.game_mode.on("pointerdown", () => {
 			this.events.emit("showBackArrow"); // Notify UI
+			this.sound.stopAll(); // stops any playing audio
 			this.scene.stop("OB_2");
 			this.scene.start("OB_3_2");
 		});
-
-		// Check if the UI scene is already running
-		if (!this.scene.isActive("OB_UI")) {
-			this.scene.launch("OB_UI"); // Launch the UI overlay only if it hasn't been launched already
-		}
 	}
 
 	/* END-USER-CODE */

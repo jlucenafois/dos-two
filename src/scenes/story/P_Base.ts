@@ -33,14 +33,14 @@ export default class P_Base extends Base {
             const languages = [
                 { key: "transcript-english", suffix: "e" },
                 { key: "transcript-spanish", suffix: "s" }
-            ];  
+            ];
             languages.forEach(({ key, suffix }) => {
-                this.load.json(this.nameWithKey(key), `assets/transcript/story/${pageIdx}${suffix}.json`);
-                this.load.audio(this.nameWithKey(`audio-${key}`), `assets/transcript/story/${pageIdx}${suffix}.wav`);
+                this.load.json(this.nameWithKey(key), `assets/transcript/story/json/${pageIdx}${suffix}.json`);
+                this.load.audio(this.nameWithKey(`audio-${key}`), `assets/transcript/story/audio/${pageIdx}${suffix}.wav`);
             });
         }
     }
-    
+
 
     editorCreate(): void {
         this.events.emit("scene-awake");
@@ -52,10 +52,31 @@ export default class P_Base extends Base {
 
     create() {
         const sceneScript = SCRIPT[this.scene.key];
-        if (!sceneScript) return; // Early return if no script
+        if (!sceneScript || !sceneScript.dualComponents) return;
+
         
+        // If already played once, allow skipping immediately
+        if (sceneScript.playedOnce === true) {
+            this.events.emit("enableForwardNav");
+        } else {
+            this.events.emit("disableForwardNav");
+        }
+
         const dualComponents = sceneScript.dualComponents;
-        dualComponents?.forEach(dc => renderDualComponent(this, dc));
+        let completed = 0;
+
+        dualComponents.forEach(dc => {
+            renderDualComponent(this, dc, () => {
+                completed++;
+                if (completed === dualComponents.length) {
+                    if (!sceneScript.playedOnce) {
+                        this.events.emit("enableForwardNav"); // only emit if not previously allowed
+                    }
+                    sceneScript.playedOnce = true;
+                }
+            });
+        });
+
         super.create();
     }
-}
+}     

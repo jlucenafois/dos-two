@@ -5,6 +5,7 @@
 
 import OB_Base from "./OB_Base";
 /* START-USER-IMPORTS */
+import { enableHoverAudio, playBackgroundAudio } from "../../utils";
 
 
 /* END-USER-IMPORTS */
@@ -22,13 +23,13 @@ export default class OB_3_2 extends OB_Base {
 	editorCreate(): void {
 
 		// match_button
-		this.add.image(1363, 616, "match_button");
+		const match_button = this.add.image(1363, 616, "match_button");
 
 		// word_button
-		this.add.image(829, 616, "word_button");
+		const word_button = this.add.image(829, 616, "word_button");
 
 		// memory_button
-		this.add.image(317, 616, "memory_button");
+		const memory_button = this.add.image(317, 616, "memory_button");
 
 		// title
 		const title = this.add.bitmapText(838, 309, "BowlbyOne", "Choose a game\n");
@@ -57,8 +58,16 @@ export default class OB_3_2 extends OB_Base {
 		memory_title_1.fontSize = 40;
 		memory_title_1.align = 1;
 
+		this.match_button = match_button;
+		this.word_button = word_button;
+		this.memory_button = memory_button;
+
 		this.events.emit("scene-awake");
 	}
+
+	private match_button!: Phaser.GameObjects.Image;
+	private word_button!: Phaser.GameObjects.Image;
+	private memory_button!: Phaser.GameObjects.Image;
 
 	/* START-USER-CODE */
 
@@ -67,6 +76,14 @@ export default class OB_3_2 extends OB_Base {
 	create() {
 		this.editorCreate();
 		super.create();
+		this.match_button.setInteractive({pixelPerfect: true, useHandCursor: true})
+		this.word_button.setInteractive({pixelPerfect: true, useHandCursor: true}) 
+		this.memory_button.setInteractive({pixelPerfect: true, useHandCursor: true})
+		playBackgroundAudio(this, '3.2-line-1')
+		enableHoverAudio(this, {object: this.memory_button, audioKey: '3.2-line-2'})
+		enableHoverAudio(this, {object: this.word_button, audioKey: '3.2-line-3'})
+		enableHoverAudio(this, {object: this.match_button, audioKey: '3.2-line-4'})
+
 
 	}
 

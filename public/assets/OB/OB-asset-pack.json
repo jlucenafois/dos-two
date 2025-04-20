@@ -81,13 +81,6 @@
                 "key": "ob4_avatar"
             },
             {
-                "url": [
-                    "assets/OB/audio/play.wav"
-                ],
-                "type": "audio",
-                "key": "play"
-            },
-            {
                 "url": "assets/OB/pressed_play_lg.png",
                 "type": "image",
                 "key": "pressed_play_lg"
@@ -111,7 +104,77 @@
                 "url": "assets/OB/word_button.png",
                 "type": "image",
                 "key": "word_button"
-            }
+            },
+            {
+                "url": "assets/transcript/OB/audio/1.wav",
+                "type": "audio",
+                "key": "1"
+            },
+            {
+                "url": "assets/transcript/OB/audio/2-choose.wav",
+                "type": "audio",
+                "key": "2-choose"
+            },
+            {
+                "url": "assets/transcript/OB/audio/2-language-games.wav",
+                "type": "audio",
+                "key": "2-language-games"
+            },
+            {
+                "url": "assets/transcript/OB/audio/2-storytime-merged.wav",
+                "type": "audio",
+                "key": "2-storytime-merged"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.1-line-1.wav",
+                "type": "audio",
+                "key": "3.1-line-1"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.1-line-2.wav",
+                "type": "audio",
+                "key": "3.1-line-2"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.1-line-3.wav",
+                "type": "audio",
+                "key": "3.1-line-3"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.2-line-1.wav",
+                "type": "audio",
+                "key": "3.2-line-1"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.2-line-2.wav",
+                "type": "audio",
+                "key": "3.2-line-2"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.2-line-3.wav",
+                "type": "audio",
+                "key": "3.2-line-3"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.2-line-4.wav",
+                "type": "audio",
+                "key": "3.2-line-4"
+            },
+            {
+                "url": "assets/transcript/OB/audio/4.wav",
+                "type": "audio",
+                "key": "4"
+            },
+            {
+                "url": "assets/transcript/OB/audio/5-option-1.wav",
+                "type": "audio",
+                "key": "5-option-1"
+            },
+            {
+                "url": "assets/transcript/OB/audio/5-option-2.wav",
+                "type": "audio",
+                "key": "5-option-2"
+            }            
         ]
     },
     "meta": {

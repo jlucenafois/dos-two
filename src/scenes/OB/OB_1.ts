@@ -3,6 +3,7 @@
 
 /* START OF COMPILED CODE */
 
+import { enableHoverAudio } from "../../utils";
 import OB_Base from "./OB_Base";
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
@@ -41,8 +42,14 @@ export default class OB_1 extends OB_Base {
 
 
 	create() {
+		// Check if the UI scene is already running
+		if (!this.scene.isActive("OB_UI")) {
+			this.scene.launch("OB_UI"); // Launch the UI overlay only if it hasn't been launched already
+		}
 		this.editorCreate();
+		enableHoverAudio(this, { object: this.play, audioKey: "1" });
 		this.play.setInteractive({useHandCursor: true})
+
 		super.create()
 		// this.events.emit("changeBackground", "#7580FF"); // Notify UI
 		// Mouse hover effect
@@ -63,8 +70,10 @@ export default class OB_1 extends OB_Base {
 		// Release effect (if still hovered)
 		this.play.on("pointerup", () => {
 			this.play.setTexture("hovered_play_lg"); // Reset to hover state
+			this.sound.stopAll(); // stops any playing audio
 			this.scene.start("OB_2"); // Switch to OB2 scene
 		});
+		
 	}
 
 	/* END-USER-CODE */

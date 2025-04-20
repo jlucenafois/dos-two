@@ -27,7 +27,6 @@ export default class OB_4 extends OB_Base {
 			this.updateProgressBar(value);
 		});
 		this.load.on("complete", () => {
-			this.events.emit("showExitButton");
 			this.events.emit("showSideArrows");
 			this.events.emit("changeBackground", "#C7CCFF");
 			this.scene.start("P_0");

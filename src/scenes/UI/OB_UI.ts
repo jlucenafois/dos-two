@@ -27,18 +27,17 @@ export default class OB_UI extends Base {
 		// exit
 		const exit = this.add.image(1568, 69, "default_exit_lg");
 		exit.setOrigin(0, 0);
+		exit.visible = false;
 
 		// home
 		const home = this.add.image(80, 69, "default_home_lg");
 		home.setOrigin(0, 0);
+		home.visible = false;
 
 		// sound_control
 		const sound_control = this.add.image(192, 69, "default_unmuted_lg");
 		sound_control.setOrigin(0, 0);
-
-		// back
-		const back = this.add.image(1608, 112, "default_back_md");
-		back.visible = false;
+		sound_control.visible = false;
 
 		// home_purple
 		const home_purple = this.add.image(80, 69, "default_home_purple_lg");
@@ -63,12 +62,12 @@ export default class OB_UI extends Base {
 		// coin
 		const coin = this.add.image(80, 951, "coin");
 		coin.setOrigin(0, 0);
+		coin.visible = false;
 
 		this.book = book;
 		this.exit = exit;
 		this.home = home;
 		this.sound_control = sound_control;
-		this.back = back;
 		this.home_purple = home_purple;
 		this.next_page = next_page;
 		this.prev_page = prev_page;
@@ -82,7 +81,6 @@ export default class OB_UI extends Base {
 	private exit!: Phaser.GameObjects.Image;
 	private home!: Phaser.GameObjects.Image;
 	private sound_control!: Phaser.GameObjects.Image;
-	private back!: Phaser.GameObjects.Image;
 	private home_purple!: Phaser.GameObjects.Image;
 	private next_page!: Phaser.GameObjects.Image;
 	private prev_page!: Phaser.GameObjects.Image;
@@ -93,11 +91,10 @@ export default class OB_UI extends Base {
 	registerListeners() {
 		this.scene.manager.scenes.forEach(scene => {
 			if (scene instanceof Base) {
-				scene.events.on("showExitButton", this.showExitButton, this);
-				scene.events.on("showBackArrow", this.showBackArrow, this);	
 				scene.events.on("showSideArrows", this.showSideArrows, this);		
 				scene.events.on("hideSideArrows", this.hideSideArrows, this);		
 				scene.events.on("showBook", this.showBook, this);		
+				scene.events.on("showOBUI", this.showOBUI, this);		
 				scene.events.on("changeBackground", this.changeBackground, this);
 				scene.events.on("updateProgressBar", this.updateProgressBar, this)
 				scene.events.on("hideProgressBar", this.hideProgressBar, this)
@@ -122,13 +119,13 @@ export default class OB_UI extends Base {
 	}
 
 	/* EVENTS */
-	showExitButton() {
-		this.back.setVisible(false);
-		this.exit.setVisible(true);
-	}
-	showBackArrow() {
-		this.exit.setVisible(false);
-		this.back.setVisible(true);
+
+	showOBUI() {
+		this.home.setVisible(true)
+		this.sound_control.setVisible(true)
+		this.coin.setVisible(true)
+		this.coin_counter.setVisible(true)
+		this.exit.setVisible(true)
 	}
 	showSideArrows() {
 		this.prev_page.setVisible(true);
@@ -199,7 +196,7 @@ export default class OB_UI extends Base {
 		this.coin_counter = this.add.text(140, 950, `${CURRENT_SETTINGS.gameState.coins}`, {
 			fontSize: '40px',
 			fontFamily: 'Bowlby One'
-		})
+		}).setVisible(false)
 		super.create();
 
 		/* HOME */
@@ -266,27 +263,6 @@ export default class OB_UI extends Base {
 			this.exit.setTexture("default_exit_lg");
 		});
 
-	/* BACK */ 
-		this.back.setInteractive({ useHandCursor: true });
-
-		// Mouse press effect
-		this.back.on("pointerdown", () => {
-			this.back.setTexture("pressed_back_md"); // Change to pressed state
-		});
-
-		// Release effect (if still hovered)
-		this.back.on("pointerup", () => {
-			this.back.setTexture("default_back_md"); // Reset to hover state
-			this.stopAllScenes(["OB_UI"])
-			this.scene.launch(CURRENT_SETTINGS.gameState.prevScene!)
-		});
-
-
-		// Mouse out effect (Reset to normal)
-		this.back.on("pointerout", () => {
-			this.back.setTexture("default_back_md");
-		});
-
 	/* BACK LG*/ 
 		this.prev_page.setInteractive({ useHandCursor: true });
 
@@ -320,7 +296,7 @@ export default class OB_UI extends Base {
 		// Release effect (if still hovered)
 		this.next_page.on("pointerup", () => {
 			this.next_page.setTexture("default_next_lg"); // Reset to hover state
-			
+
 			// If the current scene is P_0, trigger "playAnim"
 			if (CURRENT_SETTINGS.gameState.currScene === "P_0") {
 				this.events.emit("openCover");

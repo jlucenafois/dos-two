@@ -16,6 +16,7 @@ export const SCRIPT: Record<string, {
     next_key: string | null,
     index?: number,
     total?: number, // might be a better way
+    playedOnce?: boolean; 
     // TODO: expand this to allow Single Components
 }> = {
     OB_1: {
@@ -43,6 +44,7 @@ export const SCRIPT: Record<string, {
         next_key: "P_1"
     },
     P_1: {
+        playedOnce: false,
         dualComponents: [{
             coordinates: {
                 preferredX: 928.5,
@@ -109,6 +111,7 @@ export const SCRIPT: Record<string, {
         total: CHAPTERS["CH_1"],
     },
     P_2: {
+        playedOnce: false,
         dualComponents: [{
             coordinates: {
                 preferredX: 524,
@@ -171,6 +174,7 @@ export const SCRIPT: Record<string, {
         total: CHAPTERS["CH_1"],
     },
     P_3: {
+        playedOnce: false,
         dualComponents: [{
             coordinates: {
                 preferredX: 904,
