@@ -2,7 +2,7 @@ import PreloadBase from "../PreloadBase";
 export default class WC_Preload extends PreloadBase {
 
 	constructor() {
-		super("WC_Preload", ["WordCrafter"], "WC_Game");
+		super("WC_Preload", ["WordCrafter"], "WC_ChooseTheme");
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.

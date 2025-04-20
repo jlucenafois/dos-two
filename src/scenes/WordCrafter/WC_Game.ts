@@ -1,4 +1,5 @@
 import WordPuzzle from "./prefabs/WordPuzzle";
+import Base from "../Base";
 
 export interface worldBounds {
 	width: number;
@@ -7,7 +8,7 @@ export interface worldBounds {
 	y: number;
 }
 
-export default class WC_Game extends Phaser.Scene {
+export default class WC_Game extends Base {
 	private theme: string = "Mirror";
 	private puzzle: WordPuzzle;
 	private padding = {
@@ -17,8 +18,6 @@ export default class WC_Game extends Phaser.Scene {
 		bottom: 100,
 	};
 	private worldBounds: worldBounds;
-
-	// New
 	private puzzleIndex = 0;
 	private puzzleSteps: { image: string; word: string; quiz: boolean }[] = [];
 
