@@ -29,18 +29,6 @@ export default class WC_Game extends Base {
 		this.theme = theme;
 	}
 
-	preload() {
-		this.load.image(
-			"letter_slot_default",
-			"assets/WordCrafter/letter_slot_default.png"
-		);
-		this.load.image(
-			"letter_slot_correct",
-			"assets/WordCrafter/letter_slot_correct.png"
-		);
-		this.load.image("mirror", "assets/WordCrafter/Mirror.png");
-	}
-
 	editorCreate(): void {
 		this.events.emit("scene-awake");
 	}
@@ -74,7 +62,7 @@ export default class WC_Game extends Base {
 		};
 
 		this.puzzleSteps = [
-			{ image: word.image, word: word.english, quiz: false },
+			{ image: word.image, word: word.english, quiz: true },
 			{ image: word.image, word: word.spanish, quiz: false },
 			{ image: word.image, word: word.english, quiz: true },
 			{ image: word.image, word: word.spanish, quiz: true },

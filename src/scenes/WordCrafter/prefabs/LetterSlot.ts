@@ -77,6 +77,7 @@ export default class LetterSlot extends Phaser.GameObjects.Container {
 
 	private reject(): void {
 		if (this.rejectionTween) this.rejectionTween.stop();
+		this.sprite.setTexture("letter_slot_wrong");
 
 		this.rejectionTween = this.scene.tweens.add({
 			targets: this,

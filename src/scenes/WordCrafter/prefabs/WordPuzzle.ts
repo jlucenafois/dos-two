@@ -4,7 +4,7 @@ import LetterBox from "./LetterBox";
 import { worldBounds } from "../WC_Game";
 
 const slotSize = 80;
-const gap = 15;
+const gap = 10;
 
 export default class WordPuzzle extends Phaser.GameObjects.Container {
 	public scene: Phaser.Scene;
