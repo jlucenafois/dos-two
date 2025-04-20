@@ -71,11 +71,14 @@ export default class WC_ChooseTheme extends Base {
 		});
 
 		// Add subtitle underneath
-		const subtitleText = this.add.bitmapText(
+		const subtitleText = this.add.text(
 			centerX,
-			centerY + image.height / 2 + 10,
-			"BowlbyOne",
-			subtitle
+			centerY + image.height / 2 + 20,
+			subtitle,
+            {
+                font: "bold 32px Arial",
+                color: "#000"
+            }
 		);
 		subtitleText.setOrigin(0.5, 0);
 		subtitleText.setTint(0x484848);
