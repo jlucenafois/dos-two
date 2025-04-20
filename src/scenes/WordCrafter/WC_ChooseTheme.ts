@@ -1,51 +1,85 @@
-import Base from '../Base';
+import Base from "../Base";
 
 export default class WC_ChooseTheme extends Base {
 	constructor() {
-		super('WC_ChooseTheme');
+		super("WC_ChooseTheme");
 	}
 
 	editorCreate(): void {
 		super.create();
-		// title_ob_2
-		this.add
-			.image(845.0456043923781, 439.2735078542467, 'title_ob_2')
-			.setOrigin(0.5, 0);
 
-		// utensils
-		this.utensils = this.createImage(842, 747, 'Utensils', 0.2);
-		// carrot
-		this.carrot = this.createImage(477, 743, 'Carrot', 0.2);
-		// mirror
-		this.mirror = this.createImage(1235, 746, 'Mirror', 0.2);
-		this.events.emit('scene-awake');
+		// choose a theme title
+		const title = this.add.bitmapText(
+			this.cameras.main.centerX,
+			300,
+			"BowlbyOne",
+			"Choose a theme"
+		);
+		title.setOrigin(0.5, 0); // Center horizontally, keep top alignment
+		title.setTint(0x484848);
+
+		const gap = 50;
+		const imageKeys = ["Utensils", "Carrot", "Mirror"];
+		const subtitles: Record<string, string> = {
+			Utensils: "Kitchen Supplies",
+			Carrot: "Food",
+			Mirror: "Bedroom",
+		};
+
+		// Create all images temporarily to calculate width
+		const tempImages = imageKeys.map(key => this.add.image(0, 0, key));
+		const totalWidth = tempImages.reduce((acc, img) => acc + img.width, 0) + gap * (tempImages.length - 1);
+		tempImages.forEach(img => img.destroy()); // Clean up temp images
+
+		let startX = this.cameras.main.centerX - totalWidth / 2;
+
+		imageKeys.forEach((key) => {
+			// We'll calculate center of this image to place it correctly
+			const temp = this.add.image(0, 0, key);
+			const imageWidth = temp.width;
+			temp.destroy();
+
+			const centerX = startX + imageWidth / 2;
+			this.createImage(centerX, 600, key, subtitles[key]);
+
+			startX += imageWidth + gap;
+		});
+
+		this.events.emit("scene-awake");
 	}
-
-	private utensils!: Phaser.GameObjects.Image;
-	private carrot!: Phaser.GameObjects.Image;
-	private mirror!: Phaser.GameObjects.Image;
 
 	create() {
 		this.editorCreate();
-        this.events.emit( "changeBackground", "#ffd439"); // Notify UI
+		this.events.emit("changeBackground", "#ffd439"); // Notify UI
 	}
 
 	private createImage(
-		x: number,
-		y: number,
+		centerX: number,
+		centerY: number,
 		texture: string,
-		scale: number
+		subtitle: string
 	): Phaser.GameObjects.Image {
-		const image = this.add.image(x, y, texture);
-		image.setScale(scale);
+		// Create image centered at given position
+		const image = this.add.image(centerX, centerY, texture);
 		image.setInteractive({
 			useHandCursor: true,
 			pixelPerfect: true,
 		});
-		image.on('pointerdown', () => {
-			this.scene.stop('WC_ChooseTheme');
-            this.scene.start('WC_Game', { theme: texture });
+		image.on("pointerdown", () => {
+			this.scene.stop("WC_ChooseTheme");
+			this.scene.start("WC_Game", { theme: texture });
 		});
+
+		// Add subtitle underneath
+		const subtitleText = this.add.bitmapText(
+			centerX,
+			centerY + image.height / 2 + 10,
+			"BowlbyOne",
+			subtitle
+		);
+		subtitleText.setOrigin(0.5, 0);
+		subtitleText.setTint(0x484848);
+
 		return image;
 	}
 }
