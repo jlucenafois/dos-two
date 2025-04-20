@@ -16,7 +16,7 @@ export default class LetterEntity extends Phaser.GameObjects.Text {
 		});
 
 		this.letter = letter;
-		this.setOrigin(0.5).setDepth(100);
+		this.setOrigin(0.5);
 		this.setInteractive();
 
 		// Add this Text object to the scene

@@ -48,6 +48,9 @@ export default class LetterSlot extends Phaser.GameObjects.Container {
 			isSensor: true,
 			isStatic: true,
 			label: `slot.${targetLetter}.${idx}`,
+            collisionFilter: {
+                mask:0
+            }
 		});
 	}
 

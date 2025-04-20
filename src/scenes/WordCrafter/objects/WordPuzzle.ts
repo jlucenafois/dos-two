@@ -31,9 +31,6 @@ export default class WordPuzzle extends Phaser.GameObjects.Container {
 			y: this.worldBounds.y + this.worldBounds.height / 2,
 		};
 
-		// Add this container to the scene
-		scene.add.existing(this);
-
 		if (quizMode) {
 			this.createLetterSlots();
 		} else {
@@ -41,7 +38,10 @@ export default class WordPuzzle extends Phaser.GameObjects.Container {
 			this.slots.push(box);
 			this.add(box); // Add box to container
 		}
+
+        // these two lines have to be last in order for the floating letters to be rendered on top of everything else!!!
         this.createLetters();
+		scene.add.existing(this);
 	}
 
 	private createLetterSlots() {
@@ -77,6 +77,7 @@ export default class WordPuzzle extends Phaser.GameObjects.Container {
 			const letterEntity = new LetterEntity(this.scene, x, y, letter, i);
 			this.letters.push(letterEntity);
 			this.add(letterEntity); // Add letter to container
+            this.bringToTop(letterEntity)
 		});
 	}
 
