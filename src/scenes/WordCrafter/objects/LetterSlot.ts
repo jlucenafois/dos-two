@@ -23,7 +23,7 @@ export default class LetterSlot extends Phaser.GameObjects.Container {
 		scene.add.existing(this);
 
 		// Create sprite
-		this.sprite = scene.add.sprite(0, 0, "letter_slot_default");
+		this.sprite = scene.add.sprite(0, 0, "letter_slot_default")
 		this.add(this.sprite);
 
 		// Create hidden letter text

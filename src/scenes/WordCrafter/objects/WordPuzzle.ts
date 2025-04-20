@@ -33,7 +33,6 @@ export default class WordPuzzle extends Phaser.GameObjects.Container {
 
 		// Add this container to the scene
 		scene.add.existing(this);
-		this.createLetters();
 
 		if (quizMode) {
 			this.createLetterSlots();
@@ -42,6 +41,7 @@ export default class WordPuzzle extends Phaser.GameObjects.Container {
 			this.slots.push(box);
 			this.add(box); // Add box to container
 		}
+        this.createLetters();
 	}
 
 	private createLetterSlots() {
