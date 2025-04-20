@@ -4,6 +4,7 @@
     "settings": {
         "exportClass": true,
         "autoImport": true,
+        "superClassName": "Base",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
         "sceneKey": "OB_UI",
@@ -27,7 +28,7 @@
         {
             "type": "Image",
             "id": "de59255b-be86-4989-aac9-6824b9a258c4",
-            "label": "default_exit_lg",
+            "label": "exit",
             "scope": "CLASS",
             "texture": {
                 "key": "default_exit_lg"
@@ -40,7 +41,7 @@
         {
             "type": "Image",
             "id": "9f5b0c9e-616c-4e60-80c1-8b6c7f285972",
-            "label": "default_home_lg",
+            "label": "home",
             "scope": "CLASS",
             "texture": {
                 "key": "default_home_lg"
@@ -53,7 +54,7 @@
         {
             "type": "Image",
             "id": "311332ac-d835-4122-8f5c-c3239d5cbf87",
-            "label": "default_unmuted_lg",
+            "label": "sound_control",
             "scope": "CLASS",
             "texture": {
                 "key": "default_unmuted_lg"
@@ -66,7 +67,7 @@
         {
             "type": "Image",
             "id": "18f8b747-4679-4392-bda0-4d78d24996fd",
-            "label": "default_back_md",
+            "label": "back",
             "scope": "CLASS",
             "texture": {
                 "key": "default_back_md"
@@ -78,7 +79,7 @@
         {
             "type": "Image",
             "id": "28eea76e-ff6e-4005-ada8-e7c9508e704c",
-            "label": "default_home_purple_lg",
+            "label": "home_purple",
             "scope": "CLASS",
             "texture": {
                 "key": "default_home_purple_lg"
@@ -92,7 +93,7 @@
         {
             "type": "Image",
             "id": "2a0f1a84-1365-42da-81d8-2cf6715a9735",
-            "label": "default_next_lg",
+            "label": "next_page",
             "scope": "CLASS",
             "texture": {
                 "key": "default_next_lg"
@@ -106,15 +107,42 @@
         {
             "type": "Image",
             "id": "e09f5124-c26a-44f6-b9a5-d528dc6502d2",
-            "label": "default_back_lg",
+            "label": "prev_page",
             "scope": "CLASS",
             "texture": {
-                "key": "default_back_lg"
+                "key": "disabled_back_lg"
             },
             "x": 192,
             "y": 637,
             "originX": 1,
             "visible": false
+        },
+        {
+            "type": "Image",
+            "id": "00c1cc3a-50f3-4a19-9d3b-49573c6916c7",
+            "label": "progress_bar",
+            "scope": "CLASS",
+            "texture": {
+                "key": "progress_medium_0"
+            },
+            "x": 743,
+            "y": 86,
+            "originX": 0,
+            "originY": 0,
+            "visible": false
+        },
+        {
+            "type": "Image",
+            "id": "fbb5c3b2-bcc7-4cff-848b-414910483ae0",
+            "label": "coin",
+            "scope": "CLASS",
+            "texture": {
+                "key": "coin"
+            },
+            "x": 80,
+            "y": 951,
+            "originX": 0,
+            "originY": 0
         }
     ],
     "plainObjects": [],

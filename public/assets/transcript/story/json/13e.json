@@ -1,0 +1,136 @@
+{
+    "words": [
+        {
+            "text": "My",
+            "start": 0.0,
+            "end": 0.16,
+            "isHighlighted": false
+        },
+        {
+            "text": "friends",
+            "start": 0.16,
+            "end": 0.46,
+            "isHighlighted": false
+        },
+        {
+            "text": "laugh",
+            "start": 0.46,
+            "end": 0.8,
+            "isHighlighted": false
+        },
+        {
+            "text": "when",
+            "start": 0.8,
+            "end": 1.08,
+            "isHighlighted": false
+        },
+        {
+            "text": "I",
+            "start": 1.08,
+            "end": 1.2,
+            "isHighlighted": false
+        },
+        {
+            "text": "mix",
+            "start": 1.2,
+            "end": 1.4,
+            "isHighlighted": false
+        },
+        {
+            "text": "English",
+            "start": 1.4,
+            "end": 1.78,
+            "isHighlighted": false
+        },
+        {
+            "text": "and",
+            "start": 1.78,
+            "end": 1.98,
+            "isHighlighted": false
+        },
+        {
+            "text": "Spanish.",
+            "start": 1.98,
+            "end": 2.52,
+            "isHighlighted": false
+        },
+        {
+            "text": "I",
+            "start": 3.44,
+            "end": 3.64,
+            "isHighlighted": false
+        },
+        {
+            "text": "have",
+            "start": 3.64,
+            "end": 3.86,
+            "isHighlighted": false
+        },
+        {
+            "text": "ombré,",
+            "start": 3.86,
+            "end": 4.46,
+            "isHighlighted": false
+        },
+        {
+            "text": "I",
+            "start": 4.62,
+            "end": 4.84,
+            "isHighlighted": false
+        },
+        {
+            "text": "say.",
+            "start": 4.84,
+            "end": 5.14,
+            "isHighlighted": false
+        },
+        {
+            "text": "Why",
+            "start": 6.06,
+            "end": 6.26,
+            "isHighlighted": false
+        },
+        {
+            "text": "do",
+            "start": 6.26,
+            "end": 6.38,
+            "isHighlighted": false
+        },
+        {
+            "text": "you",
+            "start": 6.38,
+            "end": 6.5,
+            "isHighlighted": false
+        },
+        {
+            "text": "talk",
+            "start": 6.5,
+            "end": 6.8,
+            "isHighlighted": false
+        },
+        {
+            "text": "like",
+            "start": 6.8,
+            "end": 7.04,
+            "isHighlighted": false
+        },
+        {
+            "text": "that,",
+            "start": 7.04,
+            "end": 7.36,
+            "isHighlighted": false
+        },
+        {
+            "text": "they",
+            "start": 7.68,
+            "end": 7.96,
+            "isHighlighted": false
+        },
+        {
+            "text": "ask?",
+            "start": 7.96,
+            "end": 8.36,
+            "isHighlighted": false
+        }
+    ]
+}

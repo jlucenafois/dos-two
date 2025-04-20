@@ -1,0 +1,106 @@
+{
+    "words": [
+        {
+            "text": "Grandma",
+            "start": 0.0,
+            "end": 0.32,
+            "isHighlighted": false
+        },
+        {
+            "text": "is",
+            "start": 0.32,
+            "end": 0.58,
+            "isHighlighted": false
+        },
+        {
+            "text": "cooking",
+            "start": 0.58,
+            "end": 0.86,
+            "isHighlighted": false
+        },
+        {
+            "text": "with",
+            "start": 0.86,
+            "end": 1.1,
+            "isHighlighted": false
+        },
+        {
+            "text": "carrots",
+            "start": 1.1,
+            "end": 1.44,
+            "isHighlighted": false
+        },
+        {
+            "text": "and",
+            "start": 1.44,
+            "end": 1.68,
+            "isHighlighted": false
+        },
+        {
+            "text": "potatoes.",
+            "start": 1.68,
+            "end": 2.2,
+            "isHighlighted": false
+        },
+        {
+            "text": "Grandma,",
+            "start": 3.22,
+            "end": 3.52,
+            "isHighlighted": false
+        },
+        {
+            "text": "I",
+            "start": 3.84,
+            "end": 4.04,
+            "isHighlighted": false
+        },
+        {
+            "text": "ask.",
+            "start": 4.04,
+            "end": 4.44,
+            "isHighlighted": false
+        },
+        {
+            "text": "Where",
+            "start": 4.9,
+            "end": 5.16,
+            "isHighlighted": false
+        },
+        {
+            "text": "is",
+            "start": 5.16,
+            "end": 5.34,
+            "isHighlighted": false
+        },
+        {
+            "text": "the...",
+            "start": 5.34,
+            "end": 6.08,
+            "isHighlighted": false
+        },
+        {
+            "text": "Grandma",
+            "start": 6.62,
+            "end": 6.94,
+            "isHighlighted": false
+        },
+        {
+            "text": "smiles.",
+            "start": 6.94,
+            "end": 7.5,
+            "isHighlighted": false
+        },
+        {
+            "text": "La",
+            "start": 8.36,
+            "end": 8.52,
+            "isHighlighted": false
+        },
+        {
+            "text": "cujada.",
+            "start": 8.52,
+            "end": 8.98,
+            "isHighlighted": false
+        }
+    ]
+}

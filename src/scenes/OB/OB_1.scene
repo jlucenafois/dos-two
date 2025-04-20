@@ -16,14 +16,25 @@
         {
             "type": "Image",
             "id": "a3387314-bf39-4b1e-92a3-dac2f292254c",
-            "label": "default_play_lg",
+            "label": "play",
             "scope": "CLASS",
-            "hitArea.shape": "PIXEL_PERFECT",
             "texture": {
                 "key": "default_play_lg"
             },
             "x": 755,
             "y": 499,
+            "originX": 0,
+            "originY": 0
+        },
+        {
+            "type": "Image",
+            "id": "d827ca9c-18b1-408b-8065-81f3c93bfbb8",
+            "label": "logo",
+            "texture": {
+                "key": "logo"
+            },
+            "x": 688,
+            "y": 163,
             "originX": 0,
             "originY": 0
         }

@@ -2,9 +2,160 @@
     "section1": {
         "files": [
             {
-                "url": "assets/story/animations.json",
-                "type": "animation",
-                "key": "animations"
+                "url": "assets/story/1_girl.png",
+                "frameConfig": {
+                    "frameWidth": 500,
+                    "frameHeight": 600,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "1_girl"
+            },
+            {
+                "url": "assets/story/1_sparkles.png",
+                "frameConfig": {
+                    "frameWidth": 500,
+                    "frameHeight": 200,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "1_sparkles"
+            },
+            {
+                "url": "assets/story/2_confetti.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "2_confetti"
+            },
+            {
+                "url": "assets/story/2_girl.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "2_girl"
+            },
+            {
+                "url": "assets/story/3_dance.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "3_dance"
+            },
+            {
+                "url": "assets/story/3_music.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "3_music"
+            },
+            {
+                "url": "assets/story/4_people.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "4_people"
+            },
+            {
+                "url": "assets/story/4_stars.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "4_stars"
+            },
+            {
+                "url": "assets/story/5_teacher.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "5_teacher"
+            },
+            {
+                "url": "assets/story/6_girl.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "6_girl"
+            },
+            {
+                "url": "assets/story/6_mom.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "6_mom"
+            },
+            {
+                "url": "assets/story/6_stars.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "6_stars"
             },
             {
                 "url": "assets/story/open_cover/cover_0.png",
@@ -40,6 +191,46 @@
                 "url": "assets/story/p2_bg.png",
                 "type": "image",
                 "key": "p2_bg"
+            },
+            {
+                "url": "assets/story/Page 1.png",
+                "type": "image",
+                "key": "Page 1"
+            },
+            {
+                "url": "assets/story/quiz_english_blank.png",
+                "type": "image",
+                "key": "quiz_english_blank"
+            },
+            {
+                "url": "assets/story/quiz_option_correct.png",
+                "type": "image",
+                "key": "quiz_option_correct"
+            },
+            {
+                "url": "assets/story/quiz_option_default.png",
+                "type": "image",
+                "key": "quiz_option_default"
+            },
+            {
+                "url": "assets/story/quiz_option_hovered.png",
+                "type": "image",
+                "key": "quiz_option_hovered"
+            },
+            {
+                "url": "assets/story/quiz_option_incorrect.png",
+                "type": "image",
+                "key": "quiz_option_incorrect"
+            },
+            {
+                "url": "assets/story/quiz_option_pressed.png",
+                "type": "image",
+                "key": "quiz_option_pressed"
+            },
+            {
+                "url": "assets/story/story_animations.json",
+                "type": "animation",
+                "key": "story_animations"
             }
         ]
     },

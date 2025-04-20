@@ -1,5 +1,5 @@
-import { TextSegment } from "./TextSegment"
+import { BoundedText } from "./BoundedText";
 export type DualText = {
-        spanishText: TextSegment[];
-        englishText: TextSegment[];
+        spanishText: BoundedText;
+        englishText: BoundedText;
     }; 

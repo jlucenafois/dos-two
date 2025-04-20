@@ -1,0 +1,58 @@
+{
+    "words": [
+        {
+            "text": "I",
+            "start": 0.1,
+            "end": 0.26,
+            "isHighlighted": false
+        },
+        {
+            "text": "come",
+            "start": 0.26,
+            "end": 0.52,
+            "isHighlighted": false
+        },
+        {
+            "text": "from",
+            "start": 0.52,
+            "end": 0.72,
+            "isHighlighted": false
+        },
+        {
+            "text": "two",
+            "start": 0.72,
+            "end": 0.94,
+            "isHighlighted": false
+        },
+        {
+            "text": "worlds.",
+            "start": 0.94,
+            "end": 1.4,
+            "isHighlighted": false
+        },
+        {
+            "text": "That",
+            "start": 1.9,
+            "end": 2.14,
+            "isHighlighted": false
+        },
+        {
+            "text": "makes",
+            "start": 2.14,
+            "end": 2.42,
+            "isHighlighted": false
+        },
+        {
+            "text": "me",
+            "start": 2.42,
+            "end": 2.76,
+            "isHighlighted": false
+        },
+        {
+            "text": "special.",
+            "start": 2.76,
+            "end": 3.22,
+            "isHighlighted": false
+        }
+    ]
+}

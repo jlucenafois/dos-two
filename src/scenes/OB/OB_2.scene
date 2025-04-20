@@ -21,10 +21,8 @@
             "texture": {
                 "key": "reading_mode"
             },
-            "x": 325,
-            "y": 287,
-            "originX": 0,
-            "originY": 0
+            "x": 567,
+            "y": 520
         },
         {
             "type": "Image",
@@ -34,45 +32,46 @@
             "texture": {
                 "key": "game_mode"
             },
-            "x": 928,
-            "y": 348,
-            "originX": 0,
-            "originY": 0
+            "x": 1158,
+            "y": 577
         },
         {
-            "type": "Image",
-            "id": "ade795b2-9c9e-4f07-84b0-5bcfba54db64",
-            "label": "reading_mode_title",
-            "texture": {
-                "key": "reading_mode_title"
-            },
-            "x": 464,
-            "y": 805,
-            "originX": 0,
-            "originY": 0
-        },
-        {
-            "type": "Image",
-            "id": "488d9171-0792-49cf-90b2-95e2eabbabe8",
-            "label": "game_mode_title",
-            "texture": {
-                "key": "game_mode_title"
-            },
-            "x": 1012,
-            "y": 805,
-            "originX": 0,
-            "originY": 0
-        },
-        {
-            "type": "Image",
-            "id": "a0f8f4ea-82f6-46b5-888f-f556aebd6d3c",
-            "label": "title_ob_2",
-            "texture": {
-                "key": "title_ob_2"
-            },
+            "type": "BitmapText",
+            "id": "b3bd7e31-5aad-4c80-9b3a-369e8324c1e6",
+            "label": "title",
             "x": 864,
-            "y": 275,
-            "originY": 0
+            "y": 309,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "Choose a reading mode\n",
+            "font": "BowlbyOne",
+            "fontSize": 40
+        },
+        {
+            "type": "BitmapText",
+            "id": "0b0d0569-3d49-4b53-9fc9-68dc88707e60",
+            "label": "reading_title",
+            "x": 567.5,
+            "y": 840,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "Story\nTime",
+            "font": "BowlbyOne",
+            "align": 1,
+            "fontSize": 40
+        },
+        {
+            "type": "BitmapText",
+            "id": "81e29a65-2696-4f99-b842-bad3e036d139",
+            "label": "title_2",
+            "x": 1154,
+            "y": 840,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "Language\nGames",
+            "font": "BowlbyOne",
+            "align": 1,
+            "fontSize": 40
         }
     ],
     "plainObjects": [],

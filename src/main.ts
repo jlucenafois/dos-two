@@ -17,36 +17,41 @@ import OB_UI from "./scenes/UI/OB_UI";
 import WC_Preload from "./scenes/WordCrafter/WC_Preload";
 import WC_ChooseTheme from "./scenes/WordCrafter/WC_ChooseTheme";
 import WC_Game from "./scenes/WordCrafter/WC_Game";
+import Q_1 from "./scenes/quizzes/Q_1";
+import Q_2 from "./scenes/quizzes/Q_2";
 
 class Boot extends Phaser.Scene {
-	constructor() {
-		super("Boot");
-	}
+    constructor() {
+        super("Boot");
+    }
 
-	preload() {
+    // TODO: remove preload
+    preload() {
 		this.load.pack("pack", "assets/preload/preload-asset-pack.json");
 		// Load Raleway with Web Font Loader
-		WebFont.load({
-			google: {
-				families: ["Raleway"], // Specify weights (e.g., 400 for regular, 700 for bold)
-			},
-			active: () => {
-				console.log("Raleway font loaded!");
-			},
-		});
-	}
-
-	create() {
-		this.scene.start("OB_Preload");
-	}
+        WebFont.load({
+            google: {
+                families: ["Raleway", "Bowlby One"]
+            },
+            active: () => {
+                console.log("Fonts loaded!");
+            }
+        });
+    }
+    
+    create() {
+        this.scene.start("Preload");
+    }
 }
 
 window.addEventListener("load", function () {
 	const game = new Phaser.Game({
-		width: 1728,
+        // width: window.innerWidth,
+		// height: window.innerHeight,
+        width: 1728,
 		height: 1117,
-		parent: "game-container",
-		transparent: true,
+        backgroundColor: '#7580FF',
+        parent: 'game-container',
 		scale: {
 			mode: Phaser.Scale.ScaleModes.FIT,
 			autoCenter: Phaser.Scale.Center.CENTER_BOTH,
@@ -74,6 +79,8 @@ window.addEventListener("load", function () {
 			P_4,
 			P_5,
 			P_6,
+            Q_1, 
+            Q_2,
 			WC_Preload,
 			WC_ChooseTheme,
 			WC_Game,

@@ -1,0 +1,40 @@
+{
+    "words": [
+        {
+            "text": "Mama",
+            "start": 0.06,
+            "end": 0.32,
+            "isHighlighted": false
+        },
+        {
+            "text": "sorrie,",
+            "start": 0.32,
+            "end": 0.96,
+            "isHighlighted": false
+        },
+        {
+            "text": "eres",
+            "start": 1.42,
+            "end": 1.76,
+            "isHighlighted": false
+        },
+        {
+            "text": "ambas",
+            "start": 1.76,
+            "end": 2.38,
+            "isHighlighted": false
+        },
+        {
+            "text": "mi",
+            "start": 2.38,
+            "end": 2.58,
+            "isHighlighted": false
+        },
+        {
+            "text": "amor.",
+            "start": 2.58,
+            "end": 2.9,
+            "isHighlighted": false
+        }
+    ]
+}

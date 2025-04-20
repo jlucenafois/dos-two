@@ -1,0 +1,34 @@
+{
+    "words": [
+        {
+            "text": "Mi",
+            "start": 0.08,
+            "end": 0.2,
+            "isHighlighted": false
+        },
+        {
+            "text": "familia",
+            "start": 0.2,
+            "end": 0.8,
+            "isHighlighted": false
+        },
+        {
+            "text": "canta",
+            "start": 0.8,
+            "end": 1.3,
+            "isHighlighted": false
+        },
+        {
+            "text": "y",
+            "start": 1.3,
+            "end": 1.46,
+            "isHighlighted": false
+        },
+        {
+            "text": "vayla.",
+            "start": 1.46,
+            "end": 1.9,
+            "isHighlighted": false
+        }
+    ]
+}

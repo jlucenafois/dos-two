@@ -1,0 +1,40 @@
+{
+    "words": [
+        {
+            "text": "Pero",
+            "start": 0.06,
+            "end": 0.2,
+            "isHighlighted": false
+        },
+        {
+            "text": "ella",
+            "start": 0.2,
+            "end": 0.48,
+            "isHighlighted": false
+        },
+        {
+            "text": "me",
+            "start": 0.48,
+            "end": 0.66,
+            "isHighlighted": false
+        },
+        {
+            "text": "entiende",
+            "start": 0.66,
+            "end": 1.06,
+            "isHighlighted": false
+        },
+        {
+            "text": "con",
+            "start": 1.06,
+            "end": 1.3,
+            "isHighlighted": false
+        },
+        {
+            "text": "amor.",
+            "start": 1.3,
+            "end": 1.68,
+            "isHighlighted": false
+        }
+    ]
+}

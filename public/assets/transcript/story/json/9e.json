@@ -1,0 +1,34 @@
+{
+    "words": [
+        {
+            "text": "My",
+            "start": 0.04,
+            "end": 0.18,
+            "isHighlighted": false
+        },
+        {
+            "text": "family",
+            "start": 0.18,
+            "end": 0.6,
+            "isHighlighted": false
+        },
+        {
+            "text": "sings",
+            "start": 0.6,
+            "end": 0.96,
+            "isHighlighted": false
+        },
+        {
+            "text": "and",
+            "start": 0.96,
+            "end": 1.22,
+            "isHighlighted": false
+        },
+        {
+            "text": "dances.",
+            "start": 1.22,
+            "end": 1.66,
+            "isHighlighted": false
+        }
+    ]
+}

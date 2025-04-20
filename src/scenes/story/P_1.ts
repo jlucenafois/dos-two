@@ -19,17 +19,31 @@ export default class P_1 extends P_Base {
 
 	editorCreate(): void {
 
+		// mirror
+		const mirror = this.add.sprite(698, 630, "1_girl", 0);
+		mirror.visible = false;
+
+		// sparkles
+		const sparkles = this.add.sprite(822, 353, "1_sparkles", 18);
+		sparkles.visible = false;
+
+		this.mirror = mirror;
+		this.sparkles = sparkles;
+
 		this.events.emit("scene-awake");
 	}
+
+	private mirror!: Phaser.GameObjects.Sprite;
+	private sparkles!: Phaser.GameObjects.Sprite;
 
 	/* START-USER-CODE */
 
 	// Write your code here
 
 	create() {
-
-		super.create()
 		this.editorCreate();
+		super.create()
+		this.events.emit("enableBackNav")
 	}
 
 	/* END-USER-CODE */

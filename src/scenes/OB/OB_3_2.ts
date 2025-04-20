@@ -7,26 +7,44 @@ export default class OB_3_2 extends OB_Base {
 	}
 
 	editorCreate(): void {
-		this.add.image(864, 275, "choose_game");
-		this.add.image(1404, 859, "match_title");
-		this.add.image(311, 859, "memory_title");
-		this.add.image(849, 859, "word_title");
+        // TODO change this for other games
+		this.createButton(1138, 394, "match_button", "WC_Preload");
+		this.createButton(604, 394, "word_button", "WC_Preload");
+		this.createButton(92, 439, "memory_button", "WC_Preload");
 
-        // change this for other games
-		this.match_button = this.createButton(1138, 394, "match_button", "WC_Preload");
-		this.word_button = this.createButton(604, 394, "word_button", "WC_Preload");
-		this.memory_button = this.createButton(92, 439, "memory_button", "WC_Preload");
+		// title
+		const title = this.add.bitmapText(838, 309, "BowlbyOne", "Choose a game\n");
+		title.setOrigin(0.5, 0.5);
+		title.text = "Choose a game\n";
+		title.fontSize = 40;
+
+		// reading_title
+		const reading_title = this.add.bitmapText(309, 840, "BowlbyOne", "Memory Cards");
+		reading_title.setOrigin(0.5, 0.5);
+		reading_title.text = "Memory Cards";
+		reading_title.fontSize = 40;
+		reading_title.align = 1;
+
+		// memory_title
+		const memory_title = this.add.bitmapText(838, 840, "BowlbyOne", "Word Crafter");
+		memory_title.setOrigin(0.5, 0.5);
+		memory_title.text = "Word Crafter";
+		memory_title.fontSize = 40;
+		memory_title.align = 1;
+
+		// memory_title_1
+		const memory_title_1 = this.add.bitmapText(1306, 840, "BowlbyOne", "Match and Learn");
+		memory_title_1.setOrigin(0.5, 0.5);
+		memory_title_1.text = "Match and Learn";
+		memory_title_1.fontSize = 40;
+		memory_title_1.align = 1;
 
 		this.events.emit("scene-awake");
 	}
 
-	private match_button!: Phaser.GameObjects.Image;
-	private word_button!: Phaser.GameObjects.Image;
-	private memory_button!: Phaser.GameObjects.Image;
-
 	create() {
-		super.create();
 		this.editorCreate();
+		super.create();
 		this.events.emit("updateUI", "change_background", "#7580FF"); // Notify UI
 	}
 

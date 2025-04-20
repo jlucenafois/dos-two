@@ -2,6 +2,7 @@
     "id": "2a3d871d-bcaf-4f6f-b3f2-37b9c79eb464",
     "sceneType": "SCENE",
     "settings": {
+        "compilerEnabled": false,
         "exportClass": true,
         "autoImport": true,
         "superClassName": "OB_Base",
@@ -14,18 +15,7 @@
         "borderWidth": 1728,
         "borderHeight": 1117
     },
-    "displayList": [
-        {
-            "type": "Image",
-            "id": "84266ea6-5750-4ef9-b94f-8935b21f8c66",
-            "label": "transition_title",
-            "texture": {
-                "key": "transition_title"
-            },
-            "x": 864,
-            "y": 519
-        }
-    ],
+    "displayList": [],
     "plainObjects": [],
     "meta": {
         "app": "Phaser Editor - Scene Editor",
