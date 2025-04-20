@@ -422,5 +422,51 @@ export const SCRIPT: Record<string, {
     WC_ChooseTheme: {
         prev_key: "OB_3_2",
         next_key: null
+    },
+    WC_Game: {  
+        prev_key: null,
+        next_key: null,
+        dualComponents: [{
+            coordinates: {
+                preferredX: 80,
+                preferredY: 250,
+                alternateX: 80,
+                alternateY: 400,
+            },
+            dualShape: {
+                spanishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 200,
+                        height: 80,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0xFF9C1A,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0xF9A336,
+                            shadowAlpha: 1,
+                        }
+                    }
+                },
+                englishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 200,
+                        height: 80,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0x4CDAFE,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0x01B4ED,
+                            shadowAlpha: 1,
+                        }
+                    }
+                }
+            },
+        }],
     }
 }

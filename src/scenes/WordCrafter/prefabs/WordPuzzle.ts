@@ -1,7 +1,7 @@
 import LetterEntity from "./LetterEntity";
 import LetterSlot from "./LetterSlot";
 import LetterBox from "./LetterBox";
-import { worldBounds } from "../WC_Game";
+import { WorldBounds } from "../WC_Game";
 
 const slotSize = 80;
 const gap = 10;
@@ -9,7 +9,7 @@ const gap = 10;
 export default class WordPuzzle extends Phaser.GameObjects.Container {
 	public scene: Phaser.Scene;
 	private word: string;
-	private worldBounds: worldBounds;
+	private worldBounds: WorldBounds;
 	private letters: LetterEntity[] = [];
 	private slots: (LetterSlot | LetterBox)[] = [];
 	private center: { x: number; y: number } = { x: 0, y: 0 };
@@ -17,7 +17,7 @@ export default class WordPuzzle extends Phaser.GameObjects.Container {
 
 	constructor(
 		scene: Phaser.Scene,
-		worldBounds: worldBounds,
+		worldBounds: WorldBounds,
 		word: string,
 		quizMode: boolean
 	) {
@@ -34,13 +34,18 @@ export default class WordPuzzle extends Phaser.GameObjects.Container {
 		if (quizMode) {
 			this.createLetterSlots();
 		} else {
-			const box = new LetterBox(this.scene, this.word, this.center.x, this.center.y);
+			const box = new LetterBox(
+				this.scene,
+				this.word,
+				this.center.x,
+				this.center.y
+			);
 			this.slots.push(box);
 			this.add(box); // Add box to container
 		}
 
-        // these two lines have to be last in order for the floating letters to be rendered on top of everything else!!!
-        this.createLetters();
+		// these two lines have to be last in order for the floating letters to be rendered on top of everything else!!!
+		this.createLetters();
 		scene.add.existing(this);
 	}
 
@@ -51,7 +56,13 @@ export default class WordPuzzle extends Phaser.GameObjects.Container {
 
 		for (let i = 0; i < this.word.length; i++) {
 			const x = startX + i * (slotSize + gap) + slotSize / 2;
-			const slot = new LetterSlot(this.scene, x, this.center.y, this.word[i], i);
+			const slot = new LetterSlot(
+				this.scene,
+				x,
+				this.center.y,
+				this.word[i],
+				i
+			);
 			this.slots.push(slot);
 			this.add(slot); // Add to container
 		}
@@ -77,7 +88,7 @@ export default class WordPuzzle extends Phaser.GameObjects.Container {
 			const letterEntity = new LetterEntity(this.scene, x, y, letter, i);
 			this.letters.push(letterEntity);
 			this.add(letterEntity); // Add letter to container
-            this.bringToTop(letterEntity)
+			this.bringToTop(letterEntity);
 		});
 	}
 
@@ -85,7 +96,9 @@ export default class WordPuzzle extends Phaser.GameObjects.Container {
 		body1: Phaser.Types.Physics.Matter.MatterBody,
 		body2: Phaser.Types.Physics.Matter.MatterBody
 	) {
+		//@ts-expect-error
 		const [typeA, , idxA] = body1.label.split(".");
+		//@ts-expect-error
 		const [typeB, , idxB] = body2.label.split(".");
 
 		let slot, letter;
