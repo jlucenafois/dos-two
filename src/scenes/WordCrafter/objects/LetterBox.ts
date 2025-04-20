@@ -1,8 +1,9 @@
 import Letter from "./LetterEntity";
+import LetterText from "./LetterText";
 
 export default class LetterBox extends Phaser.GameObjects.Container {
 	public scene: Phaser.Scene;
-	private textObject: Phaser.GameObjects.Text;
+	private textObject: LetterText;
 	public filled: boolean = false;
 	private rejectionTween: Phaser.Tweens.Tween | null = null;
 	private word: string;
@@ -16,13 +17,11 @@ export default class LetterBox extends Phaser.GameObjects.Container {
 		scene.add.existing(this);
 
 		// Create text object and add to container
-		this.textObject = scene.add
-			.text(0, 0, word, {
-				font: "bold 64px Arial",
-				color: "#a3a3a3",
-			})
-			.setOrigin(0.5);
-		this.add(this.textObject);
+        this.textObject=new LetterText(scene, x, y, word, {
+            font: "bold 64px Arial",
+            color: "#a3a3a3",
+        });
+        this.textObject.center();
 
 		// Create sensor body matching the text size
 		const width = this.textObject.displayWidth + 40;
@@ -37,6 +36,9 @@ export default class LetterBox extends Phaser.GameObjects.Container {
 			isSensor: true,
 			isStatic: true,
 			label: `slot.${word}.0`,
+            collisionFilter: {
+                mask: 0
+            }
 		});
 	}
 
@@ -57,8 +59,7 @@ export default class LetterBox extends Phaser.GameObjects.Container {
 	}
 
 	private accept(): void {
-		// TODO: Visual feedback
-		// e.g. this.textObject.setColor("#00AA00");
+        this.textObject.setLetterColor(this.curLetterIdx, "#00AA00")
 	}
 
 	private reject(): void {
@@ -81,4 +82,9 @@ export default class LetterBox extends Phaser.GameObjects.Container {
 	public update(): void {
 		// Update logic if needed
 	}
+
+    destroy(fromScene?: boolean): void {
+        this.textObject.destroy(fromScene)
+        super.destroy(fromScene);
+    }
 }
