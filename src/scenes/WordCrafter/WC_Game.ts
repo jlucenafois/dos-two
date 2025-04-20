@@ -62,6 +62,9 @@ export default class WC_Game extends Phaser.Scene {
 				(this.padding.top + this.padding.bottom),
 		};
 
+        const imageSprite = this.add.sprite(this.cameras.main.width/2, 150, "mirror");
+		imageSprite.setOrigin(0.5, 0);
+        imageSprite.scale=0.4;
 		this.createBoundaryWalls();
 
 		// Setup the 4-step flow
