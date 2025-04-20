@@ -3,6 +3,7 @@ import Base from "../Base";
 import { SCRIPT } from "../../script";
 import { renderDualShape } from "../../utils";
 import { DualComponent } from "../../../types/components/DualComponent";
+import { PuzzleManager } from "./managers/PuzzleManager";
 
 export interface WorldBounds {
 	width: number;
@@ -11,29 +12,13 @@ export interface WorldBounds {
 	y: number;
 }
 
-interface PuzzleStep {
-	word: string;
-	quiz: boolean;
-	isEnglishPreferred: boolean;
-}
-
 export default class WC_Game extends Base {
 	private theme: string = "Mirror";
 	private puzzle: WordPuzzle;
-	private padding = {
-		top: 200,
-		left: 100,
-		right: 100,
-		bottom: 100,
-	};
+	private padding = { top: 200, left: 100, right: 100, bottom: 100 };
 	private worldBounds: WorldBounds;
-	private puzzleIndex = 0;
-	private puzzleSteps: PuzzleStep[] = [];
-	private content: { image: string; english: string; spanish: string } = {
-		image: "mirror",
-		english: "mirror",
-		spanish: "espejo",
-	};
+	private puzzleManager: PuzzleManager;
+
 	constructor() {
 		super("WC_Game");
 	}
@@ -51,6 +36,15 @@ export default class WC_Game extends Base {
 		this.events.emit("showExitButton");
 		this.events.emit("changeBackground", "#ffffff");
 
+		this.setupWorld();
+		this.setupPuzzleManager();
+		this.setupPhysics();
+
+		// Start with the first puzzle
+		this.spawnPuzzle();
+	}
+
+	private setupWorld(): void {
 		this.worldBounds = {
 			x: this.padding.left,
 			y: this.padding.top,
@@ -59,38 +53,26 @@ export default class WC_Game extends Base {
 				this.cameras.main.height - (this.padding.top + this.padding.bottom),
 		};
 
-		const imageSprite = this.add.sprite(
-			this.cameras.main.width / 2,
-			150,
-			"mirror"
-		);
-		imageSprite.setOrigin(0.5, 0);
-		imageSprite.scale = 0.4;
+		const imageSprite = this.add
+			.sprite(this.cameras.main.width / 2, 150, "mirror")
+			.setOrigin(0.5, 0)
+			.setScale(0.4);
+
 		this.createBoundaryWalls();
+	}
 
-		this.puzzleSteps = [
-			{
-				word: this.content.english,
-				quiz: false,
-				isEnglishPreferred: true,
-			},
-			{
-				word: this.content.spanish,
-				quiz: false,
-				isEnglishPreferred: false,
-			},
-			{
-				word: this.content.english,
-				quiz: true,
-				isEnglishPreferred: true,
-			},
-			{
-				word: this.content.spanish,
-				quiz: true,
-				isEnglishPreferred: false,
-			},
-		];
+	private setupPuzzleManager(): void {
+		this.puzzleManager = new PuzzleManager({
+			isEnglishFirst: true,
+			quizMode: "after",
+			content: { image: "mirror", english: "mirror", spanish: "espejo" },
+		});
 
+		// Puzzle complete flow
+		this.events.on("puzzleComplete", this.onPuzzleComplete, this);
+	}
+
+	private setupPhysics(): void {
 		// Add pointer constraint
 		this.matter.add.pointerConstraint({
 			stiffness: 0.1,
@@ -105,121 +87,114 @@ export default class WC_Game extends Base {
 				this.puzzle.handlepointerup(bodies[0], bodies[1]);
 			}
 		});
+	}
 
-		// Puzzle complete flow
-		this.events.on("puzzleComplete", () => {
-			this.puzzle.destroy(); // destroy prefab
-			this.puzzleIndex++;
+	private onPuzzleComplete(): void {
+		this.puzzle.destroy();
 
-			if (this.puzzleIndex >= this.puzzleSteps.length) {
-				console.log("✅ All puzzles complete!");
-				return;
-			}
+		if (!this.puzzleManager.advanceToNextStep()) {
+			console.log("✅ All puzzles complete!");
+			return;
+		}
 
-			this.spawnPuzzle();
-		});
-
-		// Start with the first one
 		this.spawnPuzzle();
 	}
 
 	private spawnPuzzle() {
-		const step = this.puzzleSteps[this.puzzleIndex];
-		this.puzzle = new WordPuzzle(this, this.worldBounds, step.word, step.quiz);
+		const currentStep = this.puzzleManager.getCurrentStep();
 
-		// render aside where it displays the english and spanish words
+		// Render dual components
 		const sceneScript = SCRIPT[this.scene.key];
-		if (sceneScript) {
-			sceneScript.dualComponents?.forEach((dc) =>
-				this.renderDualComponent(dc, step)
+		if (sceneScript?.dualComponents) {
+			sceneScript.dualComponents.forEach((dc) =>
+				this.renderDualComponent(dc, currentStep)
 			);
 		}
+
+        // this have to come after for the floating letters to be rendered on top!!!
+        this.puzzle = new WordPuzzle(
+			this,
+			this.worldBounds,
+			currentStep.word,
+			currentStep.quiz
+		);
 	}
 
-	renderDualComponent(dc: DualComponent, step: PuzzleStep): void {
+	renderDualComponent(dc: DualComponent, step: any): void {
 		if (!dc.dualShape) return;
+		const { coordinates, dualShape } = dc;
 
-		const {
-			preferredX: x1,
-			preferredY: y1,
-			alternateX: x2,
-			alternateY: y2,
-		} = dc.coordinates;
-		const { englishShape, spanishShape } = dc.dualShape;
+		// Let the manager handle the shape and text logic
+		const { preferredShape, alternateShape, primaryWord, secondaryWord } =
+			this.puzzleManager.getComponentRenderings(dualShape, step);
 
-		const preferredShape = step.isEnglishPreferred
-			? englishShape
-			: spanishShape;
-		const alternateShape = step.isEnglishPreferred
-			? spanishShape
-			: englishShape;
-
+		// Render shapes
 		renderDualShape(
 			this,
-			{ x: x1, y: y1, type: preferredShape.type, style: preferredShape.style },
-			{ x: x2, y: y2, type: alternateShape.type, style: alternateShape.style }
-		);
-
-		const [englishWord, spanishWord] = step.quiz
-			? ["English", "Spanish"]
-			: [this.content.english, this.content.spanish];
-
-		this.add.text(
-			x1 + 25,
-			y1 + 25,
-			step.isEnglishPreferred ? englishWord : spanishWord,
 			{
-				font: "bold 24px Raleway",
-				color: "#000000",
+				x: coordinates.preferredX,
+				y: coordinates.preferredY,
+				type: preferredShape.type,
+				style: preferredShape.style,
+			},
+			{
+				x: coordinates.alternateX,
+				y: coordinates.alternateY,
+				type: alternateShape.type,
+				style: alternateShape.style,
 			}
 		);
 
+		// Add text
 		this.add.text(
-			x2 + 25,
-			y2 + 25,
-			step.isEnglishPreferred ? spanishWord : englishWord,
-			{
-				font: "bold 24px Raleway",
-				color: "#000000",
-			}
+			coordinates.preferredX + 25,
+			coordinates.preferredY + 25,
+			primaryWord,
+			{ font: "bold 24px Raleway", color: "#000000" }
+		);
+
+		this.add.text(
+			coordinates.alternateX + 25,
+			coordinates.alternateY + 25,
+			secondaryWord,
+			{ font: "bold 24px Raleway", color: "#000000" }
 		);
 	}
 
 	createBoundaryWalls() {
-		// Left wall
-		this.matter.add.rectangle(
-			this.padding.left / 2,
-			this.cameras.main.height / 2,
-			this.padding.left,
-			this.cameras.main.height,
-			{ isStatic: true }
-		);
+		const walls = [
+			// Left wall
+			[
+				this.padding.left / 2,
+				this.cameras.main.height / 2,
+				this.padding.left,
+				this.cameras.main.height,
+			],
+			// Right wall
+			[
+				this.cameras.main.width - this.padding.right / 2,
+				this.cameras.main.height / 2,
+				this.padding.right,
+				this.cameras.main.height,
+			],
+			// Top wall
+			[
+				this.cameras.main.width / 2,
+				this.padding.top / 2,
+				this.cameras.main.width,
+				this.padding.top,
+			],
+			// Bottom wall
+			[
+				this.cameras.main.width / 2,
+				this.cameras.main.height - this.padding.bottom / 2,
+				this.cameras.main.width,
+				this.padding.bottom,
+			],
+		];
 
-		// Right wall
-		this.matter.add.rectangle(
-			this.cameras.main.width - this.padding.right / 2,
-			this.cameras.main.height / 2,
-			this.padding.right,
-			this.cameras.main.height,
-			{ isStatic: true }
-		);
-
-		// Top wall
-		this.matter.add.rectangle(
-			this.cameras.main.width / 2,
-			this.padding.top / 2,
-			this.cameras.main.width,
-			this.padding.top,
-			{ isStatic: true }
-		);
-
-		// Bottom wall
-		this.matter.add.rectangle(
-			this.cameras.main.width / 2,
-			this.cameras.main.height - this.padding.bottom / 2,
-			this.cameras.main.width,
-			this.padding.bottom,
-			{ isStatic: true }
+		walls.forEach(([x, y, width, height]) =>
+			this.matter.add.rectangle(x, y, width, height, { isStatic: true })
 		);
 	}
 
