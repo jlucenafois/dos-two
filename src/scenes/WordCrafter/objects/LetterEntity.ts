@@ -1,5 +1,3 @@
-import LetterSlot from "./LetterSlot";
-
 export default class LetterEntity {
 	private scene: Phaser.Scene;
 	public letter: string;
@@ -22,7 +20,7 @@ export default class LetterEntity {
 			font: "bold 64px Arial",
 			color: "#000000",
 		};
-		this.textObject = scene.add.text(x, y, letter, fontStyle).setOrigin(0.5);
+		this.textObject = scene.add.text(x, y, letter, fontStyle).setOrigin(0.5).setDepth(1);
 		this.textObject.setInteractive();
 
 		// Create physics body
@@ -41,11 +39,10 @@ export default class LetterEntity {
 	}
 
 
-	lockToSlot(slot: LetterSlot): void {
+	destroy(): void {
 		this.locked = true;
 		this.scene.matter.world.remove(this.body);
 		this.textObject.destroy();
-		slot.fill();
 	}
 
 	eject(): void {
@@ -69,10 +66,8 @@ export default class LetterEntity {
 		this.textObject.setColor("#FF0000");
 
 		// Return to normal color after a short delay
-		this.ejecting = true;
 		this.scene.time.delayedCall(300, () => {
 			this.textObject.setColor("#000000");
-			this.ejecting = false;
 		});
 	}
 
