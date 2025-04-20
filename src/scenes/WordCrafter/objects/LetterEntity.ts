@@ -2,7 +2,7 @@ import LetterSlot from "./LetterSlot";
 
 export default class LetterEntity {
 	private scene: Phaser.Scene;
-	private letter: string;
+	public letter: string;
 	private textObject: Phaser.GameObjects.Text;
 	private body: MatterJS.BodyType;
 	private locked: boolean = false;

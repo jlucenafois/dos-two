@@ -1,5 +1,3 @@
-import LetterEntity from "./LetterEntity";
-
 export default class LetterSlot {
     private scene: Phaser.Scene;
     private targetLetter: string;
@@ -9,6 +7,7 @@ export default class LetterSlot {
     public position: { x: number; y: number };
     private rejectionTween: Phaser.Tweens.Tween | null = null;
     private sprite: Phaser.GameObjects.Sprite; // New sprite property
+    private showPlaceholder: boolean;
 
     constructor(
         scene: Phaser.Scene,
@@ -16,10 +15,12 @@ export default class LetterSlot {
         y: number,
         targetLetter: string,
         idx: number,
+        showPlaceholder:boolean
     ) {
         this.scene = scene;
         this.targetLetter = targetLetter;
         this.position = { x, y };
+        this.showPlaceholder=showPlaceholder;
 
         // Create sprite instead of graphics
         this.sprite = scene.add.sprite(x, y, 'letter_slot_default');
@@ -30,7 +31,11 @@ export default class LetterSlot {
 			color: "#a3a3a3",
 		};
         this.textObject = scene.add.text(x, y, targetLetter, fontStyle).setOrigin(0.5);
-        this.textObject.visible=false;
+        if (!showPlaceholder) {
+            this.textObject.visible=false;
+        } else {
+            this.sprite.visible=false;
+        }
 
         // Create physics body - sensor means it detects collisions but doesn't physically block
         this.body = scene.matter.add.rectangle(x, y, 80, 100, {
@@ -41,17 +46,7 @@ export default class LetterSlot {
         });
     }
 
-    fill(letter:LetterEntity) {
-        if (letter.letter === this.targetLetter) {
-            this.accept()
-            letter.lockToSlot(this)
-        } else {
-            this.reject()
-            letter.eject()
-        }
-    }
-
-    accept(): void {
+    fill(): void {
         this.filled = true;
         this.body.collisionFilter.mask=0;
         this.textObject.visible=true;
@@ -61,7 +56,7 @@ export default class LetterSlot {
         this.sprite.setTexture('letter_slot_correct');
     }
 
-    reject(): void {
+    showRejection(): void {
         // Stop any existing tween
         if (this.rejectionTween) {
             this.rejectionTween.stop();
