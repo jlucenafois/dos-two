@@ -34,6 +34,7 @@ export default class WC_Game extends Phaser.Scene {
 			"letter_slot_correct",
 			"assets/WordCrafter/letter_slot_correct.png"
 		);
+        this.load.image("mirror", "assets/WordCrafter/Mirror.png")
 	}
 
 	editorCreate(): void {
@@ -44,9 +45,6 @@ export default class WC_Game extends Phaser.Scene {
 		this.editorCreate();
 		this.events.emit("updateUI", "show_exit_button");
 		this.events.emit("updateUI", "change_background", "#ffffff");
-
-		// Configure physics - disable gravity
-		this.matter.world.setGravity(0, 0);
 
 		// Calculate world bounds dynamically based on screen dimensions and padding
 		this.worldBounds = {
@@ -60,10 +58,17 @@ export default class WC_Game extends Phaser.Scene {
 		// Create solid boundary walls
 		this.createBoundaryWalls();
 
+        // DEBUG
+        const word= {
+            "image": "mirror",
+            "english": "mirror",
+            "spanish": "espejo"
+        }
+
 		// Initialize the word puzzle with a target word
 		// Using this.theme to select a word appropriate for the theme
 		const targetWord = "henry";
-		this.puzzle = new WordPuzzle(this, targetWord, this.worldBounds);
+		this.puzzle = new WordPuzzle(this,  this.worldBounds, word.image, targetWord, false);
 
 		this.matter.add.pointerConstraint({
 			stiffness: 0.1,
@@ -77,6 +82,10 @@ export default class WC_Game extends Phaser.Scene {
 				this.puzzle.handlepointerup(bodies[0], bodies[1]);
 			}
 		});
+
+        this.events.on("puzzleComplete", () => {
+console.log('yo');
+        })
 	}
 
 	createBoundaryWalls() {

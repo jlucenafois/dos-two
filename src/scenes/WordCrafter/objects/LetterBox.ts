@@ -19,14 +19,14 @@ export default class LetterBox {
 			font: "bold 64px Arial",
 			color: "#a3a3a3",
 		};
-		this.textObject = scene.add.text(x, y, word, fontStyle).setOrigin(0.5);
+		this.textObject = scene.add.text(x, y, word, fontStyle).setOrigin(0.5)
 
 		// Create physics body - sensor means it detects collisions but doesn't physically block
 		this.body = scene.matter.add.rectangle(
 			x,
 			y,
-			this.textObject.displayWidth,
-			this.textObject.displayHeight,
+			this.textObject.displayWidth + 40,
+			this.textObject.displayHeight + 20,
 			{
 				isSensor: true,
 				isStatic: true,
@@ -41,9 +41,11 @@ export default class LetterBox {
 			this.accept();
 			letter.destroy();
 			this.curLetterIdx += 1;
+            return true;
 		} else {
 			this.reject();
 			letter.eject();
+            return false;
 		}
 	}
 
@@ -56,4 +58,7 @@ export default class LetterBox {
 	update(): void {
 		// Any per-frame updates if needed
 	}
+
+    destroy() {
+    }
 }

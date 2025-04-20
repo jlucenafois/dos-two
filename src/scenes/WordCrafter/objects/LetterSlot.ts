@@ -48,9 +48,11 @@ export default class LetterSlot {
 		if (letter.letter === this.targetLetter) {
 			this.accept();
 			letter.destroy();
+            return true;
 		} else {
 			this.reject();
 			letter.eject();
+            return false;
 		}
 	}
 
