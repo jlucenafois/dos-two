@@ -62,7 +62,7 @@ export default class WC_Game extends Base {
 		};
 
 		this.puzzleSteps = [
-			{ image: word.image, word: word.english, quiz: true },
+			{ image: word.image, word: word.english, quiz: false },
 			{ image: word.image, word: word.spanish, quiz: false },
 			{ image: word.image, word: word.english, quiz: true },
 			{ image: word.image, word: word.spanish, quiz: true },

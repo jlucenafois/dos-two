@@ -45,7 +45,7 @@ export default class OB_3_2 extends OB_Base {
 	create() {
 		this.editorCreate();
 		super.create();
-		this.events.emit("updateUI", "change_background", "#7580FF"); // Notify UI (TODO: Juan probably need to change this to the new event names)
+		this.events.emit("changeBackground", "#7580FF");
 	}
 
 	private createButton(x: number, y: number, texture: string, sceneKey: string): Phaser.GameObjects.Image {

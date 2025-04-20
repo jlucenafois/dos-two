@@ -419,4 +419,8 @@ export const SCRIPT: Record<string, {
         index: 0,
         total: CHAPTERS["CH_3"],
     },
+    WC_ChooseTheme: {
+        prev_key: "OB_3_2",
+        next_key: null
+    }
 }
