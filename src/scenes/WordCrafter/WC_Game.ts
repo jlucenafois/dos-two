@@ -47,8 +47,8 @@ export default class WC_Game extends Base {
 
 	create(): void {
 		this.editorCreate();
-		this.events.emit("updateUI", "show_exit_button");
-		this.events.emit("updateUI", "change_background", "#ffffff");
+		this.events.emit("showExitButton");
+		this.events.emit("changeBackground", "#ffffff");
 
 		this.worldBounds = {
 			x: this.padding.left,

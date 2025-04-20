@@ -6,6 +6,7 @@ export default class WC_ChooseTheme extends Base {
 	}
 
 	editorCreate(): void {
+		super.create();
 		// title_ob_2
 		this.add
 			.image(845.0456043923781, 439.2735078542467, 'title_ob_2')
@@ -25,8 +26,8 @@ export default class WC_ChooseTheme extends Base {
 	private mirror!: Phaser.GameObjects.Image;
 
 	create() {
-		super.create();
 		this.editorCreate();
+        this.events.emit( "changeBackground", "#ffd439"); // Notify UI
 	}
 
 	private createImage(

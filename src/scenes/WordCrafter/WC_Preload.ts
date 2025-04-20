@@ -15,7 +15,6 @@ export default class WC_Preload extends PreloadBase {
     
     create(): void {
         super.create();
-        this.events.emit("updateUI", "change_background", "#ffd439"); // Notify UI
     }
 }
 
