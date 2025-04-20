@@ -18,6 +18,7 @@ export default class WC_Game extends Base {
 	private padding = { top: 200, left: 100, right: 100, bottom: 100 };
 	private worldBounds: WorldBounds;
 	private puzzleManager: PuzzleManager;
+    private progress = 0.0
 
 	constructor() {
 		super("WC_Game");
@@ -35,6 +36,7 @@ export default class WC_Game extends Base {
 		this.editorCreate();
 		this.events.emit("showExitButton");
 		this.events.emit("changeBackground", "#ffffff");
+        this.events.emit("showProgressBar")
 
 		this.setupWorld();
 		this.setupPuzzleManager();
@@ -53,10 +55,10 @@ export default class WC_Game extends Base {
 				this.cameras.main.height - (this.padding.top + this.padding.bottom),
 		};
 
-		const imageSprite = this.add
-			.sprite(this.cameras.main.width / 2, 150, "mirror")
-			.setOrigin(0.5, 0)
-			.setScale(0.4);
+		// const imageSprite = this.add
+		// 	.sprite(this.cameras.main.width / 2, 150, "mirror")
+		// 	.setOrigin(0.5, 0)
+		// 	.setScale(0.4);
 
 		this.createBoundaryWalls();
 	}
@@ -91,12 +93,13 @@ export default class WC_Game extends Base {
 
 	private onPuzzleComplete(): void {
 		this.puzzle.destroy();
+        this.progress += 0.25
+        this.events.emit("updateProgressBar", this.progress)
 
 		if (!this.puzzleManager.advanceToNextStep()) {
 			console.log("✅ All puzzles complete!");
 			return;
 		}
-
 		this.spawnPuzzle();
 	}
 
