@@ -50,16 +50,16 @@ export const SCRIPT: Record<string, {
         playedOnce: false,
         dualComponents: [{
             coordinates: {
-                preferredX: 928.5,
-                preferredY: 445,
-                alternateX: 928.5,
-                alternateY: 595,
+                preferredX: 953,
+                preferredY: 439,
+                alternateX: 953,
+                alternateY: 589,
             },
             dualShape: {
                 spanishShape: {
                     type: SupportedShape.RoundedRect,
                     style: {
-                        width: 419,
+                        width: 377,
                         height: 114,
                         radius: 16,
                         style: {
@@ -75,7 +75,7 @@ export const SCRIPT: Record<string, {
                 englishShape: {
                     type: SupportedShape.RoundedRect,
                     style: {
-                        width: 419,
+                        width: 377,
                         height: 114,
                         radius: 16,
                         style: {
@@ -118,9 +118,9 @@ export const SCRIPT: Record<string, {
         dualComponents: [{
             coordinates: {
                 preferredX: 524,
-                preferredY: 307,
-                alternateX: 500,
-                alternateY: 678,
+                preferredY: 314,
+                alternateX: 514,
+                alternateY: 683,
             },
             dualShape: {
                 spanishShape: {
@@ -248,6 +248,48 @@ export const SCRIPT: Record<string, {
         total: CHAPTERS["CH_1"],
     },
     P_4: {
+        dualComponents: [{
+            coordinates: {
+                preferredX: 928,
+                preferredY: 217,
+                alternateX: 928,
+                alternateY: 363,
+            },
+            dualShape: {
+                spanishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 114,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0xFF9C1A,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0xF9A336,
+                            shadowAlpha: 1,
+                        }
+                    }
+                },
+                englishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 114,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0x4CDAFE,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0x01B4ED,
+                            shadowAlpha: 1,
+                        }
+                    }
+                }
+            }
+        }],
         prev_key: "P_3",
         next_key: "Q_1",
         index: 3,
@@ -395,6 +437,48 @@ export const SCRIPT: Record<string, {
         total: CHAPTERS["CH_2"],
     },
     P_6: {
+        dualComponents: [{
+            coordinates: {
+                preferredX: 928,
+                preferredY: 235,
+                alternateX: 928,
+                alternateY: 381,
+            },
+            dualShape: {
+                spanishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 114,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0xFF9C1A,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0xF9A336,
+                            shadowAlpha: 1,
+                        }
+                    }
+                },
+                englishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 114,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0x4CDAFE,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0x01B4ED,
+                            shadowAlpha: 1,
+                        }
+                    }
+                }
+            }
+        }],
         prev_key: "P_5",
         next_key: "Q_2",
         index: 1,
@@ -564,9 +648,719 @@ export const SCRIPT: Record<string, {
         total: CHAPTERS["CH_2"],
     },
     P_7: {
+        dualComponents: [{
+            coordinates: {
+                preferredX: 448,
+                preferredY: 232,
+                alternateX: 902,
+                alternateY: 232,
+            },
+            dualShape: {
+                spanishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 81,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0xFF9C1A,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0xF9A336,
+                            shadowAlpha: 1,
+                        }
+                    }
+                },
+                englishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 81,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0x4CDAFE,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0x01B4ED,
+                            shadowAlpha: 1,
+                        }
+                    }
+                }
+            }
+        }],
         prev_key: "Q_2",
         next_key: "P_8",
         index: 0,
         total: CHAPTERS["CH_3"],
     },
-}
+    P_8: {
+        dualComponents: [{
+            coordinates: {
+                preferredX: 437,
+                preferredY: 801,
+                alternateX: 914,
+                alternateY: 801,
+            },
+            dualShape: {
+                spanishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 114,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0xFF9C1A,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0xF9A336,
+                            shadowAlpha: 1,
+                        }
+                    }
+                },
+                englishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 114,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0x4CDAFE,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0x01B4ED,
+                            shadowAlpha: 1,
+                        }
+                    }
+                }
+            }
+        }],
+        prev_key: "Q_2",
+        next_key: "P_9",
+        index: 0,
+        total: CHAPTERS["CH_3"],
+    },
+    P_9: {
+        dualComponents: [{
+            coordinates: {
+                preferredX: 936,
+                preferredY: 412,
+                alternateX: 936,
+                alternateY: 592,
+            },
+            dualShape: {
+                spanishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 147,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0xFF9C1A,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0xF9A336,
+                            shadowAlpha: 1,
+                        }
+                    }
+                },
+                englishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 147,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0x4CDAFE,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0x01B4ED,
+                            shadowAlpha: 1,
+                        }
+                    }
+                }
+            }
+        }],
+        prev_key: null,
+        next_key: "P_10",
+        index: 0,
+        total: 1
+    },
+    P_10: {
+        dualComponents: [],
+        prev_key: "P_9",
+        next_key: "P_11",
+        index: 0,
+        total: 1
+    },
+    P_11: {
+        dualComponents: [],
+        prev_key: "P_10",
+        next_key: "P_12",
+        index: 0,
+        total: 1
+    },
+    P_12: {
+        dualComponents: [],
+        prev_key: "P_11",
+        next_key: "P_13",
+        index: 0,
+        total: 1
+    },
+    P_13: {
+        dualComponents: [],
+        prev_key: "P_12",
+        next_key: "P_14",
+        index: 0,
+        total: 1
+    },
+    P_14: {
+        dualComponents: [],
+        prev_key: "P_13",
+        next_key: "P_15",
+        index: 0,
+        total: 1
+    },
+    P_15: {
+        dualComponents: [{
+            coordinates: {
+                preferredX: 456,
+                preferredY: 216,
+                alternateX: 920,
+                alternateY: 216,
+            },
+            dualShape: {
+                spanishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 114,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0xFF9C1A,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0xF9A336,
+                            shadowAlpha: 1,
+                        }
+                    }
+                },
+                englishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 114,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0x4CDAFE,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0x01B4ED,
+                            shadowAlpha: 1,
+                        }
+                    }
+                }
+            }
+        }],
+        prev_key: "P_14",
+        next_key: "P_16",
+        index: 0,
+        total: 1
+    },
+    P_16: {
+        dualComponents: [{
+            coordinates: {
+                preferredX: 449,
+                preferredY: 815,
+                alternateX: 918,
+                alternateY: 815,
+            },
+            dualShape: {
+                spanishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 81,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0xFF9C1A,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0xF9A336,
+                            shadowAlpha: 1,
+                        }
+                    }
+                },
+                englishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 81,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0x4CDAFE,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0x01B4ED,
+                            shadowAlpha: 1,
+                        }
+                    }
+                }
+            }
+        }],
+        prev_key: "P_15",
+        next_key: "P_17",
+        index: 0,
+        total: 1
+    },
+    P_17: {
+        dualComponents: [],
+        prev_key: "P_16",
+        next_key: "P_18",
+        index: 0,
+        total: 1
+    },
+    P_18: {
+        dualComponents: [],
+        prev_key: "P_17",
+        next_key: "P_19",
+        index: 0,
+        total: 1
+    },
+    P_19: {
+        dualComponents: [{
+            coordinates: {
+                preferredX: 851,
+                preferredY: 229,
+                alternateX: 875,
+                alternateY: 349,
+            },
+            dualShape: {
+                spanishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 458,
+                        height: 81,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0xFF9C1A,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0xF9A336,
+                            shadowAlpha: 1,
+                        }
+                    }
+                },
+                englishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 458,
+                        height: 81,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0x4CDAFE,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0x01B4ED,
+                            shadowAlpha: 1,
+                        }
+                    }
+                }
+            }
+        }],
+        prev_key: "P_18",
+        next_key: "P_20",
+        index: 0,
+        total: 1
+    },
+    P_20: {
+        dualComponents: [{
+            coordinates: {
+                preferredX: 441,
+                preferredY: 226,
+                alternateX: 461,
+                alternateY: 333,
+            },
+            dualShape: {
+                spanishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 458,
+                        height: 81,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0xFF9C1A,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0xF9A336,
+                            shadowAlpha: 1,
+                        }
+                    }
+                },
+                englishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 458,
+                        height: 81,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0x4CDAFE,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0x01B4ED,
+                            shadowAlpha: 1,
+                        }
+                    }
+                }
+            }
+        }],
+        prev_key: "P_19",
+        next_key: "P_21",
+        index: 0,
+        total: 1
+    },
+    P_21: {
+        dualComponents: [{
+            coordinates: {
+                preferredX: 466,
+                preferredY: 710,
+                alternateX: 466,
+                alternateY: 828,
+            },
+            dualShape: {
+                spanishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 81,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0xFF9C1A,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0xF9A336,
+                            shadowAlpha: 1,
+                        }
+                    }
+                },
+                englishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 458,
+                        height: 81,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0x4CDAFE,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0x01B4ED,
+                            shadowAlpha: 1,
+                        }
+                    }
+                }
+            }
+        }],
+        prev_key: "P_20",
+        next_key: "P_22",
+        index: 0,
+        total: 1
+    },
+    P_22: {
+        dualComponents: [{
+            coordinates: {
+                preferredX: 566,
+                preferredY: 229,
+                alternateX: 899,
+                alternateY: 229,
+            },
+            dualShape: {
+                spanishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 306,
+                        height: 114,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0xFF9C1A,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0xF9A336,
+                            shadowAlpha: 1,
+                        }
+                    }
+                },
+                englishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 306,
+                        height: 114,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0x4CDAFE,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0x01B4ED,
+                            shadowAlpha: 1,
+                        }
+                    }
+                }
+            }
+        }],
+        prev_key: "P_21",
+        next_key: "P_23",
+        index: 0,
+        total: 1
+    },
+    P_23: {
+        dualComponents: [{
+            coordinates: {
+                preferredX: 449,
+                preferredY: 238,
+                alternateX: 913,
+                alternateY: 238,
+            },
+            dualShape: {
+                spanishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 147,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0xFF9C1A,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0xF9A336,
+                            shadowAlpha: 1,
+                        }
+                    }
+                },
+                englishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 147,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0x4CDAFE,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0x01B4ED,
+                            shadowAlpha: 1,
+                        }
+                    }
+                }
+            }
+        }],
+        prev_key: "P_22",
+        next_key: "P_24",
+        index: 0,
+        total: 1
+    },
+    P_24: {
+        dualComponents: [{
+            coordinates: {
+                preferredX: 461,
+                preferredY: 231,
+                alternateX: 922,
+                alternateY: 231,
+            },
+            dualShape: {
+                spanishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 114,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0xFF9C1A,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0xF9A336,
+                            shadowAlpha: 1,
+                        }
+                    }
+                },
+                englishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 114,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0x4CDAFE,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0x01B4ED,
+                            shadowAlpha: 1,
+                        }
+                    }
+                }
+            }
+        }],
+        prev_key: "P_23",
+        next_key: "P_25",
+        index: 0,
+        total: 1
+    },
+    P_25: {
+        dualComponents: [{
+            coordinates: {
+                preferredX: 443, 
+                preferredY: 225, 
+                alternateX: 910,
+                alternateY: 225,
+            }, 
+            dualShape: {
+                spanishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 147,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0xFF9C1A,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0xF9A336,
+                            shadowAlpha: 1,
+                        }
+                    }
+                },
+                englishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 147,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0x4CDAFE,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0x01B4ED,
+                            shadowAlpha: 1,
+                        }
+                    }
+                }
+            }
+
+        }],
+        prev_key: "P_24",
+        next_key: "P_26",
+        index: 0,
+        total: 1
+    },
+    P_26: {
+        dualComponents: [{
+            coordinates: {
+                preferredX: 443,
+                preferredY: 223,
+                alternateX: 913,
+                alternateY: 223,
+            },
+            dualShape: {
+                spanishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 180,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0xFF9C1A,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0xF9A336,
+                            shadowAlpha: 1,
+                        }
+                    }
+                },
+                englishShape: {
+                    type: SupportedShape.RoundedRect,
+                    style: {
+                        width: 419,
+                        height: 180,
+                        radius: 16,
+                        style: {
+                            fillColor: 0xFFFFFF,
+                            strokeColor: 0x4CDAFE,
+                            strokeWeight: 4,
+                            shadowOffset: 16,
+                            shadowFill: 0x01B4ED,
+                            shadowAlpha: 1,
+                        }
+                    }
+                }
+            }
+        }],
+        prev_key: "P_25",
+        next_key: "P_27",
+        index: 0,
+        total: 1
+    },
+    P_27: {
+        dualComponents: [],
+        prev_key: "P_26",
+        next_key: "P_28",
+        index: 0,
+        total: 1
+    },
+    P_28: {
+        dualComponents: [],
+        prev_key: "P_27",
+        next_key: "P_29",
+        index: 0,
+        total: 1
+    },
+    P_29: {
+        dualComponents: [],
+        prev_key: "P_28",
+        next_key: "P_30",
+        index: 0,
+        total: 1
+    },
+    P_30: {
+        dualComponents: [],
+        prev_key: "P_29",
+        next_key: "P_31",
+        index: 0,
+        total: 1
+    },
+    P_31: {
+        dualComponents: [],
+        prev_key: "P_30",
+        next_key: "P_32",
+        index: 0,
+        total: 1
+    },
+    P_32: {
+        dualComponents: [],
+        prev_key: "P_31",
+        next_key: null,
+        index: 0,
+        total: 1
+    }    
+}    

@@ -1,5 +1,10 @@
+#!/bin/bash
+
+for i in $(seq 6 32); do
+  uuid=$(uuidgen)
+  cat <<EOF > P_$i.json
 {
-    "id": "93f95bdf-f7ad-4fef-bbf3-fdf609c1179f",
+    "id": "$uuid",
     "sceneType": "SCENE",
     "settings": {
         "exportClass": true,
@@ -7,7 +12,7 @@
         "superClassName": "P_Base",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
-        "sceneKey": "P_6",
+        "sceneKey": "P_$i",
         "compilerOutputLanguage": "TYPE_SCRIPT",
         "borderWidth": 1728,
         "borderHeight": 1117
@@ -21,3 +26,5 @@
         "version": 5
     }
 }
+EOF
+done

@@ -1,11 +1,16 @@
 import Phaser from "phaser";
-import WebFont from "webfontloader"; // Import WebFontLoader
+import WebFont from "webfontloader";
 import Preload from "./scenes/Preload";
 import OB_1 from "./scenes/OB/OB_1";
 import OB_2 from "./scenes/OB/OB_2";
 import OB_3_1 from "./scenes/OB/OB_3_1";
 import OB_3_2 from "./scenes/OB/OB_3_2";
 import OB_4 from "./scenes/OB/OB_4";
+import OB_UI from "./scenes/UI/OB_UI";
+import Q_1 from "./scenes/quizzes/Q_1";
+import Q_2 from "./scenes/quizzes/Q_2";
+
+// P scenes
 import P_0 from "./scenes/story/P_0";
 import P_1 from "./scenes/story/P_1";
 import P_2 from "./scenes/story/P_2";
@@ -13,9 +18,32 @@ import P_3 from "./scenes/story/P_3";
 import P_4 from "./scenes/story/P_4";
 import P_5 from "./scenes/story/P_5";
 import P_6 from "./scenes/story/P_6";
-import OB_UI from "./scenes/UI/OB_UI";
-import Q_1 from "./scenes/quizzes/Q_1";
-import Q_2 from "./scenes/quizzes/Q_2";
+import P_7 from "./scenes/story/P_7";
+import P_8 from "./scenes/story/P_8";
+import P_9 from "./scenes/story/P_9";
+import P_10 from "./scenes/story/P_10";
+import P_11 from "./scenes/story/P_11";
+import P_12 from "./scenes/story/P_12";
+import P_13 from "./scenes/story/P_13";
+import P_14 from "./scenes/story/P_14";
+import P_15 from "./scenes/story/P_15";
+import P_16 from "./scenes/story/P_16";
+import P_17 from "./scenes/story/P_17";
+import P_18 from "./scenes/story/P_18";
+import P_19 from "./scenes/story/P_19";
+import P_20 from "./scenes/story/P_20";
+import P_21 from "./scenes/story/P_21";
+import P_22 from "./scenes/story/P_22";
+import P_23 from "./scenes/story/P_23";
+import P_24 from "./scenes/story/P_24";
+import P_25 from "./scenes/story/P_25";
+import P_26 from "./scenes/story/P_26";
+import P_27 from "./scenes/story/P_27";
+import P_28 from "./scenes/story/P_28";
+import P_29 from "./scenes/story/P_29";
+import P_30 from "./scenes/story/P_30";
+import P_31 from "./scenes/story/P_31";
+import P_32 from "./scenes/story/P_32";
 
 class Boot extends Phaser.Scene {
 
@@ -54,7 +82,14 @@ window.addEventListener('load', function () {
 			mode: Phaser.Scale.ScaleModes.FIT,
 			autoCenter: Phaser.Scale.Center.CENTER_BOTH
 		},
-		scene: [Boot, Preload, OB_UI, OB_1, OB_2, OB_3_1, OB_3_2, OB_4, P_0, P_1, P_2, P_3, P_4, P_5, P_6, Q_1, Q_2]
+		scene: [
+            Boot, Preload, OB_UI, OB_1, OB_2, OB_3_1, OB_3_2, OB_4,
+            P_0, P_1, P_2, P_3, P_4, P_5,
+            P_6, P_7, P_8, P_9, P_10, P_11, P_12, P_13, P_14, P_15, P_16,
+            P_17, P_18, P_19, P_20, P_21, P_22, P_23, P_24, P_25, P_26,
+            P_27, P_28, P_29, P_30, P_31, P_32,
+            Q_1, Q_2
+        ]        
 	});
 
 	game.scene.start("Boot");

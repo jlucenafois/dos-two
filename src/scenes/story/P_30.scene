@@ -1,5 +1,5 @@
 {
-    "id": "93f95bdf-f7ad-4fef-bbf3-fdf609c1179f",
+    "id": "5ac152e2-e449-4044-afa1-ab89bc00b8b2",
     "sceneType": "SCENE",
     "settings": {
         "exportClass": true,
@@ -7,7 +7,7 @@
         "superClassName": "P_Base",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
-        "sceneKey": "P_6",
+        "sceneKey": "P_30",
         "compilerOutputLanguage": "TYPE_SCRIPT",
         "borderWidth": 1728,
         "borderHeight": 1117

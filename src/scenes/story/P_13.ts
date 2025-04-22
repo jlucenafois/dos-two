@@ -8,10 +8,10 @@ import P_Base from "./P_Base";
 
 /* END-USER-IMPORTS */
 
-export default class P_6 extends P_Base {
+export default class P_13 extends P_Base {
 
 	constructor() {
-		super("P_6");
+		super("P_13");
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.
