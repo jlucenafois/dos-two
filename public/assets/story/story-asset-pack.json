@@ -198,6 +198,32 @@
                 "key": "Page 1"
             },
             {
+                "url": "assets/story/quiz_anim_correct.png",
+                "frameConfig": {
+                    "frameWidth": 1500,
+                    "frameHeight": 1500,
+                    "startFrame": 0,
+                    "endFrame": 6,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "quiz_anim_correct"
+            },
+            {
+                "url": "assets/story/quiz_anim_incorrect.png",
+                "frameConfig": {
+                    "frameWidth": 1000,
+                    "frameHeight": 1000,
+                    "startFrame": 0,
+                    "endFrame": 4,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "quiz_anim_incorrect"
+            },
+            {
                 "url": "assets/story/quiz_english_blank.png",
                 "type": "image",
                 "key": "quiz_english_blank"

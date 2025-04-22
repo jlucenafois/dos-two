@@ -461,6 +461,97 @@
             "repeat": -1,
             "repeatDelay": 4000,
             "randomFrame": false
+        },
+        {
+            "key": "quiz_correct",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "quiz_anim_correct",
+                    "frame": 0,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "quiz_anim_correct",
+                    "frame": 1,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "quiz_anim_correct",
+                    "frame": 2,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "quiz_anim_correct",
+                    "frame": 3,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "quiz_anim_correct",
+                    "frame": 4,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "quiz_anim_correct",
+                    "frame": 5,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "quiz_anim_correct",
+                    "frame": 6,
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 7,
+            "skipMissedFrames": true,
+            "repeat": 1,
+            "randomFrame": false
+        },
+        {
+            "key": "quiz_incorrectquiz_anim_incorrect",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "quiz_anim_incorrect",
+                    "frame": 0,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "quiz_anim_incorrect",
+                    "frame": 1,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "quiz_anim_incorrect",
+                    "frame": 2,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "quiz_anim_incorrect",
+                    "frame": 3,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "quiz_anim_incorrect",
+                    "frame": 4,
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 4,
+            "skipMissedFrames": true,
+            "randomFrame": false
         }
     ],
     "globalTimeScale": 1,
