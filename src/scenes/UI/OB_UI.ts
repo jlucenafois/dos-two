@@ -211,6 +211,7 @@ export default class OB_UI extends Base {
 		this.home.on("pointerup", () => {
 			this.home.setTexture("default_home_lg"); // Reset to hover state
 			this.stopAllScenes([])
+			this.sound.stopAll()
 			this.scene.start("OB_1"); // Switch to OB1 scene
 		});
 
@@ -255,6 +256,7 @@ export default class OB_UI extends Base {
 		this.exit.on("pointerup", () => {
 			this.exit.setTexture("default_exit_lg"); // Reset to hover state
 			this.stopAllScenes([])
+			this.sound.stopAll()
 			this.scene.start("OB_1"); // Switch to OB1 scene
 		});
 
@@ -276,6 +278,7 @@ export default class OB_UI extends Base {
 			this.prev_page.setTexture("default_back_lg"); // Reset to hover state
 			if (CURRENT_SETTINGS.gameState.prevScene) {
 				this.stopAllScenes(["OB_UI"])
+				this.sound.stopAll()
 				this.scene.launch(CURRENT_SETTINGS.gameState.prevScene)
 			}
 		});
@@ -302,6 +305,7 @@ export default class OB_UI extends Base {
 				this.events.emit("openCover");
 			} else if (CURRENT_SETTINGS.gameState.nextScene) {
 				this.stopAllScenes(["OB_UI"])
+				this.sound.stopAll()
 				this.scene.launch(CURRENT_SETTINGS.gameState.nextScene)
 			}
 		});

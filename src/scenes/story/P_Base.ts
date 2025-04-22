@@ -52,14 +52,18 @@ export default class P_Base extends Base {
 
     create() {
         const sceneScript = SCRIPT[this.scene.key];
-        if (!sceneScript || !sceneScript.dualComponents) return;
-
+        if (!sceneScript || !sceneScript.dualComponents) {
+            super.create();
+            return;
+        }
         
+        // TODO: remove
+        this.events.emit("enableForwardNav");
         // If already played once, allow skipping immediately
         if (sceneScript.playedOnce === true) {
             this.events.emit("enableForwardNav");
         } else {
-            this.events.emit("disableForwardNav");
+            // this.events.emit("disableForwardNav");
         }
 
         const dualComponents = sceneScript.dualComponents;

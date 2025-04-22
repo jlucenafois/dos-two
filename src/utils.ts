@@ -253,7 +253,8 @@ export function renderBoundedText(context: Scene, bt: BoundedText, box: Image | 
     // We want the top-left corner (x, y) for renderRichText such that
     // the measured text block (textWidth x textHeight) is centered.
     const targetX = boxCenterX - textWidth / 2;
-    const targetY = boxCenterY - textHeight / 2;
+    const targetY = boxCenterY - textHeight / 2; // ✅ Shift text up by 10 pixels
+;
 
     // --- 4. Prepare SingleText for Rendering ---
     const singleTextToRender: SingleText = {
@@ -408,7 +409,8 @@ export function renderRichText(context: Scene, st: SingleText): WordObject[] {
         parts.forEach((part, partIndex) => {
             if (partIndex > 0) {
                 offsetX = st.x; // Reset X for new line
-                offsetY += 40; // Move Y down for new line (same as original)
+                const lineHeight = segment.style?.fontSize ? Number(segment.style.fontSize) : 24;
+                offsetY += lineHeight + 8; // small buffer
                 lineIndex++;
             }
 

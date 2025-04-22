@@ -1,6 +1,7 @@
 import { SupportedShape } from "../types/shape/SupportedShape";
 import { DualComponent } from "../types/components/DualComponent";
 import { SingleComponent } from "../types/components/SingleComponent";
+import { Language } from "./settings";
 
 let SPANISH_HIGHLIGHT = { fill: '#B00012', }
 let ENGLISH_HIGHLIGHT = { fill: '#3738B4', }
@@ -10,14 +11,16 @@ const CHAPTERS: Record<string, number> = {
     "CH_3": 7,
 }
 export const SCRIPT: Record<string, {
-    dualComponents?: DualComponent[]
-    singleComponents?: SingleComponent[]
+    dualComponents?: DualComponent[],
+    quizVariants?: {
+        [Language.English]: SingleComponent[],
+        [Language.Spanish]: SingleComponent[]
+    },
     prev_key: string | null,
     next_key: string | null,
     index?: number,
     total?: number, // might be a better way
-    playedOnce?: boolean; 
-    // TODO: expand this to allow Single Components
+    playedOnce?: boolean;
 }> = {
     OB_1: {
         prev_key: null,
@@ -40,7 +43,7 @@ export const SCRIPT: Record<string, {
         next_key: "P_0",
     },
     P_0: {
-        prev_key: null, 
+        prev_key: null,
         next_key: "P_1"
     },
     P_1: {
@@ -92,7 +95,7 @@ export const SCRIPT: Record<string, {
                         { text: 'Clarita se mira en el ' },
                         { text: 'espejo', style: SPANISH_HIGHLIGHT }, // Highlighted word
                         { text: '\n"Soy especial," dice.' },
-                    ], 
+                    ],
                     box: 'shape'
                 },
                 englishText: {
@@ -100,7 +103,7 @@ export const SCRIPT: Record<string, {
                         { text: 'Clarita looks in the ' },
                         { text: 'mirror', style: ENGLISH_HIGHLIGHT }, // Highlighted word
                         { text: '\n"I am special," she says.' },
-                    ], 
+                    ],
                     box: 'shape'
                 }
             }
@@ -157,13 +160,13 @@ export const SCRIPT: Record<string, {
                 spanishText: {
                     content: [
                         { text: '"¡Hablo inglés y español!"' },
-                    ], 
+                    ],
                     box: 'shape'
                 },
                 englishText: {
                     content: [
                         { text: '"I speak Enlgish and Spanish!"' },
-                    ], 
+                    ],
                     box: 'shape'
                 }
             }
@@ -224,7 +227,7 @@ export const SCRIPT: Record<string, {
                         { text: 'y ' },
                         { text: 'calor', style: SPANISH_HIGHLIGHT },
                         { text: '.' },
-                    ], 
+                    ],
                     box: 'shape'
                 },
                 englishText: {
@@ -234,7 +237,7 @@ export const SCRIPT: Record<string, {
                         { text: 'and ' },
                         { text: 'hot', style: ENGLISH_HIGHLIGHT },
                         { text: '.' },
-                    ], 
+                    ],
                     box: 'shape'
                 }
             }
@@ -251,8 +254,9 @@ export const SCRIPT: Record<string, {
         total: CHAPTERS["CH_1"],
     },
     Q_1: {
-        singleComponents: [
-            {
+        playedOnce: false,
+        quizVariants: {
+            [Language.English]: [{
                 singleText: {
                     x: 497,
                     y: 436,
@@ -314,8 +318,71 @@ export const SCRIPT: Record<string, {
                     }],
                     box: "img"
                 },
-            }
-        ],
+            }],
+            [Language.Spanish]: [{
+                singleText: {
+                    x: 497,
+                    y: 436,
+                    content: [{
+                        text: "En Puerto Rico, hace sol y",
+                        style: {
+                            fontSize: "40px",
+                            fontWeight: 850,
+                            fill: "#4F4F4F"
+                        }
+                    }]
+                },
+            },
+            {
+                singleImage: {
+                    x: 1125,
+                    y: 465,
+                    default: "quiz_spanish_blank",
+                    origin: [0.5, 0.5]
+                }
+            },
+            {
+                singleImage: {
+                    x: 497,
+                    y: 570,
+                    default: "quiz_option_default",
+                    hovered: "quiz_option_hovered",
+                    pressed: "quiz_option_pressed",
+                    feedback: "quiz_option_correct"
+                },
+                boundedText: {
+                    content: [{
+                        text: "calor",
+                        style: {
+                            fontWeight: 850,
+                            fill: "#4F4F4F"
+                        }
+                    }],
+                    box: "img"
+                },
+                isCorrect: true
+            },
+            {
+                singleImage: {
+                    x: 914,
+                    y: 570,
+                    default: "quiz_option_default",
+                    hovered: "quiz_option_hovered",
+                    pressed: "quiz_option_pressed",
+                    feedback: "quiz_option_incorrect"
+                },
+                boundedText: {
+                    content: [{
+                        text: "frío",
+                        style: {
+                            fontWeight: 850,
+                            fill: "#4F4F4F"
+                        }
+                    }],
+                    box: "img"
+                },
+            }],
+        },
         prev_key: "P_4",
         next_key: "P_5",
         index: 4,
@@ -335,8 +402,87 @@ export const SCRIPT: Record<string, {
     },
     Q_2: {
         // render propmt + blank + options (gotta mark correct vs. incorrect options)
-        singleComponents: [
-            {
+        playedOnce: false,
+        quizVariants: {
+
+            [Language.English]: [
+                {
+                    singleText: {
+                        x: 575,
+                        y: 385,
+                        content: [{
+                            text: "¿Qué está cocinando la abuela?",
+                            style: {
+                                fontSize: "40px",
+                                fontWeight: 850,
+                                fill: "#4F4F4F"
+                            }
+                        }]
+                    },
+                },
+                {
+                    singleImage: {
+                        x: 647,
+                        y: 487,
+                        default: "quiz_option_default",
+                        hovered: "quiz_option_hovered",
+                        pressed: "quiz_option_pressed",
+                        feedback: "quiz_option_incorrect",
+                    },
+                    boundedText: {
+                        content: [{
+                            text: "zanahorias",
+                            style: {
+                                fontWeight: 850,
+                                fill: "#4F4F4F"
+                            }
+                        }],
+                        box: "img"
+                    },
+                },
+                {
+                    singleImage: {
+                        x: 647.5,
+                        y: 591,
+                        default: "quiz_option_default",
+                        hovered: "quiz_option_hovered",
+                        pressed: "quiz_option_pressed",
+                        feedback: "quiz_option_incorrect",
+                    },
+                    boundedText: {
+                        content: [{
+                            text: "papas",
+                            style: {
+                                fontWeight: 850,
+                                fill: "#4F4F4F"
+                            }
+                        }],
+                        box: "img"
+                    },
+                },
+                {
+                    singleImage: {
+                        x: 647.5,
+                        y: 695,
+                        default: "quiz_option_default",
+                        hovered: "quiz_option_hovered",
+                        pressed: "quiz_option_pressed",
+                        feedback: "quiz_option_correct",
+                    },
+                    boundedText: {
+                        content: [{
+                            text: "ambas",
+                            style: {
+                                fontWeight: 850,
+                                fill: "#4F4F4F"
+                            }
+                        }],
+                        box: "img"
+                    },
+                    isCorrect: true
+                }
+            ],
+            [Language.Spanish]: [{
                 singleText: {
                     x: 575,
                     y: 385,
@@ -410,8 +556,8 @@ export const SCRIPT: Record<string, {
                     box: "img"
                 },
                 isCorrect: true
-            }
-        ],
+            }]
+        },
         prev_key: "P_6",
         next_key: "P_7",
         index: 2,

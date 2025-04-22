@@ -26,6 +26,7 @@ export class Settings {
 }
 
 export const CURRENT_SETTINGS = new Settings();
+export const QUIZ_LANGUAGE: Record<string, Language.English | Language.Spanish> = {};
 
 /**
  * Updates the game state by setting prevScene to the currentScene

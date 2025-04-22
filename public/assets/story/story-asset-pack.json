@@ -228,6 +228,11 @@
                 "key": "quiz_option_pressed"
             },
             {
+                "url": "assets/story/quiz_spanish_blank.png",
+                "type": "image",
+                "key": "quiz_spanish_blank"
+            },
+            {
                 "url": "assets/story/story_animations.json",
                 "type": "animation",
                 "key": "story_animations"
