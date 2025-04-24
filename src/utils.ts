@@ -15,69 +15,69 @@ import Base from "./scenes/Base";
 import P_Base from "./scenes/story/P_Base";
 
 type HoverAudioEntry = {
-	object: Phaser.GameObjects.GameObject;
-	audioKey: string;
+    object: Phaser.GameObjects.GameObject;
+    audioKey: string;
 };
 
 let currentAudio: Phaser.Sound.BaseSound | null = null;
 let currentObject: Phaser.GameObjects.GameObject | null = null;
 
 export function playAudioSequence(
-	scene: Phaser.Scene,
-	audioKeys: string[],
-	onComplete?: () => void,
-	delayBetween: number = 0 // in milliseconds
+    scene: Phaser.Scene,
+    audioKeys: string[],
+    onComplete?: () => void,
+    delayBetween: number = 0 // in milliseconds
 ) {
-	if (!audioKeys || audioKeys.length === 0) return;
+    if (!audioKeys || audioKeys.length === 0) return;
 
-	let currentIndex = 0;
-	let currentAudio: Phaser.Sound.BaseSound | null = null;
+    let currentIndex = 0;
+    let currentAudio: Phaser.Sound.BaseSound | null = null;
 
-	const playNext = () => {
-		if (currentIndex >= audioKeys.length) {
-			currentAudio = null;
-			if (onComplete) onComplete();
-			return;
-		}
+    const playNext = () => {
+        if (currentIndex >= audioKeys.length) {
+            currentAudio = null;
+            if (onComplete) onComplete();
+            return;
+        }
 
-		const key = audioKeys[currentIndex];
-		currentAudio = scene.sound.add(key);
-		currentAudio.play();
+        const key = audioKeys[currentIndex];
+        currentAudio = scene.sound.add(key);
+        currentAudio.play();
 
-		currentAudio.once("complete", () => {
-			currentIndex++;
+        currentAudio.once("complete", () => {
+            currentIndex++;
 
-			if (delayBetween > 0) {
-				scene.time.delayedCall(delayBetween, playNext);
-			} else {
-				playNext();
-			}
-		});
-	};
+            if (delayBetween > 0) {
+                scene.time.delayedCall(delayBetween, playNext);
+            } else {
+                playNext();
+            }
+        });
+    };
 
-	playNext();
+    playNext();
 
-	// Optional: return manual stop function
-	return () => {
-		if (currentAudio && currentAudio.isPlaying) {
-			currentAudio.stop();
-			currentAudio.destroy();
-		}
-	};
+    // Optional: return manual stop function
+    return () => {
+        if (currentAudio && currentAudio.isPlaying) {
+            currentAudio.stop();
+            currentAudio.destroy();
+        }
+    };
 }
 
 /**
  * Plays a background or title audio once, unless interrupted by hover.
  */
 export function playBackgroundAudio(scene: Phaser.Scene, audioKey: string) {
-	stopCurrentAudio(); // just in case
-	currentAudio = scene.sound.add(audioKey);
-	currentAudio.play();
-	currentObject = null;
+    stopCurrentAudio(); // just in case
+    currentAudio = scene.sound.add(audioKey);
+    currentAudio.play();
+    currentObject = null;
 
-	currentAudio.once("complete", () => {
-		currentAudio = null;
-	});
+    currentAudio.once("complete", () => {
+        currentAudio = null;
+    });
 }
 
 /**
@@ -85,33 +85,33 @@ export function playBackgroundAudio(scene: Phaser.Scene, audioKey: string) {
  * If another object’s audio is playing, it will stop and play the new one.
  */
 export function enableHoverAudio(scene: Phaser.Scene, entry: HoverAudioEntry) {
-	let hasPlayed = false;
+    let hasPlayed = false;
 
-	entry.object.setInteractive({ useHandCursor: true });
+    entry.object.setInteractive({ useHandCursor: true });
 
-	entry.object.on("pointerover", () => {
-		if (currentObject !== entry.object || !hasPlayed) {
-			stopCurrentAudio();
+    entry.object.on("pointerover", () => {
+        if (currentObject !== entry.object || !hasPlayed) {
+            stopCurrentAudio();
 
-			currentAudio = scene.sound.add(entry.audioKey);
-			currentObject = entry.object;
-			currentAudio.play();
-			hasPlayed = true;
+            currentAudio = scene.sound.add(entry.audioKey);
+            currentObject = entry.object;
+            currentAudio.play();
+            hasPlayed = true;
 
-			currentAudio.once("complete", () => {
-				hasPlayed = false;
-			});
-		}
-	});
+            currentAudio.once("complete", () => {
+                hasPlayed = false;
+            });
+        }
+    });
 }
 
 function stopCurrentAudio() {
-	if (currentAudio && currentAudio.isPlaying) {
-		currentAudio.stop();
-		currentAudio.destroy();
-	}
-	currentAudio = null;
-	currentObject = null;
+    if (currentAudio && currentAudio.isPlaying) {
+        currentAudio.stop();
+        currentAudio.destroy();
+    }
+    currentAudio = null;
+    currentObject = null;
 }
 
 
@@ -127,44 +127,44 @@ export function renderSingleComponent(context: Base, sc: SingleComponent) {
      * 
      */
 export function renderDualComponent(context: P_Base, dc: DualComponent, onComplete?: () => void) {
-	const isSpanish = CURRENT_SETTINGS.gameState.language === Language.Spanish;
-	const coordinates = dc.coordinates;
+    const isSpanish = CURRENT_SETTINGS.gameState.language === Language.Spanish;
+    const coordinates = dc.coordinates;
 
-	if (!dc.dualShape) {
-		onComplete?.(); // still trigger if nothing renders
-		return;
-	}
+    if (!dc.dualShape) {
+        onComplete?.(); // still trigger if nothing renders
+        return;
+    }
 
-	const preferredBox = isSpanish ? dc.dualShape.spanishShape : dc.dualShape.englishShape;
-	const alternateBox = isSpanish ? dc.dualShape.englishShape : dc.dualShape.spanishShape;
+    const preferredBox = isSpanish ? dc.dualShape.spanishShape : dc.dualShape.englishShape;
+    const alternateBox = isSpanish ? dc.dualShape.englishShape : dc.dualShape.spanishShape;
 
-	const preferredShape: Shape = {
-		x: coordinates.preferredX,
-		y: coordinates.preferredY,
-		type: preferredBox.type,
-		style: preferredBox.style,
-	};
+    const preferredShape: Shape = {
+        x: coordinates.preferredX,
+        y: coordinates.preferredY,
+        type: preferredBox.type,
+        style: preferredBox.style,
+    };
 
-	const alternateShape: Shape = {
-		x: coordinates.alternateX,
-		y: coordinates.alternateY,
-		type: alternateBox.type,
-		style: alternateBox.style,
-	};
+    const alternateShape: Shape = {
+        x: coordinates.alternateX,
+        y: coordinates.alternateY,
+        type: alternateBox.type,
+        style: alternateBox.style,
+    };
 
-	renderDualShape(context, preferredShape, alternateShape);
+    renderDualShape(context, preferredShape, alternateShape);
 
-	if (dc.dualText) {
-		const dt = dc.dualText;
-		const preferredText = isSpanish ? dt.spanishText : dt.englishText;
-		const alternateText = isSpanish ? dt.englishText : dt.spanishText;
+    if (dc.dualText) {
+        const dt = dc.dualText;
+        const preferredText = isSpanish ? dt.spanishText : dt.englishText;
+        const alternateText = isSpanish ? dt.englishText : dt.spanishText;
 
-		if (preferredText.box === 'shape' && alternateText.box === 'shape') {
-			renderDualText(context, preferredText, alternateText, preferredShape, alternateShape, onComplete); // ✅ pass callback down
-			return;
-		}
-	}
-	onComplete?.(); // if no dualText
+        if (preferredText.box === 'shape' && alternateText.box === 'shape') {
+            renderDualText(context, preferredText, alternateText, preferredShape, alternateShape, onComplete); // ✅ pass callback down
+            return;
+        }
+    }
+    onComplete?.(); // if no dualText
 }
 
 export function renderBoundedText(context: Scene, bt: BoundedText, box: Image | Shape) {
@@ -254,7 +254,7 @@ export function renderBoundedText(context: Scene, bt: BoundedText, box: Image | 
     // the measured text block (textWidth x textHeight) is centered.
     const targetX = boxCenterX - textWidth / 2;
     const targetY = boxCenterY - textHeight / 2; // ✅ Shift text up by 10 pixels
-;
+    ;
 
     // --- 4. Prepare SingleText for Rendering ---
     const singleTextToRender: SingleText = {
@@ -414,17 +414,47 @@ export function renderRichText(context: Scene, st: SingleText): WordObject[] {
                 lineIndex++;
             }
 
-            const textStyle = {
-                font: `${segment.style?.fontWeight || '600'} ${segment.style?.fontSize || '24px'} ${segment.style?.fontFamily || 'Raleway'}`,
-                color: segment.style?.fill || "#A3A3A3",
-            };
-
             const words = part.split(/\s+/).filter(word => word.length > 0);
             words.forEach(word => {
-                const textObject = context.add.text(offsetX, offsetY, word, textStyle)
-                    .setOrigin(0, 0); // Top-left origin to match original behavior
+                const hasStroke = segment.style?.strokeColor !== undefined || segment.style?.strokeWeight !== undefined;
+                const hasShadow = segment.style?.shadowOffsetX !== undefined
+                    || segment.style?.shadowOffsetY !== undefined
+                    || segment.style?.shadowColor !== undefined
+                    || segment.style?.shadowBlur !== undefined;
 
-                // Store in scene
+                // 1. Optional: Stroke + Shadow layer (render only if defined)
+                if (hasStroke || hasShadow) {
+                    const strokeLayer = context.add.text(offsetX - 1, offsetY - 1, word, {
+                        font: `${segment.style?.fontWeight || '600'} ${segment.style?.fontSize || '24px'} ${segment.style?.fontFamily || 'Raleway'}`,
+                        color: segment.style?.strokeColor || "#FFFFFF",
+                        stroke: segment.style?.strokeColor || "#FFFFFF",
+                        strokeThickness: segment.style?.strokeWeight || 1.5,
+                    })
+                        .setOrigin(0, 0);
+
+                    if (hasShadow) {
+                        strokeLayer.setShadow(
+                            segment.style?.shadowOffsetX || 1,
+                            segment.style?.shadowOffsetY || 1,
+                            segment.style?.shadowColor || "rgba(0, 0, 0, 0.15)",
+                            segment.style?.shadowBlur || 2,
+                            false,
+                            true
+                        );
+                    }
+
+                    (context as Base).renderedComponents.push(strokeLayer);
+                }
+
+                // 2. Main text (always rendered)
+                const textObject = context.add.text(offsetX, offsetY, word, {
+                    font: `${segment.style?.fontWeight || '600'} ${segment.style?.fontSize || '24px'} ${segment.style?.fontFamily || 'Raleway'}`,
+                    color: segment.style?.fill || "#A3A3A3",
+                    stroke: undefined,
+                    strokeThickness: 0,
+                })
+                    .setOrigin(0, 0);
+
                 (context as Base).renderedComponents.push(textObject);
 
                 wordObjects.push({
@@ -433,12 +463,13 @@ export function renderRichText(context: Scene, st: SingleText): WordObject[] {
                     width: textObject.width,
                     lineIndex,
                     wordIndex,
-                    originalStyle: { color: textStyle.color } // Store original color
+                    originalStyle: { color: segment.style?.fill || "#A3A3A3" }
                 });
 
-                offsetX += textObject.width + 5; // Add space between words (adjustable)
+                offsetX += textObject.width + 5;
                 wordIndex++;
             });
+
         });
     });
 
@@ -449,39 +480,39 @@ export function renderRichText(context: Scene, st: SingleText): WordObject[] {
 * Renders dualText dynamically depending on preferred language. 
 */
 export function renderDualText(
-	context: P_Base,
-	preferredText: BoundedText,
-	alternateText: BoundedText,
-	preferredBox: Image | Shape,
-	alternateBox: Image | Shape,
-	onComplete?: () => void // ✅ NEW PARAM
+    context: P_Base,
+    preferredText: BoundedText,
+    alternateText: BoundedText,
+    preferredBox: Image | Shape,
+    alternateBox: Image | Shape,
+    onComplete?: () => void // ✅ NEW PARAM
 ) {
-	const preferredWordObjects = renderBoundedText(context, preferredText, preferredBox);
-	const alternateWordObjects = renderBoundedText(context, alternateText, alternateBox);
+    const preferredWordObjects = renderBoundedText(context, preferredText, preferredBox);
+    const alternateWordObjects = renderBoundedText(context, alternateText, alternateBox);
 
-	if (preferredWordObjects && alternateWordObjects) {
-		const preferredHighlighter = new TextHighlighter(preferredWordObjects);
-		const alternateHighlighter = new TextHighlighter(alternateWordObjects);
-		const isEnglish = CURRENT_SETTINGS.gameState.language === Language.English;
+    if (preferredWordObjects && alternateWordObjects) {
+        const preferredHighlighter = new TextHighlighter(preferredWordObjects);
+        const alternateHighlighter = new TextHighlighter(alternateWordObjects);
+        const isEnglish = CURRENT_SETTINGS.gameState.language === Language.English;
 
-		const transcriptEnglish = context.cache.json.get(context.nameWithKey("transcript-english")).words;
-		const audioEnglish = context.sound.add(context.nameWithKey("audio-transcript-english"));
-		const transcriptSpanish = context.cache.json.get(context.nameWithKey("transcript-spanish")).words;
-		const audioSpanish = context.sound.add(context.nameWithKey("audio-transcript-spanish"));
+        const transcriptEnglish = context.cache.json.get(context.nameWithKey("transcript-english")).words;
+        const audioEnglish = context.sound.add(context.nameWithKey("audio-transcript-english"));
+        const transcriptSpanish = context.cache.json.get(context.nameWithKey("transcript-spanish")).words;
+        const audioSpanish = context.sound.add(context.nameWithKey("audio-transcript-spanish"));
 
-		const transcriptPreferred = isEnglish ? transcriptEnglish : transcriptSpanish;
-		const audioPreferred = isEnglish ? audioEnglish : audioSpanish;
-		const transcriptAlt = isEnglish ? transcriptSpanish : transcriptEnglish;
-		const audioAlt = isEnglish ? audioSpanish : audioEnglish;
+        const transcriptPreferred = isEnglish ? transcriptEnglish : transcriptSpanish;
+        const audioPreferred = isEnglish ? audioEnglish : audioSpanish;
+        const transcriptAlt = isEnglish ? transcriptSpanish : transcriptEnglish;
+        const audioAlt = isEnglish ? audioSpanish : audioEnglish;
 
-		playAudioWithSync(context, preferredHighlighter, transcriptPreferred, audioPreferred, 2000, () => {
-			playAudioWithSync(context, alternateHighlighter, transcriptAlt, audioAlt, 1000, () => {
-				onComplete?.(); // ✅ call here only after both finish
-			});
-		});
-	} else {
-		onComplete?.(); // fallback
-	}
+        playAudioWithSync(context, preferredHighlighter, transcriptPreferred, audioPreferred, 2000, () => {
+            playAudioWithSync(context, alternateHighlighter, transcriptAlt, audioAlt, 1000, () => {
+                onComplete?.(); // ✅ call here only after both finish
+            });
+        });
+    } else {
+        onComplete?.(); // fallback
+    }
 }
 export function playAudioWithSync(context: Scene, highlighter: TextHighlighter, transcript: any, audio: any, delay: number, onComplete?: CallableFunction) {
     context.time.delayedCall(delay, () => {

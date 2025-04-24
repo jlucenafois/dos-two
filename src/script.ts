@@ -3,8 +3,28 @@ import { DualComponent } from "../types/components/DualComponent";
 import { SingleComponent } from "../types/components/SingleComponent";
 import { Language } from "./settings";
 
-let SPANISH_HIGHLIGHT = { fill: '#B00012', }
-let ENGLISH_HIGHLIGHT = { fill: '#3738B4', }
+let SPANISH_HIGHLIGHT = {
+    fill: '#B00012',
+    fontWeight: '900',
+    strokeColor: '#FFFFFF',        // White stroke
+    strokeWeight: 6,             // 6px thickness
+    shadowOffsetX: 1,
+    shadowOffsetY: 1,
+    shadowColor: "rgba(0, 0, 0, 0.15)",
+    shadowBlur: 0
+};
+
+let ENGLISH_HIGHLIGHT = {
+    fill: '#3738B4',
+    fontWeight: '900',
+    strokeColor: '#FFFFFF',        // White stroke
+    strokeWeight: 6,             // 6px thickness
+    shadowOffsetX: 1,
+    shadowOffsetY: 1,
+    shadowColor: "rgba(0, 0, 0, 0.15)",
+    shadowBlur: 0
+};
+
 const CHAPTERS: Record<string, number> = {
     "CH_1": 4,
     "CH_2": 2,
@@ -96,22 +116,22 @@ export const SCRIPT: Record<string, {
             },
             dualText: {
                 spanishText: {
-                  content: [
-                    { text: 'Clarita se mira en el ' },
-                    { text: 'espejo', style: SPANISH_HIGHLIGHT },
-                    { text: '.\n"Soy especial", dice.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'Clarita se mira en el ' },
+                        { text: 'espejo', style: SPANISH_HIGHLIGHT },
+                        { text: '.\n"Soy especial", dice.' }
+                    ],
+                    box: 'shape'
                 },
                 englishText: {
-                  content: [
-                    { text: 'Clarita looks in the ' },
-                    { text: 'mirror', style: ENGLISH_HIGHLIGHT },
-                    { text: '.\n"I am special," she says.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'Clarita looks in the ' },
+                        { text: 'mirror', style: ENGLISH_HIGHLIGHT },
+                        { text: '.\n"I am special," she says.' }
+                    ],
+                    box: 'shape'
                 }
-              }              
+            }
         }],
         prev_key: "P_0",
         next_key: "P_2",
@@ -163,26 +183,26 @@ export const SCRIPT: Record<string, {
             },
             dualText: {
                 spanishText: {
-                  content: [
-                    { text: '¡Hablo ' },
-                    { text: 'inglés', style: SPANISH_HIGHLIGHT },
-                    { text: ' y ' },
-                    { text: 'español', style: SPANISH_HIGHLIGHT },
-                    { text: '!' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: '¡Hablo ' },
+                        { text: 'inglés', style: SPANISH_HIGHLIGHT },
+                        { text: ' y ' },
+                        { text: 'español', style: SPANISH_HIGHLIGHT },
+                        { text: '!' }
+                    ],
+                    box: 'shape'
                 },
                 englishText: {
-                  content: [
-                    { text: 'I speak ' },
-                    { text: 'English', style: ENGLISH_HIGHLIGHT },
-                    { text: ' and ' },
-                    { text: 'Spanish', style: ENGLISH_HIGHLIGHT },
-                    { text: '!' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'I speak ' },
+                        { text: 'English', style: ENGLISH_HIGHLIGHT },
+                        { text: ' and ' },
+                        { text: 'Spanish', style: ENGLISH_HIGHLIGHT },
+                        { text: '!' }
+                    ],
+                    box: 'shape'
                 }
-              }              
+            }
         }],
         prev_key: "P_1",
         next_key: "P_3",
@@ -234,26 +254,26 @@ export const SCRIPT: Record<string, {
             },
             dualText: {
                 spanishText: {
-                  content: [
-                    { text: 'Mi familia es de Puerto Rico,\ndonde hace ' },
-                    { text: 'sol', style: SPANISH_HIGHLIGHT },
-                    { text: ' y ' },
-                    { text: 'calor', style: SPANISH_HIGHLIGHT },
-                    { text: '.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'Mi familia es de Puerto Rico,\ndonde hace ' },
+                        { text: 'sol', style: SPANISH_HIGHLIGHT },
+                        { text: ' y ' },
+                        { text: 'calor', style: SPANISH_HIGHLIGHT },
+                        { text: '.' }
+                    ],
+                    box: 'shape'
                 },
                 englishText: {
-                  content: [
-                    { text: 'My family is from Puerto Rico,\nwhere it is ' },
-                    { text: 'sunny', style: ENGLISH_HIGHLIGHT },
-                    { text: ' and ' },
-                    { text: 'hot', style: ENGLISH_HIGHLIGHT },
-                    { text: '.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'My family is from Puerto Rico,\nwhere it is ' },
+                        { text: 'sunny', style: ENGLISH_HIGHLIGHT },
+                        { text: ' and ' },
+                        { text: 'hot', style: ENGLISH_HIGHLIGHT },
+                        { text: '.' }
+                    ],
+                    box: 'shape'
                 }
-              }              
+            }
         }],
         prev_key: "P_2",
         next_key: "P_4",
@@ -304,23 +324,23 @@ export const SCRIPT: Record<string, {
             },
             dualText: {
                 spanishText: {
-                  content: [
-                    { text: 'Pero creci en Nueva York, donde\nhace mucho '},
-                    { text: 'frío', style: SPANISH_HIGHLIGHT },
-                    { text: '.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'Pero creci en Nueva York, donde\nhace mucho ' },
+                        { text: 'frío', style: SPANISH_HIGHLIGHT },
+                        { text: '.' }
+                    ],
+                    box: 'shape'
                 },
                 englishText: {
-                  content: [
-                    { text: 'But I grew up in New York,\nwhere it is very '},
-                    { text: 'cold', style: ENGLISH_HIGHLIGHT },
-                    { text: '.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'But I grew up in New York,\nwhere it is very ' },
+                        { text: 'cold', style: ENGLISH_HIGHLIGHT },
+                        { text: '.' }
+                    ],
+                    box: 'shape'
                 }
-              }
-              
+            }
+
         }],
         prev_key: "P_3",
         next_key: "Q_1",
@@ -338,7 +358,7 @@ export const SCRIPT: Record<string, {
                         text: "In Puerto Rico, it is sunny and",
                         style: {
                             fontSize: "40px",
-                            fontWeight: 850,
+                            fontWeight: '850',
                             fill: "#4F4F4F"
                         }
                     }]
@@ -365,7 +385,7 @@ export const SCRIPT: Record<string, {
                     content: [{
                         text: "hot",
                         style: {
-                            fontWeight: 850,
+                            fontWeight: '850',
                             fill: "#4F4F4F"
                         }
                     }],
@@ -386,7 +406,7 @@ export const SCRIPT: Record<string, {
                     content: [{
                         text: "cold",
                         style: {
-                            fontWeight: 850,
+                            fontWeight: '850',
                             fill: "#4F4F4F"
                         }
                     }],
@@ -401,7 +421,7 @@ export const SCRIPT: Record<string, {
                         text: "En Puerto Rico, hace sol y",
                         style: {
                             fontSize: "40px",
-                            fontWeight: 850,
+                            fontWeight: '850',
                             fill: "#4F4F4F"
                         }
                     }]
@@ -428,7 +448,7 @@ export const SCRIPT: Record<string, {
                     content: [{
                         text: "calor",
                         style: {
-                            fontWeight: 850,
+                            fontWeight: '850',
                             fill: "#4F4F4F"
                         }
                     }],
@@ -449,7 +469,7 @@ export const SCRIPT: Record<string, {
                     content: [{
                         text: "frío",
                         style: {
-                            fontWeight: 850,
+                            fontWeight: '850',
                             fill: "#4F4F4F"
                         }
                     }],
@@ -512,22 +532,22 @@ export const SCRIPT: Record<string, {
             },
             dualText: {
                 spanishText: {
-                  content: [
-                    { text: 'Pero crecí en Nueva York, donde hace mucho ' },
-                    { text: 'frío', style: SPANISH_HIGHLIGHT },
-                    { text: '.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'Pero crecí en Nueva York, donde hace mucho ' },
+                        { text: 'frío', style: SPANISH_HIGHLIGHT },
+                        { text: '.' }
+                    ],
+                    box: 'shape'
                 },
                 englishText: {
-                  content: [
-                    { text: 'But I grew up in New York, where it is very ' },
-                    { text: 'cold', style: ENGLISH_HIGHLIGHT },
-                    { text: '.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'But I grew up in New York, where it is very ' },
+                        { text: 'cold', style: ENGLISH_HIGHLIGHT },
+                        { text: '.' }
+                    ],
+                    box: 'shape'
                 }
-              }              
+            }
         }],
         prev_key: "P_5",
         next_key: "Q_2",
@@ -547,7 +567,7 @@ export const SCRIPT: Record<string, {
                             text: "Where does Clarita listen to stories in Spanish?",
                             style: {
                                 fontSize: "40px",
-                                fontWeight: 850,
+                                fontWeight: '850',
                                 fill: "#4F4F4F"
                             }
                         }]
@@ -566,7 +586,7 @@ export const SCRIPT: Record<string, {
                         content: [{
                             text: "School",
                             style: {
-                                fontWeight: 850,
+                                fontWeight: '850',
                                 fill: "#4F4F4F"
                             }
                         }],
@@ -586,7 +606,7 @@ export const SCRIPT: Record<string, {
                         content: [{
                             text: "Home",
                             style: {
-                                fontWeight: 850,
+                                fontWeight: '850',
                                 fill: "#4F4F4F"
                             }
                         }],
@@ -603,7 +623,7 @@ export const SCRIPT: Record<string, {
                         text: "¿Dónde escucha Clarita cuentos en español?",
                         style: {
                             fontSize: "40px",
-                            fontWeight: 850,
+                            fontWeight: '850',
                             fill: "#4F4F4F"
                         }
                     }]
@@ -622,7 +642,7 @@ export const SCRIPT: Record<string, {
                     content: [{
                         text: "Escuela",
                         style: {
-                            fontWeight: 850,
+                            fontWeight: '850',
                             fill: "#4F4F4F"
                         }
                     }],
@@ -642,7 +662,7 @@ export const SCRIPT: Record<string, {
                     content: [{
                         text: "Casa",
                         style: {
-                            fontWeight: 850,
+                            fontWeight: '850',
                             fill: "#4F4F4F"
                         }
                     }],
@@ -700,22 +720,22 @@ export const SCRIPT: Record<string, {
             },
             dualText: {
                 spanishText: {
-                  content: [
-                    { text: 'En la ' },
-                    { text: 'escuela', style: SPANISH_HIGHLIGHT },
-                    { text: ', hablo inglés.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'En la ' },
+                        { text: 'escuela', style: SPANISH_HIGHLIGHT },
+                        { text: ', hablo inglés.' }
+                    ],
+                    box: 'shape'
                 },
                 englishText: {
-                  content: [
-                    { text: 'At ' },
-                    { text: 'school', style: ENGLISH_HIGHLIGHT },
-                    { text: ', I speak English.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'At ' },
+                        { text: 'school', style: ENGLISH_HIGHLIGHT },
+                        { text: ', I speak English.' }
+                    ],
+                    box: 'shape'
                 }
-            }              
+            }
         }],
         prev_key: "Q_2",
         next_key: "P_8",
@@ -766,20 +786,20 @@ export const SCRIPT: Record<string, {
             },
             dualText: {
                 spanishText: {
-                  content: [
-                    { text: 'En ' },
-                    { text: 'casa', style: SPANISH_HIGHLIGHT },
-                    { text: ', escucho cuentos en\nespañol.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'En ' },
+                        { text: 'casa', style: SPANISH_HIGHLIGHT },
+                        { text: ', escucho cuentos en\nespañol.' }
+                    ],
+                    box: 'shape'
                 },
                 englishText: {
-                  content: [
-                    { text: 'At ' },
-                    { text: 'home', style: ENGLISH_HIGHLIGHT },
-                    { text: ', I listen to stories in\nSpanish.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'At ' },
+                        { text: 'home', style: ENGLISH_HIGHLIGHT },
+                        { text: ', I listen to stories in\nSpanish.' }
+                    ],
+                    box: 'shape'
                 }
             }
         }],
@@ -832,18 +852,18 @@ export const SCRIPT: Record<string, {
             },
             dualText: {
                 spanishText: {
-                  content: [
-                    { text: 'Mami dice que hablar en\nespañol es importante, así que\nme gusta aprender con rimas.' },
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'Mami dice que hablar en\nespañol es importante, así que\nme gusta aprender con rimas.' },
+                    ],
+                    box: 'shape'
                 },
                 englishText: {
-                  content: [
-                    { text: 'Mom says that speaking Spanish\nis important, so I like to learn by\nrhyme.' },
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'Mom says that speaking Spanish\nis important, so I like to learn by\nrhyme.' },
+                    ],
+                    box: 'shape'
                 }
-              }              
+            }
         }],
         prev_key: null,
         next_key: "P_10",
@@ -929,22 +949,22 @@ export const SCRIPT: Record<string, {
             },
             dualText: {
                 spanishText: {
-                  content: [
-                    { text: 'Una ' },
-                    { text: 'soñadora', style: SPANISH_HIGHLIGHT },
-                    { text: ', seré\nhablando Inglés y Español,' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'Una ' },
+                        { text: 'soñadora', style: SPANISH_HIGHLIGHT },
+                        { text: ', seré\nhablando Inglés y Español,' }
+                    ],
+                    box: 'shape'
                 },
                 englishText: {
-                  content: [
-                    { text: 'A ' },
-                    { text: 'dreamer', style: ENGLISH_HIGHLIGHT },
-                    { text: ', I’ll be, speaking both\nEnglish and Spanish,' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'A ' },
+                        { text: 'dreamer', style: ENGLISH_HIGHLIGHT },
+                        { text: ', I’ll be, speaking both\nEnglish and Spanish,' }
+                    ],
+                    box: 'shape'
                 }
-              }              
+            }
         }],
         prev_key: "P_14",
         next_key: "P_16",
@@ -995,22 +1015,22 @@ export const SCRIPT: Record<string, {
             },
             dualText: {
                 spanishText: {
-                  content: [
-                    { text: 'Y compartiendo mi ' },
-                    { text: 'corazón', style: SPANISH_HIGHLIGHT },
-                    { text: '!' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'Y compartiendo mi ' },
+                        { text: 'corazón', style: SPANISH_HIGHLIGHT },
+                        { text: '!' }
+                    ],
+                    box: 'shape'
                 },
                 englishText: {
-                  content: [
-                    { text: 'And sharing my ' },
-                    { text: 'heart', style: ENGLISH_HIGHLIGHT },
-                    { text: ' so free!' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'And sharing my ' },
+                        { text: 'heart', style: ENGLISH_HIGHLIGHT },
+                        { text: ' so free!' }
+                    ],
+                    box: 'shape'
                 }
-              }              
+            }
         }],
         prev_key: "P_15",
         next_key: "P_17",
@@ -1171,26 +1191,26 @@ export const SCRIPT: Record<string, {
             },
             dualText: {
                 spanishText: {
-                  content: [
-                    { text: 'Mi familia ' },
-                    { text: 'canta', style: SPANISH_HIGHLIGHT },
-                    { text: ' y ' },
-                    { text: 'baila', style: SPANISH_HIGHLIGHT },
-                    { text: '.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'Mi familia ' },
+                        { text: 'canta', style: SPANISH_HIGHLIGHT },
+                        { text: ' y ' },
+                        { text: 'baila', style: SPANISH_HIGHLIGHT },
+                        { text: '.' }
+                    ],
+                    box: 'shape'
                 },
                 englishText: {
-                  content: [
-                    { text: 'My family ' },
-                    { text: 'sings', style: ENGLISH_HIGHLIGHT },
-                    { text: ' and ' },
-                    { text: 'dances', style: ENGLISH_HIGHLIGHT },
-                    { text: '.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'My family ' },
+                        { text: 'sings', style: ENGLISH_HIGHLIGHT },
+                        { text: ' and ' },
+                        { text: 'dances', style: ENGLISH_HIGHLIGHT },
+                        { text: '.' }
+                    ],
+                    box: 'shape'
                 }
-              }              
+            }
         }],
         prev_key: "P_20",
         next_key: "P_22",
@@ -1241,18 +1261,18 @@ export const SCRIPT: Record<string, {
             },
             dualText: {
                 spanishText: {
-                  content: [
-                    { text: '"¡Baila conmigo!\n¡Wepa!" dice mamá.'},
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: '"¡Baila conmigo!\n¡Wepa!" dice mamá.' },
+                    ],
+                    box: 'shape'
                 },
                 englishText: {
-                  content: [
-                    { text: '"Dance with me!\nWepa!" says Mom.' },
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: '"Dance with me!\nWepa!" says Mom.' },
+                    ],
+                    box: 'shape'
                 }
-              }              
+            }
         }],
         prev_key: "P_21",
         next_key: "Q_4",
@@ -1273,7 +1293,7 @@ export const SCRIPT: Record<string, {
                             text: "¿Qué está cocinando la abuela?",
                             style: {
                                 fontSize: "40px",
-                                fontWeight: 850,
+                                fontWeight: '850',
                                 fill: "#4F4F4F"
                             }
                         }]
@@ -1292,7 +1312,7 @@ export const SCRIPT: Record<string, {
                         content: [{
                             text: "zanahorias",
                             style: {
-                                fontWeight: 850,
+                                fontWeight: '850',
                                 fill: "#4F4F4F"
                             }
                         }],
@@ -1312,7 +1332,7 @@ export const SCRIPT: Record<string, {
                         content: [{
                             text: "papas",
                             style: {
-                                fontWeight: 850,
+                                fontWeight: '850',
                                 fill: "#4F4F4F"
                             }
                         }],
@@ -1332,7 +1352,7 @@ export const SCRIPT: Record<string, {
                         content: [{
                             text: "ambas",
                             style: {
-                                fontWeight: 850,
+                                fontWeight: '850',
                                 fill: "#4F4F4F"
                             }
                         }],
@@ -1349,7 +1369,7 @@ export const SCRIPT: Record<string, {
                         text: "¿Qué está cocinando la abuela?",
                         style: {
                             fontSize: "40px",
-                            fontWeight: 850,
+                            fontWeight: '850',
                             fill: "#4F4F4F"
                         }
                     }]
@@ -1368,7 +1388,7 @@ export const SCRIPT: Record<string, {
                     content: [{
                         text: "zanahorias",
                         style: {
-                            fontWeight: 850,
+                            fontWeight: '850',
                             fill: "#4F4F4F"
                         }
                     }],
@@ -1388,7 +1408,7 @@ export const SCRIPT: Record<string, {
                     content: [{
                         text: "papas",
                         style: {
-                            fontWeight: 850,
+                            fontWeight: '850',
                             fill: "#4F4F4F"
                         }
                     }],
@@ -1408,7 +1428,7 @@ export const SCRIPT: Record<string, {
                     content: [{
                         text: "ambas",
                         style: {
-                            fontWeight: 850,
+                            fontWeight: '850',
                             fill: "#4F4F4F"
                         }
                     }],
@@ -1466,26 +1486,26 @@ export const SCRIPT: Record<string, {
             },
             dualText: {
                 spanishText: {
-                  content: [
-                    { text: 'Abuela está cocinando con ' },
-                    { text: 'zanahorias', style: SPANISH_HIGHLIGHT },
-                    { text: ' y ' },
-                    { text: 'papas', style: SPANISH_HIGHLIGHT },
-                    { text: '. "Abuela," pregunto, "¿Dónde está la...?"' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'Abuela está cocinando con ' },
+                        { text: 'zanahorias', style: SPANISH_HIGHLIGHT },
+                        { text: ' y ' },
+                        { text: 'papas', style: SPANISH_HIGHLIGHT },
+                        { text: '. "Abuela," pregunto, "¿Dónde está la...?"' }
+                    ],
+                    box: 'shape'
                 },
                 englishText: {
-                  content: [
-                    { text: 'Grandma is cooking with ' },
-                    { text: 'carrots', style: ENGLISH_HIGHLIGHT },
-                    { text: ' and ' },
-                    { text: 'potatoes', style: ENGLISH_HIGHLIGHT },
-                    { text: '. "Grandma," I ask, "Where is the...?"' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'Grandma is cooking with ' },
+                        { text: 'carrots', style: ENGLISH_HIGHLIGHT },
+                        { text: ' and ' },
+                        { text: 'potatoes', style: ENGLISH_HIGHLIGHT },
+                        { text: '. "Grandma," I ask, "Where is the...?"' }
+                    ],
+                    box: 'shape'
                 }
-              }              
+            }
         }],
         prev_key: "P_22",
         next_key: "P_24",
@@ -1536,22 +1556,22 @@ export const SCRIPT: Record<string, {
             },
             dualText: {
                 spanishText: {
-                  content: [
-                    { text: 'Abuela sonríe. "¿La ' },
-                    { text: 'cuchara', style: SPANISH_HIGHLIGHT },
-                    { text: '?"\n"¡Sí, la cuchara!" digo.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'Abuela sonríe. "¿La ' },
+                        { text: 'cuchara', style: SPANISH_HIGHLIGHT },
+                        { text: '?"\n"¡Sí, la cuchara!" digo.' }
+                    ],
+                    box: 'shape'
                 },
                 englishText: {
-                  content: [
-                    { text: 'Grandma smiles. "The ' },
-                    { text: 'spoon', style: ENGLISH_HIGHLIGHT },
-                    { text: '?"\n"Yes, the spoon!" I say.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'Grandma smiles. "The ' },
+                        { text: 'spoon', style: ENGLISH_HIGHLIGHT },
+                        { text: '?"\n"Yes, the spoon!" I say.' }
+                    ],
+                    box: 'shape'
                 }
-              }              
+            }
         }],
         prev_key: "P_23",
         next_key: "P_25",
@@ -1561,11 +1581,11 @@ export const SCRIPT: Record<string, {
     P_25: {
         dualComponents: [{
             coordinates: {
-                preferredX: 443, 
-                preferredY: 225, 
+                preferredX: 443,
+                preferredY: 225,
                 alternateX: 910,
                 alternateY: 225,
-            }, 
+            },
             dualShape: {
                 spanishShape: {
                     type: SupportedShape.RoundedRect,
@@ -1602,22 +1622,22 @@ export const SCRIPT: Record<string, {
             },
             dualText: {
                 spanishText: {
-                  content: [
-                    { text: 'Mis amigos se ríen cuando mezclo inglés y español. “I have ' },
-                    { text: 'hambre', style: SPANISH_HIGHLIGHT },
-                    { text: ',” digo.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'Mis amigos se ríen cuando mezclo inglés y español. “I have ' },
+                        { text: 'hambre', style: SPANISH_HIGHLIGHT },
+                        { text: ',” digo.' }
+                    ],
+                    box: 'shape'
                 },
                 englishText: {
-                  content: [
-                    { text: 'My friends laugh when I mix English and Spanish. “I have ' },
-                    { text: 'hambre', style: ENGLISH_HIGHLIGHT },
-                    { text: ',” I say.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: 'My friends laugh when I mix English and Spanish. “I have ' },
+                        { text: 'hambre', style: ENGLISH_HIGHLIGHT },
+                        { text: ',” I say.' }
+                    ],
+                    box: 'shape'
                 }
-              }
+            }
         }],
         prev_key: "P_24",
         next_key: "P_26",
@@ -1668,22 +1688,22 @@ export const SCRIPT: Record<string, {
             },
             dualText: {
                 spanishText: {
-                  content: [
-                    { text: '“¿Por qué hablas así?” preguntan. No siempre es fácil.\n\nPero me siento ' },
-                    { text: 'orgullosa', style: SPANISH_HIGHLIGHT },
-                    { text: ' de hablar dos idiomas.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: '“¿Por qué hablas así?” preguntan. No siempre es fácil.\n\nPero me siento ' },
+                        { text: 'orgullosa', style: SPANISH_HIGHLIGHT },
+                        { text: ' de hablar dos idiomas.' }
+                    ],
+                    box: 'shape'
                 },
                 englishText: {
-                  content: [
-                    { text: '“Why do you talk like that?” they ask. It’s not always easy,\n\nbut I feel ' },
-                    { text: 'proud', style: ENGLISH_HIGHLIGHT },
-                    { text: ' to speak two languages.' }
-                  ],
-                  box: 'shape'
+                    content: [
+                        { text: '“Why do you talk like that?” they ask. It’s not always easy,\n\nbut I feel ' },
+                        { text: 'proud', style: ENGLISH_HIGHLIGHT },
+                        { text: ' to speak two languages.' }
+                    ],
+                    box: 'shape'
                 }
-              }              
+            }
         }],
         prev_key: "P_25",
         next_key: "P_27",
@@ -1731,5 +1751,5 @@ export const SCRIPT: Record<string, {
         next_key: null,
         index: 0,
         total: 1
-    }    
+    }
 }    
