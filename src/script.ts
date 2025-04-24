@@ -8,7 +8,12 @@ let ENGLISH_HIGHLIGHT = { fill: '#3738B4', }
 const CHAPTERS: Record<string, number> = {
     "CH_1": 4,
     "CH_2": 2,
-    "CH_3": 7,
+    "CH_3": 8,
+    "CH_4": 8,
+    "CH_5": 6,
+    "CH_6": 1,
+    "CH_7": 1,
+    "CH_8": 8,
 }
 export const SCRIPT: Record<string, {
     dualComponents?: DualComponent[],
@@ -530,17 +535,16 @@ export const SCRIPT: Record<string, {
         total: CHAPTERS["CH_2"],
     },
     Q_2: {
-        // render propmt + blank + options (gotta mark correct vs. incorrect options)
         playedOnce: false,
         quizVariants: {
 
             [Language.English]: [
                 {
                     singleText: {
-                        x: 575,
-                        y: 385,
+                        x: 489,
+                        y: 446,
                         content: [{
-                            text: "¿Qué está cocinando la abuela?",
+                            text: "Where does Clarita listen to stories in Spanish?",
                             style: {
                                 fontSize: "40px",
                                 fontWeight: 850,
@@ -551,8 +555,8 @@ export const SCRIPT: Record<string, {
                 },
                 {
                     singleImage: {
-                        x: 647,
-                        y: 487,
+                        x: 497,
+                        y: 566,
                         default: "quiz_option_default",
                         hovered: "quiz_option_hovered",
                         pressed: "quiz_option_pressed",
@@ -560,7 +564,7 @@ export const SCRIPT: Record<string, {
                     },
                     boundedText: {
                         content: [{
-                            text: "zanahorias",
+                            text: "School",
                             style: {
                                 fontWeight: 850,
                                 fill: "#4F4F4F"
@@ -571,28 +575,8 @@ export const SCRIPT: Record<string, {
                 },
                 {
                     singleImage: {
-                        x: 647.5,
-                        y: 591,
-                        default: "quiz_option_default",
-                        hovered: "quiz_option_hovered",
-                        pressed: "quiz_option_pressed",
-                        feedback: "quiz_option_incorrect",
-                    },
-                    boundedText: {
-                        content: [{
-                            text: "papas",
-                            style: {
-                                fontWeight: 850,
-                                fill: "#4F4F4F"
-                            }
-                        }],
-                        box: "img"
-                    },
-                },
-                {
-                    singleImage: {
-                        x: 647.5,
-                        y: 695,
+                        x: 914,
+                        y: 566,
                         default: "quiz_option_default",
                         hovered: "quiz_option_hovered",
                         pressed: "quiz_option_pressed",
@@ -600,7 +584,7 @@ export const SCRIPT: Record<string, {
                     },
                     boundedText: {
                         content: [{
-                            text: "ambas",
+                            text: "Home",
                             style: {
                                 fontWeight: 850,
                                 fill: "#4F4F4F"
@@ -608,15 +592,15 @@ export const SCRIPT: Record<string, {
                         }],
                         box: "img"
                     },
-                    isCorrect: true
-                }
+                    isCorrect: true,
+                },
             ],
             [Language.Spanish]: [{
                 singleText: {
-                    x: 575,
-                    y: 385,
+                    x: 489,
+                    y: 446,
                     content: [{
-                        text: "¿Qué está cocinando la abuela?",
+                        text: "¿Dónde escucha Clarita cuentos en español?",
                         style: {
                             fontSize: "40px",
                             fontWeight: 850,
@@ -627,8 +611,8 @@ export const SCRIPT: Record<string, {
             },
             {
                 singleImage: {
-                    x: 647,
-                    y: 487,
+                    x: 497,
+                    y: 566,
                     default: "quiz_option_default",
                     hovered: "quiz_option_hovered",
                     pressed: "quiz_option_pressed",
@@ -636,7 +620,7 @@ export const SCRIPT: Record<string, {
                 },
                 boundedText: {
                     content: [{
-                        text: "zanahorias",
+                        text: "Escuela",
                         style: {
                             fontWeight: 850,
                             fill: "#4F4F4F"
@@ -647,28 +631,8 @@ export const SCRIPT: Record<string, {
             },
             {
                 singleImage: {
-                    x: 647.5,
-                    y: 591,
-                    default: "quiz_option_default",
-                    hovered: "quiz_option_hovered",
-                    pressed: "quiz_option_pressed",
-                    feedback: "quiz_option_incorrect",
-                },
-                boundedText: {
-                    content: [{
-                        text: "papas",
-                        style: {
-                            fontWeight: 850,
-                            fill: "#4F4F4F"
-                        }
-                    }],
-                    box: "img"
-                },
-            },
-            {
-                singleImage: {
-                    x: 647.5,
-                    y: 695,
+                    x: 914,
+                    y: 566,
                     default: "quiz_option_default",
                     hovered: "quiz_option_hovered",
                     pressed: "quiz_option_pressed",
@@ -676,7 +640,7 @@ export const SCRIPT: Record<string, {
                 },
                 boundedText: {
                     content: [{
-                        text: "ambas",
+                        text: "Casa",
                         style: {
                             fontWeight: 850,
                             fill: "#4F4F4F"
@@ -684,7 +648,7 @@ export const SCRIPT: Record<string, {
                     }],
                     box: "img"
                 },
-                isCorrect: true
+                isCorrect: true,
             }]
         },
         prev_key: "P_6",
@@ -1291,9 +1255,172 @@ export const SCRIPT: Record<string, {
               }              
         }],
         prev_key: "P_21",
-        next_key: "P_23",
+        next_key: "Q_4",
         index: 0,
         total: 1
+    },
+    Q_4: {
+        // render propmt + blank + options (gotta mark correct vs. incorrect options)
+        playedOnce: false,
+        quizVariants: {
+
+            [Language.English]: [
+                {
+                    singleText: {
+                        x: 575,
+                        y: 385,
+                        content: [{
+                            text: "¿Qué está cocinando la abuela?",
+                            style: {
+                                fontSize: "40px",
+                                fontWeight: 850,
+                                fill: "#4F4F4F"
+                            }
+                        }]
+                    },
+                },
+                {
+                    singleImage: {
+                        x: 647,
+                        y: 487,
+                        default: "quiz_option_default",
+                        hovered: "quiz_option_hovered",
+                        pressed: "quiz_option_pressed",
+                        feedback: "quiz_option_incorrect",
+                    },
+                    boundedText: {
+                        content: [{
+                            text: "zanahorias",
+                            style: {
+                                fontWeight: 850,
+                                fill: "#4F4F4F"
+                            }
+                        }],
+                        box: "img"
+                    },
+                },
+                {
+                    singleImage: {
+                        x: 647.5,
+                        y: 591,
+                        default: "quiz_option_default",
+                        hovered: "quiz_option_hovered",
+                        pressed: "quiz_option_pressed",
+                        feedback: "quiz_option_incorrect",
+                    },
+                    boundedText: {
+                        content: [{
+                            text: "papas",
+                            style: {
+                                fontWeight: 850,
+                                fill: "#4F4F4F"
+                            }
+                        }],
+                        box: "img"
+                    },
+                },
+                {
+                    singleImage: {
+                        x: 647.5,
+                        y: 695,
+                        default: "quiz_option_default",
+                        hovered: "quiz_option_hovered",
+                        pressed: "quiz_option_pressed",
+                        feedback: "quiz_option_correct",
+                    },
+                    boundedText: {
+                        content: [{
+                            text: "ambas",
+                            style: {
+                                fontWeight: 850,
+                                fill: "#4F4F4F"
+                            }
+                        }],
+                        box: "img"
+                    },
+                    isCorrect: true
+                }
+            ],
+            [Language.Spanish]: [{
+                singleText: {
+                    x: 575,
+                    y: 385,
+                    content: [{
+                        text: "¿Qué está cocinando la abuela?",
+                        style: {
+                            fontSize: "40px",
+                            fontWeight: 850,
+                            fill: "#4F4F4F"
+                        }
+                    }]
+                },
+            },
+            {
+                singleImage: {
+                    x: 647,
+                    y: 487,
+                    default: "quiz_option_default",
+                    hovered: "quiz_option_hovered",
+                    pressed: "quiz_option_pressed",
+                    feedback: "quiz_option_incorrect",
+                },
+                boundedText: {
+                    content: [{
+                        text: "zanahorias",
+                        style: {
+                            fontWeight: 850,
+                            fill: "#4F4F4F"
+                        }
+                    }],
+                    box: "img"
+                },
+            },
+            {
+                singleImage: {
+                    x: 647.5,
+                    y: 591,
+                    default: "quiz_option_default",
+                    hovered: "quiz_option_hovered",
+                    pressed: "quiz_option_pressed",
+                    feedback: "quiz_option_incorrect",
+                },
+                boundedText: {
+                    content: [{
+                        text: "papas",
+                        style: {
+                            fontWeight: 850,
+                            fill: "#4F4F4F"
+                        }
+                    }],
+                    box: "img"
+                },
+            },
+            {
+                singleImage: {
+                    x: 647.5,
+                    y: 695,
+                    default: "quiz_option_default",
+                    hovered: "quiz_option_hovered",
+                    pressed: "quiz_option_pressed",
+                    feedback: "quiz_option_correct",
+                },
+                boundedText: {
+                    content: [{
+                        text: "ambas",
+                        style: {
+                            fontWeight: 850,
+                            fill: "#4F4F4F"
+                        }
+                    }],
+                    box: "img"
+                },
+                isCorrect: true
+            }]
+        },
+        prev_key: "P_22",
+        next_key: "P_23",
+        index: 2,
+        total: CHAPTERS["CH_4"],
     },
     P_23: {
         dualComponents: [{
