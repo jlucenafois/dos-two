@@ -74,18 +74,33 @@ export default class OB_3_2 extends OB_Base {
 	// Write your code here
 
 	create() {
-		this.editorCreate();
-		super.create();
-		this.match_button.setInteractive({pixelPerfect: true, useHandCursor: true})
-		this.word_button.setInteractive({pixelPerfect: true, useHandCursor: true}) 
-		this.memory_button.setInteractive({pixelPerfect: true, useHandCursor: true})
-		playBackgroundAudio(this, '3.2-line-1')
-		enableHoverAudio(this, {object: this.memory_button, audioKey: '3.2-line-2'})
-		enableHoverAudio(this, {object: this.word_button, audioKey: '3.2-line-3'})
-		enableHoverAudio(this, {object: this.match_button, audioKey: '3.2-line-4'})
+	this.editorCreate();
+	super.create();
 
+	// Ensure images scale from center and have a gray tint by default
+	const buttons = [this.match_button, this.word_button, this.memory_button];
 
-	}
+	buttons.forEach(button => {
+		button.setOrigin(0.5, 0.5);
+
+		button.setInteractive({ pixelPerfect: true, useHandCursor: true });
+
+		button.on("pointerover", () => {
+			button.setScale(1.1); // only scale on hover
+		});
+
+		button.on("pointerout", () => {
+			button.setScale(1);
+		});
+	});
+
+	// Audio
+	playBackgroundAudio(this, '3.2-line-1');
+	enableHoverAudio(this, { object: this.memory_button, audioKey: '3.2-line-2' });
+	enableHoverAudio(this, { object: this.word_button, audioKey: '3.2-line-3' });
+	enableHoverAudio(this, { object: this.match_button, audioKey: '3.2-line-4' });
+}
+
 
 	/* END-USER-CODE */
 }
