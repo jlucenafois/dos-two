@@ -491,10 +491,18 @@ export function renderDualText(
     const alternateWordObjects = renderBoundedText(context, alternateText, alternateBox);
 
     if (preferredWordObjects && alternateWordObjects) {
-        const preferredHighlighter = new TextHighlighter(preferredWordObjects);
-        const alternateHighlighter = new TextHighlighter(alternateWordObjects);
         const isEnglish = CURRENT_SETTINGS.gameState.language === Language.English;
-
+    
+        const preferredHighlighter = new TextHighlighter(
+            preferredWordObjects,
+            isEnglish ? Language.English : Language.Spanish
+        );
+    
+        const alternateHighlighter = new TextHighlighter(
+            alternateWordObjects,
+            isEnglish ? Language.Spanish : Language.English // switch for alternate
+        );
+    
         const transcriptEnglish = context.cache.json.get(context.nameWithKey("transcript-english")).words;
         const audioEnglish = context.sound.add(context.nameWithKey("audio-transcript-english"));
         const transcriptSpanish = context.cache.json.get(context.nameWithKey("transcript-spanish")).words;
@@ -529,39 +537,22 @@ export function playAudioWithSync(context: Scene, highlighter: TextHighlighter, 
 // Highlight manager class to handle updates efficiently
 class TextHighlighter {
     private wordObjects: WordObject[];
-    private currentHighlight: Phaser.GameObjects.Text | null = null;
+    private preferredLanguage: Language.English | Language.Spanish;
 
-    constructor(wordObjects: WordObject[]) {
+    constructor(wordObjects: WordObject[], preferredLanguage: Language.English | Language.Spanish) {
         this.wordObjects = wordObjects;
+        this.preferredLanguage = preferredLanguage;
     }
 
-    highlightWord(wordIndex: number, duration: number = 500) {
-        // Reset previous highlight to its original style
-        if (this.currentHighlight) {
-            const prevWordObj = this.wordObjects.find(obj => obj.textObject === this.currentHighlight);
-            if (prevWordObj) {
-                prevWordObj.textObject.setStyle({ color: prevWordObj.originalStyle.color });
-            }
-        }
-
+    highlightWord(wordIndex: number) {
         const wordObj = this.wordObjects[wordIndex];
         if (wordObj) {
-            wordObj.textObject.setStyle({ color: '#800080' }); // Purple highlight
-            this.currentHighlight = wordObj.textObject;
-
-            // Reset to original style after duration
-            this.wordObjects[0].textObject.scene.time.delayedCall(duration, () => {
-                if (this.currentHighlight === wordObj.textObject) {
-                    wordObj.textObject.setStyle({ color: wordObj.originalStyle.color });
-                    this.currentHighlight = null;
-                }
-            });
+            const highlightColor = this.preferredLanguage === Language.English ? '#3738B4' : '#B00012';
+            wordObj.textObject.setStyle({ color: highlightColor });
         }
     }
 
-    // Modified to test without audio
     syncWithAudio(wordTimings: { text: string, start: number }[]) {
-        // Simulate timing without actual audio
         wordTimings.forEach((timing, index) => {
             const scene = this.wordObjects[0].textObject.scene;
             scene.time.delayedCall(timing.start * 1000, () => {

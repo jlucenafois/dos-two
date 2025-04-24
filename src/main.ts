@@ -56,7 +56,7 @@ class Boot extends Phaser.Scene {
 		// Load Raleway with Web Font Loader
         WebFont.load({
             google: {
-                families: ["Raleway", "Bowlby One"]
+                families: ["Raleway:600,800", "Bowlby One"]
             },
             active: () => {
                 console.log("Fonts loaded!");

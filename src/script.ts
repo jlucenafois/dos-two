@@ -5,7 +5,7 @@ import { Language } from "./settings";
 
 let SPANISH_HIGHLIGHT = {
     fill: '#B00012',
-    fontWeight: '900',
+    fontWeight: '800',
     strokeColor: '#FFFFFF',        // White stroke
     strokeWeight: 6,             // 6px thickness
     shadowOffsetX: 1,
@@ -16,7 +16,7 @@ let SPANISH_HIGHLIGHT = {
 
 let ENGLISH_HIGHLIGHT = {
     fill: '#3738B4',
-    fontWeight: '900',
+    fontWeight: '800',
     strokeColor: '#FFFFFF',        // White stroke
     strokeWeight: 6,             // 6px thickness
     shadowOffsetX: 1,
@@ -118,16 +118,16 @@ export const SCRIPT: Record<string, {
                 spanishText: {
                     content: [
                         { text: 'Clarita se mira en el ' },
-                        { text: 'espejo', style: SPANISH_HIGHLIGHT },
-                        { text: '.\n"Soy especial", dice.' }
+                        { text: 'espejo.\n', style: SPANISH_HIGHLIGHT },
+                        { text: '"Soy especial", dice.' }
                     ],
                     box: 'shape'
                 },
                 englishText: {
                     content: [
                         { text: 'Clarita looks in the ' },
-                        { text: 'mirror', style: ENGLISH_HIGHLIGHT },
-                        { text: '.\n"I am special," she says.' }
+                        { text: 'mirror.\n', style: ENGLISH_HIGHLIGHT },
+                        { text: '"I am special," she says.' }
                     ],
                     box: 'shape'
                 }

@@ -216,6 +216,7 @@ export default class OB_UI extends Base {
 			this.home.setTexture("default_home_lg"); // Reset to hover state
 			this.stopAllScenes([])
 			this.sound.stopAll()
+			CURRENT_SETTINGS.gameState.hasOpenedCover = false
 			this.scene.start("OB_1"); // Switch to OB1 scene
 		});
 
@@ -261,6 +262,7 @@ export default class OB_UI extends Base {
 			this.exit.setTexture("default_exit_lg"); // Reset to hover state
 			this.stopAllScenes([])
 			this.sound.stopAll()
+			CURRENT_SETTINGS.gameState.hasOpenedCover = false
 			this.scene.start("OB_1"); // Switch to OB1 scene
 		});
 
