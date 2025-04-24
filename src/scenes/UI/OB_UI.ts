@@ -94,6 +94,7 @@ export default class OB_UI extends Base {
 				scene.events.on("showSideArrows", this.showSideArrows, this);		
 				scene.events.on("hideSideArrows", this.hideSideArrows, this);		
 				scene.events.on("showBook", this.showBook, this);		
+				scene.events.on("hideBook", this.hideBook, this);		
 				scene.events.on("showOBUI", this.showOBUI, this);		
 				scene.events.on("changeBackground", this.changeBackground, this);
 				scene.events.on("updateProgressBar", this.updateProgressBar, this)
@@ -137,6 +138,9 @@ export default class OB_UI extends Base {
 	}
 	showBook() {
 		this.book.setVisible(true);
+	}
+	hideBook() {
+		this.book.setVisible(false);
 	}
 	changeBackground(color: string) {
 		this.cameras.main.setBackgroundColor(color);
@@ -276,6 +280,10 @@ export default class OB_UI extends Base {
 		// Release effect (if still hovered)
 		this.prev_page.on("pointerup", () => {
 			this.prev_page.setTexture("default_back_lg"); // Reset to hover state
+			if (CURRENT_SETTINGS.gameState.currScene == "P_1") {
+				this.hideBook()
+				CURRENT_SETTINGS.gameState.hasOpenedCover = false
+			} 
 			if (CURRENT_SETTINGS.gameState.prevScene) {
 				this.stopAllScenes(["OB_UI"])
 				this.sound.stopAll()
@@ -303,6 +311,7 @@ export default class OB_UI extends Base {
 			// If the current scene is P_0, trigger "playAnim"
 			if (CURRENT_SETTINGS.gameState.currScene === "P_0") {
 				this.events.emit("openCover");
+				CURRENT_SETTINGS.gameState.hasOpenedCover = true
 			} else if (CURRENT_SETTINGS.gameState.nextScene) {
 				this.stopAllScenes(["OB_UI"])
 				this.sound.stopAll()

@@ -4,6 +4,7 @@
 
 import P_Base from "./P_Base";
 /* START-USER-IMPORTS */
+import { CURRENT_SETTINGS } from "../../settings";
 /* END-USER-IMPORTS */
 
 export default class P_0 extends P_Base {
@@ -30,22 +31,31 @@ export default class P_0 extends P_Base {
 	private book!: Phaser.GameObjects.Sprite;
 
 	/* START-USER-CODE */
+
+	
 	openCover() {
-		this.book.play("open_cover");
-		this.book.on(Phaser.Animations.Events.ANIMATION_COMPLETE, (anim:Phaser.Animations.Animation) => {
-			if (anim.key === "open_cover") { 
-				this.events.emit("showBook");
-				this.scene.start("P_1");
-			}
-		});
+		if (!CURRENT_SETTINGS.gameState.hasOpenedCover) {
+			this.book.removeInteractive();
+			CURRENT_SETTINGS.gameState.hasOpenedCover = true
+			this.book.play("open_cover");
+			this.book.on(Phaser.Animations.Events.ANIMATION_COMPLETE, (anim:Phaser.Animations.Animation) => {
+				if (anim.key === "open_cover") { 
+					this.events.emit("showBook");
+					this.scene.start("P_1");
+				}
+			});
+		}
 	}
+
 	create() {
 		this.editorCreate()
 		super.create()
 		this.events.emit("disableBackNav")
 
 		this.book.input!.cursor = "pointer";
-		this.events.on("openCover", this.openCover, this)
+
+		const UI_Scene = this.scene.get("OB_UI");
+		UI_Scene?.events.on("openCover", this.openCover, this);
 
 		// Play animation on click
 		this.book.on("pointerdown", () => {
