@@ -1,8 +1,3 @@
-
-// You can write more code here
-
-/* START OF COMPILED CODE */
-
 import { SCRIPT } from "../../script";
 import { Language, QUIZ_LANGUAGE } from "../../settings";
 import { playAudioSequence, renderSingleComponent } from "../../utils";
@@ -11,60 +6,53 @@ import Base from "../Base";
 /* END-USER-IMPORTS */
 
 export default class Q_Base extends Base {
-
 	constructor(key: string) {
-        super(key);
-
-        /* START-USER-CTR-CODE */
-        // Write your code here.
-        /* END-USER-CTR-CODE */
-    }		
+		super(key);
+	}
 
 	editorCreate(): void {
-
 		this.events.emit("scene-awake");
 	}
 
 	/* START-USER-CODE */
 	preload(): void {
 		const sceneScript = SCRIPT[this.scene.key];
-		if (!sceneScript || !sceneScript.quizVariants) return;
+		if (!sceneScript || !sceneScript.sections || sceneScript.sections.length === 0) return;
+
+		const firstSection = sceneScript.sections[0];
+		if (!firstSection.quizVariants) return;
 		
 		let lang = QUIZ_LANGUAGE[this.scene.key];
-		console.log(lang)
 		if (!lang) {
 			lang = Math.random() < 0.5 ? Language.English : Language.Spanish;
 			QUIZ_LANGUAGE[this.scene.key] = lang;
 		}
-	
-		const langSuffix = QUIZ_LANGUAGE[this.scene.key] === Language.English ? 'e' : 's';
+
+		const langSuffix = lang === Language.English ? 'e' : 's';
 		const questionId = this.scene.key.toLowerCase().replace("_", "");
 		this.load.audio(`${questionId}${langSuffix}`, `assets/transcript/quizzes/audio/${questionId}${langSuffix}.wav`);
 		this.load.audio(`${questionId}-answer-${langSuffix}`, `assets/transcript/quizzes/audio/${questionId}-answer-${langSuffix}.wav`);
 	}
-	// Write your code here
 
-	create() {
-		
-		// TODO: if playedOnce, return static quiz
-		this.renderedComponents = [];
+	create(): void {
+		super.create();
 		const sceneScript = SCRIPT[this.scene.key];
-		if (!sceneScript || !sceneScript.quizVariants) return;
-	
-		// Reuse stored quiz language
+		if (!sceneScript || !sceneScript.sections || sceneScript.sections.length === 0) return;
+
+		const firstSection = sceneScript.sections[0];
+		if (!firstSection.quizVariants) return;
+
 		let lang = QUIZ_LANGUAGE[this.scene.key];
-		const components = sceneScript.quizVariants[lang];
+		const components = firstSection.quizVariants[lang];
+		
 		components.forEach(comp => renderSingleComponent(this, comp));
 		
 		this.events.emit("disableForwardNav");
-		const langSuffix = lang === Language.English ? 'e' : 's';
-		playAudioSequence(this, [`q1${langSuffix}`, `q1-answer-${langSuffix}`], () => {}, 500);
-		super.create();
-	}
 
+		const questionId = this.scene.key.toLowerCase().replace("_", "");
+		const langSuffix = lang === Language.English ? 'e' : 's';
+		playAudioSequence(this, [`${questionId}${langSuffix}`, `${questionId}-answer-${langSuffix}`], () => {}, 500);
+
+	}
 	/* END-USER-CODE */
 }
-
-/* END OF COMPILED CODE */
-
-// You can write more code here

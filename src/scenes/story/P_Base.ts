@@ -7,6 +7,7 @@ import Base from "../Base";
 /* START-USER-IMPORTS */
 import { SCRIPT } from "../../script";
 import { renderDualComponent } from "../../utils";
+import { DualComponent } from "../../../types/components/DualComponent";
 
 /* END-USER-IMPORTS */
 
@@ -18,6 +19,7 @@ export default class P_Base extends Base {
         // Write your code here.
         /* END-USER-CTR-CODE */
     }
+
 
     // this is needed to load the correct transcript and audio files, otherwise it will keep using the first one, maybe there's a better fix for this
     nameWithKey(name: string) {
@@ -47,40 +49,73 @@ export default class P_Base extends Base {
     }
 
     /* START-USER-CODE */
+    applyCropMask(container: Phaser.GameObjects.Container, x: number, y: number, width: number, height: number): void {
+        const maskShape = this.add.graphics();
+        maskShape.fillStyle(0xffffff);
+        maskShape.fillRect(x, y, width, height);
+
+        const mask = maskShape.createGeometryMask();
+
+        container.setMask(mask);
+
+        this.children.bringToTop(container);
+
+        maskShape.setVisible(false);
+    }
+
 
     // Write your code here
+    private currentSectionIndex: number = 0;
+    private sceneScript!: typeof SCRIPT[string];
 
-    create() {
-        const sceneScript = SCRIPT[this.scene.key];
-        if (!sceneScript || !sceneScript.dualComponents) {
-            super.create();
+    private renderCurrentSection() {
+        const section = this.sceneScript.sections?.[this.currentSectionIndex];
+
+        if (!section) {
             return;
         }
-        
-        // TODO: remove
-        this.events.emit("enableForwardNav");
-        // If already played once, allow skipping immediately
-        if (sceneScript.playedOnce === true) {
-            this.events.emit("enableForwardNav");
-        } else {
-            // this.events.emit("disableForwardNav");
-        }
 
-        const dualComponents = sceneScript.dualComponents;
+        this.renderedComponents.removeAll(true); // Remove old text/images
+
         let completed = 0;
 
-        dualComponents.forEach(dc => {
-            renderDualComponent(this, dc, () => {
-                completed++;
-                if (completed === dualComponents.length) {
-                    if (!sceneScript.playedOnce) {
-                        this.events.emit("enableForwardNav"); // only emit if not previously allowed
+        if (section.dualComponents) {
+            section.dualComponents.forEach((dc: DualComponent) => {
+                renderDualComponent(this, dc, () => {
+                    completed++;
+                    if (completed === section.dualComponents?.length) {
+                        if (!section.playedOnce) {
+                            this.events.emit("enableForwardNav");
+                            section.playedOnce = true;
+                        }
                     }
-                    sceneScript.playedOnce = true;
-                }
+                });
             });
-        });
+        }
+    }
 
+    // You can call this after a click or timeout
+    private goToNextSection() {
+        this.currentSectionIndex++;
+        if (this.sceneScript.sections && this.currentSectionIndex >= this.sceneScript.sections.length) {
+            return false
+        } else {
+            this.renderCurrentSection();
+            return true
+        }
+    }
+
+    create() {
         super.create();
+        const sceneScript = SCRIPT[this.scene.key];
+        if (!sceneScript || !sceneScript.sections || sceneScript.sections.length === 0) {
+            return;
+        }
+
+        this.currentSectionIndex = 0; // Track which section you're on
+        this.sceneScript = sceneScript; // Save reference
+
+        this.renderCurrentSection(); // Render first section
+
     }
 }     

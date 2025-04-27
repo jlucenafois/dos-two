@@ -282,23 +282,13 @@ function handleQuizClick(context: Base, img: Image, renderedImage: Phaser.GameOb
         addCoins(50);
         context.events.emit("updateCoinsUI");
         context.events.emit("enableForwardNav");
-        removeInteractive(context, "renderedComponents");
-    }
-
-}
-
-function removeInteractive(context: Base, key: string) {
-    const objects = context[key as keyof Base] as Phaser.GameObjects.GameObject[];
-
-    if (Array.isArray(objects)) {
-        objects.forEach(obj => {
-            if ("removeInteractive" in obj && typeof obj.removeInteractive === "function") {
-                obj.removeInteractive();
+        context.renderedComponents.iterate((child: Phaser.GameObjects.GameObject) => {
+            if ('removeInteractive' in child) {
+                (child as Phaser.GameObjects.GameObject & { removeInteractive: () => void }).removeInteractive();
             }
         });
-    } else {
-        console.warn(`removeInteractive: context[${key}] is not an array.`);
     }
+
 }
 
 export function renderImage(context: Base, img: Image, isCorrect: boolean) {
@@ -313,7 +303,7 @@ export function renderImage(context: Base, img: Image, isCorrect: boolean) {
     const renderedImage = context.add.image(img.x, img.y, img.default).setOrigin(originX, originY);
 
     // Store reference
-    (context as Base).renderedComponents.push(renderedImage);
+    (context as Base).renderedComponents.add(renderedImage);
 
     let clicked = false;
     // quiz-specific
@@ -374,7 +364,7 @@ export function renderShape(context: Scene, ss: Shape) {
                 graphics.lineStyle(strokeWeight ?? 1, strokeColor, 1.0);
                 graphics.strokeRoundedRect(x, y, style.width, style.height, style.radius ?? 10);
             }
-            (context as Base).renderedComponents.push(graphics);
+            (context as Base).renderedComponents.add(graphics);
         },
     };
 
@@ -443,7 +433,7 @@ export function renderRichText(context: Scene, st: SingleText): WordObject[] {
                         );
                     }
 
-                    (context as Base).renderedComponents.push(strokeLayer);
+                    (context as Base).renderedComponents.add(strokeLayer);
                 }
 
                 // 2. Main text (always rendered)
@@ -455,7 +445,7 @@ export function renderRichText(context: Scene, st: SingleText): WordObject[] {
                 })
                     .setOrigin(0, 0);
 
-                (context as Base).renderedComponents.push(textObject);
+                (context as Base).renderedComponents.add(textObject);
 
                 wordObjects.push({
                     textObject,
@@ -492,17 +482,17 @@ export function renderDualText(
 
     if (preferredWordObjects && alternateWordObjects) {
         const isEnglish = CURRENT_SETTINGS.gameState.language === Language.English;
-    
+
         const preferredHighlighter = new TextHighlighter(
             preferredWordObjects,
             isEnglish ? Language.English : Language.Spanish
         );
-    
+
         const alternateHighlighter = new TextHighlighter(
             alternateWordObjects,
             isEnglish ? Language.Spanish : Language.English // switch for alternate
         );
-    
+
         const transcriptEnglish = context.cache.json.get(context.nameWithKey("transcript-english")).words;
         const audioEnglish = context.sound.add(context.nameWithKey("audio-transcript-english"));
         const transcriptSpanish = context.cache.json.get(context.nameWithKey("transcript-spanish")).words;

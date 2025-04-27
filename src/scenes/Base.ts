@@ -3,7 +3,6 @@
 /* START-USER-IMPORTS */
 import { SCRIPT } from "../script";
 import { CURRENT_SETTINGS, updateGameState } from "../settings";
-import { generateBasePositions, repositionAll } from "../utils";
 /* END-USER-IMPORTS */
 
 export default class Base extends Phaser.Scene {
@@ -16,7 +15,7 @@ export default class Base extends Phaser.Scene {
 		[key: string]: { x: number; y: number}
 	} = {};
 
-	public renderedComponents: Phaser.GameObjects.GameObject[] = [];
+	public renderedComponents!: Phaser.GameObjects.Container;
 	constructor(key:string) {
 		super(key);
 		const properties = SCRIPT[key] || {}; // Default to an empty object if SCRIPT[key] is undefined
@@ -58,6 +57,7 @@ export default class Base extends Phaser.Scene {
 
 	create() {
 		// Call updateGameState with the passed scene
+		this.renderedComponents = this.add.container(0, 0);
 		updateGameState(this);
 		if (this.getPcnt() != null) { 
 			this.events.emit("updateProgressBar", CURRENT_SETTINGS.gameState.pcnt); // Notify UI

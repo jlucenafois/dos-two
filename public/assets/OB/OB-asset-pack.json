@@ -2,6 +2,26 @@
     "section1": {
         "files": [
             {
+                "url": "assets/transcript/OB/audio/1.wav",
+                "type": "audio",
+                "key": "1"
+            },
+            {
+                "url": "assets/transcript/OB/audio/2-choose.wav",
+                "type": "audio",
+                "key": "2-choose"
+            },
+            {
+                "url": "assets/transcript/OB/audio/2-language-games.wav",
+                "type": "audio",
+                "key": "2-language-games"
+            },
+            {
+                "url": "assets/transcript/OB/audio/2-storytime-merged.wav",
+                "type": "audio",
+                "key": "2-storytime-merged"
+            },
+            {
                 "url": "assets/OB/2.2 Blink_450x630.png",
                 "frameConfig": {
                     "frameWidth": 450,
@@ -15,10 +35,99 @@
                 "key": "2.2 Blink_450x630"
             },
             {
+                "url": "assets/transcript/OB/audio/3.1-line-1.wav",
+                "type": "audio",
+                "key": "3.1-line-1"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.1-line-2.wav",
+                "type": "audio",
+                "key": "3.1-line-2"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.1-line-3.wav",
+                "type": "audio",
+                "key": "3.1-line-3"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.2-line-1.wav",
+                "type": "audio",
+                "key": "3.2-line-1"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.2-line-2.wav",
+                "type": "audio",
+                "key": "3.2-line-2"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.2-line-3.wav",
+                "type": "audio",
+                "key": "3.2-line-3"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.2-line-4.wav",
+                "type": "audio",
+                "key": "3.2-line-4"
+            },
+            {
+                "url": "assets/transcript/OB/audio/4.wav",
+                "type": "audio",
+                "key": "4"
+            },
+            {
+                "url": "assets/transcript/OB/audio/5-option-1.wav",
+                "type": "audio",
+                "key": "5-option-1"
+            },
+            {
+                "url": "assets/transcript/OB/audio/5-option-2.wav",
+                "type": "audio",
+                "key": "5-option-2"
+            },
+            {
                 "textureURL": "assets/OB/BowlbyOne/BowlbyOne.png",
                 "fontDataURL": "assets/OB/BowlbyOne/BowlbyOne.xml",
                 "type": "bitmapFont",
                 "key": "BowlbyOne"
+            },
+            {
+                "url": "assets/OB/confetti.png",
+                "frameConfig": {
+                    "frameWidth": 1000,
+                    "frameHeight": 800,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "confetti"
+            },
+            {
+                "url": "assets/OB/confetti_sm.png",
+                "frameConfig": {
+                    "frameWidth": 395,
+                    "frameHeight": 308,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "confetti_sm"
+            },
+            {
+                "url": "assets/OB/confetti_sm_2.png",
+                "frameConfig": {
+                    "frameWidth": 529,
+                    "frameHeight": 413,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "confetti_sm_2"
             },
             {
                 "url": "assets/OB/default_play_lg.png",
@@ -34,6 +143,11 @@
                 "url": "assets/OB/english_bubble_hovered.png",
                 "type": "image",
                 "key": "english_bubble_hovered"
+            },
+            {
+                "url": "assets/OB/front_cover.png",
+                "type": "image",
+                "key": "front_cover"
             },
             {
                 "url": "assets/OB/game_mode.png",
@@ -101,80 +215,15 @@
                 "key": "spanish_bubble_hovered"
             },
             {
+                "url": "assets/OB/title.png",
+                "type": "image",
+                "key": "title"
+            },
+            {
                 "url": "assets/OB/word_button.png",
                 "type": "image",
                 "key": "word_button"
-            },
-            {
-                "url": "assets/transcript/OB/audio/1.wav",
-                "type": "audio",
-                "key": "1"
-            },
-            {
-                "url": "assets/transcript/OB/audio/2-choose.wav",
-                "type": "audio",
-                "key": "2-choose"
-            },
-            {
-                "url": "assets/transcript/OB/audio/2-language-games.wav",
-                "type": "audio",
-                "key": "2-language-games"
-            },
-            {
-                "url": "assets/transcript/OB/audio/2-storytime-merged.wav",
-                "type": "audio",
-                "key": "2-storytime-merged"
-            },
-            {
-                "url": "assets/transcript/OB/audio/3.1-line-1.wav",
-                "type": "audio",
-                "key": "3.1-line-1"
-            },
-            {
-                "url": "assets/transcript/OB/audio/3.1-line-2.wav",
-                "type": "audio",
-                "key": "3.1-line-2"
-            },
-            {
-                "url": "assets/transcript/OB/audio/3.1-line-3.wav",
-                "type": "audio",
-                "key": "3.1-line-3"
-            },
-            {
-                "url": "assets/transcript/OB/audio/3.2-line-1.wav",
-                "type": "audio",
-                "key": "3.2-line-1"
-            },
-            {
-                "url": "assets/transcript/OB/audio/3.2-line-2.wav",
-                "type": "audio",
-                "key": "3.2-line-2"
-            },
-            {
-                "url": "assets/transcript/OB/audio/3.2-line-3.wav",
-                "type": "audio",
-                "key": "3.2-line-3"
-            },
-            {
-                "url": "assets/transcript/OB/audio/3.2-line-4.wav",
-                "type": "audio",
-                "key": "3.2-line-4"
-            },
-            {
-                "url": "assets/transcript/OB/audio/4.wav",
-                "type": "audio",
-                "key": "4"
-            },
-            {
-                "url": "assets/transcript/OB/audio/5-option-1.wav",
-                "type": "audio",
-                "key": "5-option-1"
-            },
-            {
-                "url": "assets/transcript/OB/audio/5-option-2.wav",
-                "type": "audio",
-                "key": "5-option-2"
-            }            
+            }
         ]
     },
     "meta": {

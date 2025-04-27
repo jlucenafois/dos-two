@@ -158,6 +158,76 @@
                 "key": "6_stars"
             },
             {
+                "url": "assets/story/sprite/7 Clarita_450x540.png",
+                "frameConfig": {
+                    "frameWidth": 450,
+                    "frameHeight": 540,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "7 Clarita_450x540"
+            },
+            {
+                "url": "assets/story/bg/7X8 Background.png",
+                "type": "image",
+                "key": "7X8 Background"
+            },
+            {
+                "url": "assets/story/sprite/8.1 Reading_512x512.png",
+                "frameConfig": {
+                    "frameWidth": 512,
+                    "frameHeight": 512,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "8.1 Reading_512x512"
+            },
+            {
+                "url": "assets/story/sprite/8.2 Parrot_180x200.png",
+                "frameConfig": {
+                    "frameWidth": 180,
+                    "frameHeight": 200,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "8.2 Parrot_180x200"
+            },
+            {
+                "url": "assets/story/sprite/8.3 Stars 700x200.png",
+                "frameConfig": {
+                    "frameWidth": 700,
+                    "frameHeight": 200,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "8.3 Stars 700x200"
+            },
+            {
+                "url": "assets/story/sprite/8.4 Lamp 150x250.png",
+                "frameConfig": {
+                    "frameWidth": 150,
+                    "frameHeight": 250,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "8.4 Lamp 150x250"
+            },
+            {
                 "url": "assets/story/open_cover/cover_0.png",
                 "type": "image",
                 "key": "cover_0"

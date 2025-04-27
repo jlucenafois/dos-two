@@ -306,21 +306,31 @@ export default class OB_UI extends Base {
 			this.next_page.setTexture("pressed_next_lg"); // Change to pressed state
 		});
 
-		// Release effect (if still hovered)
 		this.next_page.on("pointerup", () => {
-			this.next_page.setTexture("default_next_lg"); // Reset to hover state
-
-			// If the current scene is P_0, trigger "playAnim"
-			if (CURRENT_SETTINGS.gameState.currScene === "P_0") {
+			this.next_page.setTexture("default_next_lg");
+		
+			const currSceneKey = CURRENT_SETTINGS.gameState.currScene;
+			const currScene = this.scene.get(currSceneKey!) as Phaser.Scene & { goToNextSection?: () => boolean };
+		
+			if (currSceneKey === "P_0") {
 				this.events.emit("openCover");
-				CURRENT_SETTINGS.gameState.hasOpenedCover = true
-			} else if (CURRENT_SETTINGS.gameState.nextScene) {
-				this.stopAllScenes(["OB_UI"])
-				this.sound.stopAll()
-				this.scene.launch(CURRENT_SETTINGS.gameState.nextScene)
+				CURRENT_SETTINGS.gameState.hasOpenedCover = true;
+			} 
+			else if (currScene?.goToNextSection) {
+				const advanced = currScene.goToNextSection();
+				if (advanced === false && CURRENT_SETTINGS.gameState.nextScene) {
+					this.stopAllScenes(["OB_UI"]);
+					this.sound.stopAll();
+					this.scene.launch(CURRENT_SETTINGS.gameState.nextScene);
+				}
+			} 
+			else if (CURRENT_SETTINGS.gameState.nextScene) {
+				this.stopAllScenes(["OB_UI"]);
+				this.sound.stopAll();
+				this.scene.launch(CURRENT_SETTINGS.gameState.nextScene);
 			}
 		});
-
+		
 		// Mouse out effect (Reset to normal)
 		this.next_page.on("pointerout", () => {
 			this.next_page.setTexture("default_next_lg");
