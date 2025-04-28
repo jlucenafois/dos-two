@@ -5,7 +5,8 @@
 
 import Base from "../Base";
 /* START-USER-IMPORTS */
-import {CURRENT_SETTINGS} from '../../settings.ts'
+import { CURRENT_SETTINGS } from '../../settings.ts'
+import { SCRIPT } from "../../script.ts";
 /* END-USER-IMPORTS */
 
 export default class OB_UI extends Base {
@@ -91,11 +92,11 @@ export default class OB_UI extends Base {
 	registerListeners() {
 		this.scene.manager.scenes.forEach(scene => {
 			if (scene instanceof Base) {
-				scene.events.on("showSideArrows", this.showSideArrows, this);		
-				scene.events.on("hideSideArrows", this.hideSideArrows, this);		
-				scene.events.on("showBook", this.showBook, this);		
-				scene.events.on("hideBook", this.hideBook, this);		
-				scene.events.on("showOBUI", this.showOBUI, this);		
+				scene.events.on("showSideArrows", this.showSideArrows, this);
+				scene.events.on("hideSideArrows", this.hideSideArrows, this);
+				scene.events.on("showBook", this.showBook, this);
+				scene.events.on("hideBook", this.hideBook, this);
+				scene.events.on("showOBUI", this.showOBUI, this);
 				scene.events.on("changeBackground", this.changeBackground, this);
 				scene.events.on("updateProgressBar", this.updateProgressBar, this)
 				scene.events.on("hideProgressBar", this.hideProgressBar, this)
@@ -226,7 +227,7 @@ export default class OB_UI extends Base {
 		});
 
 
-	/* SOUND */
+		/* SOUND */
 		this.sound_control.setInteractive({ useHandCursor: true });
 
 		let isMuted = localStorage.getItem("muteState") === "true"; // Load saved state
@@ -234,7 +235,7 @@ export default class OB_UI extends Base {
 		this.sound_control.setTexture(isMuted ? "default_muted_lg" : "default_unmuted_lg");
 
 		this.sound_control.on("pointerdown", () => {
-			this.sound_control.setTexture(isMuted ? "pressed_muted_lg" : "pressed_unmuted_lg"); 
+			this.sound_control.setTexture(isMuted ? "pressed_muted_lg" : "pressed_unmuted_lg");
 		});
 
 		this.sound_control.on("pointerup", () => {
@@ -249,7 +250,7 @@ export default class OB_UI extends Base {
 			this.sound_control.setTexture(isMuted ? "default_muted_lg" : "default_unmuted_lg");
 		});
 
-	/* EXIT */ 
+		/* EXIT */
 		this.exit.setInteractive({ useHandCursor: true });
 
 		// Mouse press effect
@@ -271,7 +272,7 @@ export default class OB_UI extends Base {
 			this.exit.setTexture("default_exit_lg");
 		});
 
-	/* BACK LG*/ 
+		/* BACK LG*/
 		this.prev_page.setInteractive({ useHandCursor: true });
 
 		// Mouse press effect
@@ -281,24 +282,54 @@ export default class OB_UI extends Base {
 
 		// Release effect (if still hovered)
 		this.prev_page.on("pointerup", () => {
-			this.prev_page.setTexture("default_back_lg"); // Reset to hover state
-			if (CURRENT_SETTINGS.gameState.currScene == "P_1") {
-				this.hideBook()
-				CURRENT_SETTINGS.gameState.hasOpenedCover = false
-			} 
-			if (CURRENT_SETTINGS.gameState.prevScene) {
-				this.stopAllScenes(["OB_UI"])
-				this.sound.stopAll()
-				this.scene.launch(CURRENT_SETTINGS.gameState.prevScene)
+			this.prev_page.setTexture("default_back_lg");
+
+			const currSceneKey = CURRENT_SETTINGS.gameState.currScene;
+			const currScene = this.scene.get(currSceneKey!) as Phaser.Scene & { goToPreviousSection?: () => boolean };
+
+			if (currSceneKey === "P_1") {
+				this.hideBook();
+				CURRENT_SETTINGS.gameState.hasOpenedCover = false;
+			}
+
+			if (currScene?.goToPreviousSection) {
+				const success = currScene.goToPreviousSection();
+				if (!success && CURRENT_SETTINGS.gameState.prevScene) {
+					// Before launching prevScene, set it to its last section
+					const prevSceneKey = CURRENT_SETTINGS.gameState.prevScene;
+					const prevSceneScript = SCRIPT[prevSceneKey];
+
+					if (prevSceneScript?.sections?.length) {
+						prevSceneScript.lastVisitedSectionIndex = prevSceneScript.sections.length - 1;
+					}
+
+					this.stopAllScenes(["OB_UI"]);
+					this.sound.stopAll();
+					this.scene.launch(prevSceneKey);
+				}
+			} else if (CURRENT_SETTINGS.gameState.prevScene) {
+				// Fallback: no sections handling
+				const prevSceneKey = CURRENT_SETTINGS.gameState.prevScene;
+				const prevSceneScript = SCRIPT[prevSceneKey];
+
+				if (prevSceneScript?.sections?.length) {
+					prevSceneScript.lastVisitedSectionIndex = prevSceneScript.sections.length - 1;
+				}
+
+				this.stopAllScenes(["OB_UI"]);
+				this.sound.stopAll();
+				this.scene.launch(prevSceneKey);
 			}
 		});
+
+
 
 		// Mouse out effect (Reset to normal)
 		this.prev_page.on("pointerout", () => {
 			this.prev_page.setTexture("default_back_lg");
 		});
 
-	/* NEXT LG*/ 
+		/* NEXT LG*/
 		this.next_page.setInteractive({ useHandCursor: true });
 
 		// Mouse press effect
@@ -308,29 +339,45 @@ export default class OB_UI extends Base {
 
 		this.next_page.on("pointerup", () => {
 			this.next_page.setTexture("default_next_lg");
-		
+
 			const currSceneKey = CURRENT_SETTINGS.gameState.currScene;
 			const currScene = this.scene.get(currSceneKey!) as Phaser.Scene & { goToNextSection?: () => boolean };
-		
+
 			if (currSceneKey === "P_0") {
 				this.events.emit("openCover");
 				CURRENT_SETTINGS.gameState.hasOpenedCover = true;
-			} 
+			}
 			else if (currScene?.goToNextSection) {
 				const advanced = currScene.goToNextSection();
 				if (advanced === false && CURRENT_SETTINGS.gameState.nextScene) {
+					// Reset next scene's section index to 0
+					const nextSceneKey = CURRENT_SETTINGS.gameState.nextScene;
+					const nextSceneScript = SCRIPT[nextSceneKey];
+
+					if (nextSceneScript?.sections?.length) {
+						nextSceneScript.lastVisitedSectionIndex = 0;
+					}
+
 					this.stopAllScenes(["OB_UI"]);
 					this.sound.stopAll();
-					this.scene.launch(CURRENT_SETTINGS.gameState.nextScene);
+					this.scene.launch(nextSceneKey);
 				}
-			} 
+			}
 			else if (CURRENT_SETTINGS.gameState.nextScene) {
+				const nextSceneKey = CURRENT_SETTINGS.gameState.nextScene;
+				const nextSceneScript = SCRIPT[nextSceneKey];
+
+				if (nextSceneScript?.sections?.length) {
+					nextSceneScript.lastVisitedSectionIndex = 0;
+				}
+
 				this.stopAllScenes(["OB_UI"]);
 				this.sound.stopAll();
-				this.scene.launch(CURRENT_SETTINGS.gameState.nextScene);
+				this.scene.launch(nextSceneKey);
 			}
 		});
-		
+
+
 		// Mouse out effect (Reset to normal)
 		this.next_page.on("pointerout", () => {
 			this.next_page.setTexture("default_next_lg");

@@ -67,15 +67,13 @@ export default class P_Base extends Base {
     // Write your code here
     private currentSectionIndex: number = 0;
     private sceneScript!: typeof SCRIPT[string];
+    public mainContainer!: Phaser.GameObjects.Container
 
     private renderCurrentSection() {
         const section = this.sceneScript.sections?.[this.currentSectionIndex];
+        if (!section) return;
 
-        if (!section) {
-            return;
-        }
-
-        this.renderedComponents.removeAll(true); // Remove old text/images
+        this.renderedComponents.removeAll(true); // Clear old text
 
         let completed = 0;
 
@@ -94,28 +92,105 @@ export default class P_Base extends Base {
         }
     }
 
-    // You can call this after a click or timeout
-    private goToNextSection() {
-        this.currentSectionIndex++;
-        if (this.sceneScript.sections && this.currentSectionIndex >= this.sceneScript.sections.length) {
-            return false
-        } else {
-            this.renderCurrentSection();
-            return true
-        }
+    private panContainer(container: Phaser.GameObjects.Container, deltaX: number, onComplete?: () => void) {
+        const duration = 2000;
+
+        this.tweens.add({
+            targets: container,
+            x: container.x + deltaX,
+            ease: 'Sine.easeInOut',
+            duration: duration,
+            onComplete: onComplete, // ✅ Call back when finished
+        });
     }
+
+
+
+
+    // You can call this after a click or timeout
+    public goToNextSection(): boolean {
+
+        const currSection = this.sceneScript.sections?.[this.currentSectionIndex];
+
+        this.currentSectionIndex++;
+        const nextSection = this.sceneScript.sections?.[this.currentSectionIndex];
+
+        if (!nextSection) {
+            return false; // No more sections
+        }
+
+        // If there's a panDeltaX for this new section
+        if (currSection!.panDeltaX && this.mainContainer) {
+            this.panContainer(this.mainContainer, currSection!.panDeltaX, () => {
+                this.renderCurrentSection(); // Only render text AFTER panning
+            });
+        } else {
+            this.renderCurrentSection(); // No pan, render immediately
+        }
+
+        return true;
+    }
+
+    private adjustMainContainerPosition() {
+        if (!this.mainContainer) return;
+    
+        let totalOffset = 0;
+    
+        for (let i = 0; i < this.currentSectionIndex; i++) {
+            const section = this.sceneScript.sections?.[i];
+            if (section?.panDeltaX) {
+                totalOffset += section.panDeltaX;
+            }
+        }
+    
+        this.mainContainer.x = 398 + totalOffset; // 398 is your initial container.x in editorCreate
+    }
+    
+    // You can call this after a click or timeout
+    public goToPreviousSection(): boolean {
+
+        if (this.currentSectionIndex === 0) {
+            return false; // Already at first section
+        }
+        
+        const currSection = this.sceneScript.sections?.[this.currentSectionIndex];
+
+        this.currentSectionIndex--;
+        const prevSection = this.sceneScript.sections?.[this.currentSectionIndex];
+
+        if (!prevSection) {
+            return false; // No more sections
+        }
+
+        // If there's a panDeltaX for this new section
+        if (currSection!.panDeltaX && this.mainContainer) {
+            this.panContainer(this.mainContainer, currSection!.panDeltaX, () => {
+                this.renderCurrentSection(); // Only render text AFTER panning
+            });
+        } else {
+            this.renderCurrentSection(); // No pan, render immediately
+        }
+
+        return true;
+    }
+    
+
 
     create() {
         super.create();
+    
         const sceneScript = SCRIPT[this.scene.key];
         if (!sceneScript || !sceneScript.sections || sceneScript.sections.length === 0) {
             return;
         }
-
-        this.currentSectionIndex = 0; // Track which section you're on
-        this.sceneScript = sceneScript; // Save reference
-
-        this.renderCurrentSection(); // Render first section
-
+    
+        // Start at last visited section if set
+        this.currentSectionIndex = sceneScript.lastVisitedSectionIndex ?? 0;
+        this.sceneScript = sceneScript;
+    
+        this.adjustMainContainerPosition(); // <<--- 🛠 fix container offset first
+        this.renderCurrentSection();
+        
     }
-}     
+    
+}

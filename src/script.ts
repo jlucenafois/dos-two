@@ -9,6 +9,7 @@ type Section = {
         [Language.English]: SingleComponent[],
         [Language.Spanish]: SingleComponent[]
     },
+    panDeltaX?: number
     // TODO: are indexes part of sections or pages?
     // index?: number,
     // total?: number, // might be a better way
@@ -46,7 +47,7 @@ const CHAPTERS: Record<string, number> = {
     "CH_7": 1,
     "CH_8": 8,
 }
-export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | string; next_key: null | string; index?: number, total?: number }> = {
+export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | string; next_key: null | string; index?: number, total?: number, lastVisitedSectionIndex?: number}> = {
     OB_1: {
         prev_key: null,
         next_key: "OB_2",
@@ -354,6 +355,7 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
         total: CHAPTERS["CH_1"],
         prev_key: "P_3",
         next_key: "Q_1",
+        
     },
     Q_1: {
         sections: [{
@@ -493,80 +495,137 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
         next_key: "P_5",
     },
     P_5: {
-        sections: [{
-        }
+        sections: [
+            {
+                panDeltaX: -1000,
+                dualComponents: [{
+                    coordinates: {
+                        preferredX: 448,
+                        preferredY: 232,
+                        alternateX: 902,
+                        alternateY: 232,
+                    },
+                    dualShape: {
+                        spanishShape: {
+                            type: SupportedShape.RoundedRect,
+                            style: {
+                                width: 419,
+                                height: 81,
+                                radius: 16,
+                                style: {
+                                    fillColor: 0xFFFFFF,
+                                    strokeColor: 0xFF9C1A,
+                                    strokeWeight: 4,
+                                    shadowOffset: 16,
+                                    shadowFill: 0xF9A336,
+                                    shadowAlpha: 1,
+                                }
+                            }
+                        },
+                        englishShape: {
+                            type: SupportedShape.RoundedRect,
+                            style: {
+                                width: 419,
+                                height: 81,
+                                radius: 16,
+                                style: {
+                                    fillColor: 0xFFFFFF,
+                                    strokeColor: 0x4CDAFE,
+                                    strokeWeight: 4,
+                                    shadowOffset: 16,
+                                    shadowFill: 0x01B4ED,
+                                    shadowAlpha: 1,
+                                }
+                            }
+                        }
+                    },
+                    dualText: {
+                        spanishText: {
+                            content: [
+                                { text: 'En la ' },
+                                { text: 'escuela', style: SPANISH_HIGHLIGHT },
+                                { text: ', hablo inglés.' }
+                            ],
+                            box: 'shape'
+                        },
+                        englishText: {
+                            content: [
+                                { text: 'At ' },
+                                { text: 'school', style: ENGLISH_HIGHLIGHT },
+                                { text: ', I speak English.' }
+                            ],
+                            box: 'shape'
+                        }
+                    }
+                }],
+            },
+            {
+                panDeltaX: 1000,
+                dualComponents: [{
+                    coordinates: {
+                        preferredX: 437,
+                        preferredY: 801,
+                        alternateX: 914,
+                        alternateY: 801,
+                    },
+                    dualShape: {
+                        spanishShape: {
+                            type: SupportedShape.RoundedRect,
+                            style: {
+                                width: 419,
+                                height: 114,
+                                radius: 16,
+                                style: {
+                                    fillColor: 0xFFFFFF,
+                                    strokeColor: 0xFF9C1A,
+                                    strokeWeight: 4,
+                                    shadowOffset: 16,
+                                    shadowFill: 0xF9A336,
+                                    shadowAlpha: 1,
+                                }
+                            }
+                        },
+                        englishShape: {
+                            type: SupportedShape.RoundedRect,
+                            style: {
+                                width: 419,
+                                height: 114,
+                                radius: 16,
+                                style: {
+                                    fillColor: 0xFFFFFF,
+                                    strokeColor: 0x4CDAFE,
+                                    strokeWeight: 4,
+                                    shadowOffset: 16,
+                                    shadowFill: 0x01B4ED,
+                                    shadowAlpha: 1,
+                                }
+                            }
+                        }
+                    },
+                    dualText: {
+                        spanishText: {
+                            content: [
+                                { text: 'En ' },
+                                { text: 'casa', style: SPANISH_HIGHLIGHT },
+                                { text: ', escucho cuentos en\nespañol.' }
+                            ],
+                            box: 'shape'
+                        },
+                        englishText: {
+                            content: [
+                                { text: 'At ' },
+                                { text: 'home', style: ENGLISH_HIGHLIGHT },
+                                { text: ', I listen to stories in\nSpanish.' }
+                            ],
+                            box: 'shape'
+                        }
+                    }
+                }],
+            },
         ],
         index: 0,
-        total: CHAPTERS["CH_2"],
+        total: CHAPTERS["CH_3"],
         prev_key: "Q_1",
-        next_key: "P_6",
-    },
-    P_6: {
-        sections: [{
-            dualComponents: [{
-                coordinates: {
-                    preferredX: 928,
-                    preferredY: 235,
-                    alternateX: 928,
-                    alternateY: 381,
-                },
-                dualShape: {
-                    spanishShape: {
-                        type: SupportedShape.RoundedRect,
-                        style: {
-                            width: 419,
-                            height: 114,
-                            radius: 16,
-                            style: {
-                                fillColor: 0xFFFFFF,
-                                strokeColor: 0xFF9C1A,
-                                strokeWeight: 4,
-                                shadowOffset: 16,
-                                shadowFill: 0xF9A336,
-                                shadowAlpha: 1,
-                            }
-                        }
-                    },
-                    englishShape: {
-                        type: SupportedShape.RoundedRect,
-                        style: {
-                            width: 419,
-                            height: 114,
-                            radius: 16,
-                            style: {
-                                fillColor: 0xFFFFFF,
-                                strokeColor: 0x4CDAFE,
-                                strokeWeight: 4,
-                                shadowOffset: 16,
-                                shadowFill: 0x01B4ED,
-                                shadowAlpha: 1,
-                            }
-                        }
-                    }
-                },
-                dualText: {
-                    spanishText: {
-                        content: [
-                            { text: 'Pero crecí en Nueva York, donde hace mucho ' },
-                            { text: 'frío', style: SPANISH_HIGHLIGHT },
-                            { text: '.' }
-                        ],
-                        box: 'shape'
-                    },
-                    englishText: {
-                        content: [
-                            { text: 'But I grew up in New York, where it is very ' },
-                            { text: 'cold', style: ENGLISH_HIGHLIGHT },
-                            { text: '.' }
-                        ],
-                        box: 'shape'
-                    }
-                }
-            }],
-        }],
-        index: 1,
-        total: CHAPTERS["CH_2"],
-        prev_key: "P_5",
         next_key: "Q_2",
     },
     Q_2: {
@@ -690,143 +749,10 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
         }],
         index: 2,
         total: CHAPTERS["CH_2"],
-        prev_key: "P_6",
-        next_key: "P_7",
+        prev_key: "P_5",
+        next_key: "P_6",
     },
-    P_7: {
-        sections: [
-            {
-                dualComponents: [{
-                    coordinates: {
-                        preferredX: 448,
-                        preferredY: 232,
-                        alternateX: 902,
-                        alternateY: 232,
-                    },
-                    dualShape: {
-                        spanishShape: {
-                            type: SupportedShape.RoundedRect,
-                            style: {
-                                width: 419,
-                                height: 81,
-                                radius: 16,
-                                style: {
-                                    fillColor: 0xFFFFFF,
-                                    strokeColor: 0xFF9C1A,
-                                    strokeWeight: 4,
-                                    shadowOffset: 16,
-                                    shadowFill: 0xF9A336,
-                                    shadowAlpha: 1,
-                                }
-                            }
-                        },
-                        englishShape: {
-                            type: SupportedShape.RoundedRect,
-                            style: {
-                                width: 419,
-                                height: 81,
-                                radius: 16,
-                                style: {
-                                    fillColor: 0xFFFFFF,
-                                    strokeColor: 0x4CDAFE,
-                                    strokeWeight: 4,
-                                    shadowOffset: 16,
-                                    shadowFill: 0x01B4ED,
-                                    shadowAlpha: 1,
-                                }
-                            }
-                        }
-                    },
-                    dualText: {
-                        spanishText: {
-                            content: [
-                                { text: 'En la ' },
-                                { text: 'escuela', style: SPANISH_HIGHLIGHT },
-                                { text: ', hablo inglés.' }
-                            ],
-                            box: 'shape'
-                        },
-                        englishText: {
-                            content: [
-                                { text: 'At ' },
-                                { text: 'school', style: ENGLISH_HIGHLIGHT },
-                                { text: ', I speak English.' }
-                            ],
-                            box: 'shape'
-                        }
-                    }
-                }],
-            },
-            {
-
-                dualComponents: [{
-                    coordinates: {
-                        preferredX: 437,
-                        preferredY: 801,
-                        alternateX: 914,
-                        alternateY: 801,
-                    },
-                    dualShape: {
-                        spanishShape: {
-                            type: SupportedShape.RoundedRect,
-                            style: {
-                                width: 419,
-                                height: 114,
-                                radius: 16,
-                                style: {
-                                    fillColor: 0xFFFFFF,
-                                    strokeColor: 0xFF9C1A,
-                                    strokeWeight: 4,
-                                    shadowOffset: 16,
-                                    shadowFill: 0xF9A336,
-                                    shadowAlpha: 1,
-                                }
-                            }
-                        },
-                        englishShape: {
-                            type: SupportedShape.RoundedRect,
-                            style: {
-                                width: 419,
-                                height: 114,
-                                radius: 16,
-                                style: {
-                                    fillColor: 0xFFFFFF,
-                                    strokeColor: 0x4CDAFE,
-                                    strokeWeight: 4,
-                                    shadowOffset: 16,
-                                    shadowFill: 0x01B4ED,
-                                    shadowAlpha: 1,
-                                }
-                            }
-                        }
-                    },
-                    dualText: {
-                        spanishText: {
-                            content: [
-                                { text: 'En ' },
-                                { text: 'casa', style: SPANISH_HIGHLIGHT },
-                                { text: ', escucho cuentos en\nespañol.' }
-                            ],
-                            box: 'shape'
-                        },
-                        englishText: {
-                            content: [
-                                { text: 'At ' },
-                                { text: 'home', style: ENGLISH_HIGHLIGHT },
-                                { text: ', I listen to stories in\nSpanish.' }
-                            ],
-                            box: 'shape'
-                        }
-                    }
-                }],
-            },
-        ],
-        index: 0,
-        total: CHAPTERS["CH_3"],
-        prev_key: "Q_2",
-        next_key: "P_9",
-    },
-    P_8: {
+    P_6: {
         sections: [
             {
 
@@ -893,10 +819,10 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
             }],
         index: 0,
         total: CHAPTERS["CH_3"],
-        prev_key: "P_7",
-        next_key: "P_9",
+        prev_key: "Q_2",
+        next_key: "P_7",
     },
-    P_9: {
+    P_7: {
         sections: [{
 
             dualComponents: [{
@@ -961,7 +887,7 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
         prev_key: 'P_7',
         next_key: "P_10",
     },
-    P_10: {
+    P_8: {
         sections: [{
             dualComponents: [],
         },
@@ -971,7 +897,7 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
         prev_key: "P_9",
         next_key: "P_11",
     },
-    P_11: {
+    P_9: {
         sections: [{
 
             dualComponents: [],

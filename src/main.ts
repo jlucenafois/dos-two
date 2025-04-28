@@ -18,7 +18,6 @@ import P_3 from "./scenes/story/P_3";
 import P_4 from "./scenes/story/P_4";
 import P_5 from "./scenes/story/P_5";
 import P_6 from "./scenes/story/P_6";
-import P_7 from "./scenes/story/P_7";
 import P_8 from "./scenes/story/P_8";
 import P_9 from "./scenes/story/P_9";
 import P_10 from "./scenes/story/P_10";
@@ -85,7 +84,7 @@ window.addEventListener('load', function () {
 		scene: [
             Boot, Preload, OB_UI, OB_1, OB_2, OB_3_1, OB_3_2, OB_4,
             P_0, P_1, P_2, P_3, P_4, P_5,
-            P_6, P_7, P_8, P_9, P_10, P_11, P_12, P_13, P_14, P_15, P_16,
+            P_6, P_8, P_9, P_10, P_11, P_12, P_13, P_14, P_15, P_16,
             P_17, P_18, P_19, P_20, P_21, P_22, P_23, P_24, P_25, P_26,
             P_27, P_28, P_29, P_30, P_31, P_32,
             Q_1, Q_2

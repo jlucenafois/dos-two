@@ -503,12 +503,12 @@ export function renderDualText(
         const transcriptAlt = isEnglish ? transcriptSpanish : transcriptEnglish;
         const audioAlt = isEnglish ? audioSpanish : audioEnglish;
 
-        playAudioWithSync(context, preferredHighlighter, transcriptPreferred, audioPreferred, 2000, () => {
-            playAudioWithSync(context, alternateHighlighter, transcriptAlt, audioAlt, 1000, () => {
-                onComplete?.(); // ✅ call here only after both finish
-            });
-        });
-    } else {
+        //     playAudioWithSync(context, preferredHighlighter, transcriptPreferred, audioPreferred, 2000, () => {
+        //         playAudioWithSync(context, alternateHighlighter, transcriptAlt, audioAlt, 1000, () => {
+        //             onComplete?.(); // ✅ call here only after both finish
+        //         });
+        //     });
+        // } else {
         onComplete?.(); // fallback
     }
 }

@@ -1,5 +1,5 @@
 {
-    "id": "3d94637a-37f8-4502-912f-6abe28fa192f",
+    "id": "90292ca0-3481-4a53-807e-170a27064d04",
     "sceneType": "SCENE",
     "settings": {
         "exportClass": true,
@@ -12,7 +12,106 @@
         "borderWidth": 1728,
         "borderHeight": 1117
     },
-    "displayList": [],
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "4744701e-1c91-4386-a7f2-152372a1c6ea",
+            "label": "container_1",
+            "scope": "CLASS",
+            "blendMode": -1,
+            "x": 398,
+            "y": 174,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "6cb5e2a6-05ba-4bb3-8e9d-148735f35cb9",
+                    "label": "p5_bg",
+                    "texture": {
+                        "key": "7X8 Background"
+                    },
+                    "scaleX": 0.6691453859371791,
+                    "scaleY": 0.6691453859371791,
+                    "originX": 0,
+                    "originY": 0
+                },
+                {
+                    "type": "Sprite",
+                    "id": "c83ccafc-0a9b-47c8-9059-e26c9f24b7e4",
+                    "label": "anim_4",
+                    "texture": {
+                        "key": "8.4 Lamp 150x250",
+                        "frame": 0
+                    },
+                    "x": 1843,
+                    "y": 134,
+                    "originX": 0,
+                    "originY": 0,
+                    "animationKey": "8_4_anim",
+                    "animationPreview": true
+                },
+                {
+                    "type": "Sprite",
+                    "id": "2dc56e1b-9f6b-4c3d-ab3c-5a06070215dd",
+                    "label": "anim_1",
+                    "texture": {
+                        "key": "8.1 Reading_512x512",
+                        "frame": 0
+                    },
+                    "x": 1427,
+                    "y": 48,
+                    "originX": 0,
+                    "originY": 0,
+                    "animationKey": "8_1_anim",
+                    "animationPreview": true
+                },
+                {
+                    "type": "Sprite",
+                    "id": "4b94cc22-50bf-46a0-9c34-c894ed53b31d",
+                    "label": "anim_2",
+                    "texture": {
+                        "key": "8.2 Parrot_180x200",
+                        "frame": 0
+                    },
+                    "x": 1334,
+                    "y": 319,
+                    "originX": 0,
+                    "originY": 0,
+                    "animationKey": "8_2_anim",
+                    "animationPreview": true
+                },
+                {
+                    "type": "Sprite",
+                    "id": "564f8de8-8872-44c6-94d7-a8032c33591e",
+                    "label": "anim_3",
+                    "texture": {
+                        "key": "8.3 Stars 700x200",
+                        "frame": 0
+                    },
+                    "x": 929,
+                    "y": 2,
+                    "originX": 0,
+                    "originY": 0,
+                    "animationKey": "8_3_anim"
+                },
+                {
+                    "type": "Sprite",
+                    "id": "819dbed9-3bb6-44b9-b826-9dc1de3b994d",
+                    "label": "anim",
+                    "texture": {
+                        "key": "7 Clarita_450x540",
+                        "frame": 0
+                    },
+                    "x": 324,
+                    "y": 206,
+                    "originX": 0,
+                    "originY": 0,
+                    "animationPlayMethod": 1,
+                    "animationKey": "7_anim",
+                    "animationPreview": true
+                }
+            ]
+        }
+    ],
     "plainObjects": [],
     "meta": {
         "app": "Phaser Editor - Scene Editor",
