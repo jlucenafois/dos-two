@@ -31,7 +31,13 @@
             "isHighlighted": false
         },
         {
-            "text": "espejo.",
+            "text": "espejo",
+            "start": 1.66,
+            "end": 2.24,
+            "isHighlighted": false
+        },
+        {
+            "text": ".",
             "start": 1.66,
             "end": 2.24,
             "isHighlighted": false

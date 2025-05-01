@@ -1,5 +1,5 @@
 {
-    "id": "b8953e82-833d-45ae-8678-35b6ddd234e9",
+    "id": "d12683b0-80b4-4307-b242-6fd06af26a11",
     "sceneType": "SCENE",
     "settings": {
         "exportClass": true,
@@ -7,7 +7,7 @@
         "superClassName": "P_Base",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
-        "sceneKey": "P_11",
+        "sceneKey": "P_7",
         "compilerOutputLanguage": "TYPE_SCRIPT",
         "borderWidth": 1728,
         "borderHeight": 1117
@@ -15,7 +15,7 @@
     "displayList": [
         {
             "type": "Container",
-            "id": "977c0e13-948e-4d86-9dac-af36769611c3",
+            "id": "d86159d3-c807-477b-bd54-fd99493e1af9",
             "label": "container_1",
             "scope": "CLASS",
             "blendMode": -1,
@@ -24,10 +24,10 @@
             "list": [
                 {
                     "type": "Image",
-                    "id": "2ade7d9d-b21c-40cb-ba9a-3d6ca2a1f73e",
-                    "label": "_17X18_Background",
+                    "id": "a5eb08fc-cf4e-4f37-896f-8ae3a929ba6a",
+                    "label": "_11X12_Background",
                     "texture": {
-                        "key": "17X18 Background"
+                        "key": "11X12 Background"
                     },
                     "scaleX": 0.6691453859371791,
                     "scaleY": 0.6691453859371791,

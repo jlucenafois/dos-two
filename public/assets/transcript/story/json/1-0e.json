@@ -25,7 +25,13 @@
             "isHighlighted": false
         },
         {
-            "text": "mirror.",
+            "text": "mirror",
+            "start": 1.12,
+            "end": 1.38,
+            "isHighlighted": false
+        },
+        {
+            "text": ".",
             "start": 1.12,
             "end": 1.38,
             "isHighlighted": false

@@ -2,6 +2,7 @@ import { SupportedShape } from "../types/shape/SupportedShape";
 import { DualComponent } from "../types/components/DualComponent";
 import { SingleComponent } from "../types/components/SingleComponent";
 import { Language } from "./settings";
+import P_10 from "./scenes/story/P_10";
 
 type Section = {
     dualComponents?: DualComponent[],
@@ -47,7 +48,7 @@ const CHAPTERS: Record<string, number> = {
     "CH_7": 1,
     "CH_8": 8,
 }
-export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | string; next_key: null | string; index?: number, total?: number, lastVisitedSectionIndex?: number}> = {
+export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | string; next_key: null | string; index?: number, total?: number, lastVisitedSectionIndex?: number }> = {
     OB_1: {
         prev_key: null,
         next_key: "OB_2",
@@ -215,73 +216,78 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
         next_key: "P_3",
     },
     P_3: {
-        sections: [{
-            playedOnce: false,
-            dualComponents: [{
-                coordinates: {
-                    preferredX: 904,
-                    preferredY: 236,
-                    alternateX: 904,
-                    alternateY: 385,
-                },
-                dualShape: {
-                    spanishShape: {
-                        type: SupportedShape.RoundedRect,
-                        style: {
-                            width: 419,
-                            height: 114,
-                            radius: 16,
+        sections: [
+            //     {
+            //     panDeltaX: -1000,
+            // }, 
+            {
+                playedOnce: false,
+                panDeltaX: 1000,
+                dualComponents: [{
+                    coordinates: {
+                        preferredX: 904,
+                        preferredY: 236,
+                        alternateX: 904,
+                        alternateY: 385,
+                    },
+                    dualShape: {
+                        spanishShape: {
+                            type: SupportedShape.RoundedRect,
                             style: {
-                                fillColor: 0xFFFFFF,
-                                strokeColor: 0xFF9C1A,
-                                strokeWeight: 4,
-                                shadowOffset: 16,
-                                shadowFill: 0xF9A336,
-                                shadowAlpha: 1,
+                                width: 419,
+                                height: 114,
+                                radius: 16,
+                                style: {
+                                    fillColor: 0xFFFFFF,
+                                    strokeColor: 0xFF9C1A,
+                                    strokeWeight: 4,
+                                    shadowOffset: 16,
+                                    shadowFill: 0xF9A336,
+                                    shadowAlpha: 1,
+                                }
+                            }
+                        },
+                        englishShape: {
+                            type: SupportedShape.RoundedRect,
+                            style: {
+                                width: 419,
+                                height: 114,
+                                radius: 16,
+                                style: {
+                                    fillColor: 0xFFFFFF,
+                                    strokeColor: 0x4CDAFE,
+                                    strokeWeight: 4,
+                                    shadowOffset: 16,
+                                    shadowFill: 0x01B4ED,
+                                    shadowAlpha: 1,
+                                }
                             }
                         }
                     },
-                    englishShape: {
-                        type: SupportedShape.RoundedRect,
-                        style: {
-                            width: 419,
-                            height: 114,
-                            radius: 16,
-                            style: {
-                                fillColor: 0xFFFFFF,
-                                strokeColor: 0x4CDAFE,
-                                strokeWeight: 4,
-                                shadowOffset: 16,
-                                shadowFill: 0x01B4ED,
-                                shadowAlpha: 1,
-                            }
+                    dualText: {
+                        spanishText: {
+                            content: [
+                                { text: 'Mi familia es de Puerto Rico,\ndonde hace ' },
+                                { text: 'sol', style: SPANISH_HIGHLIGHT },
+                                { text: ' y ' },
+                                { text: 'calor', style: SPANISH_HIGHLIGHT },
+                                { text: '.' }
+                            ],
+                            box: 'shape'
+                        },
+                        englishText: {
+                            content: [
+                                { text: 'My family is from Puerto Rico,\nwhere it is ' },
+                                { text: 'sunny', style: ENGLISH_HIGHLIGHT },
+                                { text: ' and ' },
+                                { text: 'hot', style: ENGLISH_HIGHLIGHT },
+                                { text: '.' }
+                            ],
+                            box: 'shape'
                         }
                     }
-                },
-                dualText: {
-                    spanishText: {
-                        content: [
-                            { text: 'Mi familia es de Puerto Rico,\ndonde hace ' },
-                            { text: 'sol', style: SPANISH_HIGHLIGHT },
-                            { text: ' y ' },
-                            { text: 'calor', style: SPANISH_HIGHLIGHT },
-                            { text: '.' }
-                        ],
-                        box: 'shape'
-                    },
-                    englishText: {
-                        content: [
-                            { text: 'My family is from Puerto Rico,\nwhere it is ' },
-                            { text: 'sunny', style: ENGLISH_HIGHLIGHT },
-                            { text: ' and ' },
-                            { text: 'hot', style: ENGLISH_HIGHLIGHT },
-                            { text: '.' }
-                        ],
-                        box: 'shape'
-                    }
-                }
+                }],
             }],
-        }],
         index: 2,
         total: CHAPTERS["CH_1"],
         prev_key: "P_2",
@@ -355,7 +361,7 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
         total: CHAPTERS["CH_1"],
         prev_key: "P_3",
         next_key: "Q_1",
-        
+
     },
     Q_1: {
         sections: [{
@@ -823,14 +829,293 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
         next_key: "P_7",
     },
     P_7: {
+        sections: [
+            {
+                panDeltaX: -1000,
+                dualComponents: [{
+                    coordinates: {
+                        preferredX: 848,
+                        preferredY: 278,
+                        alternateX: 1074,
+                        alternateY: 817,
+                    },
+                    dualShape: {
+                        spanishShape: {
+                            type: SupportedShape.RoundedRect,
+                            style: {
+                                width: 256,
+                                height: 81,
+                                radius: 16,
+                                style: {
+                                    fillColor: 0xFFFFFF,
+                                    strokeColor: 0xFF9C1A,
+                                    strokeWeight: 4,
+                                    shadowOffset: 16,
+                                    shadowFill: 0xF9A336,
+                                    shadowAlpha: 1,
+                                }
+                            }
+                        },
+                        englishShape: {
+                            type: SupportedShape.RoundedRect,
+                            style: {
+                                width: 256,
+                                height: 81,
+                                radius: 16,
+                                style: {
+                                    fillColor: 0xFFFFFF,
+                                    strokeColor: 0x4CDAFE,
+                                    strokeWeight: 4,
+                                    shadowOffset: 16,
+                                    shadowFill: 0x01B4ED,
+                                    shadowAlpha: 1,
+                                }
+                            }
+                        }
+                    },
+                    dualText: {
+                        spanishText: {
+                            content: [
+                                { text: 'horse is caballo' },
+                            ],
+                            box: 'shape'
+                        },
+                        englishText: {
+                            content: [
+                                { text: 'lento is slow' },
+                            ],
+                            box: 'shape'
+                        }
+                    }
+                }],
+            },
+            {
+
+                panDeltaX: 1000,
+                dualComponents: [{
+                    coordinates: {
+                        preferredX: 1072,
+                        preferredY: 796,
+                        alternateX: 608,
+                        alternateY: 230,
+                    },
+                    dualShape: {
+                        spanishShape: {
+                            type: SupportedShape.RoundedRect,
+                            style: {
+                                width: 239,
+                                height: 81,
+                                radius: 16,
+                                style: {
+                                    fillColor: 0xFFFFFF,
+                                    strokeColor: 0xFF9C1A,
+                                    strokeWeight: 4,
+                                    shadowOffset: 16,
+                                    shadowFill: 0xF9A336,
+                                    shadowAlpha: 1,
+                                }
+                            }
+                        },
+                        englishShape: {
+                            type: SupportedShape.RoundedRect,
+                            style: {
+                                width: 239,
+                                height: 81,
+                                radius: 16,
+                                style: {
+                                    fillColor: 0xFFFFFF,
+                                    strokeColor: 0x4CDAFE,
+                                    strokeWeight: 4,
+                                    shadowOffset: 16,
+                                    shadowFill: 0x01B4ED,
+                                    shadowAlpha: 1,
+                                }
+                            }
+                        }
+                    },
+                    dualText: {
+                        spanishText: {
+                            content: [
+                                { text: 'dormir is sleep' },
+                            ],
+                            box: 'shape'
+                        },
+                        englishText: {
+                            content: [
+                                { text: 'tirar is throw' },
+                            ],
+                            box: 'shape'
+                        }
+                    }
+                }],
+            }
+        ],
+        index: 0,
+        total: 1,
+        prev_key: 'P_6',
+        next_key: "P_8",
+    },
+    P_8: {
+        sections: [{
+            dualComponents: [],
+        },
+        ],
+        index: 0,
+        total: 1,
+        prev_key: "P_7",
+        next_key: "P_9",
+    },
+    P_9: {
         sections: [{
 
+            dualComponents: [],
+        }],
+        index: 0,
+        total: 1,
+        prev_key: "P_8",
+        next_key: "P_10",
+    },
+    P_10: {
+        sections: [{
+            panDeltaX: -1000,
             dualComponents: [{
                 coordinates: {
-                    preferredX: 936,
-                    preferredY: 412,
-                    alternateX: 936,
-                    alternateY: 592,
+                    preferredX: 456,
+                    preferredY: 216,
+                    alternateX: 920,
+                    alternateY: 216,
+                },
+                dualShape: {
+                    spanishShape: {
+                        type: SupportedShape.RoundedRect,
+                        style: {
+                            width: 419,
+                            height: 114,
+                            radius: 16,
+                            style: {
+                                fillColor: 0xFFFFFF,
+                                strokeColor: 0xFF9C1A,
+                                strokeWeight: 4,
+                                shadowOffset: 16,
+                                shadowFill: 0xF9A336,
+                                shadowAlpha: 1,
+                            }
+                        }
+                    },
+                    englishShape: {
+                        type: SupportedShape.RoundedRect,
+                        style: {
+                            width: 419,
+                            height: 114,
+                            radius: 16,
+                            style: {
+                                fillColor: 0xFFFFFF,
+                                strokeColor: 0x4CDAFE,
+                                strokeWeight: 4,
+                                shadowOffset: 16,
+                                shadowFill: 0x01B4ED,
+                                shadowAlpha: 1,
+                            }
+                        }
+                    }
+                },
+                dualText: {
+                    spanishText: {
+                        content: [
+                            { text: 'Una ' },
+                            { text: 'soñadora', style: SPANISH_HIGHLIGHT },
+                            { text: ', seré\nhablando Inglés y Español,' }
+                        ],
+                        box: 'shape'
+                    },
+                    englishText: {
+                        content: [
+                            { text: 'A ' },
+                            { text: 'dreamer', style: ENGLISH_HIGHLIGHT },
+                            { text: ', I’ll be, speaking both\nEnglish and Spanish,' }
+                        ],
+                        box: 'shape'
+                    }
+                }
+            }],
+        },
+        {
+            panDeltaX: 1000,
+            dualComponents: [{
+                coordinates: {
+                    preferredX: 449,
+                    preferredY: 815,
+                    alternateX: 918,
+                    alternateY: 815,
+                },
+                dualShape: {
+                    spanishShape: {
+                        type: SupportedShape.RoundedRect,
+                        style: {
+                            width: 419,
+                            height: 81,
+                            radius: 16,
+                            style: {
+                                fillColor: 0xFFFFFF,
+                                strokeColor: 0xFF9C1A,
+                                strokeWeight: 4,
+                                shadowOffset: 16,
+                                shadowFill: 0xF9A336,
+                                shadowAlpha: 1,
+                            }
+                        }
+                    },
+                    englishShape: {
+                        type: SupportedShape.RoundedRect,
+                        style: {
+                            width: 419,
+                            height: 81,
+                            radius: 16,
+                            style: {
+                                fillColor: 0xFFFFFF,
+                                strokeColor: 0x4CDAFE,
+                                strokeWeight: 4,
+                                shadowOffset: 16,
+                                shadowFill: 0x01B4ED,
+                                shadowAlpha: 1,
+                            }
+                        }
+                    }
+                },
+                dualText: {
+                    spanishText: {
+                        content: [
+                            { text: 'Y compartiendo mi ' },
+                            { text: 'corazón', style: SPANISH_HIGHLIGHT },
+                            { text: '!' }
+                        ],
+                        box: 'shape'
+                    },
+                    englishText: {
+                        content: [
+                            { text: 'And sharing my ' },
+                            { text: 'heart', style: ENGLISH_HIGHLIGHT },
+                            { text: ' so free!' }
+                        ],
+                        box: 'shape'
+                    }
+                }
+            }],
+        }],
+        index: 0,
+        total: 1,
+        prev_key: "P_9",
+        next_key: "P_11",
+    },
+    P_11: {
+        sections: [{
+            panDeltaX: -1000,
+            dualComponents: [{
+                coordinates: {
+                    preferredX: 917,
+                    preferredY: 581,
+                    alternateX: 917,
+                    alternateY: 766,
                 },
                 dualShape: {
                     spanishShape: {
@@ -869,38 +1154,21 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
                 dualText: {
                     spanishText: {
                         content: [
-                            { text: 'Mami dice que hablar en\nespañol es importante, así que\nme gusta aprender con rimas.' },
+                            { text: 'Mi abuela habla español.\nHago mi mejor esfuerzo, aunque\nno sé todas las palabras.' },
                         ],
                         box: 'shape'
                     },
                     englishText: {
                         content: [
-                            { text: 'Mom says that speaking Spanish\nis important, so I like to learn by\nrhyme.' },
+                            { text: 'My grandma speaks Spanish. I\ntry my best, even when I don’t\nknow every word.' },
                         ],
                         box: 'shape'
                     }
                 }
             }],
-        }],
-        index: 0,
-        total: 1,
-        prev_key: 'P_7',
-        next_key: "P_10",
-    },
-    P_8: {
-        sections: [{
-            dualComponents: [],
         },
-        ],
-        index: 0,
-        total: 1,
-        prev_key: "P_9",
-        next_key: "P_11",
-    },
-    P_9: {
-        sections: [{
-
-            dualComponents: [],
+        {
+            panDeltaX: 1000,
         }],
         index: 0,
         total: 1,
@@ -909,8 +1177,66 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
     },
     P_12: {
         sections: [{
-
-            dualComponents: [],
+            panDeltaX: -1000,
+            dualComponents: [{
+                coordinates: {
+                    preferredX: 917,
+                    preferredY: 581,
+                    alternateX: 917,
+                    alternateY: 766,
+                },
+                dualShape: {
+                    spanishShape: {
+                        type: SupportedShape.RoundedRect,
+                        style: {
+                            width: 419,
+                            height: 147,
+                            radius: 16,
+                            style: {
+                                fillColor: 0xFFFFFF,
+                                strokeColor: 0xFF9C1A,
+                                strokeWeight: 4,
+                                shadowOffset: 16,
+                                shadowFill: 0xF9A336,
+                                shadowAlpha: 1,
+                            }
+                        }
+                    },
+                    englishShape: {
+                        type: SupportedShape.RoundedRect,
+                        style: {
+                            width: 419,
+                            height: 147,
+                            radius: 16,
+                            style: {
+                                fillColor: 0xFFFFFF,
+                                strokeColor: 0x4CDAFE,
+                                strokeWeight: 4,
+                                shadowOffset: 16,
+                                shadowFill: 0x01B4ED,
+                                shadowAlpha: 1,
+                            }
+                        }
+                    }
+                },
+                dualText: {
+                    spanishText: {
+                        content: [
+                            { text: 'Mi abuela habla español.\nHago mi mejor esfuerzo, aunque\nno sé todas las palabras.' },
+                        ],
+                        box: 'shape'
+                    },
+                    englishText: {
+                        content: [
+                            { text: 'My grandma speaks Spanish. I\ntry my best, even when I don’t\nknow every word.' },
+                        ],
+                        box: 'shape'
+                    }
+                }
+            }],
+        },
+        {
+            panDeltaX: 1000,
         }],
         index: 0,
         total: 1,
@@ -919,8 +1245,130 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
     },
     P_13: {
         sections: [{
-
-            dualComponents: [],
+            panDeltaX: -1000,
+            dualComponents: [{
+                coordinates: {
+                    preferredX: 466,
+                    preferredY: 710,
+                    alternateX: 466,
+                    alternateY: 828,
+                },
+                dualShape: {
+                    spanishShape: {
+                        type: SupportedShape.RoundedRect,
+                        style: {
+                            width: 419,
+                            height: 81,
+                            radius: 16,
+                            style: {
+                                fillColor: 0xFFFFFF,
+                                strokeColor: 0xFF9C1A,
+                                strokeWeight: 4,
+                                shadowOffset: 16,
+                                shadowFill: 0xF9A336,
+                                shadowAlpha: 1,
+                            }
+                        }
+                    },
+                    englishShape: {
+                        type: SupportedShape.RoundedRect,
+                        style: {
+                            width: 458,
+                            height: 81,
+                            radius: 16,
+                            style: {
+                                fillColor: 0xFFFFFF,
+                                strokeColor: 0x4CDAFE,
+                                strokeWeight: 4,
+                                shadowOffset: 16,
+                                shadowFill: 0x01B4ED,
+                                shadowAlpha: 1,
+                            }
+                        }
+                    }
+                },
+                dualText: {
+                    spanishText: {
+                        content: [
+                            { text: 'Mi familia ' },
+                            { text: 'canta', style: SPANISH_HIGHLIGHT },
+                            { text: ' y ' },
+                            { text: 'baila', style: SPANISH_HIGHLIGHT },
+                            { text: '.' }
+                        ],
+                        box: 'shape'
+                    },
+                    englishText: {
+                        content: [
+                            { text: 'My family ' },
+                            { text: 'sings', style: ENGLISH_HIGHLIGHT },
+                            { text: ' and ' },
+                            { text: 'dances', style: ENGLISH_HIGHLIGHT },
+                            { text: '.' }
+                        ],
+                        box: 'shape'
+                    }
+                }
+            }],
+        },
+        {
+            panDeltaX: 1000,
+            dualComponents: [{
+                coordinates: {
+                    preferredX: 566,
+                    preferredY: 229,
+                    alternateX: 899,
+                    alternateY: 229,
+                },
+                dualShape: {
+                    spanishShape: {
+                        type: SupportedShape.RoundedRect,
+                        style: {
+                            width: 306,
+                            height: 114,
+                            radius: 16,
+                            style: {
+                                fillColor: 0xFFFFFF,
+                                strokeColor: 0xFF9C1A,
+                                strokeWeight: 4,
+                                shadowOffset: 16,
+                                shadowFill: 0xF9A336,
+                                shadowAlpha: 1,
+                            }
+                        }
+                    },
+                    englishShape: {
+                        type: SupportedShape.RoundedRect,
+                        style: {
+                            width: 306,
+                            height: 114,
+                            radius: 16,
+                            style: {
+                                fillColor: 0xFFFFFF,
+                                strokeColor: 0x4CDAFE,
+                                strokeWeight: 4,
+                                shadowOffset: 16,
+                                shadowFill: 0x01B4ED,
+                                shadowAlpha: 1,
+                            }
+                        }
+                    }
+                },
+                dualText: {
+                    spanishText: {
+                        content: [
+                            { text: '"¡Baila conmigo!\n¡Wepa!" dice mamá.' },
+                        ],
+                        box: 'shape'
+                    },
+                    englishText: {
+                        content: [
+                            { text: '"Dance with me!\nWepa!" says Mom.' },
+                        ],
+                        box: 'shape'
+                    }
+                }
+            }],
         }],
         index: 0,
         total: 1,
@@ -1006,69 +1454,71 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
         next_key: "P_16",
     },
     P_16: {
-        sections: [{
+        sections: [
+            {
 
-            dualComponents: [{
-                coordinates: {
-                    preferredX: 449,
-                    preferredY: 815,
-                    alternateX: 918,
-                    alternateY: 815,
-                },
-                dualShape: {
-                    spanishShape: {
-                        type: SupportedShape.RoundedRect,
-                        style: {
-                            width: 419,
-                            height: 81,
-                            radius: 16,
+                dualComponents: [{
+                    coordinates: {
+                        preferredX: 449,
+                        preferredY: 815,
+                        alternateX: 918,
+                        alternateY: 815,
+                    },
+                    dualShape: {
+                        spanishShape: {
+                            type: SupportedShape.RoundedRect,
                             style: {
-                                fillColor: 0xFFFFFF,
-                                strokeColor: 0xFF9C1A,
-                                strokeWeight: 4,
-                                shadowOffset: 16,
-                                shadowFill: 0xF9A336,
-                                shadowAlpha: 1,
+                                width: 419,
+                                height: 81,
+                                radius: 16,
+                                style: {
+                                    fillColor: 0xFFFFFF,
+                                    strokeColor: 0xFF9C1A,
+                                    strokeWeight: 4,
+                                    shadowOffset: 16,
+                                    shadowFill: 0xF9A336,
+                                    shadowAlpha: 1,
+                                }
+                            }
+                        },
+                        englishShape: {
+                            type: SupportedShape.RoundedRect,
+                            style: {
+                                width: 419,
+                                height: 81,
+                                radius: 16,
+                                style: {
+                                    fillColor: 0xFFFFFF,
+                                    strokeColor: 0x4CDAFE,
+                                    strokeWeight: 4,
+                                    shadowOffset: 16,
+                                    shadowFill: 0x01B4ED,
+                                    shadowAlpha: 1,
+                                }
                             }
                         }
                     },
-                    englishShape: {
-                        type: SupportedShape.RoundedRect,
-                        style: {
-                            width: 419,
-                            height: 81,
-                            radius: 16,
-                            style: {
-                                fillColor: 0xFFFFFF,
-                                strokeColor: 0x4CDAFE,
-                                strokeWeight: 4,
-                                shadowOffset: 16,
-                                shadowFill: 0x01B4ED,
-                                shadowAlpha: 1,
-                            }
+                    dualText: {
+                        spanishText: {
+                            content: [
+                                { text: 'Y compartiendo mi ' },
+                                { text: 'corazón', style: SPANISH_HIGHLIGHT },
+                                { text: '!' }
+                            ],
+                            box: 'shape'
+                        },
+                        englishText: {
+                            content: [
+                                { text: 'And sharing my ' },
+                                { text: 'heart', style: ENGLISH_HIGHLIGHT },
+                                { text: ' so free!' }
+                            ],
+                            box: 'shape'
                         }
                     }
-                },
-                dualText: {
-                    spanishText: {
-                        content: [
-                            { text: 'Y compartiendo mi ' },
-                            { text: 'corazón', style: SPANISH_HIGHLIGHT },
-                            { text: '!' }
-                        ],
-                        box: 'shape'
-                    },
-                    englishText: {
-                        content: [
-                            { text: 'And sharing my ' },
-                            { text: 'heart', style: ENGLISH_HIGHLIGHT },
-                            { text: ' so free!' }
-                        ],
-                        box: 'shape'
-                    }
-                }
-            }],
-        }],
+                }],
+            }
+        ],
         index: 0,
         total: 1,
         prev_key: "P_15",
@@ -1192,78 +1642,6 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
         total: 1,
         prev_key: "P_19",
         next_key: "P_21",
-    },
-    P_21: {
-        sections: [{
-            dualComponents: [{
-                coordinates: {
-                    preferredX: 466,
-                    preferredY: 710,
-                    alternateX: 466,
-                    alternateY: 828,
-                },
-                dualShape: {
-                    spanishShape: {
-                        type: SupportedShape.RoundedRect,
-                        style: {
-                            width: 419,
-                            height: 81,
-                            radius: 16,
-                            style: {
-                                fillColor: 0xFFFFFF,
-                                strokeColor: 0xFF9C1A,
-                                strokeWeight: 4,
-                                shadowOffset: 16,
-                                shadowFill: 0xF9A336,
-                                shadowAlpha: 1,
-                            }
-                        }
-                    },
-                    englishShape: {
-                        type: SupportedShape.RoundedRect,
-                        style: {
-                            width: 458,
-                            height: 81,
-                            radius: 16,
-                            style: {
-                                fillColor: 0xFFFFFF,
-                                strokeColor: 0x4CDAFE,
-                                strokeWeight: 4,
-                                shadowOffset: 16,
-                                shadowFill: 0x01B4ED,
-                                shadowAlpha: 1,
-                            }
-                        }
-                    }
-                },
-                dualText: {
-                    spanishText: {
-                        content: [
-                            { text: 'Mi familia ' },
-                            { text: 'canta', style: SPANISH_HIGHLIGHT },
-                            { text: ' y ' },
-                            { text: 'baila', style: SPANISH_HIGHLIGHT },
-                            { text: '.' }
-                        ],
-                        box: 'shape'
-                    },
-                    englishText: {
-                        content: [
-                            { text: 'My family ' },
-                            { text: 'sings', style: ENGLISH_HIGHLIGHT },
-                            { text: ' and ' },
-                            { text: 'dances', style: ENGLISH_HIGHLIGHT },
-                            { text: '.' }
-                        ],
-                        box: 'shape'
-                    }
-                }
-            }],
-        }],
-        index: 0,
-        total: 1,
-        prev_key: "P_20",
-        next_key: "P_22",
     },
     P_22: {
         sections: [{
@@ -1773,63 +2151,4 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
         prev_key: "P_25",
         next_key: "P_27",
     },
-    P_27: {
-        sections: [{
-            dualComponents: [],
-        }],
-        index: 0,
-        total: 1,
-        prev_key: "P_26",
-        next_key: "P_28",
-    },
-    P_28: {
-        sections: [{
-
-            dualComponents: [],
-        }],
-        index: 0,
-        total: 1,
-        prev_key: "P_27",
-        next_key: "P_29",
-    },
-    P_29: {
-        sections: [{
-
-            dualComponents: [],
-        }],
-        index: 0,
-        total: 1,
-        prev_key: "P_28",
-        next_key: "P_30",
-    },
-    P_30: {
-        sections: [{
-
-            dualComponents: [],
-        }],
-        index: 0,
-        total: 1,
-        prev_key: "P_29",
-        next_key: "P_31",
-    },
-    P_31: {
-        sections: [{
-
-            dualComponents: [],
-        }],
-        index: 0,
-        total: 1,
-        prev_key: "P_30",
-        next_key: "P_32",
-    },
-    P_32: {
-        sections: [{
-
-            dualComponents: [],
-        }],
-        index: 0,
-        total: 1,
-        prev_key: "P_31",
-        next_key: null,
-    }
 }    

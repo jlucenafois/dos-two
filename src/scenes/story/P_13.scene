@@ -12,7 +12,31 @@
         "borderWidth": 1728,
         "borderHeight": 1117
     },
-    "displayList": [],
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "f965b7fd-ed8a-4568-bf29-0fc8cf70b369",
+            "label": "container_1",
+            "scope": "CLASS",
+            "blendMode": -1,
+            "x": 398,
+            "y": 174,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "4354844c-9a8d-4ac6-ac42-0e751cd0fab6",
+                    "label": "_21x22_Background",
+                    "texture": {
+                        "key": "21x22 Background"
+                    },
+                    "scaleX": 0.6691453859371791,
+                    "scaleY": 0.6691453859371791,
+                    "originX": 0,
+                    "originY": 0
+                }
+            ]
+        }
+    ],
     "plainObjects": [],
     "meta": {
         "app": "Phaser Editor - Scene Editor",

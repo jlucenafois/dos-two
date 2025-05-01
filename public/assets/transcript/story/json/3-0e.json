@@ -67,7 +67,13 @@
             "isHighlighted": false
         },
         {
-            "text": "hot.",
+            "text": "hot",
+            "start": 3.2,
+            "end": 3.56,
+            "isHighlighted": false
+        },
+        {
+            "text": ".",
             "start": 3.2,
             "end": 3.56,
             "isHighlighted": false

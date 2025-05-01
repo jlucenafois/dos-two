@@ -493,15 +493,19 @@ export function renderDualText(
             isEnglish ? Language.Spanish : Language.English // switch for alternate
         );
 
-        const transcriptEnglish = context.cache.json.get(context.nameWithKey("transcript-english")).words;
-        const audioEnglish = context.sound.add(context.nameWithKey("audio-transcript-english"));
-        const transcriptSpanish = context.cache.json.get(context.nameWithKey("transcript-spanish")).words;
-        const audioSpanish = context.sound.add(context.nameWithKey("audio-transcript-spanish"));
+        // const scenePrefix = context.getScenePrefix(); // e.g. "1-0"
 
-        const transcriptPreferred = isEnglish ? transcriptEnglish : transcriptSpanish;
-        const audioPreferred = isEnglish ? audioEnglish : audioSpanish;
-        const transcriptAlt = isEnglish ? transcriptSpanish : transcriptEnglish;
-        const audioAlt = isEnglish ? audioSpanish : audioEnglish;
+        // const transcriptEnglish = context.cache.json.get(`${scenePrefix}e-transcript`)?.words;
+        // const audioEnglish = context.sound.add(`${scenePrefix}e-audio`);
+
+        // const transcriptSpanish = context.cache.json.get(`${scenePrefix}s-transcript`)?.words;
+        // const audioSpanish = context.sound.add(`${scenePrefix}s-audio`);
+
+        
+        // const transcriptPreferred = isEnglish ? transcriptEnglish : transcriptSpanish;
+        // const audioPreferred = isEnglish ? audioEnglish : audioSpanish;
+        // const transcriptAlt = isEnglish ? transcriptSpanish : transcriptEnglish;
+        // const audioAlt = isEnglish ? audioSpanish : audioEnglish;
 
         //     playAudioWithSync(context, preferredHighlighter, transcriptPreferred, audioPreferred, 2000, () => {
         //         playAudioWithSync(context, alternateHighlighter, transcriptAlt, audioAlt, 1000, () => {

@@ -23,6 +23,12 @@
             "start": 0.98,
             "end": 1.38,
             "isHighlighted": false
+        },
+        {
+            "text": "!",
+            "start": 0.98,
+            "end": 1.38,
+            "isHighlighted": false
         }
     ]
 }

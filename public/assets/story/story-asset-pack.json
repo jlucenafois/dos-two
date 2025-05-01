@@ -28,6 +28,21 @@
                 "key": "1_sparkles"
             },
             {
+                "url": "assets/story/bg/11X12 Background.png",
+                "type": "image",
+                "key": "11X12 Background"
+            },
+            {
+                "url": "assets/story/bg/15x16 Background.png",
+                "type": "image",
+                "key": "15x16 Background"
+            },
+            {
+                "url": "assets/story/bg/17X18 Background.png",
+                "type": "image",
+                "key": "17X18 Background"
+            },
+            {
                 "url": "assets/story/2_confetti.png",
                 "frameConfig": {
                     "frameWidth": 32,
@@ -52,6 +67,16 @@
                 },
                 "type": "spritesheet",
                 "key": "2_girl"
+            },
+            {
+                "url": "assets/story/bg/21x22 Background.png",
+                "type": "image",
+                "key": "21x22 Background"
+            },
+            {
+                "url": "assets/story/bg/27X28 Background.png",
+                "type": "image",
+                "key": "27X28 Background"
             },
             {
                 "url": "assets/story/3_dance.png",
@@ -261,11 +286,6 @@
                 "url": "assets/story/p2_bg.png",
                 "type": "image",
                 "key": "p2_bg"
-            },
-            {
-                "url": "assets/story/Page 1.png",
-                "type": "image",
-                "key": "Page 1"
             },
             {
                 "url": "assets/story/quiz_anim_correct.png",

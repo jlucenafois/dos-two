@@ -1,17 +1,16 @@
+
 // You can write more code here
 
 /* START OF COMPILED CODE */
 
 import P_Base from "./P_Base";
 /* START-USER-IMPORTS */
-
-
 /* END-USER-IMPORTS */
 
-export default class P_10 extends P_Base {
+export default class P_7 extends P_Base {
 
 	constructor() {
-		super("P_10");
+		super("P_7");
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.
@@ -24,12 +23,12 @@ export default class P_10 extends P_Base {
 		const container_1 = this.add.container(398, 174);
 		container_1.blendMode = Phaser.BlendModes.SKIP_CHECK;
 
-		// _15x16_Background
-		const _15x16_Background = this.add.image(0, 0, "15x16 Background");
-		_15x16_Background.scaleX = 0.6691453859371791;
-		_15x16_Background.scaleY = 0.6691453859371791;
-		_15x16_Background.setOrigin(0, 0);
-		container_1.add(_15x16_Background);
+		// _11X12_Background
+		const _11X12_Background = this.add.image(0, 0, "11X12 Background");
+		_11X12_Background.scaleX = 0.6691453859371791;
+		_11X12_Background.scaleY = 0.6691453859371791;
+		_11X12_Background.setOrigin(0, 0);
+		container_1.add(_11X12_Background);
 
 		this.container_1 = container_1;
 
@@ -43,10 +42,10 @@ export default class P_10 extends P_Base {
 	// Write your code here
 
 	create() {
-		this.editorCreate();
+		this.editorCreate()
 		super.applyCropMask(this.container_1, 400.5, 176, 1000, 800);
 		this.mainContainer = this.container_1;
-		super.create()
+		super.create();
 	}
 
 	/* END-USER-CODE */

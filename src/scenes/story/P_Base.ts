@@ -21,33 +21,12 @@ export default class P_Base extends Base {
     }
 
 
-    // this is needed to load the correct transcript and audio files, otherwise it will keep using the first one, maybe there's a better fix for this
-    nameWithKey(name: string) {
-        return name + "-" + this.scene.key;
-    }
-
-    preload() {
-
-        const pageIdx = parseInt(this.scene.key.split("_")[1]);
-
-        // TODO: use other condition for files without audio tracks IF other cases arise
-        if (pageIdx !== 0) {
-            const languages = [
-                { key: "transcript-english", suffix: "e" },
-                { key: "transcript-spanish", suffix: "s" }
-            ];
-            languages.forEach(({ key, suffix }) => {
-                this.load.json(this.nameWithKey(key), `assets/transcript/story/json/${pageIdx}${suffix}.json`);
-                this.load.audio(this.nameWithKey(`audio-${key}`), `assets/transcript/story/audio/${pageIdx}${suffix}.wav`);
-            });
-        }
-    }
-
-
+    
+    
     editorCreate(): void {
         this.events.emit("scene-awake");
     }
-
+    
     /* START-USER-CODE */
     applyCropMask(container: Phaser.GameObjects.Container, x: number, y: number, width: number, height: number): void {
         const maskShape = this.add.graphics();
@@ -55,17 +34,25 @@ export default class P_Base extends Base {
         maskShape.fillRect(x, y, width, height);
 
         const mask = maskShape.createGeometryMask();
-
+        
         container.setMask(mask);
-
+        
         this.children.bringToTop(container);
-
+        
         maskShape.setVisible(false);
     }
-
-
+    
+    
     // Write your code here
     private currentSectionIndex: number = 0;
+    // this is needed to load the correct transcript and audio files, otherwise it will keep using the first one, maybe there's a better fix for this
+    
+    getScenePrefix() {
+        const match = this.scene.key.match(/^P_(\d+)$/);
+        const sceneNumber = match ? match[1] : "unknown";
+        console.log(sceneNumber + "-" + this.currentSectionIndex);
+        return sceneNumber + "-" + this.currentSectionIndex;
+    }
     private sceneScript!: typeof SCRIPT[string];
     public mainContainer!: Phaser.GameObjects.Container
 
