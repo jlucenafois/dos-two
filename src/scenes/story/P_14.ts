@@ -2,6 +2,7 @@
 
 /* START OF COMPILED CODE */
 
+import { fadeIn } from "../../utils";
 import P_Base from "./P_Base";
 /* START-USER-IMPORTS */
 
@@ -37,8 +38,6 @@ fadeIn(this)
 	}
 
 	/* END-USER-CODE */
-}
-
 /* END OF COMPILED CODE */
 
 // You can write more code here
