@@ -2,6 +2,7 @@
 
 /* START OF COMPILED CODE */
 
+import { fadeIn } from "../../utils";
 import P_Base from "./P_Base";
 /* START-USER-IMPORTS */
 
@@ -30,10 +31,13 @@ export default class P_6 extends P_Base {
 	create() {
 		this.editorCreate();
 		super.create()
+fadeIn(this)
+// Emit ready if you still want signaling
+		this.events.emit('scene-ready');
+	}
 	}
 
 	/* END-USER-CODE */
-}
 
 /* END OF COMPILED CODE */
 

@@ -372,10 +372,10 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
                         x: 497,
                         y: 436,
                         content: [{
-                            text: "In Puerto Rico, it is sunny and",
+                            text: "In Puerto Rico, it is sunny and\t",
                             style: {
                                 fontSize: "40px",
-                                fontWeight: '850',
+                                fontWeight: '700',
                                 fill: "#4F4F4F"
                             }
                         }]
@@ -412,6 +412,14 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
                 },
                 {
                     singleImage: {
+                        x: 850,
+                        y: 340,
+                        default: "q1_avatar",
+                        origin: [0, 0]
+                    }
+                },
+                {
+                    singleImage: {
                         x: 914,
                         y: 570,
                         default: "quiz_option_default",
@@ -432,13 +440,13 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
                 }],
                 [Language.Spanish]: [{
                     singleText: {
-                        x: 497,
+                        x: 529,
                         y: 436,
                         content: [{
-                            text: "En Puerto Rico, hace sol y",
+                            text: "En Puerto Rico, hace sol y\t",
                             style: {
                                 fontSize: "40px",
-                                fontWeight: '850',
+                                fontWeight: '700',
                                 fill: "#4F4F4F"
                             }
                         }]
@@ -446,7 +454,7 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
                 },
                 {
                     singleImage: {
-                        x: 1125,
+                        x: 1093,
                         y: 465,
                         default: "quiz_spanish_blank",
                         origin: [0.5, 0.5]
@@ -492,6 +500,14 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
                         }],
                         box: "img"
                     },
+                },
+                {
+                    singleImage: {
+                        x: 850,
+                        y: 340,
+                        default: "q1_avatar",
+                        origin: [0, 0]
+                    }
                 }],
             },
         }],
@@ -1525,9 +1541,126 @@ export const SCRIPT: Record<string, { sections?: Section[]; prev_key: null | str
         next_key: "P_17",
     },
     P_17: {
-        sections: [{
-            dualComponents: [],
-        }],
+        sections: [
+            {
+                panDeltaX: -1000,
+                dualComponents: [{
+                    coordinates: {
+                        preferredX: 907,
+                        preferredY: 648,
+                        alternateX: 907,
+                        alternateY: 797,
+                    },
+                    dualShape: {
+                        spanishShape: {
+                            type: SupportedShape.RoundedRect,
+                            style: {
+                                width: 419,
+                                height: 114,
+                                radius: 16,
+                                style: {
+                                    fillColor: 0xFFFFFF,
+                                    strokeColor: 0xFF9C1A,
+                                    strokeWeight: 4,
+                                    shadowOffset: 16,
+                                    shadowFill: 0xF9A336,
+                                    shadowAlpha: 1,
+                                }
+                            }
+                        },
+                        englishShape: {
+                            type: SupportedShape.RoundedRect,
+                            style: {
+                                width: 419,
+                                height: 114,
+                                radius: 16,
+                                style: {
+                                    fillColor: 0xFFFFFF,
+                                    strokeColor: 0x4CDAFE,
+                                    strokeWeight: 4,
+                                    shadowOffset: 16,
+                                    shadowFill: 0x01B4ED,
+                                    shadowAlpha: 1,
+                                }
+                            }
+                        }
+                    },
+                    dualText: {
+                        spanishText: {
+                            content: [
+                                { text: '"Mamá, ¿soy más puertorriqueña\no más neoyorquina?"' },
+                            ],
+                            box: 'shape'
+                        },
+                        englishText: {
+                            content: [
+                                { text: '"Mom, am I more Puerto Rican or\nmore New Yorker?"' },
+                            ],
+                            box: 'shape'
+                        }
+                    }
+                }],
+            },
+            {
+                panDeltaX: 1000,
+                dualComponents: [{
+                    coordinates: {
+                        preferredX: 453,
+                        preferredY: 630,
+                        alternateX: 453,
+                        alternateY: 788,
+                    },
+                    dualShape: {
+                        spanishShape: {
+                            type: SupportedShape.RoundedRect,
+                            style: {
+                                width: 419,
+                                height: 114,
+                                radius: 16,
+                                style: {
+                                    fillColor: 0xFFFFFF,
+                                    strokeColor: 0xFF9C1A,
+                                    strokeWeight: 4,
+                                    shadowOffset: 16,
+                                    shadowFill: 0xF9A336,
+                                    shadowAlpha: 1,
+                                }
+                            }
+                        },
+                        englishShape: {
+                            type: SupportedShape.RoundedRect,
+                            style: {
+                                width: 419,
+                                height: 114,
+                                radius: 16,
+                                style: {
+                                    fillColor: 0xFFFFFF,
+                                    strokeColor: 0x4CDAFE,
+                                    strokeWeight: 4,
+                                    shadowOffset: 16,
+                                    shadowFill: 0x01B4ED,
+                                    shadowAlpha: 1,
+                                }
+                            }
+                        }
+                    },
+                    dualText: {
+                        spanishText: {
+                            content: [
+                                { text: 'Mamá sonríe.\n"Eres ambas, mi amor."' },
+                            ],
+                            box: 'shape'
+                        },
+                        englishText: {
+                            content: [
+                                { text: 'Mom smiles.\n"You are both, my love."' },
+                            ],
+                            box: 'shape'
+                        }
+                    }
+                }],
+            }
+        ],
         index: 0,
         total: 1,
         prev_key: "P_16",

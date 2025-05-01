@@ -30,6 +30,10 @@ export default class P_9 extends P_Base {
 	create() {
 		this.editorCreate();
 		super.create()
+fadeIn(this)
+// Emit ready if you still want signaling
+		this.events.emit('scene-ready');
+	}
 	}
 
 	/* END-USER-CODE */

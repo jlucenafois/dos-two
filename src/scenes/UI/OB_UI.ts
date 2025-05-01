@@ -194,6 +194,32 @@ export default class OB_UI extends Base {
 		this.coin_counter.setText(`${CURRENT_SETTINGS.gameState.coins}`)
 	}
 
+	transitionToScene(
+		uiScene: Phaser.Scene,
+		currentSceneKey: string,
+		nextSceneKey: string,
+		duration: number = 600
+	) {
+		const currScene = uiScene.scene.get(currentSceneKey);
+	
+		// 1. Launch the next scene with a fadeIn flag
+		uiScene.scene.launch(nextSceneKey, { fadeIn: true });
+		uiScene.scene.moveBelow(currentSceneKey, nextSceneKey);
+	
+		// 2. Fade out the current scene's camera
+		uiScene.tweens.add({
+			targets: currScene.cameras.main,
+			alpha: 0,
+			duration,
+			onComplete: () => {
+				uiScene.scene.stop(currentSceneKey);
+			}
+		});
+	}
+	
+	
+	
+
 	create() {
 		this.editorCreate();
 		this.registerListeners();
@@ -291,6 +317,9 @@ export default class OB_UI extends Base {
 				this.hideBook();
 				CURRENT_SETTINGS.gameState.hasOpenedCover = false;
 			}
+			if (currSceneKey && currSceneKey[0] === "Q") {
+				this.enableForwardNav()
+			}
 
 			if (currScene?.goToPreviousSection) {
 				const success = currScene.goToPreviousSection();
@@ -358,9 +387,8 @@ export default class OB_UI extends Base {
 						nextSceneScript.lastVisitedSectionIndex = 0;
 					}
 
-					this.stopAllScenes(["OB_UI"]);
 					this.sound.stopAll();
-					this.scene.launch(nextSceneKey);
+					this.transitionToScene(this, currSceneKey!, nextSceneKey); // 👈 fade happens here
 				}
 			}
 			else if (CURRENT_SETTINGS.gameState.nextScene) {
@@ -371,9 +399,9 @@ export default class OB_UI extends Base {
 					nextSceneScript.lastVisitedSectionIndex = 0;
 				}
 
-				this.stopAllScenes(["OB_UI"]);
 				this.sound.stopAll();
-				this.scene.launch(nextSceneKey);
+				this.transitionToScene(this, currSceneKey!, nextSceneKey); // 👈 fade happens here
+
 			}
 		});
 

@@ -45,14 +45,15 @@ export default class Q_Base extends Base {
 		let lang = QUIZ_LANGUAGE[this.scene.key];
 		const components = firstSection.quizVariants[lang];
 		
-		components.forEach(comp => renderSingleComponent(this, comp));
+		components.forEach(comp => renderSingleComponent(this, comp, !!firstSection.playedOnce));
 		
-		this.events.emit("disableForwardNav");
+		if (!!!firstSection.playedOnce) {
+			this.events.emit("disableForwardNav");
+			const questionId = this.scene.key.toLowerCase().replace("_", "");
+			const langSuffix = lang === Language.English ? 'e' : 's';
+			playAudioSequence(this, [`${questionId}${langSuffix}`, `${questionId}-answer-${langSuffix}`], () => {}, 500);
 
-		const questionId = this.scene.key.toLowerCase().replace("_", "");
-		const langSuffix = lang === Language.English ? 'e' : 's';
-		playAudioSequence(this, [`${questionId}${langSuffix}`, `${questionId}-answer-${langSuffix}`], () => {}, 500);
-
+		}
 	}
 	/* END-USER-CODE */
 }

@@ -1,0 +1,19 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": "assets/quizzes/q1_avatar.png",
+                "type": "image",
+                "key": "q1_avatar"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false,
+        "visible": true
+    }
+}

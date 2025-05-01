@@ -24,6 +24,7 @@ export default class OB_4 extends OB_Base {
 
 		this.load.pack("story-asset-pack", "assets/story/story-asset-pack.json");
 		this.load.pack("transcript-asset-pack", "assets/transcript/transcript-asset-pack.json")
+		this.load.pack("quizzes-asset-pack", "assets/quizzes/quizzes-asset-pack.json")
 		this.load.on("progress", (value: number) => {
 			this.updateProgressBar(value);
 		});

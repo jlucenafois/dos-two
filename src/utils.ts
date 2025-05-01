@@ -13,6 +13,7 @@ import { SingleComponent } from "../types/components/SingleComponent";
 import { Image } from "../types/image/Image";
 import Base from "./scenes/Base";
 import P_Base from "./scenes/story/P_Base";
+import { SCRIPT } from "./script";
 
 type HoverAudioEntry = {
     object: Phaser.GameObjects.GameObject;
@@ -115,8 +116,8 @@ function stopCurrentAudio() {
 }
 
 
-export function renderSingleComponent(context: Base, sc: SingleComponent) {
-    if (sc.singleImage) renderImage(context, sc.singleImage, sc.isCorrect ? sc.isCorrect : false)
+export function renderSingleComponent(context: Base, sc: SingleComponent, playedOnce: boolean) {
+    if (sc.singleImage) renderImage(context, sc.singleImage, sc.isCorrect ? sc.isCorrect : false, playedOnce)
     if (sc.singleShape) renderShape(context, sc.singleShape)
     if (sc.singleText) renderRichText(context, sc.singleText)
     if (sc.boundedText) {
@@ -277,21 +278,33 @@ export function renderBoundedText(context: Scene, bt: BoundedText, box: Image | 
 // img holds the og properties from script.ts
 // renderedImage is the object on screen that can mutate
 // isCorrect is just a shortcut to checking if isCorrect exists in img and if it is true
-function handleQuizClick(context: Base, img: Image, renderedImage: Phaser.GameObjects.Image, isCorrect: boolean) {
+function handleQuizClick(
+    context: Base,
+    img: Image,
+    renderedImage: Phaser.GameObjects.Image,
+    isCorrect: boolean
+) {
     if (isCorrect) {
         addCoins(50);
         context.events.emit("updateCoinsUI");
         context.events.emit("enableForwardNav");
+
+        // Mark the section as played
+        const sceneScript = SCRIPT[context.scene.key];
+        if (sceneScript?.sections?.[0]) {
+            sceneScript.sections[0].playedOnce = true;
+        }
+
         context.renderedComponents.iterate((child: Phaser.GameObjects.GameObject) => {
             if ('removeInteractive' in child) {
                 (child as Phaser.GameObjects.GameObject & { removeInteractive: () => void }).removeInteractive();
             }
         });
     }
-
 }
 
-export function renderImage(context: Base, img: Image, isCorrect: boolean) {
+
+export function renderImage(context: Base, img: Image, isCorrect: boolean, playedOnce: boolean) {
     let originX = 0;
     let originY = 0;
 
@@ -300,14 +313,17 @@ export function renderImage(context: Base, img: Image, isCorrect: boolean) {
         originY = img.origin[1];
     }
 
-    const renderedImage = context.add.image(img.x, img.y, img.default).setOrigin(originX, originY);
+    const imageKey = (playedOnce && img.feedback && isCorrect) ? img.feedback : img.default;
+    const renderedImage = context.add.image(img.x, img.y, imageKey).setOrigin(originX, originY);
 
     // Store reference
     (context as Base).renderedComponents.add(renderedImage);
-
+    
+    if (playedOnce) return; 
     let clicked = false;
     // quiz-specific
     if (img.hovered && img.pressed && img.feedback) {
+        
         renderedImage.setInteractive({ useHandCursor: true });
 
         // Mouse hover effect
@@ -524,8 +540,15 @@ export function playAudioWithSync(context: Scene, highlighter: TextHighlighter, 
     });
 };
 
-
-
+export function fadeIn(context: Base) {
+    context.cameras.main.setAlpha(0);
+    context.tweens.add({
+        targets: context.cameras.main,
+        alpha: 1,
+        duration: 400
+    });
+}
+    
 /* END-USER-CODE */
 
 // Highlight manager class to handle updates efficiently

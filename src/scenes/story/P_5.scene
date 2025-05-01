@@ -46,6 +46,7 @@
                     "y": 134,
                     "originX": 0,
                     "originY": 0,
+                    "animationPlayMethod": 1,
                     "animationKey": "8_4_anim",
                     "animationPreview": true
                 },
@@ -61,6 +62,7 @@
                     "y": 48,
                     "originX": 0,
                     "originY": 0,
+                    "animationPlayMethod": 1,
                     "animationKey": "8_1_anim",
                     "animationPreview": true
                 },
@@ -76,6 +78,7 @@
                     "y": 319,
                     "originX": 0,
                     "originY": 0,
+                    "animationPlayMethod": 1,
                     "animationKey": "8_2_anim",
                     "animationPreview": true
                 },
@@ -91,6 +94,7 @@
                     "y": 2,
                     "originX": 0,
                     "originY": 0,
+                    "animationPlayMethod": 1,
                     "animationKey": "8_3_anim"
                 },
                 {
