@@ -20,34 +20,34 @@ export default class MG_2 extends MG_Base {
 	editorCreate(): void {
 
 		// hover_unflipped
-		this.add.image(457, 638, "unflipped");
+		this.add.image(737, 902, "unflipped");
 
 		// hover_unflipped_1
-		this.add.image(730, 366, "unflipped");
+		this.add.image(737, 390, "unflipped");
 
 		// hover_unflipped_2
-		this.add.image(730, 902, "unflipped");
+		this.add.image(737, 646, "unflipped");
 
 		// hover_unflipped_3
-		this.add.image(1270, 635, "unflipped");
+		this.add.image(993, 902, "unflipped");
 
 		// hover_unflipped_4
-		this.add.image(998, 366, "unflipped");
+		this.add.image(993, 390, "unflipped");
 
 		// hover_unflipped_5
-		this.add.image(998, 902, "unflipped");
+		this.add.image(1249, 646, "unflipped");
 
 		// hover_unflipped_6
-		this.add.image(730, 634, "unflipped");
+		this.add.image(481, 646, "unflipped");
 
 		// hover_unflipped_7
-		this.add.image(998, 634, "unflipped");
+		this.add.image(993, 646, "unflipped");
 
 		// mgsubtitle_sm
 		this.add.image(295, 364, "mgsubtitle_sm");
 
 		// _0_progress_bar_lg
-		this.add.image(873, 115, "0_progress_bar_lg");
+		this.add.image(866, 109, "0_progress_bar_lg");
 
 		this.events.emit("scene-awake");
 	}

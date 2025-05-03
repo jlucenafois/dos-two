@@ -20,8 +20,8 @@
             "texture": {
                 "key": "unflipped"
             },
-            "x": 482,
-            "y": 634
+            "x": 506,
+            "y": 641
         },
         {
             "type": "Image",
@@ -30,8 +30,8 @@
             "texture": {
                 "key": "unflipped"
             },
-            "x": 750,
-            "y": 366
+            "x": 762,
+            "y": 385
         },
         {
             "type": "Image",
@@ -40,8 +40,8 @@
             "texture": {
                 "key": "unflipped"
             },
-            "x": 750,
-            "y": 902
+            "x": 762,
+            "y": 897
         },
         {
             "type": "Image",
@@ -50,8 +50,8 @@
             "texture": {
                 "key": "unflipped"
             },
-            "x": 1286,
-            "y": 634
+            "x": 1274,
+            "y": 641
         },
         {
             "type": "Image",
@@ -61,7 +61,7 @@
                 "key": "unflipped"
             },
             "x": 1018,
-            "y": 366
+            "y": 385
         },
         {
             "type": "Image",
@@ -71,7 +71,7 @@
                 "key": "unflipped"
             },
             "x": 1018,
-            "y": 902
+            "y": 897
         },
         {
             "type": "Image",
@@ -80,8 +80,8 @@
             "texture": {
                 "key": "unflipped"
             },
-            "x": 750,
-            "y": 634
+            "x": 762,
+            "y": 641
         },
         {
             "type": "Image",
@@ -91,7 +91,7 @@
                 "key": "unflipped"
             },
             "x": 1018,
-            "y": 634
+            "y": 641
         },
         {
             "type": "Image",
@@ -100,8 +100,8 @@
             "texture": {
                 "key": "unflipped"
             },
-            "x": 482,
-            "y": 366
+            "x": 506,
+            "y": 385
         },
         {
             "type": "Image",
@@ -110,8 +110,8 @@
             "texture": {
                 "key": "unflipped"
             },
-            "x": 482,
-            "y": 902
+            "x": 506,
+            "y": 897
         },
         {
             "type": "Image",
@@ -120,8 +120,8 @@
             "texture": {
                 "key": "unflipped"
             },
-            "x": 1286,
-            "y": 366
+            "x": 1274,
+            "y": 385
         },
         {
             "type": "Image",
@@ -130,8 +130,8 @@
             "texture": {
                 "key": "unflipped"
             },
-            "x": 1286,
-            "y": 902
+            "x": 1274,
+            "y": 897
         },
         {
             "type": "Image",
@@ -140,7 +140,7 @@
             "texture": {
                 "key": "mgsubtitle_sm"
             },
-            "x": 186,
+            "x": 197,
             "y": 344,
             "scaleX": 0.9,
             "scaleY": 0.9
