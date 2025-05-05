@@ -99,8 +99,8 @@ export default class MG_1 extends MG_Base {
         this.events.emit("updateUI", "show_exit_button");
         this.anims.create({
             key: "drag_mouse_anim",
-            frames: this.anims.generateFrameNumbers("drag_mouse", { start: 0, end: 15 }),
-            frameRate: 10,
+            frames: this.anims.generateFrameNumbers("drag_mouse", { start: 0, end: 24 }),
+            frameRate: 20,
             repeat: -1,
         })
 
@@ -144,7 +144,7 @@ export default class MG_1 extends MG_Base {
         const mousePointer = this.add.sprite(this.unflipped_2.x, this.unflipped_2.y, "drag_mouse");
         mousePointer.setAlpha(1);
         mousePointer.setDepth(1);
-        mousePointer.setOrigin(0.5, 0.5); // Set origin to center for proper rotation
+        mousePointer.setScale(0.3);
 
         // Play the animation
         mousePointer.play("drag_mouse_anim");
@@ -160,7 +160,7 @@ export default class MG_1 extends MG_Base {
                 this.flipCard(this.unflipped_2);
     
                 // Move the pointer to the matching card
-                const matchingCard = this.unflipped_4; // Example: Match with unflipped_4
+                const matchingCard = this.unflipped_4;
                 matchingCard.setAlpha(1);
                 matchingCard.setDepth(1);
                 this.tweens.add({

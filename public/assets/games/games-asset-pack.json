@@ -2,39 +2,9 @@
     "section1": {
         "files": [
             {
-                "url": "assets/games/unflipped.png",
-                "type": "image",
-                "key": "unflipped"
-            },
-            {
-                "url": "assets/games/hover_unflipped.png",
-                "type": "image",
-                "key": "hover_unflipped"
-            },
-            {
-                "url": "assets/games/hover_card.png",
-                "type": "image",
-                "key": "hover_card"
-            },
-            {
-                "url": "assets/games/tutorial_card.png",
-                "type": "image",
-                "key": "tutorial_card"
-            },
-            {
-                "url": "assets/games/tutorial_card_e.png",
-                "type": "image",
-                "key": "tutorial_card_e"
-            },
-            {
                 "url": "assets/games/almohada_card.png",
                 "type": "image",
                 "key": "almohada_card"
-            },
-            {
-                "url": "assets/games/pillow_card.png",
-                "type": "image",
-                "key": "pillow_card"
             },
             {
                 "url": "assets/games/aquacate_card.png",
@@ -42,24 +12,14 @@
                 "key": "aquacate_card"
             },
             {
-                "url": "assets/games/avocado_card.png",
-                "type": "image",
-                "key": "avocado_card"
-            },
-            {
                 "url": "assets/games/arroz_card.png",
                 "type": "image",
                 "key": "arroz_card"
             },
             {
-                "url": "assets/games/rice_card.png",
+                "url": "assets/games/avocado_card.png",
                 "type": "image",
-                "key": "rice_card"
-            },
-            {
-                "url": "assets/games/cama_card.png",
-                "type": "image",
-                "key": "cama_card"
+                "key": "avocado_card"
             },
             {
                 "url": "assets/games/bed_card.png",
@@ -67,9 +27,24 @@
                 "key": "bed_card"
             },
             {
-                "url": "assets/games/zanahoria_card.png",
+                "url": "assets/games/blinking.png",
                 "type": "image",
-                "key": "zanahoria_card"
+                "key": "blinking"
+            },
+            {
+                "url": "assets/games/blinkingthree.png",
+                "type": "image",
+                "key": "blinkingthree"
+            },
+            {
+                "url": "assets/games/blinkingtwo.png",
+                "type": "image",
+                "key": "blinkingtwo"
+            },
+            {
+                "url": "assets/games/cama_card.png",
+                "type": "image",
+                "key": "cama_card"
             },
             {
                 "url": "assets/games/carrot_card.png",
@@ -77,14 +52,50 @@
                 "key": "carrot_card"
             },
             {
+                "url": "assets/games/cat.png",
+                "frameConfig": {
+                    "frameWidth": 1500,
+                    "frameHeight": 1500,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "cat"
+            },
+            {
+                "url": "assets/games/cat.png",
+                "type": "image",
+                "key": "cat_01"
+            },
+            {
+                "url": "assets/games/chooseNumberMG.png",
+                "type": "image",
+                "key": "chooseNumberMG"
+            },
+            {
+                "url": "assets/games/confetti.png",
+                "frameConfig": {
+                    "frameWidth": 1000,
+                    "frameHeight": 800,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "confetti"
+            },
+            {
+                "url": "assets/games/confetti.png",
+                "type": "image",
+                "key": "confetti_01"
+            },
+            {
                 "url": "assets/games/cuchara_card.png",
                 "type": "image",
                 "key": "cuchara_card"
-            },
-            {
-                "url": "assets/games/spoon_card.png",
-                "type": "image",
-                "key": "spoon_card"
             },
             {
                 "url": "assets/games/cuchillo_card.png",
@@ -92,69 +103,22 @@
                 "key": "cuchillo_card"
             },
             {
-                "url": "assets/games/fork_card.png",
-                "type": "image",
-                "key": "fork_card"
+                "url": "assets/games/drag_mouse.png",
+                "frameConfig": {
+                    "frameWidth": 500,
+                    "frameHeight": 388,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "drag_mouse"
             },
             {
-                "url": "assets/games/espejo_card.png",
+                "url": "assets/games/drag_mouse.png",
                 "type": "image",
-                "key": "espejo_card"
-            },
-            {
-                "url": "assets/games/mirror_card.png",
-                "type": "image",
-                "key": "mirror_card"
-            },
-            {
-                "url": "assets/games/lampara_card.png",
-                "type": "image",
-                "key": "lampara_card"
-            },
-            {
-                "url": "assets/games/lamp_card.png",
-                "type": "image",
-                "key": "lamp_card"
-            },
-            {
-                "url": "assets/games/tenedor_card.png",
-                "type": "image",
-                "key": "tenedor_card"
-            },
-            {
-                "url": "assets/games/knife_card.png",
-                "type": "image",
-                "key": "knife_card"
-            },
-            {
-                "url": "assets/games/papa_card.png",
-                "type": "image",
-                "key": "papa_card"
-            },
-            {
-                "url": "assets/games/plato_card.png",
-                "type": "image",
-                "key": "plato_card"
-            },
-            {
-                "url": "assets/games/plate_card.png",
-                "type": "image",
-                "key": "plate_card"
-            },
-            {
-                "url": "assets/games/potato_card.png",
-                "type": "image",
-                "key": "potato_card"
-            },
-            {
-                "url": "assets/games/sixcards.png",
-                "type": "image",
-                "key": "sixcards"
-            },
-            {
-                "url": "assets/games/sixcards_hover.png",
-                "type": "image",
-                "key": "sixcards_hover"
+                "key": "drag_mouse_01"
             },
             {
                 "url": "assets/games/eightcards.png",
@@ -167,14 +131,39 @@
                 "key": "eightcards_hover"
             },
             {
-                "url": "assets/games/twelvecards.png",
+                "url": "assets/games/espejo_card.png",
                 "type": "image",
-                "key": "twelvecards"
+                "key": "espejo_card"
             },
             {
-                "url": "assets/games/twelvecards_hover.png",
+                "url": "assets/games/fork_card.png",
                 "type": "image",
-                "key": "twelvecards_hover"
+                "key": "fork_card"
+            },
+            {
+                "url": "assets/games/hover_card.png",
+                "type": "image",
+                "key": "hover_card"
+            },
+            {
+                "url": "assets/games/hover_unflipped.png",
+                "type": "image",
+                "key": "hover_unflipped"
+            },
+            {
+                "url": "assets/games/knife_card.png",
+                "type": "image",
+                "key": "knife_card"
+            },
+            {
+                "url": "assets/games/lamp_card.png",
+                "type": "image",
+                "key": "lamp_card"
+            },
+            {
+                "url": "assets/games/lampara_card.png",
+                "type": "image",
+                "key": "lampara_card"
             },
             {
                 "url": "assets/games/mgsubtitle.png",
@@ -187,14 +176,34 @@
                 "key": "mgsubtitle_sm"
             },
             {
-                "url": "assets/games/chooseNumberMG.png",
+                "url": "assets/games/mirror_card.png",
                 "type": "image",
-                "key": "chooseNumberMG"
+                "key": "mirror_card"
             },
             {
-                "url": "assets/games/reward_six.png",
+                "url": "assets/games/papa_card.png",
                 "type": "image",
-                "key": "reward_six"
+                "key": "papa_card"
+            },
+            {
+                "url": "assets/games/pillow_card.png",
+                "type": "image",
+                "key": "pillow_card"
+            },
+            {
+                "url": "assets/games/plate_card.png",
+                "type": "image",
+                "key": "plate_card"
+            },
+            {
+                "url": "assets/games/plato_card.png",
+                "type": "image",
+                "key": "plato_card"
+            },
+            {
+                "url": "assets/games/potato_card.png",
+                "type": "image",
+                "key": "potato_card"
             },
             {
                 "url": "assets/games/reward_eight.png",
@@ -202,44 +211,74 @@
                 "key": "reward_eight"
             },
             {
+                "url": "assets/games/reward_six.png",
+                "type": "image",
+                "key": "reward_six"
+            },
+            {
                 "url": "assets/games/reward_twelve.png",
                 "type": "image",
                 "key": "reward_twelve"
             },
             {
-                "url": "assets/games/drag_mouse.png",
+                "url": "assets/games/rice_card.png",
                 "type": "image",
-                "key": "drag_mouse"
+                "key": "rice_card"
             },
             {
-                "url": "assets/games/blinking.png",
+                "url": "assets/games/sixcards.png",
                 "type": "image",
-                "key": "blinking"
+                "key": "sixcards"
             },
             {
-                "url": "assets/games/blinkingtwo.png",
+                "url": "assets/games/sixcards_hover.png",
                 "type": "image",
-                "key": "blinkingtwo"
+                "key": "sixcards_hover"
             },
             {
-                "url": "assets/games/blinkingthree.png",
+                "url": "assets/games/spoon_card.png",
                 "type": "image",
-                "key": "blinkingthree"
+                "key": "spoon_card"
             },
             {
-                "url": "assets/games/confetti.png",
+                "url": "assets/games/tenedor_card.png",
                 "type": "image",
-                "key": "confetti"
+                "key": "tenedor_card"
             },
             {
-                "url": "assets/games/cat.png",
+                "url": "assets/games/tutorial_card.png",
                 "type": "image",
-                "key": "cat"
+                "key": "tutorial_card"
+            },
+            {
+                "url": "assets/games/tutorial_card_e.png",
+                "type": "image",
+                "key": "tutorial_card_e"
+            },
+            {
+                "url": "assets/games/twelvecards.png",
+                "type": "image",
+                "key": "twelvecards"
+            },
+            {
+                "url": "assets/games/twelvecards_hover.png",
+                "type": "image",
+                "key": "twelvecards_hover"
+            },
+            {
+                "url": "assets/games/unflipped.png",
+                "type": "image",
+                "key": "unflipped"
             },
             {
                 "url": "assets/games/wepa.png",
                 "type": "image",
                 "key": "wepa"
+            },
+            {
+                "url": "assets/games/zanahoria_card.png",
+                "type": "image",
+                "key": "zanahoria_card"
             }
         ]
     },
