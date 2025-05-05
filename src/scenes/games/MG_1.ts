@@ -99,118 +99,116 @@ export default class MG_1 extends MG_Base {
         this.events.emit("updateUI", "show_exit_button");
         this.anims.create({
             key: "drag_mouse_anim",
-            frames: this.anims.generateFrameNumbers("drag_mouse", { start: 0, end: 24 }),
+            frames: this.anims.generateFrameNumbers("drag_mouse", { start: 0, end: 23 }),
             frameRate: 20,
             repeat: -1,
         })
         
-         // Add a button to end the game - delete this section after
-        const endGameButton = this.add.text(this.scale.width / 2, this.scale.height - 100, "End Game", {
-            font: "32px Arial",
-            color: "#ffffff",
-            backgroundColor: "#ff0000",
-            padding: { x: 10, y: 5 },
-        });
-        endGameButton.setOrigin(0.5, 0.5);
-        endGameButton.setInteractive({ useHandCursor: true });
-        endGameButton.on("pointerdown", () => {
-            this.endGame(); // Restart the scene to reset the game
-        });
-
-        // // Girl Blinking 
-        // this.blinking.setVisible(true);
-        // this.blinking.setAlpha(1);
-        // this.blinking.setDepth(1);
-
-        // // Blinking Animation
-        // const blinkingTextures = ["blinking", "blinkingtwo", "blinkingthree"];
-        // let currentTextureIndex = 0;
-
-        // const changeBlinkingTexture = () => {
-        //     // Update the texture
-        //     this.blinking.setTexture(blinkingTextures[currentTextureIndex]);
-        
-        //     // Move to the next texture
-        //     currentTextureIndex = (currentTextureIndex + 1) % blinkingTextures.length;
-        
-        //     // Schedule the next texture change
-        //     const delay = currentTextureIndex === 1 ? 1000 : 100; // Freeze on index 1
-        //     this.time.delayedCall(delay, changeBlinkingTexture);
-        // };
-
-        // // Start the blinking animation
-        // changeBlinkingTexture();
-
-        // // Add a semi-transparent overlay to darken the screen
-        // const overlay = this.add.rectangle(0, 0, this.scale.width, this.scale.height, 0x000000, 0.7);
-        // overlay.setOrigin(0, 0);
-        
-        // // Highlight the top-right card (unflipped_2)
-        // this.unflipped_2.setAlpha(1); // Ensure it's fully visible
-        // this.unflipped_2.setDepth(1); // Bring it above the overlay
-    
-        // // Assign tutorial textures to the two cards
-        // this.unflipped_2.setData("flippedCard", "tutorial_card");
-        // this.unflipped_4.setData("flippedCard", "tutorial_card_e");
-    
-        // // Add an animated mouse pointer - should start lower
-        // const mousePointer = this.add.sprite(this.unflipped_2.x, this.unflipped_2.y, "drag_mouse");
-        // mousePointer.setAlpha(1);
-        // mousePointer.setDepth(1);
-        // mousePointer.setScale(0.3);
-
-        // // Play the animation
-        // mousePointer.play("drag_mouse_anim");
-    
-        // // Animate the mouse pointer to simulate a click
-        // this.tweens.add({
-        //     targets: mousePointer,
-        //     x: this.unflipped_2.x,
-        //     y: this.unflipped_2.y,
-        //     duration: 1000,
-        //     onComplete: () => {
-        //         // Simulate flipping the first card
-        //         this.flipCard(this.unflipped_2);
-    
-        //         // Move the pointer to the matching card
-        //         const matchingCard = this.unflipped_4;
-        //         matchingCard.setAlpha(1);
-        //         matchingCard.setDepth(1);
-        //         this.tweens.add({
-        //             targets: mousePointer,
-        //             x: matchingCard.x,
-        //             y: matchingCard.y,
-        //             duration: 1000,
-        //             onComplete: () => {
-        //                 // Simulate flipping the matching card
-        //                 this.flipCard(matchingCard);
-    
-        //                 // Make the matched cards disappear
-        //                 this.time.delayedCall(1000, () => {
-        //                     this.unflipped_2.setVisible(false);
-        //                     this.unflipped_4.setVisible(false);
-        //                     matchingCard.setVisible(false);
-    
-        //                     // Reset the game after the tutorial
-        //                     this.time.delayedCall(1000, () => {
-        //                     overlay.destroy();
-        //                     mousePointer.destroy();
-        //                         this.resetGame();
-        //                         this.blinking.setVisible(false);
-        //                     });
-        //                 });
-        //             },
-        //         });
-        //     },
+        //  // Add a button to end the game - IGNORE testing
+        // const endGameButton = this.add.text(this.scale.width / 2, this.scale.height - 100, "End Game", {
+        //     font: "32px Arial",
+        //     color: "#ffffff",
+        //     backgroundColor: "#ff0000",
+        //     padding: { x: 10, y: 5 },
         // });
+        // endGameButton.setOrigin(0.5, 0.5);
+        // endGameButton.setInteractive({ useHandCursor: true });
+        // endGameButton.on("pointerdown", () => {
+        //     this.endGame(); // Restart the scene to reset the game
+        // });
+
+        // Girl Blinking 
+        this.blinking.setVisible(true);
+        this.blinking.setAlpha(1);
+        this.blinking.setDepth(1);
+
+        // Blinking Animation
+        const blinkingTextures = ["blinking", "blinkingtwo", "blinkingthree"];
+        let currentTextureIndex = 0;
+
+        const changeBlinkingTexture = () => {
+            // Update the texture
+            this.blinking.setTexture(blinkingTextures[currentTextureIndex]);
+        
+            // Move to the next texture
+            currentTextureIndex = (currentTextureIndex + 1) % blinkingTextures.length;
+        
+            // Schedule the next texture change
+            const delay = currentTextureIndex === 1 ? 1000 : 100; // Freeze on index 1
+            this.time.delayedCall(delay, changeBlinkingTexture);
+        };
+
+        // Start the blinking animation
+        changeBlinkingTexture();
+
+        // Add a semi-transparent overlay to darken the screen
+        const overlay = this.add.rectangle(0, 0, this.scale.width, this.scale.height, 0x000000, 0.7);
+        overlay.setOrigin(0, 0);
+        
+        // Highlight the top-right card (unflipped_2)
+        this.unflipped_2.setAlpha(1); // Ensure it's fully visible
+        this.unflipped_2.setDepth(1); // Bring it above the overlay
+    
+        // Assign tutorial textures to the two cards
+        this.unflipped_2.setData("flippedCard", "tutorial_card");
+        this.unflipped_4.setData("flippedCard", "tutorial_card_e");
+    
+        // Add an animated mouse pointer - should start lower
+        const mousePointer = this.add.sprite(this.unflipped_2.x, this.unflipped_2.y, "drag_mouse");
+        mousePointer.setAlpha(1);
+        mousePointer.setDepth(1);
+        mousePointer.setScale(0.3);
+
+        // Play the animation
+        mousePointer.play("drag_mouse_anim");
+    
+        // Animate the mouse pointer to simulate a click
+        this.tweens.add({
+            targets: mousePointer,
+            x: this.unflipped_2.x,
+            y: this.unflipped_2.y,
+            duration: 1000,
+            onComplete: () => {
+                // Simulate flipping the first card
+                this.flipCard(this.unflipped_2);
+    
+                // Move the pointer to the matching card
+                const matchingCard = this.unflipped_4;
+                matchingCard.setAlpha(1);
+                matchingCard.setDepth(1);
+                this.tweens.add({
+                    targets: mousePointer,
+                    x: matchingCard.x,
+                    y: matchingCard.y,
+                    duration: 1000,
+                    onComplete: () => {
+                        // Simulate flipping the matching card
+                        this.flipCard(matchingCard);
+    
+                        // Make the matched cards disappear
+                        this.time.delayedCall(1000, () => {
+                            this.unflipped_2.setVisible(false);
+                            this.unflipped_4.setVisible(false);
+                            matchingCard.setVisible(false);
+    
+                            // Reset the game after the tutorial
+                            this.time.delayedCall(1000, () => {
+                            overlay.destroy();
+                            mousePointer.destroy();
+                                this.resetGame();
+                                this.blinking.setVisible(false);
+                            });
+                        });
+                    },
+                });
+            },
+        });
     }
 
-    setupMemoryGame() {
-        
-        // Define the CardKey type outside the class
+        setupMemoryGame() {
         const cards = ["bed_card", "cama_card", "lamp_card", "lampara_card", "mirror_card", "espejo_card"];
         Phaser.Utils.Array.Shuffle(cards);
-
+    
         const unflippedCards = [
             this.unflipped,
             this.unflipped_1,
@@ -219,7 +217,7 @@ export default class MG_1 extends MG_Base {
             this.unflipped_4,
             this.unflipped_5,
         ];
-
+    
         unflippedCards.forEach((card, index) => {
             card.setTexture("unflipped");
             card.setData("key", cards[index]);
@@ -227,22 +225,40 @@ export default class MG_1 extends MG_Base {
             card.setData("flipped", false);
             card.setInteractive();
         });
-
+    
         let flippedCards: Phaser.GameObjects.Image[] = [];
-
+    
+        const disableAllCards = () => {
+            unflippedCards.forEach((card) => {
+                if (card.texture.key === "unflipped") {
+                    card.disableInteractive(); // Disable interaction only for unflipped cards
+                }
+            });
+        };
+    
+        const enableAllCards = () => {
+            unflippedCards.forEach((card) => {
+                if (!card.getData("flipped")) {
+                    card.setInteractive();
+                }
+            });
+        };
+    
         unflippedCards.forEach((card) => {
             card.on("pointerdown", () => {
                 if (flippedCards.length < 2 && !card.getData("flipped")) {
-                    card.setTexture(card.getData("flippedCard")); // bruh
-                    this.hover_unflipped.setVisible(false); // bruh x2
+                    card.setTexture(card.getData("flippedCard"));
+                    this.hover_unflipped.setVisible(false);
                     this.flipCard(card);
                     flippedCards.push(card);
-
+    
                     if (flippedCards.length === 2) {
-                        this.time.delayedCall(900, () => {
+                        disableAllCards(); // Disable all cards while checking for a match
+    
+                        this.time.delayedCall(1000, () => {
                             this.checkMatch(flippedCards);
                             flippedCards = [];
-                            card.setInteractive(false);
+                            enableAllCards(); // Re-enable cards after the match check
                         });
                     }
                 }
@@ -358,6 +374,7 @@ export default class MG_1 extends MG_Base {
 
         const wepa = this.add.image(890,500,"wepa");
         wepa;
+
         const playagain = this.add.image(890,500, "playagain");
         playagain.setVisible(false);
 
@@ -374,8 +391,6 @@ export default class MG_1 extends MG_Base {
         const reward_six = this.add.image(900,500, "reward_six");
         reward_six.setScale(0.7);
         reward_six.setVisible(false);
-
-        
 
         // destroy first round animation
         this.time.delayedCall(4000, () => {
@@ -410,19 +425,27 @@ export default class MG_1 extends MG_Base {
                 // Change texture on click and start a new game
                 playButton.on("pointerdown", () => {
                     playButton.setTexture("pressed_play_lg");
-                    this.resetGame();
+                    this.playAgain();
+                    quitButton.destroy();
+                    playButton.destroy();
+                    playagain.setVisible(false);
                 });
             })
         });
-
-        // quit or keep playing screen
-        this.matchedPairs.clear();
-        this.setupMemoryGame();
     }
 
     resetGame() {
         // Clear matched pairs
         this.matchedPairs.clear();
+    
+        // Reset progress bar to index 0
+        const progressTexture = [
+            "0_progress_bar_lg",
+            "25_progress_bar_lg",
+            "75_progress_bar_lg",
+            "100_progress_bar_lg",
+        ];
+        this.progressBar.setTexture(progressTexture[0]); // Reset to the first texture
     
         // Reset all cards to their initial state
         const unflippedCards = [
@@ -435,13 +458,25 @@ export default class MG_1 extends MG_Base {
         ];
     
         unflippedCards.forEach((card) => {
-            card.setTexture("unflipped");
-            card.setData("flipped", false);
-            card.setVisible(true);
-            card.setInteractive();
+            card.setTexture("unflipped"); // Reset texture to "unflipped"
+            card.setData("flipped", false); // Mark as not flipped
+            card.setVisible(true); // Make the card visible
+            card.setInteractive(); // Make the card interactive
         });
     
         // Start a new game
+        this.setupMemoryGame();
+    }
+
+       playAgain() {
+        // Reset the progress bar, matched pairs, and cards
+        this.resetGame();
+    
+        // Reset any additional game elements
+        this.blinking.setVisible(false); // Hide blinking animation
+        this.hover_unflipped.setVisible(false); // Hide hover effect
+    
+        // Restart the game logic
         this.setupMemoryGame();
     }
 
