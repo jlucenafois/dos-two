@@ -19,7 +19,8 @@ export default class MG_1 extends MG_Base {
     private unflipped_5: Phaser.GameObjects.Image;
     private progressBar: Phaser.GameObjects.Image;
     private matchedPairs: Set<String>;
-    
+    private hover_unflipped: Phaser.GameObjects.Image;
+    private blinking: Phaser.GameObjects.Image;
 
     constructor() {
         super("MG_1");
@@ -30,9 +31,13 @@ export default class MG_1 extends MG_Base {
     }
 
     editorCreate(): void {
-
         // _0_progress_bar_lg
-        this.progressBar = this.add.image(873, 135, "0_progress_bar_lg");
+		this.progressBar = this.add.image(873, 198, "0_progress_bar_lg");
+
+		// blinking
+		this.blinking = this.add.image(1728, 1117, "blinking");
+		this.blinking.setOrigin(1, 1);
+        this.blinking.setVisible(false);
 
         // unflipped 
         this.unflipped = this.add.image(633, 421, "unflipped");
@@ -53,8 +58,8 @@ export default class MG_1 extends MG_Base {
         this.unflipped_5 = this.add.image(1145, 677, "unflipped");
 
         // hover_unflipped
-        const hover_unflipped = this.add.image(633, 421, "hover_unflipped");
-        hover_unflipped.setVisible(false);
+        this.hover_unflipped = this.add.image(633, 421, "hover_unflipped");
+        this.hover_unflipped.setVisible(false);
 
         // mgsubtitle
 		this.add.image(885, 933, "mgsubtitle");
@@ -68,12 +73,12 @@ export default class MG_1 extends MG_Base {
             card.on("pointerover", () => {
                 // Only hover_unflipped if state is unflipped
                 if (card.texture.key === "unflipped"){
-                    hover_unflipped.setPosition(card.x, card.y);
-                    hover_unflipped.setVisible(true);
+                    this.hover_unflipped.setPosition(card.x, card.y);
+                    this.hover_unflipped.setVisible(true);
                 }
             });
             card.on("pointerout", () => {
-                hover_unflipped.setVisible(false);
+                this.hover_unflipped.setVisible(false);
             });
         };
 
@@ -92,11 +97,41 @@ export default class MG_1 extends MG_Base {
         super.create();
         this.editorCreate();
         this.events.emit("updateUI", "show_exit_button");
-    
+        this.anims.create({
+            key: "drag_mouse_anim",
+            frames: this.anims.generateFrameNumbers("drag_mouse", { start: 0, end: 15 }),
+            frameRate: 10,
+            repeat: -1,
+        })
+
+        // Girl Blinking 
+        this.blinking.setVisible(true);
+        this.blinking.setAlpha(1);
+        this.blinking.setDepth(1);
+
+        // Blinking Animation
+        const blinkingTextures = ["blinking", "blinkingtwo", "blinkingthree"];
+        let currentTextureIndex = 0;
+
+        const changeBlinkingTexture = () => {
+            // Update the texture
+            this.blinking.setTexture(blinkingTextures[currentTextureIndex]);
+        
+            // Move to the next texture
+            currentTextureIndex = (currentTextureIndex + 1) % blinkingTextures.length;
+        
+            // Schedule the next texture change
+            const delay = currentTextureIndex === 1 ? 1000 : 100; // Freeze on index 1
+            this.time.delayedCall(delay, changeBlinkingTexture);
+        };
+
+        // Start the blinking animation
+        changeBlinkingTexture();
+
         // Add a semi-transparent overlay to darken the screen
         const overlay = this.add.rectangle(0, 0, this.scale.width, this.scale.height, 0x000000, 0.7);
         overlay.setOrigin(0, 0);
-    
+        
         // Highlight the top-right card (unflipped_2)
         this.unflipped_2.setAlpha(1); // Ensure it's fully visible
         this.unflipped_2.setDepth(1); // Bring it above the overlay
@@ -106,8 +141,13 @@ export default class MG_1 extends MG_Base {
         this.unflipped_4.setData("flippedCard", "tutorial_card_e");
     
         // Add an animated mouse pointer
-        const mousePointer = this.add.image(this.unflipped_2.x - 50, this.unflipped_2.y - 50, "mouse_pointer");
-        mousePointer.setScale(0.5); // Scale down the pointer for better visibility
+        const mousePointer = this.add.sprite(this.unflipped_2.x, this.unflipped_2.y, "drag_mouse");
+        mousePointer.setAlpha(1);
+        mousePointer.setDepth(1);
+        mousePointer.setOrigin(0.5, 0.5); // Set origin to center for proper rotation
+
+        // Play the animation
+        mousePointer.play("drag_mouse_anim");
     
         // Animate the mouse pointer to simulate a click
         this.tweens.add({
@@ -138,14 +178,12 @@ export default class MG_1 extends MG_Base {
                             this.unflipped_4.setVisible(false);
                             matchingCard.setVisible(false);
     
-                            
-    
                             // Reset the game after the tutorial
                             this.time.delayedCall(1000, () => {
-                            // Remove the overlay and mouse pointer
                             overlay.destroy();
                             mousePointer.destroy();
                                 this.resetGame();
+                                this.blinking.setVisible(false);
                             });
                         });
                     },
@@ -156,7 +194,6 @@ export default class MG_1 extends MG_Base {
 
     setupMemoryGame() {
         // Define the CardKey type outside the class
-        // type CardKey = "bed_card" | "cama_card" | "lamp_card" | "lampara_card" | "mirror_card" | "espejo_card";
         const cards = ["bed_card", "cama_card", "lamp_card", "lampara_card", "mirror_card", "espejo_card"];
         Phaser.Utils.Array.Shuffle(cards);
 
@@ -182,13 +219,16 @@ export default class MG_1 extends MG_Base {
         unflippedCards.forEach((card) => {
             card.on("pointerdown", () => {
                 if (flippedCards.length < 2 && !card.getData("flipped")) {
+                    card.setTexture(card.getData("flippedCard")); // bruh
+                    this.hover_unflipped.setVisible(false); // bruh x2
                     this.flipCard(card);
                     flippedCards.push(card);
 
                     if (flippedCards.length === 2) {
-                        this.time.delayedCall(1000, () => {
+                        this.time.delayedCall(900, () => {
                             this.checkMatch(flippedCards);
                             flippedCards = [];
+                            card.setInteractive(false);
                         });
                     }
                 }
@@ -241,7 +281,6 @@ export default class MG_1 extends MG_Base {
         // Mark the card as not flipped
         card.setData("flipped", false);
     }
-    
 
     checkMatch(cards: Phaser.GameObjects.Image[]) {
         const [card1, card2] = cards;
@@ -263,11 +302,21 @@ export default class MG_1 extends MG_Base {
             this.matchedPairs.add(key2);
             card1.setVisible(false);
             card2.setVisible(false);
+            
             // for each of 3 matches get progress bar to 100, for this start at 25_progress_bar_lg, 75_progress_bar_lg, 100_progress_bar_lg
+            const progressTexture = [
+                "0_progress_bar_lg",
+                "25_progress_bar_lg",
+                "75_progress_bar_lg",
+                "100_progress_bar_lg",
+            ];
+            const progressIndex = Math.min(this.matchedPairs.size /2, 3);
+            this.progressBar.setTexture(progressTexture[progressIndex]);
         } else {
             this.time.delayedCall(1000, () => {
                 this.flipCardBack(card1);
                 this.flipCardBack(card2);
+                this.hover_unflipped.setVisible(true);
             });
         }
 
@@ -280,6 +329,7 @@ export default class MG_1 extends MG_Base {
 
     endGame() {
         // animations 
+
         // quit or keep playing screen
         this.matchedPairs.clear();
         this.setupMemoryGame();

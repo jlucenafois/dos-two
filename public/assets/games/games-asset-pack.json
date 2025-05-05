@@ -27,6 +27,11 @@
                 "key": "tutorial_card_e"
             },
             {
+                "url": "assets/games/almohada_card.png",
+                "type": "image",
+                "key": "almohada_card"
+            },
+            {
                 "url": "assets/games/pillow_card.png",
                 "type": "image",
                 "key": "pillow_card"
@@ -200,6 +205,41 @@
                 "url": "assets/games/reward_twelve.png",
                 "type": "image",
                 "key": "reward_twelve"
+            },
+            {
+                "url": "assets/games/drag_mouse.png",
+                "type": "image",
+                "key": "drag_mouse"
+            },
+            {
+                "url": "assets/games/blinking.png",
+                "type": "image",
+                "key": "blinking"
+            },
+            {
+                "url": "assets/games/blinkingtwo.png",
+                "type": "image",
+                "key": "blinkingtwo"
+            },
+            {
+                "url": "assets/games/blinkingthree.png",
+                "type": "image",
+                "key": "blinkingthree"
+            },
+            {
+                "url": "assets/games/confetti.png",
+                "type": "image",
+                "key": "confetti"
+            },
+            {
+                "url": "assets/games/cat.png",
+                "type": "image",
+                "key": "cat"
+            },
+            {
+                "url": "assets/games/wepa.png",
+                "type": "image",
+                "key": "wepa"
             }
         ]
     },

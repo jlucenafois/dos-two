@@ -21,7 +21,8 @@
                 "key": "0_progress_bar_lg"
             },
             "x": 873,
-            "y": 135
+            "y": 198,
+            "originY": 1
         },
         {
             "type": "Image",
@@ -41,7 +42,8 @@
                 "key": "unflipped"
             },
             "x": 889,
-            "y": 421
+            "y": 317,
+            "originY": 0
         },
         {
             "type": "Image",
@@ -92,6 +94,18 @@
             },
             "x": 885,
             "y": 933
+        },
+        {
+            "type": "Image",
+            "id": "4b6d15cb-960f-4515-a701-4b8013bd8ab5",
+            "label": "blinking",
+            "texture": {
+                "key": "blinking"
+            },
+            "x": 1728,
+            "y": 1117,
+            "originX": 1,
+            "originY": 1
         }
     ],
     "plainObjects": [],
