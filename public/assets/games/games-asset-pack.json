@@ -279,6 +279,16 @@
                 "url": "assets/games/zanahoria_card.png",
                 "type": "image",
                 "key": "zanahoria_card"
+            },
+            {
+                "url": "assets/games/playagain.png",
+                "type": "image",
+                "key": "playagain"
+            },
+            {
+                "url": "assets/games/quit.png",
+                "type": "image",
+                "key": "quit"
             }
         ]
     },
