@@ -15,6 +15,17 @@
     "displayList": [
         {
             "type": "Image",
+            "id": "5b782869-ff29-404f-a429-4c159297e417",
+            "label": "_0_progress_bar_lg",
+            "texture": {
+                "key": "0_progress_bar_lg"
+            },
+            "x": 873,
+            "y": 198,
+            "originY": 1
+        },
+        {
+            "type": "Image",
             "id": "6c7f72aa-c1d2-4830-b0a6-f6bb31b66e8d",
             "label": "hover_unflipped",
             "texture": {

@@ -20,7 +20,7 @@ export default class Preload extends Base {
 	editorCreate(): void {
 
 		// progress_bar
-		const progress_bar = this.add.image(864, 558.5, "0_progress_bar_lg");
+		const progress_bar = this.add.image(866, 558.5, "0_progress_bar_lg");
 
 		this.progress_bar = progress_bar;
 
@@ -78,7 +78,7 @@ export default class Preload extends Base {
 			}
 		}
 
-		this.scene.start("OB_1");
+		this.scene.start("DD_0"); // OB_1
 	}
 
 	/* END-USER-CODE */

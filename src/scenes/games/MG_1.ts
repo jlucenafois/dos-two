@@ -32,7 +32,7 @@ export default class MG_1 extends MG_Base {
 
     editorCreate(): void {
         // _0_progress_bar_lg
-		this.progressBar = this.add.image(890, 198, "0_progress_bar_lg");
+		this.progressBar = this.add.image(890, 138, "0_progress_bar_lg");
 
 		// blinking
 		this.blinking = this.add.image(1728, 1117, "blinking");
@@ -343,7 +343,7 @@ export default class MG_1 extends MG_Base {
             const progressIndex = Math.min(this.matchedPairs.size /2, 3);
             this.progressBar.setTexture(progressTexture[progressIndex]);
         } else {
-            this.time.delayedCall(1000, () => {
+            this.time.delayedCall(600, () => {
                 this.flipCardBack(card1);
                 this.flipCardBack(card2);
                 this.hover_unflipped.setVisible(true);
@@ -425,7 +425,7 @@ export default class MG_1 extends MG_Base {
                 // Change texture on click and start a new game
                 playButton.on("pointerdown", () => {
                     playButton.setTexture("pressed_play_lg");
-                    this.playAgain();
+                    this.resetGame();
                     quitButton.destroy();
                     playButton.destroy();
                     playagain.setVisible(false);
@@ -435,49 +435,43 @@ export default class MG_1 extends MG_Base {
     }
 
     resetGame() {
-        // Clear matched pairs
-        this.matchedPairs.clear();
+       // Clear matched pairs
+       this.matchedPairs.clear();
     
-        // Reset progress bar to index 0
-        const progressTexture = [
-            "0_progress_bar_lg",
-            "25_progress_bar_lg",
-            "75_progress_bar_lg",
-            "100_progress_bar_lg",
-        ];
-        this.progressBar.setTexture(progressTexture[0]); // Reset to the first texture
-    
-        // Reset all cards to their initial state
-        const unflippedCards = [
-            this.unflipped,
-            this.unflipped_1,
-            this.unflipped_2,
-            this.unflipped_3,
-            this.unflipped_4,
-            this.unflipped_5,
-        ];
-    
-        unflippedCards.forEach((card) => {
-            card.setTexture("unflipped"); // Reset texture to "unflipped"
-            card.setData("flipped", false); // Mark as not flipped
-            card.setVisible(true); // Make the card visible
-            card.setInteractive(); // Make the card interactive
-        });
-    
-        // Start a new game
-        this.setupMemoryGame();
-    }
-
-       playAgain() {
-        // Reset the progress bar, matched pairs, and cards
-        this.resetGame();
-    
-        // Reset any additional game elements
-        this.blinking.setVisible(false); // Hide blinking animation
-        this.hover_unflipped.setVisible(false); // Hide hover effect
-    
-        // Restart the game logic
-        this.setupMemoryGame();
+       // Reset progress bar to index 0
+       const progressTexture = [
+           "0_progress_bar_lg",
+           "25_progress_bar_lg",
+           "75_progress_bar_lg",
+           "100_progress_bar_lg",
+       ];
+       this.progressBar.setTexture(progressTexture[0]); // Reset to the first texture
+   
+       // Reset all cards to their initial state
+       const unflippedCards = [
+           this.unflipped,
+           this.unflipped_1,
+           this.unflipped_2,
+           this.unflipped_3,
+           this.unflipped_4,
+           this.unflipped_5,
+       ];
+   
+       unflippedCards.forEach((card) => {
+           card.setTexture("unflipped"); // Reset texture to "unflipped"
+           card.setData("flipped", false); // Mark as not flipped
+           card.setVisible(true); // Make the card visible
+           card.setInteractive(); // Make the card interactive
+       });
+   
+       // Reset blinking animation
+       this.blinking.setVisible(false);
+   
+       // Hide hover effect
+       this.hover_unflipped.setVisible(false);
+   
+       // Restart the game logic
+       this.setupMemoryGame();
     }
 
     /* END-USER-CODE */
