@@ -33,7 +33,7 @@ export default class MG_2 extends MG_Base {
 	editorCreate(): void {
 
 		// _0_progress_bar_lg
-		this.progressBar = this.add.image(866, 138, "0_progress_bar_lg");
+		this.progressBar = this.add.image(890, 138, "0_progress_bar_lg");
 		
 		// blinking
 		this.blinking = this.add.image(1728, 1117, "blinking");
