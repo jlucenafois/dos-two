@@ -231,6 +231,8 @@ export default class WC_Game extends Base {
 	}
 
 	shutDownListener(): void {
+        this.currentWordIndex = 0;
+        this.progress = 0.0;
 		this.events.off("puzzleComplete", this.onPuzzleComplete, this);
 		if (this.puzzle) {
 			this.puzzle.destroy(true);
