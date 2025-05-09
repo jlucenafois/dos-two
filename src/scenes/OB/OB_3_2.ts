@@ -3,7 +3,7 @@
 
 /* START OF COMPILED CODE */
 
-import { CURRENT_SETTINGS } from "../settings";
+import { CURRENT_SETTINGS } from "../../settings";
 import OB_Base from "./OB_Base";
 /* START-USER-IMPORTS */
 import { enableHoverAudio, playBackgroundAudio } from "../../utils";
@@ -121,11 +121,11 @@ export default class OB_3_2 extends OB_Base {
 		}
 
 		CURRENT_SETTINGS.gameState.prevScene = "OB_2";
-			// Update to go to the navigating scene
-			this.events.on("back_arrow_clicked", () => {
-				this.scene.stop("OB_3_2");
-				this.scene.start("OB_2");
-			});
+		// Update to go to the navigating scene
+		this.events.on("back_arrow_clicked", () => {
+			this.scene.stop("OB_3_2");
+			this.scene.start("OB_2");
+		});
 	}
 	/* END-USER-CODE */
 }

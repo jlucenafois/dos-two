@@ -4,7 +4,7 @@
 /* START OF COMPILED CODE */
 
 /* START-USER-IMPORTS */
-import { CURRENT_SETTINGS } from "../settings";
+import { CURRENT_SETTINGS } from "../../settings";
 import MG_Base from "./MG_Base";
 /* END-USER-IMPORTS */
 

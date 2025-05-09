@@ -3,6 +3,7 @@
 /* START OF COMPILED CODE */
 
 /* START-USER-IMPORTS */
+import { addCoins } from "../../settings";
 import MG_Base from "./MG_Base";
 /* END-USER-IMPORTS */
 
@@ -357,6 +358,11 @@ export default class MG_1 extends MG_Base {
         }
     }
 
+    playerWinCoins(amount: number) {
+        addCoins(amount);
+        this.events.emit("updateCoinsUI");
+    }
+
     endGame() {
         // animations
         this.anims.create({
@@ -398,6 +404,7 @@ export default class MG_1 extends MG_Base {
             wepa.destroy();
             // call reward animation
             reward_six.setVisible(true);
+            this.playerWinCoins(50);
             this.time.delayedCall(4000, () => {
                 catPointer.destroy();
                 reward_six.setVisible(false);
