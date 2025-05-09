@@ -9,7 +9,11 @@ import OB_4 from "./scenes/OB/OB_4";
 import OB_UI from "./scenes/UI/OB_UI";
 import Q_1 from "./scenes/quizzes/Q_1";
 import Q_2 from "./scenes/quizzes/Q_2";
-
+// Memory games
+import DD_0 from "./scenes/memorygame/DD_0";
+import MG_1 from "./scenes/memorygame/MG_1";
+import MG_2 from "./scenes/memorygame/MG_2";
+import MG_3 from "./scenes/memorygame/MG_3";
 // P scenes
 import P_0 from "./scenes/story/P_0";
 import P_1 from "./scenes/story/P_1";
@@ -18,11 +22,6 @@ import P_3 from "./scenes/story/P_3";
 import P_4 from "./scenes/story/P_4";
 import P_5 from "./scenes/story/P_5";
 import P_6 from "./scenes/story/P_6";
-import OB_UI from "./scenes/UI/OB_UI";
-import DD_0 from "./scenes/games/DD_0";
-import MG_1 from "./scenes/games/MG_1";
-import MG_2 from "./scenes/games/MG_2";
-import MG_3 from "./scenes/games/MG_3";
 import P_7 from "./scenes/story/P_7";
 import P_8 from "./scenes/story/P_8";
 import P_9 from "./scenes/story/P_9";

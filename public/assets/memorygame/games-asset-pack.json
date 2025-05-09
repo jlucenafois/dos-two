@@ -65,11 +65,6 @@
                 "key": "cat"
             },
             {
-                "url": "assets/memorygame/endgame/cat.png",
-                "type": "image",
-                "key": "cat_01"
-            },
-            {
                 "url": "assets/memorygame/chooseNumberMG.png",
                 "type": "image",
                 "key": "chooseNumberMG"
@@ -86,11 +81,6 @@
                 },
                 "type": "spritesheet",
                 "key": "confetti"
-            },
-            {
-                "url": "assets/memorygame/endgame/confetti.png",
-                "type": "image",
-                "key": "confetti_01"
             },
             {
                 "url": "assets/memorygame/card/cuchara_card.png",
@@ -114,11 +104,6 @@
                 },
                 "type": "spritesheet",
                 "key": "drag_mouse"
-            },
-            {
-                "url": "assets/memorygame/tutorial/drag_mouse.png",
-                "type": "image",
-                "key": "drag_mouse_01"
             },
             {
                 "url": "assets/memorygame/eightcards.png",
