@@ -4,6 +4,7 @@
 /* START OF COMPILED CODE */
 
 /* START-USER-IMPORTS */
+import { addCoins } from "../../settings";
 import MG_Base from "./MG_Base";
 /* END-USER-IMPORTS */
 type CardKey = "carrot_card" | "zanahoria_card" | "potato_card" | "papa_card" | "rice_card" | "arroz_card" |  "avocado_card" | "aquacate_card";
@@ -176,12 +177,15 @@ export default class MG_2 extends MG_Base {
         // Play the animation
         mousePointer.play("drag_mouse_anim");
     
+        // Play the audio
+        this.sound.play("MemoryCards_English");
+
         // Animate the mouse pointer to simulate a click
         this.tweens.add({
             targets: mousePointer,
             x: this.unflipped_2.x,
             y: this.unflipped_2.y,
-            duration: 1000,
+            duration: 2000,
             onComplete: () => {
                 // Simulate flipping the first card
                 this.flipCard(this.unflipped_2);
@@ -194,19 +198,19 @@ export default class MG_2 extends MG_Base {
                     targets: mousePointer,
                     x: matchingCard.x,
                     y: matchingCard.y,
-                    duration: 1000,
+                    duration: 2000,
                     onComplete: () => {
                         // Simulate flipping the matching card
                         this.flipCard(matchingCard);
     
                         // Make the matched cards disappear
-                        this.time.delayedCall(1000, () => {
+                        this.time.delayedCall(1500, () => {
                             this.unflipped_2.setVisible(false);
                             this.unflipped_4.setVisible(false);
                             matchingCard.setVisible(false);
     
                             // Reset the game after the tutorial
-                            this.time.delayedCall(1000, () => {
+                            this.time.delayedCall(1500, () => {
                             overlay.destroy();
                             mousePointer.destroy();
                                 this.resetGame();
@@ -376,6 +380,11 @@ export default class MG_2 extends MG_Base {
         }
     }
 
+	playerWinCoins(amount: number) {
+		addCoins(amount);
+		this.events.emit("updateCoinsUI");
+	}
+
     endGame() {
         // animations
         this.anims.create({
@@ -417,6 +426,7 @@ export default class MG_2 extends MG_Base {
             wepa.destroy();
             // call reward animation
             reward_eight.setVisible(true);
+			this.playerWinCoins(150);
             this.time.delayedCall(4000, () => {
                 catPointer.destroy();
                 reward_eight.setVisible(false);

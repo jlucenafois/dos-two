@@ -162,13 +162,16 @@ export default class MG_1 extends MG_Base {
 
         // Play the animation
         mousePointer.play("drag_mouse_anim");
-    
+
+        // Play the audio
+        this.sound.play("MemoryCards_Spanish");
+
         // Animate the mouse pointer to simulate a click
         this.tweens.add({
             targets: mousePointer,
             x: this.unflipped_2.x,
             y: this.unflipped_2.y,
-            duration: 1000,
+            duration: 2000,
             onComplete: () => {
                 // Simulate flipping the first card
                 this.flipCard(this.unflipped_2);
@@ -181,19 +184,19 @@ export default class MG_1 extends MG_Base {
                     targets: mousePointer,
                     x: matchingCard.x,
                     y: matchingCard.y,
-                    duration: 1000,
+                    duration: 2000,
                     onComplete: () => {
                         // Simulate flipping the matching card
                         this.flipCard(matchingCard);
     
                         // Make the matched cards disappear
-                        this.time.delayedCall(1000, () => {
+                        this.time.delayedCall(1500, () => {
                             this.unflipped_2.setVisible(false);
                             this.unflipped_4.setVisible(false);
                             matchingCard.setVisible(false);
     
                             // Reset the game after the tutorial
-                            this.time.delayedCall(1000, () => {
+                            this.time.delayedCall(1500, () => {
                             overlay.destroy();
                             mousePointer.destroy();
                                 this.resetGame();
