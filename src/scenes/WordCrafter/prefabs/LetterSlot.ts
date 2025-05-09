@@ -2,11 +2,12 @@ import LetterEntity from "./LetterEntity";
 
 export default class LetterSlot extends Phaser.GameObjects.Container {
 	public scene: Phaser.Scene;
+	public filled = false;
 	private targetLetter: string;
 	private textObject: Phaser.GameObjects.Text;
-	public filled = false;
 	private rejectionTween: Phaser.Tweens.Tween | null = null;
 	private sprite: Phaser.GameObjects.Sprite;
+    private originalX: number;
 
 	constructor(
 		scene: Phaser.Scene,
@@ -16,6 +17,8 @@ export default class LetterSlot extends Phaser.GameObjects.Container {
 		idx: number
 	) {
 		super(scene, x, y);
+        // used for rejection tween animation
+        this.originalX = x;
 		this.scene = scene;
 		this.targetLetter = targetLetter;
 
@@ -87,7 +90,7 @@ export default class LetterSlot extends Phaser.GameObjects.Container {
 			repeat: 3,
 			yoyo: true,
 			onComplete: () => {
-				this.setX(this.x); // Ensure reset
+				this.setX(this.originalX); // Ensure reset
 				this.sprite.setTexture("letter_slot_default");
 				this.rejectionTween = null;
 			},
