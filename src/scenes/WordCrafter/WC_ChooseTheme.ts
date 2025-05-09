@@ -27,7 +27,7 @@ export default class WC_ChooseTheme extends Base {
 		};
 
 		// Create all images temporarily to calculate width
-		const tempImages = imageKeys.map(key => this.add.image(0, 0, key));
+		const tempImages = imageKeys.map(key => this.add.image(0, 0, key+"Topic"));
 		const totalWidth = tempImages.reduce((acc, img) => acc + img.width, 0) + gap * (tempImages.length - 1);
 		tempImages.forEach(img => img.destroy()); // Clean up temp images
 
@@ -35,7 +35,7 @@ export default class WC_ChooseTheme extends Base {
 
 		imageKeys.forEach((key) => {
 			// We'll calculate center of this image to place it correctly
-			const temp = this.add.image(0, 0, key);
+			const temp = this.add.image(0, 0, key+"Topic");
 			const imageWidth = temp.width;
 			temp.destroy();
 
@@ -60,7 +60,7 @@ export default class WC_ChooseTheme extends Base {
 		subtitle: string
 	): Phaser.GameObjects.Image {
 		// Create image centered at given position
-		const image = this.add.image(centerX, centerY, texture);
+		const image = this.add.image(centerX, centerY, texture+"Topic");
 		image.setInteractive({
 			useHandCursor: true,
 			pixelPerfect: true,

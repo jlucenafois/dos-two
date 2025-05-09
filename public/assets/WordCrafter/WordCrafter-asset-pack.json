@@ -2,19 +2,19 @@
 	"section1": {
 		"files": [
 			{
-				"url": "assets/WordCrafter/Carrot.png",
+				"url": "assets/WordCrafter/CarrotTopic.png",
 				"type": "image",
-				"key": "Carrot"
+				"key": "CarrotTopic"
 			},
 			{
-				"url": "assets/WordCrafter/Mirror.png",
+				"url": "assets/WordCrafter/MirrorTopic.png",
 				"type": "image",
-				"key": "Mirror"
+				"key": "MirrorTopic"
 			},
 			{
-				"url": "assets/WordCrafter/Utensils.png",
+				"url": "assets/WordCrafter/UtensilsTopic.png",
 				"type": "image",
-				"key": "Utensils"
+				"key": "UtensilsTopic"
 			},
 			{
 				"url": "assets/WordCrafter/letter_slot_default.png",
@@ -26,11 +26,55 @@
 				"type": "image",
 				"key": "letter_slot_correct"
 			},
-            {
+			{
 				"url": "assets/WordCrafter/letter_slot_wrong.png",
 				"type": "image",
 				"key": "letter_slot_wrong"
-			}
+			},
+			{
+				"url": "assets/WordCrafter/Plate.png",
+				"type": "image",
+				"key": "Plate"
+			},
+			{
+				"url": "assets/WordCrafter/Spoon.png",
+				"type": "image",
+				"key": "Spoon"
+			},
+			{ "url": "assets/WordCrafter/Fork.png", "type": "image", "key": "Fork" },
+			{
+				"url": "assets/WordCrafter/Knife.png",
+				"type": "image",
+				"key": "Knife"
+			},
+			{
+				"url": "assets/WordCrafter/Carrot.png",
+				"type": "image",
+				"key": "Carrot"
+			},
+			{
+				"url": "assets/WordCrafter/Potato.png",
+				"type": "image",
+				"key": "Potato"
+			},
+			{ "url": "assets/WordCrafter/Rice.png", "type": "image", "key": "Rice" },
+			{
+				"url": "assets/WordCrafter/Avocado.png",
+				"type": "image",
+				"key": "Avocado"
+			},
+			{
+				"url": "assets/WordCrafter/Mirror.png",
+				"type": "image",
+				"key": "Mirror"
+			},
+			{
+				"url": "assets/WordCrafter/Pillow.png",
+				"type": "image",
+				"key": "Pillow"
+			},
+			{ "url": "assets/WordCrafter/Lamp.png", "type": "image", "key": "Lamp" },
+			{ "url": "assets/WordCrafter/Bed.png", "type": "image", "key": "Bed" }
 		]
 	},
 	"meta": {

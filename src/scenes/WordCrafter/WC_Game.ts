@@ -13,12 +13,12 @@ export interface WorldBounds {
 }
 
 export default class WC_Game extends Base {
-	private theme: string = "Mirror";
+	private theme: string;
 	private puzzle: WordPuzzle;
 	private padding = { top: 200, left: 100, right: 100, bottom: 100 };
 	private worldBounds: WorldBounds;
 	private puzzleManager: PuzzleManager;
-    private progress = 0.0
+	private progress = 0.0;
 
 	constructor() {
 		super("WC_Game");
@@ -36,7 +36,7 @@ export default class WC_Game extends Base {
 		this.editorCreate();
 		this.events.emit("showExitButton");
 		this.events.emit("changeBackground", "#ffffff");
-        this.events.emit("showProgressBar")
+		this.events.emit("showProgressBar");
 
 		this.setupWorld();
 		this.setupPuzzleManager();
@@ -55,23 +55,7 @@ export default class WC_Game extends Base {
 				this.cameras.main.height - (this.padding.top + this.padding.bottom),
 		};
 
-		// const imageSprite = this.add
-		// 	.sprite(this.cameras.main.width / 2, 150, "mirror")
-		// 	.setOrigin(0.5, 0)
-		// 	.setScale(0.4);
-
 		this.createBoundaryWalls();
-	}
-
-	private setupPuzzleManager(): void {
-		this.puzzleManager = new PuzzleManager({
-			isEnglishFirst: true,
-			quizMode: "after",
-			content: { image: "mirror", english: "mirror", spanish: "espejo" },
-		});
-
-		// Puzzle complete flow
-		this.events.on("puzzleComplete", this.onPuzzleComplete, this);
 	}
 
 	private setupPhysics(): void {
@@ -91,10 +75,32 @@ export default class WC_Game extends Base {
 		});
 	}
 
+	private setupPuzzleManager(): void {
+		const vocabData = this.cache.json.get("vocabData");
+		if (!vocabData.hasOwnProperty(this.theme)) {
+			console.error("topic does not exist!");
+		}
+
+		const words = vocabData[this.theme];
+		this.puzzleManager = new PuzzleManager({
+			isEnglishFirst: true,
+			quizMode: "after",
+			content: words[0],
+		});
+
+		this.add
+			.sprite(this.cameras.main.width / 2, 150, words[0]["english"])
+			.setOrigin(0.5, 0)
+			.setScale(0.4);
+
+		// Puzzle complete flow
+		this.events.on("puzzleComplete", this.onPuzzleComplete, this);
+	}
+
 	private onPuzzleComplete(): void {
 		this.puzzle.destroy();
-        this.progress += 0.25
-        this.events.emit("updateProgressBar", this.progress)
+		this.progress += 0.25;
+		this.events.emit("updateProgressBar", this.progress);
 
 		if (!this.puzzleManager.advanceToNextStep()) {
 			console.log("✅ All puzzles complete!");
@@ -114,8 +120,8 @@ export default class WC_Game extends Base {
 			);
 		}
 
-        // this have to come after for the floating letters to be rendered on top!!!
-        this.puzzle = new WordPuzzle(
+		// this have to come after for the floating letters to be rendered on top!!!
+		this.puzzle = new WordPuzzle(
 			this,
 			this.worldBounds,
 			currentStep.word,
