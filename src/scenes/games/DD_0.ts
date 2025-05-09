@@ -98,11 +98,11 @@ export default class DD_0 extends MG_Base {
 		super.create();
 		this.editorCreate();
 		//updateGameState(this)
-		this.events.emit("updateUI","show_back_arrow");
+		this.events.emit("updateUI","show_exit_button");
 		// Set the previous scene to OB_3_2
 		CURRENT_SETTINGS.gameState.prevScene = "OB_3_2";
 		// Update to go to the navigating scene
-		this.events.on("back_arrow_clicked", () => {
+		this.events.on("show_exit_button_clicked", () => {
 			this.scene.stop("DD_0");
 			this.scene.start("OB_3_2");
 		});
