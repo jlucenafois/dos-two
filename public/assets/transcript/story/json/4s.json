@@ -1,0 +1,58 @@
+{
+    "words": [
+        {
+            "text": "Pero",
+            "start": 0.0,
+            "end": 0.18,
+            "isHighlighted": false
+        },
+        {
+            "text": "creci",
+            "start": 0.18,
+            "end": 0.6,
+            "isHighlighted": false
+        },
+        {
+            "text": "en",
+            "start": 0.6,
+            "end": 0.98,
+            "isHighlighted": false
+        },
+        {
+            "text": "Nueva",
+            "start": 0.98,
+            "end": 1.24,
+            "isHighlighted": false
+        },
+        {
+            "text": "York,",
+            "start": 1.24,
+            "end": 1.58,
+            "isHighlighted": false
+        },
+        {
+            "text": "donde",
+            "start": 1.96,
+            "end": 2.14,
+            "isHighlighted": false
+        },
+        {
+            "text": "hace",
+            "start": 2.14,
+            "end": 2.42,
+            "isHighlighted": false
+        },
+        {
+            "text": "mucho",
+            "start": 2.42,
+            "end": 2.78,
+            "isHighlighted": false
+        },
+        {
+            "text": "frío.",
+            "start": 2.78,
+            "end": 3.26,
+            "isHighlighted": false
+        }
+    ]
+}

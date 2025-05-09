@@ -1,0 +1,40 @@
+{
+    "words": [
+        {
+            "text": "but",
+            "start": 0.04,
+            "end": 0.14,
+            "isHighlighted": false
+        },
+        {
+            "text": "she",
+            "start": 0.14,
+            "end": 0.36,
+            "isHighlighted": false
+        },
+        {
+            "text": "understands",
+            "start": 0.36,
+            "end": 0.84,
+            "isHighlighted": false
+        },
+        {
+            "text": "me",
+            "start": 0.84,
+            "end": 1.08,
+            "isHighlighted": false
+        },
+        {
+            "text": "with",
+            "start": 1.08,
+            "end": 1.26,
+            "isHighlighted": false
+        },
+        {
+            "text": "love.",
+            "start": 1.26,
+            "end": 1.54,
+            "isHighlighted": false
+        }
+    ]
+}

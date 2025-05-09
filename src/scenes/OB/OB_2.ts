@@ -3,6 +3,7 @@
 
 /* START OF COMPILED CODE */
 
+import { enableHoverAudio, playBackgroundAudio } from "../../utils";
 import OB_Base from "./OB_Base";
 /* START-USER-IMPORTS */
 
@@ -23,24 +24,30 @@ export default class OB_2 extends OB_Base {
 	editorCreate(): void {
 
 		// reading_mode
-		const reading_mode = this.add.image(325, 287, "reading_mode");
-		reading_mode.setOrigin(0, 0);
+		const reading_mode = this.add.image(567, 520, "reading_mode");
 
 		// game_mode
-		const game_mode = this.add.image(928, 348, "game_mode");
-		game_mode.setOrigin(0, 0);
+		const game_mode = this.add.image(1158, 577, "game_mode");
 
-		// reading_mode_title
-		const reading_mode_title = this.add.image(464, 805, "reading_mode_title");
-		reading_mode_title.setOrigin(0, 0);
+		// title
+		const title = this.add.bitmapText(864, 309, "BowlbyOne", "Choose a reading mode\n");
+		title.setOrigin(0.5, 0.5);
+		title.text = "Choose a reading mode\n";
+		title.fontSize = 40;
 
-		// game_mode_title
-		const game_mode_title = this.add.image(1012, 805, "game_mode_title");
-		game_mode_title.setOrigin(0, 0);
+		// reading_title
+		const reading_title = this.add.bitmapText(567.5, 840, "BowlbyOne", "Story\nTime");
+		reading_title.setOrigin(0.5, 0.5);
+		reading_title.text = "Story\nTime";
+		reading_title.fontSize = 40;
+		reading_title.align = 1;
 
-		// title_ob_2
-		const title_ob_2 = this.add.image(864, 275, "title_ob_2");
-		title_ob_2.setOrigin(0.5, 0);
+		// title_2
+		const title_2 = this.add.bitmapText(1154, 840, "BowlbyOne", "Language\nGames");
+		title_2.setOrigin(0.5, 0.5);
+		title_2.text = "Language\nGames";
+		title_2.fontSize = 40;
+		title_2.align = 1;
 
 		this.reading_mode = reading_mode;
 		this.game_mode = game_mode;
@@ -54,10 +61,13 @@ export default class OB_2 extends OB_Base {
 	/* START-USER-CODE */
 
 	create() {
-		super.create()
-		this.editorCreate();
 
-		this.events.emit("updateUI", "show_exit_button"); // Notify UI
+		this.editorCreate();
+		super.create()
+		playBackgroundAudio(this, "2-choose"); // this will autoplay
+		enableHoverAudio(this, { object: this.reading_mode, audioKey: "2-storytime-merged" });
+		enableHoverAudio(this, { object: this.game_mode, audioKey: "2-language-games" });
+		this.events.emit("showOBUI"); // Notify UI
 		/* READING MODE */
 		this.reading_mode.setInteractive({
 			useHandCursor: true, 
@@ -76,7 +86,8 @@ export default class OB_2 extends OB_Base {
 
 		// Click event - Transition to OB_3_1
 		this.reading_mode.on("pointerdown", () => {
-			this.events.emit("updateUI", "show_back_arrow"); // Notify UI
+			this.events.emit("showBackArrow"); // Notify UI
+			this.sound.stopAll(); // stops any playing audio
 			this.scene.stop("OB_2");
 			this.scene.start("OB_3_1");
 		});
@@ -99,17 +110,12 @@ export default class OB_2 extends OB_Base {
 
 		// Click event - Transition to OB_3_2
 		this.game_mode.on("pointerdown", () => {
-			this.events.emit("updateUI", "show_back_arrow"); // Notify UI
+			this.events.emit("showBackArrow"); // Notify UI
+			this.sound.stopAll(); // stops any playing audio
 			this.scene.stop("OB_2");
 			this.scene.start("OB_3_2");
 		});
-
-		// Check if the UI scene is already running
-		if (!this.scene.isActive("OB_UI")) {
-			this.scene.launch("OB_UI"); // Launch the UI overlay only if it hasn't been launched already
-		}
 	}
-
 
 	/* END-USER-CODE */
 }

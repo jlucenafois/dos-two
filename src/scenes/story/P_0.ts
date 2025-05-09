@@ -4,6 +4,7 @@
 
 import P_Base from "./P_Base";
 /* START-USER-IMPORTS */
+import { CURRENT_SETTINGS } from "../../settings";
 /* END-USER-IMPORTS */
 
 export default class P_0 extends P_Base {
@@ -18,51 +19,51 @@ export default class P_0 extends P_Base {
 
 	editorCreate(): void {
 
-		// open_cover
-		const open_cover = this.add.sprite(864, 558.5, "cover_0");
-		open_cover.play("open_cover");
+		// book
+		const book = this.add.sprite(864, 558.5, "cover_0");
+		book.setInteractive(new Phaser.Geom.Rectangle(374, 179, 1061.4753484153912, 795.73105782395), Phaser.Geom.Rectangle.Contains);
 
-		// p1_figure
-		const p1_figure = this.add.image(727, 575, "p1_figure");
-		p1_figure.visible = false;
-
-		this.open_cover = open_cover;
-		this.p1_figure = p1_figure;
+		this.book = book;
 
 		this.events.emit("scene-awake");
 	}
 
-	private open_cover!: Phaser.GameObjects.Sprite;
-	private p1_figure!: Phaser.GameObjects.Image;
+	private book!: Phaser.GameObjects.Sprite;
 
 	/* START-USER-CODE */
 
-	create() {
-		super.create()
-		this.editorCreate()
-		// Set depth to always be on back
-		this.scene.sendToBack(this);
-
-		// Listen for animation completion
-			this.open_cover.on(Phaser.Animations.Events.ANIMATION_COMPLETE, (anim:Phaser.Animations.Animation) => {
+	
+	openCover() {
+		if (!CURRENT_SETTINGS.gameState.hasOpenedCover) {
+			this.book.removeInteractive();
+			CURRENT_SETTINGS.gameState.hasOpenedCover = true
+			this.book.play("open_cover");
+			this.book.on(Phaser.Animations.Events.ANIMATION_COMPLETE, (anim:Phaser.Animations.Animation) => {
 				if (anim.key === "open_cover") { 
-					this.events.emit("updateUI", "show_book"); // Notify UI
-					this.open_cover.setVisible(false);
-					this.scene.bringToTop(this)
-					this.p1_figure.setVisible(true)
-					this.p1_figure.setScale(0)
-
-					this.tweens.add({
-						targets: this.p1_figure,
-						scaleX: 0.8957557329660852, // Target scale X
-						scaleY: 0.9791249320991222, // Target scale Y
-						ease: "Back.Out", // Makes it pop
-						duration: 500, // 0.5s animation
+					this.events.emit("showBook");
+					this.scene.start("P_1");
+				}
 			});
-			}
-		});
+		}
 	}
 
+	create() {
+		this.editorCreate()
+		super.create()
+		this.events.emit("disableBackNav")
+
+		this.book.input!.cursor = "pointer";
+
+		const UI_Scene = this.scene.get("OB_UI");
+		UI_Scene?.events.on("openCover", this.openCover, this);
+
+		// Play animation on click
+		this.book.on("pointerdown", () => {
+			this.openCover()
+		});
+
+
+	}
 	/* END-USER-CODE */
 }
 

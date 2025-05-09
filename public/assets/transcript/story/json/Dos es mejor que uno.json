@@ -1,0 +1,34 @@
+{
+    "words": [
+        {
+            "text": "2",
+            "start": 0.08,
+            "end": 0.26,
+            "isHighlighted": false
+        },
+        {
+            "text": "es",
+            "start": 0.26,
+            "end": 0.52,
+            "isHighlighted": false
+        },
+        {
+            "text": "mejor",
+            "start": 0.52,
+            "end": 0.76,
+            "isHighlighted": false
+        },
+        {
+            "text": "que",
+            "start": 0.76,
+            "end": 0.98,
+            "isHighlighted": false
+        },
+        {
+            "text": "1",
+            "start": 0.98,
+            "end": 1.22,
+            "isHighlighted": false
+        }
+    ]
+}

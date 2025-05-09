@@ -1,0 +1,100 @@
+{
+    "words": [
+        {
+            "text": "Abuela",
+            "start": 0.0,
+            "end": 0.52,
+            "isHighlighted": false
+        },
+        {
+            "text": "está",
+            "start": 0.52,
+            "end": 0.86,
+            "isHighlighted": false
+        },
+        {
+            "text": "cocinando",
+            "start": 0.86,
+            "end": 1.54,
+            "isHighlighted": false
+        },
+        {
+            "text": "con",
+            "start": 1.54,
+            "end": 1.76,
+            "isHighlighted": false
+        },
+        {
+            "text": "sanaorias",
+            "start": 1.76,
+            "end": 2.52,
+            "isHighlighted": false
+        },
+        {
+            "text": "y",
+            "start": 2.52,
+            "end": 2.76,
+            "isHighlighted": false
+        },
+        {
+            "text": "papas.",
+            "start": 2.76,
+            "end": 3.34,
+            "isHighlighted": false
+        },
+        {
+            "text": "Abuela,",
+            "start": 3.8,
+            "end": 4.38,
+            "isHighlighted": false
+        },
+        {
+            "text": "pregunto.",
+            "start": 4.62,
+            "end": 5.18,
+            "isHighlighted": false
+        },
+        {
+            "text": "¿Dónde",
+            "start": 5.94,
+            "end": 6.28,
+            "isHighlighted": false
+        },
+        {
+            "text": "está",
+            "start": 6.28,
+            "end": 6.66,
+            "isHighlighted": false
+        },
+        {
+            "text": "la...",
+            "start": 6.66,
+            "end": 7.42,
+            "isHighlighted": false
+        },
+        {
+            "text": "Abuela",
+            "start": 7.84,
+            "end": 8.28,
+            "isHighlighted": false
+        },
+        {
+            "text": "sorrie?",
+            "start": 8.28,
+            "end": 8.88,
+            "isHighlighted": false
+        },
+        {
+            "text": "La",
+            "start": 9.46,
+            "end": 9.6,
+            "isHighlighted": false
+        },
+        {
+            "text": "cuchara.",
+            "start": 9.6,
+            "end": 10.1,
+            "isHighlighted": false
+        }
+    ]
+}

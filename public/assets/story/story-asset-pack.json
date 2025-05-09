@@ -2,9 +2,255 @@
     "section1": {
         "files": [
             {
-                "url": "assets/story/animations.json",
-                "type": "animation",
-                "key": "animations"
+                "url": "assets/story/1_girl.png",
+                "frameConfig": {
+                    "frameWidth": 500,
+                    "frameHeight": 600,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "1_girl"
+            },
+            {
+                "url": "assets/story/1_sparkles.png",
+                "frameConfig": {
+                    "frameWidth": 500,
+                    "frameHeight": 200,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "1_sparkles"
+            },
+            {
+                "url": "assets/story/bg/11X12 Background.png",
+                "type": "image",
+                "key": "11X12 Background"
+            },
+            {
+                "url": "assets/story/bg/15x16 Background.png",
+                "type": "image",
+                "key": "15x16 Background"
+            },
+            {
+                "url": "assets/story/bg/17X18 Background.png",
+                "type": "image",
+                "key": "17X18 Background"
+            },
+            {
+                "url": "assets/story/2_confetti.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "2_confetti"
+            },
+            {
+                "url": "assets/story/2_girl.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "2_girl"
+            },
+            {
+                "url": "assets/story/bg/21x22 Background.png",
+                "type": "image",
+                "key": "21x22 Background"
+            },
+            {
+                "url": "assets/story/bg/27X28 Background.png",
+                "type": "image",
+                "key": "27X28 Background"
+            },
+            {
+                "url": "assets/story/3_dance.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "3_dance"
+            },
+            {
+                "url": "assets/story/3_music.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "3_music"
+            },
+            {
+                "url": "assets/story/4_people.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "4_people"
+            },
+            {
+                "url": "assets/story/4_stars.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "4_stars"
+            },
+            {
+                "url": "assets/story/5_teacher.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "5_teacher"
+            },
+            {
+                "url": "assets/story/6_girl.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "6_girl"
+            },
+            {
+                "url": "assets/story/6_mom.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "6_mom"
+            },
+            {
+                "url": "assets/story/6_stars.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "6_stars"
+            },
+            {
+                "url": "assets/story/sprite/7 Clarita_450x540.png",
+                "frameConfig": {
+                    "frameWidth": 450,
+                    "frameHeight": 540,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "7 Clarita_450x540"
+            },
+            {
+                "url": "assets/story/bg/7X8 Background.png",
+                "type": "image",
+                "key": "7X8 Background"
+            },
+            {
+                "url": "assets/story/sprite/8.1 Reading_512x512.png",
+                "frameConfig": {
+                    "frameWidth": 512,
+                    "frameHeight": 512,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "8.1 Reading_512x512"
+            },
+            {
+                "url": "assets/story/sprite/8.2 Parrot_180x200.png",
+                "frameConfig": {
+                    "frameWidth": 180,
+                    "frameHeight": 200,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "8.2 Parrot_180x200"
+            },
+            {
+                "url": "assets/story/sprite/8.3 Stars 700x200.png",
+                "frameConfig": {
+                    "frameWidth": 700,
+                    "frameHeight": 200,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "8.3 Stars 700x200"
+            },
+            {
+                "url": "assets/story/sprite/8.4 Lamp 150x250.png",
+                "frameConfig": {
+                    "frameWidth": 150,
+                    "frameHeight": 250,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "8.4 Lamp 150x250"
             },
             {
                 "url": "assets/story/open_cover/cover_0.png",
@@ -37,9 +283,75 @@
                 "key": "cover_5"
             },
             {
-                "url": "assets/story/p1_figure.png",
+                "url": "assets/story/p2_bg.png",
                 "type": "image",
-                "key": "p1_figure"
+                "key": "p2_bg"
+            },
+            {
+                "url": "assets/story/quiz_anim_correct.png",
+                "frameConfig": {
+                    "frameWidth": 1500,
+                    "frameHeight": 1500,
+                    "startFrame": 0,
+                    "endFrame": 6,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "quiz_anim_correct"
+            },
+            {
+                "url": "assets/story/quiz_anim_incorrect.png",
+                "frameConfig": {
+                    "frameWidth": 1000,
+                    "frameHeight": 1000,
+                    "startFrame": 0,
+                    "endFrame": 4,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "quiz_anim_incorrect"
+            },
+            {
+                "url": "assets/story/quiz_english_blank.png",
+                "type": "image",
+                "key": "quiz_english_blank"
+            },
+            {
+                "url": "assets/story/quiz_option_correct.png",
+                "type": "image",
+                "key": "quiz_option_correct"
+            },
+            {
+                "url": "assets/story/quiz_option_default.png",
+                "type": "image",
+                "key": "quiz_option_default"
+            },
+            {
+                "url": "assets/story/quiz_option_hovered.png",
+                "type": "image",
+                "key": "quiz_option_hovered"
+            },
+            {
+                "url": "assets/story/quiz_option_incorrect.png",
+                "type": "image",
+                "key": "quiz_option_incorrect"
+            },
+            {
+                "url": "assets/story/quiz_option_pressed.png",
+                "type": "image",
+                "key": "quiz_option_pressed"
+            },
+            {
+                "url": "assets/story/quiz_spanish_blank.png",
+                "type": "image",
+                "key": "quiz_spanish_blank"
+            },
+            {
+                "url": "assets/story/story_animations.json",
+                "type": "animation",
+                "key": "story_animations"
             }
         ]
     },

@@ -1,0 +1,58 @@
+{
+    "words": [
+        {
+            "text": "Si",
+            "start": 0.1,
+            "end": 0.3,
+            "isHighlighted": false
+        },
+        {
+            "text": "la",
+            "start": 0.3,
+            "end": 0.68,
+            "isHighlighted": false
+        },
+        {
+            "text": "cuchara,",
+            "start": 0.68,
+            "end": 1.16,
+            "isHighlighted": false
+        },
+        {
+            "text": "I",
+            "start": 1.42,
+            "end": 1.54,
+            "isHighlighted": false
+        },
+        {
+            "text": "say,",
+            "start": 1.54,
+            "end": 1.8,
+            "isHighlighted": false
+        },
+        {
+            "text": "I",
+            "start": 2.12,
+            "end": 2.6,
+            "isHighlighted": false
+        },
+        {
+            "text": "learn",
+            "start": 2.6,
+            "end": 2.86,
+            "isHighlighted": false
+        },
+        {
+            "text": "every",
+            "start": 2.86,
+            "end": 3.28,
+            "isHighlighted": false
+        },
+        {
+            "text": "day.",
+            "start": 3.28,
+            "end": 3.6,
+            "isHighlighted": false
+        }
+    ]
+}

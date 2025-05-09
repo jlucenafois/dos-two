@@ -1,0 +1,40 @@
+{
+    "words": [
+        {
+            "text": "en",
+            "start": 0.06,
+            "end": 0.14,
+            "isHighlighted": false
+        },
+        {
+            "text": "la",
+            "start": 0.14,
+            "end": 0.3,
+            "isHighlighted": false
+        },
+        {
+            "text": "escuela,",
+            "start": 0.3,
+            "end": 0.82,
+            "isHighlighted": false
+        },
+        {
+            "text": "a",
+            "start": 1.26,
+            "end": 1.34,
+            "isHighlighted": false
+        },
+        {
+            "text": "Blowing",
+            "start": 1.34,
+            "end": 1.64,
+            "isHighlighted": false
+        },
+        {
+            "text": "Glass.",
+            "start": 1.64,
+            "end": 1.9,
+            "isHighlighted": false
+        }
+    ]
+}

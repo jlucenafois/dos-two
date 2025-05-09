@@ -2,6 +2,11 @@
     "section1": {
         "files": [
             {
+                "url": "assets/UI/coin.png",
+                "type": "image",
+                "key": "coin"
+            },
+            {
                 "url": "assets/story/open_cover/cover_5.png",
                 "type": "image",
                 "key": "cover_5"
@@ -47,6 +52,16 @@
                 "key": "default_unmuted_lg"
             },
             {
+                "url": "assets/UI/disabled_back_lg.png",
+                "type": "image",
+                "key": "disabled_back_lg"
+            },
+            {
+                "url": "assets/UI/disabled_next_lg.png",
+                "type": "image",
+                "key": "disabled_next_lg"
+            },
+            {
                 "url": "assets/UI/pressed_back_lg.png",
                 "type": "image",
                 "key": "pressed_back_lg"
@@ -85,6 +100,31 @@
                 "url": "assets/UI/pressed_unmuted_lg.png",
                 "type": "image",
                 "key": "pressed_unmuted_lg"
+            },
+            {
+                "url": "assets/UI/progress_medium_0.png",
+                "type": "image",
+                "key": "progress_medium_0"
+            },
+            {
+                "url": "assets/UI/progress_medium_100.png",
+                "type": "image",
+                "key": "progress_medium_100"
+            },
+            {
+                "url": "assets/UI/progress_medium_25.png",
+                "type": "image",
+                "key": "progress_medium_25"
+            },
+            {
+                "url": "assets/UI/progress_medium_50.png",
+                "type": "image",
+                "key": "progress_medium_50"
+            },
+            {
+                "url": "assets/UI/progress_medium_75.png",
+                "type": "image",
+                "key": "progress_medium_75"
             }
         ]
     },

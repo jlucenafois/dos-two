@@ -1,0 +1,40 @@
+{
+    "words": [
+        {
+            "text": "Dance",
+            "start": 0.06,
+            "end": 0.22,
+            "isHighlighted": false
+        },
+        {
+            "text": "with",
+            "start": 0.22,
+            "end": 0.48,
+            "isHighlighted": false
+        },
+        {
+            "text": "me,",
+            "start": 0.48,
+            "end": 0.84,
+            "isHighlighted": false
+        },
+        {
+            "text": "wherever",
+            "start": 1.2,
+            "end": 1.58,
+            "isHighlighted": false
+        },
+        {
+            "text": "says",
+            "start": 1.58,
+            "end": 2.3,
+            "isHighlighted": false
+        },
+        {
+            "text": "mom.",
+            "start": 2.3,
+            "end": 2.64,
+            "isHighlighted": false
+        }
+    ]
+}

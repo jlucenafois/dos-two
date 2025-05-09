@@ -1,0 +1,46 @@
+{
+    "words": [
+        {
+            "text": "Mom",
+            "start": 0.06,
+            "end": 0.2,
+            "isHighlighted": false
+        },
+        {
+            "text": "smiles.",
+            "start": 0.2,
+            "end": 0.74,
+            "isHighlighted": false
+        },
+        {
+            "text": "You",
+            "start": 1.14,
+            "end": 1.52,
+            "isHighlighted": false
+        },
+        {
+            "text": "are",
+            "start": 1.52,
+            "end": 1.64,
+            "isHighlighted": false
+        },
+        {
+            "text": "both",
+            "start": 1.64,
+            "end": 1.9,
+            "isHighlighted": false
+        },
+        {
+            "text": "my",
+            "start": 1.9,
+            "end": 2.14,
+            "isHighlighted": false
+        },
+        {
+            "text": "love.",
+            "start": 2.14,
+            "end": 2.36,
+            "isHighlighted": false
+        }
+    ]
+}

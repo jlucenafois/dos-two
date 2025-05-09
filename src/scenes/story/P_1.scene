@@ -12,7 +12,39 @@
         "borderWidth": 1728,
         "borderHeight": 1117
     },
-    "displayList": [],
+    "displayList": [
+        {
+            "type": "Sprite",
+            "id": "0cd8dada-c678-451f-bf15-ae8db8f7002a",
+            "label": "mirror",
+            "displayName": "mirror",
+            "scope": "CLASS",
+            "texture": {
+                "key": "1_girl",
+                "frame": 0
+            },
+            "x": 698,
+            "y": 630,
+            "visible": false,
+            "animationKey": "1_mirror",
+            "animationPreview": true
+        },
+        {
+            "type": "Sprite",
+            "id": "485dc4ea-0204-4051-920e-16374101fe24",
+            "label": "sparkles",
+            "scope": "CLASS",
+            "texture": {
+                "key": "1_sparkles",
+                "frame": 18
+            },
+            "x": 822,
+            "y": 353,
+            "visible": false,
+            "animationKey": "sparkles",
+            "animationPreview": true
+        }
+    ],
     "plainObjects": [],
     "meta": {
         "app": "Phaser Editor - Scene Editor",

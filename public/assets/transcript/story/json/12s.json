@@ -1,0 +1,46 @@
+{
+    "words": [
+        {
+            "text": "Sí,",
+            "start": 0.1,
+            "end": 0.28,
+            "isHighlighted": false
+        },
+        {
+            "text": "la",
+            "start": 0.5,
+            "end": 0.68,
+            "isHighlighted": false
+        },
+        {
+            "text": "cuchara,",
+            "start": 0.68,
+            "end": 1.18,
+            "isHighlighted": false
+        },
+        {
+            "text": "digo.",
+            "start": 1.42,
+            "end": 1.7,
+            "isHighlighted": false
+        },
+        {
+            "text": "Aprendo",
+            "start": 2.52,
+            "end": 3.06,
+            "isHighlighted": false
+        },
+        {
+            "text": "cada",
+            "start": 3.06,
+            "end": 3.38,
+            "isHighlighted": false
+        },
+        {
+            "text": "día.",
+            "start": 3.38,
+            "end": 3.8,
+            "isHighlighted": false
+        }
+    ]
+}

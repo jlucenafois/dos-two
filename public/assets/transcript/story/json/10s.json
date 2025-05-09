@@ -1,0 +1,34 @@
+{
+    "words": [
+        {
+            "text": "Baila",
+            "start": 0.04,
+            "end": 0.36,
+            "isHighlighted": false
+        },
+        {
+            "text": "comigo.",
+            "start": 0.36,
+            "end": 0.74,
+            "isHighlighted": false
+        },
+        {
+            "text": "¡Wepa!",
+            "start": 1.36,
+            "end": 1.79,
+            "isHighlighted": false
+        },
+        {
+            "text": "¡Dise",
+            "start": 1.79,
+            "end": 2.38,
+            "isHighlighted": false
+        },
+        {
+            "text": "mamá!",
+            "start": 2.38,
+            "end": 2.82,
+            "isHighlighted": false
+        }
+    ]
+}

@@ -2,9 +2,132 @@
     "section1": {
         "files": [
             {
-                "url": "assets/OB/choose_game.png",
-                "type": "image",
-                "key": "choose_game"
+                "url": "assets/transcript/OB/audio/1.wav",
+                "type": "audio",
+                "key": "1"
+            },
+            {
+                "url": "assets/transcript/OB/audio/2-choose.wav",
+                "type": "audio",
+                "key": "2-choose"
+            },
+            {
+                "url": "assets/transcript/OB/audio/2-language-games.wav",
+                "type": "audio",
+                "key": "2-language-games"
+            },
+            {
+                "url": "assets/transcript/OB/audio/2-storytime-merged.wav",
+                "type": "audio",
+                "key": "2-storytime-merged"
+            },
+            {
+                "url": "assets/OB/2.2 Blink_450x630.png",
+                "frameConfig": {
+                    "frameWidth": 450,
+                    "frameHeight": 630,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "2.2 Blink_450x630"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.1-line-1.wav",
+                "type": "audio",
+                "key": "3.1-line-1"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.1-line-2.wav",
+                "type": "audio",
+                "key": "3.1-line-2"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.1-line-3.wav",
+                "type": "audio",
+                "key": "3.1-line-3"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.2-line-1.wav",
+                "type": "audio",
+                "key": "3.2-line-1"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.2-line-2.wav",
+                "type": "audio",
+                "key": "3.2-line-2"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.2-line-3.wav",
+                "type": "audio",
+                "key": "3.2-line-3"
+            },
+            {
+                "url": "assets/transcript/OB/audio/3.2-line-4.wav",
+                "type": "audio",
+                "key": "3.2-line-4"
+            },
+            {
+                "url": "assets/transcript/OB/audio/4.wav",
+                "type": "audio",
+                "key": "4"
+            },
+            {
+                "url": "assets/transcript/OB/audio/5-option-1.wav",
+                "type": "audio",
+                "key": "5-option-1"
+            },
+            {
+                "url": "assets/transcript/OB/audio/5-option-2.wav",
+                "type": "audio",
+                "key": "5-option-2"
+            },
+            {
+                "textureURL": "assets/OB/BowlbyOne/BowlbyOne.png",
+                "fontDataURL": "assets/OB/BowlbyOne/BowlbyOne.xml",
+                "type": "bitmapFont",
+                "key": "BowlbyOne"
+            },
+            {
+                "url": "assets/OB/confetti.png",
+                "frameConfig": {
+                    "frameWidth": 1000,
+                    "frameHeight": 800,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "confetti"
+            },
+            {
+                "url": "assets/OB/confetti_sm.png",
+                "frameConfig": {
+                    "frameWidth": 395,
+                    "frameHeight": 308,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "confetti_sm"
+            },
+            {
+                "url": "assets/OB/confetti_sm_2.png",
+                "frameConfig": {
+                    "frameWidth": 529,
+                    "frameHeight": 413,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "confetti_sm_2"
             },
             {
                 "url": "assets/OB/default_play_lg.png",
@@ -17,34 +140,19 @@
                 "key": "english_bubble"
             },
             {
-                "url": "assets/OB/eye_blink_left.png",
+                "url": "assets/OB/english_bubble_hovered.png",
                 "type": "image",
-                "key": "eye_blink_left"
+                "key": "english_bubble_hovered"
             },
             {
-                "url": "assets/OB/eye_blink_right.png",
+                "url": "assets/OB/front_cover.png",
                 "type": "image",
-                "key": "eye_blink_right"
+                "key": "front_cover"
             },
             {
                 "url": "assets/OB/game_mode.png",
                 "type": "image",
                 "key": "game_mode"
-            },
-            {
-                "url": "assets/OB/game_mode_title.png",
-                "type": "image",
-                "key": "game_mode_title"
-            },
-            {
-                "url": "assets/OB/girl_left.png",
-                "type": "image",
-                "key": "girl_left"
-            },
-            {
-                "url": "assets/OB/girl_right.png",
-                "type": "image",
-                "key": "girl_right"
             },
             {
                 "url": "assets/OB/hovered_game_mode.png",
@@ -62,9 +170,9 @@
                 "key": "hovered_reading_mode"
             },
             {
-                "url": "assets/OB/language_selection_title.png",
+                "url": "assets/OB/logo.png",
                 "type": "image",
-                "key": "language_selection_title"
+                "key": "logo"
             },
             {
                 "url": "assets/OB/match_button.png",
@@ -72,19 +180,19 @@
                 "key": "match_button"
             },
             {
-                "url": "assets/OB/match_title.png",
-                "type": "image",
-                "key": "match_title"
-            },
-            {
                 "url": "assets/OB/memory_button.png",
                 "type": "image",
                 "key": "memory_button"
             },
             {
-                "url": "assets/OB/memory_title.png",
+                "url": "assets/OB/OB_animations.json",
+                "type": "animation",
+                "key": "OB_animations"
+            },
+            {
+                "url": "assets/OB/ob4_avatar.png",
                 "type": "image",
-                "key": "memory_title"
+                "key": "ob4_avatar"
             },
             {
                 "url": "assets/OB/pressed_play_lg.png",
@@ -97,34 +205,24 @@
                 "key": "reading_mode"
             },
             {
-                "url": "assets/OB/reading_mode_title.png",
-                "type": "image",
-                "key": "reading_mode_title"
-            },
-            {
                 "url": "assets/OB/spanish_bubble.png",
                 "type": "image",
                 "key": "spanish_bubble"
             },
             {
-                "url": "assets/OB/title_ob_2.png",
+                "url": "assets/OB/spanish_bubble_hovered.png",
                 "type": "image",
-                "key": "title_ob_2"
+                "key": "spanish_bubble_hovered"
             },
             {
-                "url": "assets/OB/transition_title.png",
+                "url": "assets/OB/title.png",
                 "type": "image",
-                "key": "transition_title"
+                "key": "title"
             },
             {
                 "url": "assets/OB/word_button.png",
                 "type": "image",
                 "key": "word_button"
-            },
-            {
-                "url": "assets/OB/word_title.png",
-                "type": "image",
-                "key": "word_title"
             }
         ]
     },
