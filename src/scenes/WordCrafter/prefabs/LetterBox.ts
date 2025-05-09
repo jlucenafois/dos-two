@@ -79,12 +79,13 @@ export default class LetterBox extends Phaser.GameObjects.Container {
 		});
 	}
 
-	public update(): void {
-		// Update logic if needed
-	}
-
     destroy(fromScene?: boolean): void {
-        this.textObject.destroy(fromScene)
+        // Stop any running tweens to prevent callbacks after destruction
+        if (this.rejectionTween) {
+            this.rejectionTween.stop();
+            this.rejectionTween = null;
+        }
+        this.textObject.destroy(fromScene);
         super.destroy(fromScene);
     }
 }

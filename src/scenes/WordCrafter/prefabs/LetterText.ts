@@ -51,7 +51,8 @@ export default class LetterText extends Phaser.GameObjects.Container {
     }
 
     public destroy(fromScene?: boolean): void {
-        this.letters.forEach(letter => letter.destroy());
+        this.letters.forEach(letter => letter.destroy(fromScene));
+        this.letters = [];
         super.destroy(fromScene);
     }
 }

@@ -76,4 +76,11 @@ export default class LetterEntity extends Phaser.GameObjects.Text {
 			this.scene.matter.body.setAngularVelocity(this.bodyRef, 0);
 		}
 	}
+
+    public destroy(fromScene?: boolean): void {
+        /// @ts-ignore
+        this.bodyRef = null;
+        // Call parent destroy which should handle the Matter physics body
+        super.destroy(fromScene);
+    }
 }

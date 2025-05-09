@@ -119,17 +119,20 @@ export default class WordPuzzle extends Phaser.GameObjects.Container {
 
 	update() {
 		for (const letter of this.letters) {
-			letter.update();
+            // only update if the letter is not destroyed yet
+            if (letter.scene) letter.update();
 		}
 	}
-
-	destroy(fromScene?: boolean) {
-		for (const letter of this.letters) {
-			letter.destroy();
-		}
-		for (const slot of this.slots) {
-			slot.destroy();
-		}
-		super.destroy(fromScene);
-	}
+    
+    destroy(fromScene?: boolean) {
+        for (const letter of this.letters) {
+            letter.destroy(fromScene);
+        }
+        for (const slot of this.slots) {
+            slot.destroy(fromScene);
+        }
+        this.letters = [];
+        this.slots = [];
+        super.destroy(fromScene);
+    }
 }

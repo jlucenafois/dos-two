@@ -96,8 +96,19 @@ export default class LetterSlot extends Phaser.GameObjects.Container {
 			},
 		});
 	}
-
-	public update(): void {
-		// Slot update logic if needed
-	}
+    
+    public destroy(fromScene?: boolean): void {
+        // Stop any running tweens
+        if (this.rejectionTween) {
+            this.rejectionTween.stop();
+            this.rejectionTween = null;
+        }
+        
+        // Destroy child GameObjects
+        this.sprite.destroy(fromScene);
+        this.textObject.destroy(fromScene);
+        
+        // Call parent destroy
+        super.destroy(fromScene);
+    }
 }

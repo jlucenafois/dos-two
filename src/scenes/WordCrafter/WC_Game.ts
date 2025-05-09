@@ -34,13 +34,14 @@ export default class WC_Game extends Base {
 
 	create(): void {
 		this.editorCreate();
+        this.events.once('shutdown', this.shutDownListener, this);
 		this.events.emit("showExitButton");
 		this.events.emit("changeBackground", "#ffffff");
 		this.events.emit("showProgressBar");
 
 		this.setupWorld();
-		this.setupPuzzleManager();
 		this.setupPhysics();
+		this.setupPuzzleManager();
 
 		// Start with the first puzzle
 		this.spawnPuzzle();
@@ -210,4 +211,17 @@ export default class WC_Game extends Base {
 	update() {
 		this.puzzle.update();
 	}
+
+    shutDownListener(): void {
+        this.events.off("puzzleComplete", this.onPuzzleComplete, this);
+        if (this.puzzle) {
+            this.puzzle.destroy(true); 
+            ///@ts-ignore
+            this.puzzle = null;
+        }
+        if (this.puzzleManager) {
+            ///@ts-ignore
+            this.puzzleManager = null;
+        }
+    }     
 }
