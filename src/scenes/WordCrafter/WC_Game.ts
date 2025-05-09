@@ -19,6 +19,9 @@ export default class WC_Game extends Base {
 	private worldBounds: WorldBounds;
 	private puzzleManager: PuzzleManager;
 	private progress = 0.0;
+	private currentWordIndex = 0;
+	private vocabData: any;
+	private displayImage: Phaser.GameObjects.Image;
 
 	constructor() {
 		super("WC_Game");
@@ -34,17 +37,22 @@ export default class WC_Game extends Base {
 
 	create(): void {
 		this.editorCreate();
-        this.events.once('shutdown', this.shutDownListener, this);
+
 		this.events.emit("showExitButton");
 		this.events.emit("changeBackground", "#ffffff");
 		this.events.emit("showProgressBar");
 
+		this.events.once("shutdown", this.shutDownListener, this);
+		this.events.on("puzzleComplete", this.onPuzzleComplete, this);
+
+		this.vocabData = this.cache.json.get("vocabData");
+		if (!this.vocabData.hasOwnProperty(this.theme)) {
+			console.error("topic does not exist!");
+		}
+
 		this.setupWorld();
 		this.setupPhysics();
 		this.setupPuzzleManager();
-
-		// Start with the first puzzle
-		this.spawnPuzzle();
 	}
 
 	private setupWorld(): void {
@@ -77,25 +85,24 @@ export default class WC_Game extends Base {
 	}
 
 	private setupPuzzleManager(): void {
-		const vocabData = this.cache.json.get("vocabData");
-		if (!vocabData.hasOwnProperty(this.theme)) {
-			console.error("topic does not exist!");
-		}
+		const words = this.vocabData[this.theme];
 
-		const words = vocabData[this.theme];
-		this.puzzleManager = new PuzzleManager({
-			isEnglishFirst: true,
-			quizMode: "after",
-			content: words[0],
-		});
-
-		this.add
-			.sprite(this.cameras.main.width / 2, 150, words[0]["english"])
+		this.displayImage = this.add
+			.sprite(
+				this.cameras.main.width / 2,
+				150,
+				words[this.currentWordIndex]["english"]
+			)
 			.setOrigin(0.5, 0)
 			.setScale(0.4);
 
-		// Puzzle complete flow
-		this.events.on("puzzleComplete", this.onPuzzleComplete, this);
+		this.puzzleManager = new PuzzleManager({
+			isEnglishFirst: true,
+			quizMode: "after",
+			content: words[this.currentWordIndex],
+		});
+
+		this.spawnPuzzle();
 	}
 
 	private onPuzzleComplete(): void {
@@ -103,11 +110,22 @@ export default class WC_Game extends Base {
 		this.progress += 0.25;
 		this.events.emit("updateProgressBar", this.progress);
 
-		if (!this.puzzleManager.advanceToNextStep()) {
-			console.log("✅ All puzzles complete!");
+		if (this.puzzleManager.advanceToNextStep()) {
+			this.spawnPuzzle();
 			return;
 		}
-		this.spawnPuzzle();
+
+		this.displayImage.destroy();
+		this.currentWordIndex++;
+
+		if (this.currentWordIndex >= this.vocabData[this.theme].length) {
+			// TODO: show end screen
+			this.events.emit("showEndScreen");
+		} else {
+            this.progress = 0.0;
+            this.events.emit("updateProgressBar", this.progress);
+            this.setupPuzzleManager();
+		}
 	}
 
 	private spawnPuzzle() {
@@ -212,16 +230,16 @@ export default class WC_Game extends Base {
 		this.puzzle.update();
 	}
 
-    shutDownListener(): void {
-        this.events.off("puzzleComplete", this.onPuzzleComplete, this);
-        if (this.puzzle) {
-            this.puzzle.destroy(true); 
-            ///@ts-ignore
-            this.puzzle = null;
-        }
-        if (this.puzzleManager) {
-            ///@ts-ignore
-            this.puzzleManager = null;
-        }
-    }     
+	shutDownListener(): void {
+		this.events.off("puzzleComplete", this.onPuzzleComplete, this);
+		if (this.puzzle) {
+			this.puzzle.destroy(true);
+			///@ts-ignore
+			this.puzzle = null;
+		}
+		if (this.puzzleManager) {
+			///@ts-ignore
+			this.puzzleManager = null;
+		}
+	}
 }

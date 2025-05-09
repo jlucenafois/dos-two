@@ -47,6 +47,12 @@ export default class WordPuzzle extends Phaser.GameObjects.Container {
 		// these two lines have to be last in order for the floating letters to be rendered on top of everything else!!!
 		this.createLetters();
 		scene.add.existing(this);
+
+		// Debug feature - press space to complete puzzle
+		this.scene.input.keyboard?.on("keydown-SPACE", () => {
+			console.log("Debug: Skipping puzzle with space key");
+			this.scene.events.emit("puzzleComplete");
+		});
 	}
 
 	private createLetterSlots() {
@@ -119,20 +125,21 @@ export default class WordPuzzle extends Phaser.GameObjects.Container {
 
 	update() {
 		for (const letter of this.letters) {
-            // only update if the letter is not destroyed yet
-            if (letter.scene) letter.update();
+			// only update if the letter is not destroyed yet
+			if (letter.scene) letter.update();
 		}
 	}
-    
-    destroy(fromScene?: boolean) {
-        for (const letter of this.letters) {
-            letter.destroy(fromScene);
-        }
-        for (const slot of this.slots) {
-            slot.destroy(fromScene);
-        }
-        this.letters = [];
-        this.slots = [];
-        super.destroy(fromScene);
-    }
+
+	destroy(fromScene?: boolean) {
+        this.scene?.input.keyboard?.off("keydown-SPACE");
+		for (const letter of this.letters) {
+			letter.destroy(fromScene);
+		}
+		for (const slot of this.slots) {
+			slot.destroy(fromScene);
+		}
+		this.letters = [];
+		this.slots = [];
+		super.destroy(fromScene);
+	}
 }
