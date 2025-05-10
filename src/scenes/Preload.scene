@@ -8,7 +8,7 @@
         "preloadMethodName": "editorPreload",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
-        "sceneKey": "PreloadBase",
+        "sceneKey": "Preload",
         "compilerOutputLanguage": "TYPE_SCRIPT",
         "borderWidth": 1728,
         "borderHeight": 1117

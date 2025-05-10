@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import WebFont from "webfontloader";
-import Preload from "./scenes/OB/OB_Preload";
+import Preload from "./scenes/Preload";
 import OB_1 from "./scenes/OB/OB_1";
 import OB_2 from "./scenes/OB/OB_2";
 import OB_3_1 from "./scenes/OB/OB_3_1";
@@ -56,7 +56,7 @@ class Boot extends Phaser.Scene {
 	}
 
 	create() {
-		this.scene.start("OB_Preload");
+		this.scene.start("Preload");
 	}
 }
 

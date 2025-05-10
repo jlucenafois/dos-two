@@ -1,16 +1,17 @@
-import PreloadBase from "../PreloadBase";
-export default class WC_Preload extends PreloadBase {
+import Base from "../Base";
+export default class WC_Preload extends Base {
 
 	constructor() {
-		super("WC_Preload", ["WordCrafter"], "WC_ChooseTheme");
+		super("WC_Preload");
 	}
 
 	preload(): void {
-        super.preload();
+        this.load.pack("WordCrafter", "assets/WordCrafter/WordCrafter-asset-pack.json");
         this.load.json('vocabData', 'assets/WordCrafter/words.json');
     }
     
     create(): void {
         super.create();
+        this.scene.start("WC_ChooseTheme");
     }
 }

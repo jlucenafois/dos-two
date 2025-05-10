@@ -70,7 +70,7 @@ export default class OB_3_2 extends OB_Base {
 		sceneKey: string,
 		audioKey: string
 	): Phaser.GameObjects.Image {
-		const button = this.add.image(x, y, texture).setOrigin(0, 0);
+		const button = this.add.image(x, y, texture).setOrigin(0.5, 0.5);
 
 		button.setInteractive({
 			useHandCursor: true,
