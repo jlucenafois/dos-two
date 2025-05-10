@@ -1,0 +1,80 @@
+{
+	"Utensils": [
+		{
+			"english": "Plate",
+			"spanish": "Plato",
+			"english_description": "A flat dish for food",
+			"spanish_description": "Un plato para la comida."
+		},
+		{
+			"english": "Spoon",
+			"spanish": "Cuchara",
+			"english_description": "A round utensil for eating soup",
+			"spanish_description": "Un utensilio redonda para comer sopa."
+		},
+		{
+			"english": "Fork",
+			"spanish": "Tenedor",
+			"english_description": "A tool with prongs to pick up food",
+			"spanish_description": "Un utensilio con puntas para recoger comida."
+		},
+		{
+			"english": "Knife",
+			"spanish": "Cuchillo",
+			"english_description": "A sharp utensil for cutting food",
+			"spanish_description": "Un utensilio afilada para cortar comida."
+		}
+	],
+	"Carrot": [
+		{
+			"english": "Carrot",
+			"spanish": "Zanahoria",
+			"english_description": "A long orange vegetable",
+			"spanish_description": "Un vegetal largo y anaranjado."
+		},
+		{
+			"english": "Potato",
+			"spanish": "Papa",
+			"english_description": "A round vegetable that grows underground",
+			"spanish_description": "Un vegetal redondo que crece bajo la tierra."
+		},
+		{
+			"english": "Rice",
+			"spanish": "Arroz",
+			"english_description": "Small white or brown grains we eat",
+			"spanish_description": "Pequeños granos blancos o marrones que comemos."
+		},
+		{
+			"english": "Avocado",
+			"spanish": "Aguacate",
+			"english_description": "A green fruit with a big seed inside",
+			"spanish_description": "Una fruta verde con una semilla grande adentro."
+		}
+	],
+	"Mirror": [
+		{
+			"english": "Mirror",
+			"spanish": "Espejo",
+			"english_description": "A glass where you see yourself",
+			"spanish_description": "Un vidrio donde te ves."
+		},
+		{
+			"english": "Pillow",
+			"spanish": "Almohada",
+			"english_description": "A soft cushion for your head",
+			"spanish_description": "Un cojín suave para tu cabeza."
+		},
+		{
+			"english": "Lamp",
+			"spanish": "Lámpara",
+			"english_description": "A light that helps you see",
+			"spanish_description": "Una luz que te ayuda a ver."
+		},
+		{
+			"english": "Bed",
+			"spanish": "Cama",
+			"english_description": "A place to sleep and rest",
+			"spanish_description": "Un lugar para dormir y descansar."
+		}
+	]
+}

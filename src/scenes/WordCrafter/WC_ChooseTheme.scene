@@ -1,0 +1,71 @@
+{
+    "id": "315fc879-13d2-402b-b7ec-f458f224a38c",
+    "sceneType": "SCENE",
+    "settings": {
+        "javaScriptInitFieldsInConstructor": true,
+        "exportClass": true,
+        "autoImport": true,
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "WC_ChooseTheme",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1728,
+        "borderHeight": 1117
+    },
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "53b355c4-d85b-4737-846e-ed282fa6e6ea",
+            "label": "title_ob_2",
+            "texture": {
+                "key": "title_ob_2"
+            },
+            "x": 845.0456043923781,
+            "y": 439.2735078542467,
+            "originY": 0
+        },
+        {
+            "type": "Image",
+            "id": "a1031f31-311f-4c44-a413-4503441070e5",
+            "label": "utensils",
+            "texture": {
+                "key": "Utensils"
+            },
+            "x": 842,
+            "y": 747,
+            "scaleX": 0.2,
+            "scaleY": 0.2
+        },
+        {
+            "type": "Image",
+            "id": "f927f481-e199-4d8f-bb45-a28fec648a15",
+            "label": "carrot",
+            "texture": {
+                "key": "Carrot"
+            },
+            "x": 477,
+            "y": 743,
+            "scaleX": 0.2,
+            "scaleY": 0.2
+        },
+        {
+            "type": "Image",
+            "id": "54bbeed4-3970-496d-9ab1-504f73208fa8",
+            "label": "mirror",
+            "texture": {
+                "key": "Mirror"
+            },
+            "x": 1235,
+            "y": 746,
+            "scaleX": 0.2,
+            "scaleY": 0.2
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}
