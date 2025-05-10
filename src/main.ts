@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import WebFont from "webfontloader";
-import Preload from "./scenes/Preload";
+import Preload from "./scenes/OB/OB_Preload";
 import OB_1 from "./scenes/OB/OB_1";
 import OB_2 from "./scenes/OB/OB_2";
 import OB_3_1 from "./scenes/OB/OB_3_1";
@@ -38,47 +38,47 @@ import P_18 from "./scenes/story/P_18";
 import P_19 from "./scenes/story/P_19";
 
 class Boot extends Phaser.Scene {
-    constructor() {
-        super("Boot");
-    }
+	constructor() {
+		super("Boot");
+	}
 
-    preload() {
+	preload() {
 		this.load.pack("pack", "assets/preload/preload-asset-pack.json");
 		// Load Raleway with Web Font Loader
-        WebFont.load({
-            google: {
-                families: ["Raleway:600,700,800", "Bowlby One"]
-            },
-            active: () => {
-                console.log("Fonts loaded!");
-            }
-        });
-    }
-    
-    create() {
-        this.scene.start("OB_Preload");
-    }
+		WebFont.load({
+			google: {
+				families: ["Raleway:600,700,800", "Bowlby One"],
+			},
+			active: () => {
+				console.log("Fonts loaded!");
+			},
+		});
+	}
+
+	create() {
+		this.scene.start("OB_Preload");
+	}
 }
 
 window.addEventListener("load", function () {
 	const game = new Phaser.Game({
-        // width: window.innerWidth,
+		// width: window.innerWidth,
 		// height: window.innerHeight,
-        width: 1728,
+		width: 1728,
 		height: 1117,
-        backgroundColor: '#7580FF',
-        parent: 'game-container',
+		backgroundColor: "#7580FF",
+		parent: "game-container",
 		scale: {
 			mode: Phaser.Scale.ScaleModes.FIT,
 			autoCenter: Phaser.Scale.Center.CENTER_BOTH,
 		},
-        physics: {
-            default: 'matter',
-            matter: {
-                // debug:true,
-                gravity: { x:0,y: 0 },
-            }
-        },
+		physics: {
+			default: "matter",
+			matter: {
+				// debug:true,
+				gravity: { x: 0, y: 0 },
+			},
+		},
 		scene: [
 			Boot,
 			Preload,
@@ -88,10 +88,28 @@ window.addEventListener("load", function () {
 			OB_3_1,
 			OB_3_2,
 			OB_4,
-            P_0, P_1, P_2, P_3, P_4, P_5, P_6, P_7, 
-            P_8, P_9, P_10, P_11, P_12, P_13, P_14, P_15, P_16,
-            P_17, P_18, P_19,
-            Q_1, Q_2,
+			P_0,
+			P_1,
+			P_2,
+			P_3,
+			P_4,
+			P_5,
+			P_6,
+			P_7,
+			P_8,
+			P_9,
+			P_10,
+			P_11,
+			P_12,
+			P_13,
+			P_14,
+			P_15,
+			P_16,
+			P_17,
+			P_18,
+			P_19,
+			Q_1,
+			Q_2,
 			WC_Preload,
 			WC_ChooseTheme,
 			WC_Game,

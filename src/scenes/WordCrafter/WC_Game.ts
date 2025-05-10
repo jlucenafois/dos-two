@@ -37,6 +37,7 @@ export default class WC_Game extends Base {
 
 	create(): void {
 		this.editorCreate();
+        super.create();
 
 		this.events.emit("showExitButton");
 		this.events.emit("changeBackground", "#ffffff");
@@ -131,13 +132,12 @@ export default class WC_Game extends Base {
 	private spawnPuzzle() {
 		const currentStep = this.puzzleManager.getCurrentStep();
 
-		// Render dual components
 		const sceneScript = SCRIPT[this.scene.key];
-		if (sceneScript?.dualComponents) {
-			sceneScript.dualComponents.forEach((dc) =>
-				this.renderDualComponent(dc, currentStep)
-			);
-		}
+        ///@ts-ignore
+        const dualComponents = sceneScript.sections[0].dualComponents;
+        dualComponents?.forEach((dc) =>
+            this.renderDualComponent(dc, currentStep)
+        );
 
 		// this have to come after for the floating letters to be rendered on top!!!
 		this.puzzle = new WordPuzzle(
