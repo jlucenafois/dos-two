@@ -1,0 +1,23 @@
+{
+    "id": "82b77b61-1127-43a4-bd89-866ac8440403",
+    "sceneType": "SCENE",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "superClassName": "P_Base",
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "P_18",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1728,
+        "borderHeight": 1117
+    },
+    "displayList": [],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}

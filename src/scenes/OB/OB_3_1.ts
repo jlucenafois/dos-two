@@ -6,6 +6,7 @@
 import OB_Base from "./OB_Base";
 /* START-USER-IMPORTS */
 import {CURRENT_SETTINGS, Language} from "../../settings";
+import { playAudioSequence, playBackgroundAudio } from "../../utils";
 
 /* END-USER-IMPORTS */
 
@@ -61,7 +62,8 @@ export default class OB_3_1 extends OB_Base {
 	create() {
 		this.editorCreate();
 		super.create();
-
+		playAudioSequence(this, ['3.1-line-1', '3.1-line-2', '3.1-line-3'], () => {}, 500)
+		
 		// TITLES
 
 		// SPANISH
@@ -101,6 +103,7 @@ export default class OB_3_1 extends OB_Base {
 		// Click event - Transition to OB_3_1
 		this.spanish_bubble.on("pointerdown", () => {
 			CURRENT_SETTINGS.gameState.language = Language.Spanish
+			this.sound.stopAll(); // stops any playing audio
 			this.scene.start("OB_4");
 		});
 
@@ -125,6 +128,7 @@ export default class OB_3_1 extends OB_Base {
 		// Click event - Transition to OB_3_1
 		this.english_bubble.on("pointerdown", () => {
 			CURRENT_SETTINGS.gameState.language = Language.English
+			this.sound.stopAll(); // stops any playing audio
 			this.scene.start("OB_4");
 		});
 	}

@@ -1,0 +1,89 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": [
+                    "assets/transcript/story/audio/1-0e.wav"
+                ],
+                "type": "audio",
+                "key": "1-0e-audio"
+            },
+            {
+                "url": "assets/transcript/story/json/1-0e.json",
+                "type": "json",
+                "key": "1-0e-transcript"
+            },
+            {
+                "url": [
+                    "assets/transcript/story/audio/1-0s.wav"
+                ],
+                "type": "audio",
+                "key": "1-0s-audio"
+            },
+            {
+                "url": "assets/transcript/story/json/1-0s.json",
+                "type": "json",
+                "key": "1-0s-transcript"
+            },
+
+            {
+                "url": [
+                    "assets/transcript/story/audio/2-0e.wav"
+                ],
+                "type": "audio",
+                "key": "2-0e-audio"
+            },
+            {
+                "url": "assets/transcript/story/json/2-0e.json",
+                "type": "json",
+                "key": "2-0e-transcript"
+            },
+            {
+                "url": [
+                    "assets/transcript/story/audio/2-0s.wav"
+                ],
+                "type": "audio",
+                "key": "2-0s-audio"
+            },
+            {
+                "url": "assets/transcript/story/json/2-0s.json",
+                "type": "json",
+                "key": "2-0s-transcript"
+            },
+
+            {
+                "url": [
+                    "assets/transcript/story/audio/3-0e.wav"
+                ],
+                "type": "audio",
+                "key": "3-0e-audio"
+            },
+            {
+                "url": "assets/transcript/story/json/3-0e.json",
+                "type": "json",
+                "key": "3-0e-transcript"
+            },
+            {
+                "url": [
+                    "assets/transcript/story/audio/3-0s.wav"
+                ],
+                "type": "audio",
+                "key": "3-0s-audio"
+            },
+            {
+                "url": "assets/transcript/story/json/3-0s.json",
+                "type": "json",
+                "key": "3-0s-transcript"
+            }
+
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false,
+        "visible": true
+    }
+}

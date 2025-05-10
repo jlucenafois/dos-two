@@ -5,7 +5,8 @@
 
 import Base from "../Base";
 /* START-USER-IMPORTS */
-import {CURRENT_SETTINGS} from '../../settings.ts'
+import { CURRENT_SETTINGS } from '../../settings.ts'
+import { SCRIPT } from "../../script.ts";
 /* END-USER-IMPORTS */
 
 export default class OB_UI extends Base {
@@ -27,18 +28,17 @@ export default class OB_UI extends Base {
 		// exit
 		const exit = this.add.image(1568, 69, "default_exit_lg");
 		exit.setOrigin(0, 0);
+		exit.visible = false;
 
 		// home
 		const home = this.add.image(80, 69, "default_home_lg");
 		home.setOrigin(0, 0);
+		home.visible = false;
 
 		// sound_control
 		const sound_control = this.add.image(192, 69, "default_unmuted_lg");
 		sound_control.setOrigin(0, 0);
-
-		// back
-		const back = this.add.image(1608, 112, "default_back_md");
-		back.visible = false;
+		sound_control.visible = false;
 
 		// home_purple
 		const home_purple = this.add.image(80, 69, "default_home_purple_lg");
@@ -63,12 +63,12 @@ export default class OB_UI extends Base {
 		// coin
 		const coin = this.add.image(80, 951, "coin");
 		coin.setOrigin(0, 0);
+		coin.visible = false;
 
 		this.book = book;
 		this.exit = exit;
 		this.home = home;
 		this.sound_control = sound_control;
-		this.back = back;
 		this.home_purple = home_purple;
 		this.next_page = next_page;
 		this.prev_page = prev_page;
@@ -82,7 +82,6 @@ export default class OB_UI extends Base {
 	private exit!: Phaser.GameObjects.Image;
 	private home!: Phaser.GameObjects.Image;
 	private sound_control!: Phaser.GameObjects.Image;
-	private back!: Phaser.GameObjects.Image;
 	private home_purple!: Phaser.GameObjects.Image;
 	private next_page!: Phaser.GameObjects.Image;
 	private prev_page!: Phaser.GameObjects.Image;
@@ -93,11 +92,11 @@ export default class OB_UI extends Base {
 	registerListeners() {
 		this.scene.manager.scenes.forEach(scene => {
 			if (scene instanceof Base) {
-				scene.events.on("showExitButton", this.showExitButton, this);
-				scene.events.on("showBackArrow", this.showBackArrow, this);	
-				scene.events.on("showSideArrows", this.showSideArrows, this);		
-				scene.events.on("hideSideArrows", this.hideSideArrows, this);		
-				scene.events.on("showBook", this.showBook, this);		
+				scene.events.on("showSideArrows", this.showSideArrows, this);
+				scene.events.on("hideSideArrows", this.hideSideArrows, this);
+				scene.events.on("showBook", this.showBook, this);
+				scene.events.on("hideBook", this.hideBook, this);
+				scene.events.on("showOBUI", this.showOBUI, this);
 				scene.events.on("changeBackground", this.changeBackground, this);
 				scene.events.on("updateProgressBar", this.updateProgressBar, this)
 				scene.events.on("hideProgressBar", this.hideProgressBar, this)
@@ -122,13 +121,13 @@ export default class OB_UI extends Base {
 	}
 
 	/* EVENTS */
-	showExitButton() {
-		this.back.setVisible(false);
-		this.exit.setVisible(true);
-	}
-	showBackArrow() {
-		this.exit.setVisible(false);
-		this.back.setVisible(true);
+
+	showOBUI() {
+		this.home.setVisible(true)
+		this.sound_control.setVisible(true)
+		this.coin.setVisible(true)
+		this.coin_counter.setVisible(true)
+		this.exit.setVisible(true)
 	}
 	showSideArrows() {
 		this.prev_page.setVisible(true);
@@ -140,6 +139,9 @@ export default class OB_UI extends Base {
 	}
 	showBook() {
 		this.book.setVisible(true);
+	}
+	hideBook() {
+		this.book.setVisible(false);
 	}
 	changeBackground(color: string) {
 		this.cameras.main.setBackgroundColor(color);
@@ -192,6 +194,32 @@ export default class OB_UI extends Base {
 		this.coin_counter.setText(`${CURRENT_SETTINGS.gameState.coins}`)
 	}
 
+	transitionToScene(
+		uiScene: Phaser.Scene,
+		currentSceneKey: string,
+		nextSceneKey: string,
+		duration: number = 600
+	) {
+		const currScene = uiScene.scene.get(currentSceneKey);
+	
+		// 1. Launch the next scene with a fadeIn flag
+		uiScene.scene.launch(nextSceneKey, { fadeIn: true });
+		uiScene.scene.moveBelow(currentSceneKey, nextSceneKey);
+	
+		// 2. Fade out the current scene's camera
+		uiScene.tweens.add({
+			targets: currScene.cameras.main,
+			alpha: 0,
+			duration,
+			onComplete: () => {
+				uiScene.scene.stop(currentSceneKey);
+			}
+		});
+	}
+	
+	
+	
+
 	create() {
 		this.editorCreate();
 		this.registerListeners();
@@ -199,7 +227,7 @@ export default class OB_UI extends Base {
 		this.coin_counter = this.add.text(140, 950, `${CURRENT_SETTINGS.gameState.coins}`, {
 			fontSize: '40px',
 			fontFamily: 'Bowlby One'
-		})
+		}).setVisible(false)
 		super.create();
 
 		/* HOME */
@@ -214,6 +242,8 @@ export default class OB_UI extends Base {
 		this.home.on("pointerup", () => {
 			this.home.setTexture("default_home_lg"); // Reset to hover state
 			this.stopAllScenes([])
+			this.sound.stopAll()
+			CURRENT_SETTINGS.gameState.hasOpenedCover = false
 			this.scene.start("OB_1"); // Switch to OB1 scene
 		});
 
@@ -223,7 +253,7 @@ export default class OB_UI extends Base {
 		});
 
 
-	/* SOUND */
+		/* SOUND */
 		this.sound_control.setInteractive({ useHandCursor: true });
 
 		let isMuted = localStorage.getItem("muteState") === "true"; // Load saved state
@@ -231,7 +261,7 @@ export default class OB_UI extends Base {
 		this.sound_control.setTexture(isMuted ? "default_muted_lg" : "default_unmuted_lg");
 
 		this.sound_control.on("pointerdown", () => {
-			this.sound_control.setTexture(isMuted ? "pressed_muted_lg" : "pressed_unmuted_lg"); 
+			this.sound_control.setTexture(isMuted ? "pressed_muted_lg" : "pressed_unmuted_lg");
 		});
 
 		this.sound_control.on("pointerup", () => {
@@ -246,7 +276,7 @@ export default class OB_UI extends Base {
 			this.sound_control.setTexture(isMuted ? "default_muted_lg" : "default_unmuted_lg");
 		});
 
-	/* EXIT */ 
+		/* EXIT */
 		this.exit.setInteractive({ useHandCursor: true });
 
 		// Mouse press effect
@@ -258,6 +288,8 @@ export default class OB_UI extends Base {
 		this.exit.on("pointerup", () => {
 			this.exit.setTexture("default_exit_lg"); // Reset to hover state
 			this.stopAllScenes([])
+			this.sound.stopAll()
+			CURRENT_SETTINGS.gameState.hasOpenedCover = false
 			this.scene.start("OB_1"); // Switch to OB1 scene
 		});
 
@@ -266,28 +298,7 @@ export default class OB_UI extends Base {
 			this.exit.setTexture("default_exit_lg");
 		});
 
-	/* BACK */ 
-		this.back.setInteractive({ useHandCursor: true });
-
-		// Mouse press effect
-		this.back.on("pointerdown", () => {
-			this.back.setTexture("pressed_back_md"); // Change to pressed state
-		});
-
-		// Release effect (if still hovered)
-		this.back.on("pointerup", () => {
-			this.back.setTexture("default_back_md"); // Reset to hover state
-			this.stopAllScenes(["OB_UI"])
-			this.scene.launch(CURRENT_SETTINGS.gameState.prevScene!)
-		});
-
-
-		// Mouse out effect (Reset to normal)
-		this.back.on("pointerout", () => {
-			this.back.setTexture("default_back_md");
-		});
-
-	/* BACK LG*/ 
+		/* BACK LG*/
 		this.prev_page.setInteractive({ useHandCursor: true });
 
 		// Mouse press effect
@@ -297,19 +308,57 @@ export default class OB_UI extends Base {
 
 		// Release effect (if still hovered)
 		this.prev_page.on("pointerup", () => {
-			this.prev_page.setTexture("default_back_lg"); // Reset to hover state
-			if (CURRENT_SETTINGS.gameState.prevScene) {
-				this.stopAllScenes(["OB_UI"])
-				this.scene.launch(CURRENT_SETTINGS.gameState.prevScene)
+			this.prev_page.setTexture("default_back_lg");
+
+			const currSceneKey = CURRENT_SETTINGS.gameState.currScene;
+			const currScene = this.scene.get(currSceneKey!) as Phaser.Scene & { goToPreviousSection?: () => boolean };
+
+			if (currSceneKey === "P_1") {
+				this.hideBook();
+				CURRENT_SETTINGS.gameState.hasOpenedCover = false;
+			}
+			if (currSceneKey && currSceneKey[0] === "Q") {
+				this.enableForwardNav()
+			}
+
+			if (currScene?.goToPreviousSection) {
+				const success = currScene.goToPreviousSection();
+				if (!success && CURRENT_SETTINGS.gameState.prevScene) {
+					// Before launching prevScene, set it to its last section
+					const prevSceneKey = CURRENT_SETTINGS.gameState.prevScene;
+					const prevSceneScript = SCRIPT[prevSceneKey];
+
+					if (prevSceneScript?.sections?.length) {
+						prevSceneScript.lastVisitedSectionIndex = prevSceneScript.sections.length - 1;
+					}
+
+					this.stopAllScenes(["OB_UI"]);
+					this.sound.stopAll();
+					this.scene.launch(prevSceneKey);
+				}
+			} else if (CURRENT_SETTINGS.gameState.prevScene) {
+				// Fallback: no sections handling
+				const prevSceneKey = CURRENT_SETTINGS.gameState.prevScene;
+				const prevSceneScript = SCRIPT[prevSceneKey];
+
+				if (prevSceneScript?.sections?.length) {
+					prevSceneScript.lastVisitedSectionIndex = prevSceneScript.sections.length - 1;
+				}
+
+				this.stopAllScenes(["OB_UI"]);
+				this.sound.stopAll();
+				this.scene.launch(prevSceneKey);
 			}
 		});
+
+
 
 		// Mouse out effect (Reset to normal)
 		this.prev_page.on("pointerout", () => {
 			this.prev_page.setTexture("default_back_lg");
 		});
 
-	/* NEXT LG*/ 
+		/* NEXT LG*/
 		this.next_page.setInteractive({ useHandCursor: true });
 
 		// Mouse press effect
@@ -317,18 +366,45 @@ export default class OB_UI extends Base {
 			this.next_page.setTexture("pressed_next_lg"); // Change to pressed state
 		});
 
-		// Release effect (if still hovered)
 		this.next_page.on("pointerup", () => {
-			this.next_page.setTexture("default_next_lg"); // Reset to hover state
-			
-			// If the current scene is P_0, trigger "playAnim"
-			if (CURRENT_SETTINGS.gameState.currScene === "P_0") {
+			this.next_page.setTexture("default_next_lg");
+
+			const currSceneKey = CURRENT_SETTINGS.gameState.currScene;
+			const currScene = this.scene.get(currSceneKey!) as Phaser.Scene & { goToNextSection?: () => boolean };
+
+			if (currSceneKey === "P_0") {
 				this.events.emit("openCover");
-			} else if (CURRENT_SETTINGS.gameState.nextScene) {
-				this.stopAllScenes(["OB_UI"])
-				this.scene.launch(CURRENT_SETTINGS.gameState.nextScene)
+				CURRENT_SETTINGS.gameState.hasOpenedCover = true;
+			}
+			else if (currScene?.goToNextSection) {
+				const advanced = currScene.goToNextSection();
+				if (advanced === false && CURRENT_SETTINGS.gameState.nextScene) {
+					// Reset next scene's section index to 0
+					const nextSceneKey = CURRENT_SETTINGS.gameState.nextScene;
+					const nextSceneScript = SCRIPT[nextSceneKey];
+
+					if (nextSceneScript?.sections?.length) {
+						nextSceneScript.lastVisitedSectionIndex = 0;
+					}
+
+					this.sound.stopAll();
+					this.transitionToScene(this, currSceneKey!, nextSceneKey); // 👈 fade happens here
+				}
+			}
+			else if (CURRENT_SETTINGS.gameState.nextScene) {
+				const nextSceneKey = CURRENT_SETTINGS.gameState.nextScene;
+				const nextSceneScript = SCRIPT[nextSceneKey];
+
+				if (nextSceneScript?.sections?.length) {
+					nextSceneScript.lastVisitedSectionIndex = 0;
+				}
+
+				this.sound.stopAll();
+				this.transitionToScene(this, currSceneKey!, nextSceneKey); // 👈 fade happens here
+
 			}
 		});
+
 
 		// Mouse out effect (Reset to normal)
 		this.next_page.on("pointerout", () => {

@@ -18,6 +18,7 @@
             "type": "Image",
             "id": "31e3c33f-3cba-4f4a-be59-9f3463e9764c",
             "label": "match_button",
+            "scope": "CLASS",
             "texture": {
                 "key": "match_button"
             },
@@ -28,6 +29,7 @@
             "type": "Image",
             "id": "3e299689-1279-4cf3-9bfb-1fba2e441463",
             "label": "word_button",
+            "scope": "CLASS",
             "texture": {
                 "key": "word_button"
             },
@@ -38,6 +40,7 @@
             "type": "Image",
             "id": "8c807841-c73a-4526-95e1-d709b59df6d8",
             "label": "memory_button",
+            "scope": "CLASS",
             "texture": {
                 "key": "memory_button"
             },

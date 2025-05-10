@@ -5,6 +5,7 @@ export enum Language {
 }
 export class Settings {
     gameState: { 
+        hasOpenedCover: boolean,
         nextScene: string | null; 
         currScene: string | null; 
         prevScene: string | null; 
@@ -15,6 +16,7 @@ export class Settings {
 
     constructor() {
         this.gameState = {
+            hasOpenedCover: false,
             nextScene: null,
             currScene: null,
             prevScene: null,
@@ -26,6 +28,7 @@ export class Settings {
 }
 
 export const CURRENT_SETTINGS = new Settings();
+export const QUIZ_LANGUAGE: Record<string, Language.English | Language.Spanish> = {};
 
 /**
  * Updates the game state by setting prevScene to the currentScene

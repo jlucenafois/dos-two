@@ -23,11 +23,12 @@ export default class OB_4 extends OB_Base {
 		this.create();
 
 		this.load.pack("story-asset-pack", "assets/story/story-asset-pack.json");
+		this.load.pack("transcript-asset-pack", "assets/transcript/transcript-asset-pack.json")
+		this.load.pack("quizzes-asset-pack", "assets/quizzes/quizzes-asset-pack.json")
 		this.load.on("progress", (value: number) => {
 			this.updateProgressBar(value);
 		});
 		this.load.on("complete", () => {
-			this.events.emit("showExitButton");
 			this.events.emit("showSideArrows");
 			this.events.emit("changeBackground", "#C7CCFF");
 			this.scene.start("P_0");

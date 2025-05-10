@@ -1,0 +1,76 @@
+{
+    "words": [
+        {
+            "text": "Mi",
+            "start": 0.12,
+            "end": 0.26,
+            "isHighlighted": false
+        },
+        {
+            "text": "familia",
+            "start": 0.26,
+            "end": 0.84,
+            "isHighlighted": false
+        },
+        {
+            "text": "es",
+            "start": 0.84,
+            "end": 1.18,
+            "isHighlighted": false
+        },
+        {
+            "text": "de",
+            "start": 1.18,
+            "end": 1.32,
+            "isHighlighted": false
+        },
+        {
+            "text": "puerto",
+            "start": 1.32,
+            "end": 1.76,
+            "isHighlighted": false
+        },
+        {
+            "text": "rico,",
+            "start": 1.76,
+            "end": 2.14,
+            "isHighlighted": false
+        },
+        {
+            "text": "donde",
+            "start": 2.5,
+            "end": 2.7,
+            "isHighlighted": false
+        },
+        {
+            "text": "hace",
+            "start": 2.7,
+            "end": 3.04,
+            "isHighlighted": false
+        },
+        {
+            "text": "sol",
+            "start": 3.04,
+            "end": 3.52,
+            "isHighlighted": false
+        },
+        {
+            "text": "y",
+            "start": 3.52,
+            "end": 3.82,
+            "isHighlighted": false
+        },
+        {
+            "text": "calor.",
+            "start": 3.82,
+            "end": 4.28,
+            "isHighlighted": false
+        },
+        {
+            "text": ".",
+            "start": 3.82,
+            "end": 4.28,
+            "isHighlighted": false
+        }
+    ]
+}

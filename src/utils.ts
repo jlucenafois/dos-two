@@ -13,10 +13,111 @@ import { SingleComponent } from "../types/components/SingleComponent";
 import { Image } from "../types/image/Image";
 import Base from "./scenes/Base";
 import P_Base from "./scenes/story/P_Base";
+import { SCRIPT } from "./script";
+
+type HoverAudioEntry = {
+    object: Phaser.GameObjects.GameObject;
+    audioKey: string;
+};
+
+let currentAudio: Phaser.Sound.BaseSound | null = null;
+let currentObject: Phaser.GameObjects.GameObject | null = null;
+
+export function playAudioSequence(
+    scene: Phaser.Scene,
+    audioKeys: string[],
+    onComplete?: () => void,
+    delayBetween: number = 0 // in milliseconds
+) {
+    if (!audioKeys || audioKeys.length === 0) return;
+
+    let currentIndex = 0;
+    let currentAudio: Phaser.Sound.BaseSound | null = null;
+
+    const playNext = () => {
+        if (currentIndex >= audioKeys.length) {
+            currentAudio = null;
+            if (onComplete) onComplete();
+            return;
+        }
+
+        const key = audioKeys[currentIndex];
+        currentAudio = scene.sound.add(key);
+        currentAudio.play();
+
+        currentAudio.once("complete", () => {
+            currentIndex++;
+
+            if (delayBetween > 0) {
+                scene.time.delayedCall(delayBetween, playNext);
+            } else {
+                playNext();
+            }
+        });
+    };
+
+    playNext();
+
+    // Optional: return manual stop function
+    return () => {
+        if (currentAudio && currentAudio.isPlaying) {
+            currentAudio.stop();
+            currentAudio.destroy();
+        }
+    };
+}
+
+/**
+ * Plays a background or title audio once, unless interrupted by hover.
+ */
+export function playBackgroundAudio(scene: Phaser.Scene, audioKey: string) {
+    stopCurrentAudio(); // just in case
+    currentAudio = scene.sound.add(audioKey);
+    currentAudio.play();
+    currentObject = null;
+
+    currentAudio.once("complete", () => {
+        currentAudio = null;
+    });
+}
+
+/**
+ * Attaches hover-based audio playback to a display object.
+ * If another object’s audio is playing, it will stop and play the new one.
+ */
+export function enableHoverAudio(scene: Phaser.Scene, entry: HoverAudioEntry) {
+    let hasPlayed = false;
+
+    entry.object.setInteractive({ useHandCursor: true });
+
+    entry.object.on("pointerover", () => {
+        if (currentObject !== entry.object || !hasPlayed) {
+            stopCurrentAudio();
+
+            currentAudio = scene.sound.add(entry.audioKey);
+            currentObject = entry.object;
+            currentAudio.play();
+            hasPlayed = true;
+
+            currentAudio.once("complete", () => {
+                hasPlayed = false;
+            });
+        }
+    });
+}
+
+function stopCurrentAudio() {
+    if (currentAudio && currentAudio.isPlaying) {
+        currentAudio.stop();
+        currentAudio.destroy();
+    }
+    currentAudio = null;
+    currentObject = null;
+}
 
 
-export function renderSingleComponent(context: Base, sc: SingleComponent) {
-    if (sc.singleImage) renderImage(context, sc.singleImage, sc.isCorrect ? sc.isCorrect : false)
+export function renderSingleComponent(context: Base, sc: SingleComponent, playedOnce: boolean) {
+    if (sc.singleImage) renderImage(context, sc.singleImage, sc.isCorrect ? sc.isCorrect : false, playedOnce)
     if (sc.singleShape) renderShape(context, sc.singleShape)
     if (sc.singleText) renderRichText(context, sc.singleText)
     if (sc.boundedText) {
@@ -26,36 +127,45 @@ export function renderSingleComponent(context: Base, sc: SingleComponent) {
 /**
      * 
      */
-export function renderDualComponent(context: P_Base, dc: DualComponent) {
-    // render dual shapes and texts
-    if (dc.dualShape) {
-        const isSpanish = CURRENT_SETTINGS.gameState.language === Language.Spanish;
-        const coordinates = dc.coordinates
+export function renderDualComponent(context: P_Base, dc: DualComponent, onComplete?: () => void) {
+    const isSpanish = CURRENT_SETTINGS.gameState.language === Language.Spanish;
+    const coordinates = dc.coordinates;
 
-        const preferredBox = isSpanish ? dc.dualShape.spanishShape : dc.dualShape.englishShape;
-        const preferredShape: Shape = {
-            x: coordinates.preferredX,
-            y: coordinates.preferredY,
-            type: preferredBox.type,
-            style: preferredBox.style,
-        }
+    if (!dc.dualShape) {
+        onComplete?.(); // still trigger if nothing renders
+        return;
+    }
 
-        const alternateBox = isSpanish ? dc.dualShape.englishShape : dc.dualShape.spanishShape;
-        const alternateShape: Shape = {
-            x: coordinates.alternateX,
-            y: coordinates.alternateY,
-            type: alternateBox.type,
-            style: alternateBox.style,
-        }
-        renderDualShape(context, preferredShape, alternateShape);
-        if (dc.dualText) {
-            const dt = dc.dualText
-            const preferredText = isSpanish ? dt.spanishText : dt.englishText;
-            const alternateText = isSpanish ? dt.englishText : dt.spanishText;
-            if (preferredText.box === 'shape' && alternateText.box === 'shape')
-                renderDualText(context, preferredText, alternateText, preferredShape, alternateShape);
+    const preferredBox = isSpanish ? dc.dualShape.spanishShape : dc.dualShape.englishShape;
+    const alternateBox = isSpanish ? dc.dualShape.englishShape : dc.dualShape.spanishShape;
+
+    const preferredShape: Shape = {
+        x: coordinates.preferredX,
+        y: coordinates.preferredY,
+        type: preferredBox.type,
+        style: preferredBox.style,
+    };
+
+    const alternateShape: Shape = {
+        x: coordinates.alternateX,
+        y: coordinates.alternateY,
+        type: alternateBox.type,
+        style: alternateBox.style,
+    };
+
+    renderDualShape(context, preferredShape, alternateShape);
+
+    if (dc.dualText) {
+        const dt = dc.dualText;
+        const preferredText = isSpanish ? dt.spanishText : dt.englishText;
+        const alternateText = isSpanish ? dt.englishText : dt.spanishText;
+
+        if (preferredText.box === 'shape' && alternateText.box === 'shape') {
+            renderDualText(context, preferredText, alternateText, preferredShape, alternateShape, onComplete); // ✅ pass callback down
+            return;
         }
     }
+    onComplete?.(); // if no dualText
 }
 
 export function renderBoundedText(context: Scene, bt: BoundedText, box: Image | Shape) {
@@ -144,7 +254,8 @@ export function renderBoundedText(context: Scene, bt: BoundedText, box: Image | 
     // We want the top-left corner (x, y) for renderRichText such that
     // the measured text block (textWidth x textHeight) is centered.
     const targetX = boxCenterX - textWidth / 2;
-    const targetY = boxCenterY - textHeight / 2;
+    const targetY = boxCenterY - textHeight / 2; // ✅ Shift text up by 10 pixels
+    ;
 
     // --- 4. Prepare SingleText for Rendering ---
     const singleTextToRender: SingleText = {
@@ -167,31 +278,33 @@ export function renderBoundedText(context: Scene, bt: BoundedText, box: Image | 
 // img holds the og properties from script.ts
 // renderedImage is the object on screen that can mutate
 // isCorrect is just a shortcut to checking if isCorrect exists in img and if it is true
-function handleQuizClick(context: Base, img: Image, renderedImage: Phaser.GameObjects.Image, isCorrect: boolean) {
+function handleQuizClick(
+    context: Base,
+    img: Image,
+    renderedImage: Phaser.GameObjects.Image,
+    isCorrect: boolean
+) {
     if (isCorrect) {
         addCoins(50);
         context.events.emit("updateCoinsUI");
         context.events.emit("enableForwardNav");
-        removeInteractive(context, "renderedComponents");
-    }
 
-}
+        // Mark the section as played
+        const sceneScript = SCRIPT[context.scene.key];
+        if (sceneScript?.sections?.[0]) {
+            sceneScript.sections[0].playedOnce = true;
+        }
 
-function removeInteractive(context: Base, key: string) {
-    const objects = context[key as keyof Base] as Phaser.GameObjects.GameObject[];
-
-    if (Array.isArray(objects)) {
-        objects.forEach(obj => {
-            if ("removeInteractive" in obj && typeof obj.removeInteractive === "function") {
-                obj.removeInteractive();
+        context.renderedComponents.iterate((child: Phaser.GameObjects.GameObject) => {
+            if ('removeInteractive' in child) {
+                (child as Phaser.GameObjects.GameObject & { removeInteractive: () => void }).removeInteractive();
             }
         });
-    } else {
-        console.warn(`removeInteractive: context[${key}] is not an array.`);
     }
 }
 
-export function renderImage(context: Base, img: Image, isCorrect: boolean) {
+
+export function renderImage(context: Base, img: Image, isCorrect: boolean, playedOnce: boolean) {
     let originX = 0;
     let originY = 0;
 
@@ -200,14 +313,17 @@ export function renderImage(context: Base, img: Image, isCorrect: boolean) {
         originY = img.origin[1];
     }
 
-    const renderedImage = context.add.image(img.x, img.y, img.default).setOrigin(originX, originY);
+    const imageKey = (playedOnce && img.feedback && isCorrect) ? img.feedback : img.default;
+    const renderedImage = context.add.image(img.x, img.y, imageKey).setOrigin(originX, originY);
 
     // Store reference
-    (context as Base).renderedComponents.push(renderedImage);
-
+    (context as Base).renderedComponents.add(renderedImage);
+    
+    if (playedOnce) return; 
     let clicked = false;
     // quiz-specific
     if (img.hovered && img.pressed && img.feedback) {
+        
         renderedImage.setInteractive({ useHandCursor: true });
 
         // Mouse hover effect
@@ -264,7 +380,7 @@ export function renderShape(context: Scene, ss: Shape) {
                 graphics.lineStyle(strokeWeight ?? 1, strokeColor, 1.0);
                 graphics.strokeRoundedRect(x, y, style.width, style.height, style.radius ?? 10);
             }
-            (context as Base).renderedComponents.push(graphics);
+            (context as Base).renderedComponents.add(graphics);
         },
     };
 
@@ -299,22 +415,53 @@ export function renderRichText(context: Scene, st: SingleText): WordObject[] {
         parts.forEach((part, partIndex) => {
             if (partIndex > 0) {
                 offsetX = st.x; // Reset X for new line
-                offsetY += 40; // Move Y down for new line (same as original)
+                const lineHeight = segment.style?.fontSize ? Number(segment.style.fontSize) : 24;
+                offsetY += lineHeight + 8; // small buffer
                 lineIndex++;
             }
 
-            const textStyle = {
-                font: `${segment.style?.fontWeight || '600'} ${segment.style?.fontSize || '24px'} ${segment.style?.fontFamily || 'Raleway'}`,
-                color: segment.style?.fill || "#A3A3A3",
-            };
-
             const words = part.split(/\s+/).filter(word => word.length > 0);
             words.forEach(word => {
-                const textObject = context.add.text(offsetX, offsetY, word, textStyle)
-                    .setOrigin(0, 0); // Top-left origin to match original behavior
+                const hasStroke = segment.style?.strokeColor !== undefined || segment.style?.strokeWeight !== undefined;
+                const hasShadow = segment.style?.shadowOffsetX !== undefined
+                    || segment.style?.shadowOffsetY !== undefined
+                    || segment.style?.shadowColor !== undefined
+                    || segment.style?.shadowBlur !== undefined;
 
-                // Store in scene
-                (context as Base).renderedComponents.push(textObject);
+                // 1. Optional: Stroke + Shadow layer (render only if defined)
+                if (hasStroke || hasShadow) {
+                    const strokeLayer = context.add.text(offsetX - 1, offsetY - 1, word, {
+                        font: `${segment.style?.fontWeight || '600'} ${segment.style?.fontSize || '24px'} ${segment.style?.fontFamily || 'Raleway'}`,
+                        color: segment.style?.strokeColor || "#FFFFFF",
+                        stroke: segment.style?.strokeColor || "#FFFFFF",
+                        strokeThickness: segment.style?.strokeWeight || 1.5,
+                    })
+                        .setOrigin(0, 0);
+
+                    if (hasShadow) {
+                        strokeLayer.setShadow(
+                            segment.style?.shadowOffsetX || 1,
+                            segment.style?.shadowOffsetY || 1,
+                            segment.style?.shadowColor || "rgba(0, 0, 0, 0.15)",
+                            segment.style?.shadowBlur || 2,
+                            false,
+                            true
+                        );
+                    }
+
+                    (context as Base).renderedComponents.add(strokeLayer);
+                }
+
+                // 2. Main text (always rendered)
+                const textObject = context.add.text(offsetX, offsetY, word, {
+                    font: `${segment.style?.fontWeight || '600'} ${segment.style?.fontSize || '24px'} ${segment.style?.fontFamily || 'Raleway'}`,
+                    color: segment.style?.fill || "#A3A3A3",
+                    stroke: undefined,
+                    strokeThickness: 0,
+                })
+                    .setOrigin(0, 0);
+
+                (context as Base).renderedComponents.add(textObject);
 
                 wordObjects.push({
                     textObject,
@@ -322,12 +469,13 @@ export function renderRichText(context: Scene, st: SingleText): WordObject[] {
                     width: textObject.width,
                     lineIndex,
                     wordIndex,
-                    originalStyle: { color: textStyle.color } // Store original color
+                    originalStyle: { color: segment.style?.fill || "#A3A3A3" }
                 });
 
-                offsetX += textObject.width + 5; // Add space between words (adjustable)
+                offsetX += textObject.width + 5;
                 wordIndex++;
             });
+
         });
     });
 
@@ -337,34 +485,53 @@ export function renderRichText(context: Scene, st: SingleText): WordObject[] {
 /**
 * Renders dualText dynamically depending on preferred language. 
 */
-export function renderDualText(context: P_Base, preferredText: BoundedText, alternateText: BoundedText, preferredBox: Image | Shape, alternateBox: Image | Shape) {
-
-    // Render preferred text at original position
+export function renderDualText(
+    context: P_Base,
+    preferredText: BoundedText,
+    alternateText: BoundedText,
+    preferredBox: Image | Shape,
+    alternateBox: Image | Shape,
+    onComplete?: () => void // ✅ NEW PARAM
+) {
     const preferredWordObjects = renderBoundedText(context, preferredText, preferredBox);
-    
-    // // Render alternate text below preferred text (offset Y by 100 pixels, adjust as needed)
     const alternateWordObjects = renderBoundedText(context, alternateText, alternateBox);
-    
+
     if (preferredWordObjects && alternateWordObjects) {
-
-        const preferredHighlighter = new TextHighlighter(preferredWordObjects);
-        const alternateHighlighter = new TextHighlighter(alternateWordObjects); 
         const isEnglish = CURRENT_SETTINGS.gameState.language === Language.English;
-        const transcriptEnglish = context.cache.json.get(context.nameWithKey("transcript-english")).words;
-        const audioEnglish = context.sound.add(context.nameWithKey("audio-transcript-english"));
-        const transcriptSpanish = context.cache.json.get(context.nameWithKey("transcript-spanish")).words;
-        const audioSpanish = context.sound.add(context.nameWithKey("audio-transcript-spanish"));
-        const transcriptPreferred = isEnglish ? transcriptEnglish : transcriptSpanish;
-        const audioPreferred = isEnglish ? audioEnglish : audioSpanish;
-        const transcriptAlternative = isEnglish ? transcriptSpanish : transcriptEnglish;
-        const audioAlternative = isEnglish ? audioSpanish : audioEnglish;
-        
-        playAudioWithSync(context, preferredHighlighter, transcriptPreferred, audioPreferred, 2000, () => {
-            playAudioWithSync(context, alternateHighlighter, transcriptAlternative, audioAlternative, 1000);
-        });
-    }
-};
 
+        const preferredHighlighter = new TextHighlighter(
+            preferredWordObjects,
+            isEnglish ? Language.English : Language.Spanish
+        );
+
+        const alternateHighlighter = new TextHighlighter(
+            alternateWordObjects,
+            isEnglish ? Language.Spanish : Language.English // switch for alternate
+        );
+
+        // const scenePrefix = context.getScenePrefix(); // e.g. "1-0"
+
+        // const transcriptEnglish = context.cache.json.get(`${scenePrefix}e-transcript`)?.words;
+        // const audioEnglish = context.sound.add(`${scenePrefix}e-audio`);
+
+        // const transcriptSpanish = context.cache.json.get(`${scenePrefix}s-transcript`)?.words;
+        // const audioSpanish = context.sound.add(`${scenePrefix}s-audio`);
+
+        
+        // const transcriptPreferred = isEnglish ? transcriptEnglish : transcriptSpanish;
+        // const audioPreferred = isEnglish ? audioEnglish : audioSpanish;
+        // const transcriptAlt = isEnglish ? transcriptSpanish : transcriptEnglish;
+        // const audioAlt = isEnglish ? audioSpanish : audioEnglish;
+
+        //     playAudioWithSync(context, preferredHighlighter, transcriptPreferred, audioPreferred, 2000, () => {
+        //         playAudioWithSync(context, alternateHighlighter, transcriptAlt, audioAlt, 1000, () => {
+        //             onComplete?.(); // ✅ call here only after both finish
+        //         });
+        //     });
+        // } else {
+        onComplete?.(); // fallback
+    }
+}
 export function playAudioWithSync(context: Scene, highlighter: TextHighlighter, transcript: any, audio: any, delay: number, onComplete?: CallableFunction) {
     context.time.delayedCall(delay, () => {
         highlighter.syncWithAudio(transcript);
@@ -373,46 +540,36 @@ export function playAudioWithSync(context: Scene, highlighter: TextHighlighter, 
     });
 };
 
-
-
+export function fadeIn(context: Base) {
+    context.cameras.main.setAlpha(0);
+    context.tweens.add({
+        targets: context.cameras.main,
+        alpha: 1,
+        duration: 400
+    });
+}
+    
 /* END-USER-CODE */
 
 // Highlight manager class to handle updates efficiently
 class TextHighlighter {
     private wordObjects: WordObject[];
-    private currentHighlight: Phaser.GameObjects.Text | null = null;
+    private preferredLanguage: Language.English | Language.Spanish;
 
-    constructor(wordObjects: WordObject[]) {
+    constructor(wordObjects: WordObject[], preferredLanguage: Language.English | Language.Spanish) {
         this.wordObjects = wordObjects;
+        this.preferredLanguage = preferredLanguage;
     }
 
-    highlightWord(wordIndex: number, duration: number = 500) {
-        // Reset previous highlight to its original style
-        if (this.currentHighlight) {
-            const prevWordObj = this.wordObjects.find(obj => obj.textObject === this.currentHighlight);
-            if (prevWordObj) {
-                prevWordObj.textObject.setStyle({ color: prevWordObj.originalStyle.color });
-            }
-        }
-
+    highlightWord(wordIndex: number) {
         const wordObj = this.wordObjects[wordIndex];
         if (wordObj) {
-            wordObj.textObject.setStyle({ color: '#800080' }); // Purple highlight
-            this.currentHighlight = wordObj.textObject;
-
-            // Reset to original style after duration
-            this.wordObjects[0].textObject.scene.time.delayedCall(duration, () => {
-                if (this.currentHighlight === wordObj.textObject) {
-                    wordObj.textObject.setStyle({ color: wordObj.originalStyle.color });
-                    this.currentHighlight = null;
-                }
-            });
+            const highlightColor = this.preferredLanguage === Language.English ? '#3738B4' : '#B00012';
+            wordObj.textObject.setStyle({ color: highlightColor });
         }
     }
 
-    // Modified to test without audio
     syncWithAudio(wordTimings: { text: string, start: number }[]) {
-        // Simulate timing without actual audio
         wordTimings.forEach((timing, index) => {
             const scene = this.wordObjects[0].textObject.scene;
             scene.time.delayedCall(timing.start * 1000, () => {

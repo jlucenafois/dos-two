@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Folder containing the .wav files
-AUDIO_DIR="../public/assets/transcript/story/audio"
+AUDIO_DIR="../public/assets/transcript/OB/audio"
 # Output directory for results
-OUTPUT_DIR="../public/assets/transcript/story/json"
+OUTPUT_DIR="../public/assets/transcript/OB/json"
 
 # Make sure output directory exists
 mkdir -p "$OUTPUT_DIR"

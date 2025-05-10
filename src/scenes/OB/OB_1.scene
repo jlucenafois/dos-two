@@ -22,7 +22,7 @@
                 "key": "default_play_lg"
             },
             "x": 755,
-            "y": 499,
+            "y": 535,
             "originX": 0,
             "originY": 0
         },
@@ -33,10 +33,44 @@
             "texture": {
                 "key": "logo"
             },
-            "x": 688,
-            "y": 163,
+            "x": 709.725,
+            "y": 80,
+            "scaleX": 0.85,
+            "scaleY": 0.85,
             "originX": 0,
             "originY": 0
+        },
+        {
+            "type": "BitmapText",
+            "id": "6cd80aba-f6ae-40d8-bd96-66fb9e5756c5",
+            "label": "bitmaptext_1",
+            "x": 796,
+            "y": 213,
+            "scaleX": 0.6,
+            "scaleY": 0.6,
+            "text": "presents",
+            "font": "BowlbyOne",
+            "fontSize": 40
+        },
+        {
+            "type": "Image",
+            "id": "0b4f5219-dcf6-4794-9d44-8d8bd3b4bebf",
+            "label": "front_cover",
+            "texture": {
+                "key": "front_cover"
+            },
+            "x": 864,
+            "y": 875
+        },
+        {
+            "type": "Image",
+            "id": "07f07b73-7f5d-4080-baed-c9249f951acd",
+            "label": "title",
+            "texture": {
+                "key": "title"
+            },
+            "x": 864,
+            "y": 400
         }
     ],
     "plainObjects": [],

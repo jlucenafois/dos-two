@@ -36,7 +36,8 @@
             "x": 1568,
             "y": 69,
             "originX": 0,
-            "originY": 0
+            "originY": 0,
+            "visible": false
         },
         {
             "type": "Image",
@@ -49,7 +50,8 @@
             "x": 80,
             "y": 69,
             "originX": 0,
-            "originY": 0
+            "originY": 0,
+            "visible": false
         },
         {
             "type": "Image",
@@ -62,7 +64,8 @@
             "x": 192,
             "y": 69,
             "originX": 0,
-            "originY": 0
+            "originY": 0,
+            "visible": false
         },
         {
             "type": "Image",
@@ -142,7 +145,8 @@
             "x": 80,
             "y": 951,
             "originX": 0,
-            "originY": 0
+            "originY": 0,
+            "visible": false
         }
     ],
     "plainObjects": [],
